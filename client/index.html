@@ -4,12 +4,23 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="app/styles/style.css">
 </head>
 <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img class="logo" alt="Brand" src="http://www.clipartkid.com/images/68/yellow-lightning-bolt-clipart-clipart-panda-free-clipart-images-H8Fsi6-clipart.gif">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <ng-view></ng-view>
 
 
-  <script src="scripts/angular.js"></script>
-  <script src="scripts/angular-route.js"></script>
+  <script src="app/scripts/angular.js"></script>
+  <script src="app/scripts/angular-route.js"></script>
 </body>
 </html>
