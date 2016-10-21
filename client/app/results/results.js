@@ -1,23 +1,20 @@
 angular.module('zeus.results', [])
-.controller('ResultsController', function(Results) {
-  var vm = this;
-  vm.searchQuery = "Jurassic Park";
-  vm.results = [];
+.controller('ResultsController', function($scope, Results) {
+  $scope.searchQuery = "Random";
+  $scope.results = [];
 
-  vm.getResults = function(searchQuery) {
+  $scope.getResults = function(searchQuery) {
     Results.multiSearch(searchQuery)
       .then(function(results) {
-        console.log(results);
-        vm.results = results.data.results;
+        $scope.results = results.data.results;
+        console.log($scope.results);
       });
-  };
-  vm.getDefaultResults = function() {
-    vm.getResults(vm.searchQuery);
   };
 })
 .directive('searchResult', function() {
   return {
     restrict: 'EA',
+    replace: true,
     scope: {
       source: '='
     },
