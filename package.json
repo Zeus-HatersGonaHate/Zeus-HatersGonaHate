@@ -1,0 +1,26 @@
+{
+  "name": "movie_review_site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hughes89/Zeus-HatersGonaHate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hughes89/Zeus-HatersGonaHate/issues"
+  },
+  "homepage": "https://github.com/Hughes89/Zeus-HatersGonaHate#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "moment": "^2.15.1",
+    "mongoose": "^4.6.4",
+    "q": "^1.4.1"
+  }
+}
