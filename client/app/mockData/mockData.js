@@ -1,5 +1,67 @@
 var movies = [];
 
+var clockworkOrange = {
+  "adult": false,
+  "backdrop_path": "/6GKCSrUmV83q3iGhKKxg19qtluD.jpg",
+  "belongs_to_collection": null,
+  "budget": 2200000,
+  "genres": [
+    {
+      "id": 878,
+      "name": "Science Fiction"
+    },
+    {
+      "id": 18,
+      "name": "Drama"
+    }
+  ],
+  "homepage": "",
+  "id": 185,
+  "imdb_id": "tt0066921",
+  "original_language": "en",
+  "original_title": "A Clockwork Orange",
+  "overview": "The head of a gang of toughs, in an insensitive futuristic society, is conditioned to become physically ill at sex and violence during a prison sentence. When he is released, he's brutally beaten by all of his old adversaries.",
+  "popularity": 2.964499,
+  "poster_path": "/hJYwfHxh9O7lyF7hTIT7ZoP8FYQ.jpg",
+  "production_companies": [
+    {
+      "name": "Hawk Films",
+      "id": 88
+    },
+    {
+      "name": "Warner Bros.",
+      "id": 6194
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "GB",
+      "name": "United Kingdom"
+    },
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "1971-12-18",
+  "revenue": 26589000,
+  "runtime": 136,
+  "spoken_languages": [
+    {
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "Being the adventures of a young man whose principal interests are rape, ultra-violence and Beethoven.",
+  "title": "A Clockwork Orange",
+  "video": false,
+  "vote_average": 7.7,
+  "vote_count": 1624
+};
+//end of clockworkOrange
+
+
 var topGunSearch = [{
   "page": 1,
   "results": [
