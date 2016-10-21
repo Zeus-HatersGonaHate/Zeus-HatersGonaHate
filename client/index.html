@@ -13,7 +13,10 @@
         <a class="navbar-brand" href="#">
           <img class="logo" alt="Brand" src="http://www.clipartkid.com/images/68/yellow-lightning-bolt-clipart-clipart-panda-free-clipart-images-H8Fsi6-clipart.gif">
         </a>
-        <input type="text" name="search" ng-controller="ResultsController" class="search">
+        <form ng-controller="ResultsController" ng-submit="getResults(searchQuery)" >
+          <p>{{ searchQuery }}</p>
+          <input type="search" name="search"  class="search" ng-model="searchQuery" />
+        </form>
         <div class="nav-buttons">
           <a href="/">Home</a>
           <a href="/browse">Browse</a>
