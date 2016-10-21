@@ -1,0 +1,11 @@
+<div ng-controller="DetailsController">
+ <div class='moviePoster'>
+   <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}"/>
+ </div>
+ <div class='movieDetails'>
+    <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
+    <h3 ng-if="original_title === undefined"> {{original_name}} </h3>
+    <h5>Overview</h5>
+    <p> {{overview}} </p>
+ </div>
+</div>

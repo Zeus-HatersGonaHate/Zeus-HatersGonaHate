@@ -15,5 +15,10 @@ angular.module('zeus', [
       templateUrl: 'app/results/results.html',
       controllerAs: 'vm',
       controller: 'ResultsController'
+    })
+    .when('/:type/:id', {
+      templateUrl: 'app/details/details.html',
+      controllerAs: 'vm',
+      controller: 'DetailsController'
     });
 });
