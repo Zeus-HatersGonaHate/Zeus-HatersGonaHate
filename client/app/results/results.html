@@ -1,6 +1,7 @@
-<div id="container" ng-init="vm.getDefaultResults()">
-    <search-result source="result" ng-repeat="result in vm.results">
-    {{ result.title }}
+<div id="container" ng-init="getResults(searchQuery)">
+  <ul ng-model="results" >
+    <search-result source="result" ng-repeat="result in results">
+     result.title
     </search-result>
   </ul>
 </div>
