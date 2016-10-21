@@ -1,7 +1,8 @@
 angular.module('zeus', [
+  'zeus.landing',
+  'zeus.results',
   'zeus.details',
   'zeus.services',
-  'zeus.landing',
   'ngRoute'
   ])
 .config(function($routeProvider) {
@@ -10,4 +11,9 @@ angular.module('zeus', [
       templateUrl: 'app/landing/landing.html',
       controller: 'LandingController'
     })
-})
+    .when('/results', {
+      templateUrl: 'app/results/results.html',
+      controllerAs: 'vm',
+      controller: 'ResultsController'
+    });
+});
