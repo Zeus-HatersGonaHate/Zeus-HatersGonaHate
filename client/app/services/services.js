@@ -1,7 +1,29 @@
 angular.module('zeus.services', [])
 .factory('Details', function($http) {
+  // var getReviews = function (id) {
+  //   return $http({
+  //     method: 'GET',
+  //     url: '/review/' + id
+  //   })
+  //   .then(function (res) {
+  //     return res;
+  //   });
+  // };
+  var getDetails = function (type, id, callback) {
+    return $http({
+      method: 'GET',
+      url: 'https://api.themoviedb.org/3/' + type + '/' + id + '?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
+    }).then(function (res) {
+      return res.data;
+    });
+  };
+
+  return {
+    getDetails: getDetails
+  };
 
 })
+
 .factory('Landing', function($http) {
 
 })
