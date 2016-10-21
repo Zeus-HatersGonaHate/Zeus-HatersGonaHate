@@ -1,5 +1,6 @@
 <li>
-  <h2 class="title">{{ source.title }}</h2>
+  <h2 class="title" ng-if="result.name === undefined">{{ source.name }}</h2>
+  <h2 class="title" ng-if="result.title === undefined">{{ source.title }}</h2>
   <img src="http://image.tmdb.org/t/p/w185/{{ source.poster_path }}" alt="">
   <p>{{ source.overview }}</p>
 </li>
