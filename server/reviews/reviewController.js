@@ -65,7 +65,7 @@ module.exports = {
     { $inc: { voteCount:  voteCount } },
     {new: true},
     function (err, count) {
-      console.log(err);
+      if (err) console.log(err);
       res.json(count);
     }
     );
