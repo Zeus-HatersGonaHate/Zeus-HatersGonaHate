@@ -25,7 +25,7 @@ module.exports = {
   },
 
   getReviews: function (req, res, next) {
-    var id = req.params.id;
+    var id = req.params.movieId;
     Review.find({movie: id})
       .sort({date: -1})
       .exec(function(err, review) {
