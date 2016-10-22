@@ -1,6 +1,8 @@
 angular.module('zeus.details', [])
   .controller('DetailsController', function($scope, Details, $routeParams) {
     $scope.data = {};
+    $scope.reviews = {};
+    $scope.hasReview = false;
     $scope.type = $routeParams.type;
     $scope.id = $routeParams.id;
     Details.getDetails($scope.type, $scope.id).then(function(data){
@@ -10,13 +12,15 @@ angular.module('zeus.details', [])
       $scope.poster_path = $scope.data.poster_path;
       $scope.overview = $scope.data.overview;
     });
-    //movie prop that represents a movie
-
-    // access the props on the movie prop
-
-
+    Details.getReviews($scope.type, $scope.id).then(function (reviews) {
+      $scope.reviews = reviews.data;
+      if ($scope.reviews.length > 0) {
+        $scope.hasReview = true;
+      }
+    });
 
 
   });
+
 
 

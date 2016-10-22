@@ -1,14 +1,14 @@
 angular.module('zeus.services', [])
 .factory('Details', function($http) {
-  // var getReviews = function (id) {
-  //   return $http({
-  //     method: 'GET',
-  //     url: '/review/' + id
-  //   })
-  //   .then(function (res) {
-  //     return res;
-  //   });
-  // };
+  var getReviews = function (type, id) {
+    return $http({
+      method: 'GET',
+      url: '/review/' + type + '/' + id
+    })
+    .then(function (res) {
+      return res;
+    });
+  };
   var getDetails = function (type, id, callback) {
     return $http({
       method: 'GET',
@@ -19,7 +19,8 @@ angular.module('zeus.services', [])
   };
 
   return {
-    getDetails: getDetails
+    getDetails: getDetails,
+    getReviews: getReviews
   };
 
 })
