@@ -4,9 +4,13 @@ var userController = require('../users/userController.js');
 module.exports = function (app, express) {
 
   //Review Routes
-  app.get('/review/:movieId', reviewController.getReviews);
-  app.post('/review', reviewController.postReview);
+  app.get('/review/:type/:typeId', reviewController.getReviews);
+
+  app.post('/review/:type/:typeId', reviewController.postReview);
+
   app.put('/review/:reviewId', reviewController.editReview);
+
   app.put('/review/count/:reviewId', reviewController.editCount);
+  
   app.delete('/review/:reviewId', reviewController.deleteReview);
 };

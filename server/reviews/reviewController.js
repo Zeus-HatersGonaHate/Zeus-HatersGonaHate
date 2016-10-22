@@ -4,29 +4,33 @@ module.exports = {
 
   postReview: function (req, res, next) {
     var data = req.body;
+    var type = req.params.type;
+    var typeId = req.params.typeId;
     var review = new Review({
       username: data.username,
-      movie: data.movie,
+      typeId: typeId,
+      type: type,
       title: data.title,
       date: new Date(),
       content: data.content,
       rating: data.rating,
       voteCount: 0
     });
-    review.save(function (err, revObj) {
+    review.save(function (err, review) {
       if (err) {
         console.log(err);
         res.send(404);
       } else {
-        console.log('Saved');
+        console.log(review);
         res.send(201);
       }
     });
   },
 
   getReviews: function (req, res, next) {
-    var id = req.params.movieId;
-    Review.find({movie: id})
+    var id = req.params.typeId;
+    var type = req.params.type;
+    Review.find({typeId: id})
       .sort({date: -1})
       .exec(function(err, review) {
         if (err) {
@@ -64,9 +68,9 @@ module.exports = {
     Review.findOneAndUpdate({ _id: id }, 
     { $inc: { voteCount:  voteCount } },
     {new: true},
-    function (err, count) {
+    function (err, review) {
       if (err) console.log(err);
-      res.json(count);
+      res.json(review.voteCount);
     }
     );
   }
