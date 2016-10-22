@@ -13,8 +13,7 @@
         <a class="navbar-brand" href="#">
           <img class="logo" alt="Brand" src="http://www.clipartkid.com/images/68/yellow-lightning-bolt-clipart-clipart-panda-free-clipart-images-H8Fsi6-clipart.gif">
         </a>
-        <form ng-controller="ResultsController" ng-submit="getResults(searchQuery)" >
-          <p>{{ searchQuery }}</p>
+        <form ng-controller="zeusController" ng-submit="search(searchQuery)" >
           <input type="search" name="search"  class="search" ng-model="searchQuery" />
         </form>
         <div class="nav-buttons">
