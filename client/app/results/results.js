@@ -1,17 +1,12 @@
 angular.module('zeus.results', [])
-.controller('ResultsController', ['$scope', '$location', 'Results', function($scope, $location, Results) {
-  $scope.searchQuery = "Taken";
+.controller('ResultsController', function($scope, Results, $routeParams) {
   $scope.results = [];
-
-  $scope.getResults = function(searchQuery) {
-    Results.multiSearch(searchQuery)
+  $scope.loaded = false;
+  var search = $routeParams.search
+    Results.multiSearch(search)
       .then(function(results) {
-        $location.path('/results');
+        $scope.loaded = true;
         $scope.results = results.data.results;
-        console.log($scope.results);
+        console.log($scope.results)
       });
-  };
-
-  $scope.getResults($scope.searchQuery);
-
-}]);
+});
