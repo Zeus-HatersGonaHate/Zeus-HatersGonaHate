@@ -1,7 +1,10 @@
-<div id="container" ng-init="getResults(searchQuery)">
+<div ng-controller="ResultsController" id="container">
   <ul ng-model="results" >
-    <search-result source="result" ng-repeat="result in results">
-     result.title
-    </search-result>
+    <li ng-repeat="result in results">
+      <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
+      <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
+      <img src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}" alt="">
+      <p>{{ result.overview }}</p>
+    </li>
   </ul>
 </div>

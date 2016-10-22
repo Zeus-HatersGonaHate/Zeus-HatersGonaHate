@@ -1,23 +1,17 @@
 angular.module('zeus.results', [])
-.controller('ResultsController', function($scope, Results) {
-  $scope.searchQuery = "Random";
+.controller('ResultsController', ['$scope', '$location', 'Results', function($scope, $location, Results) {
+  $scope.searchQuery = "Taken";
   $scope.results = [];
 
   $scope.getResults = function(searchQuery) {
     Results.multiSearch(searchQuery)
       .then(function(results) {
+        $location.path('/results');
         $scope.results = results.data.results;
         console.log($scope.results);
       });
   };
-})
-.directive('searchResult', function() {
-  return {
-    restrict: 'EA',
-    replace: true,
-    scope: {
-      source: '='
-    },
-    templateUrl: 'app/results/searchResult.html'
-  };
-});
+
+  $scope.getResults($scope.searchQuery);
+
+}]);
