@@ -10,7 +10,7 @@ angular.module('zeus', [
     $location.path('/results/' + search);
   };
 })
-.config(function($routeProvider) {
+.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'app/landing/landing.html',
@@ -24,4 +24,6 @@ angular.module('zeus', [
       templateUrl: 'app/details/details.html',
       controller: 'DetailsController'
     });
+
+    $locationProvider.html5Mode(true);
 });
