@@ -4,9 +4,9 @@ angular.module('zeus', [
   'zeus.details',
   'zeus.services',
   'ngRoute'
-  ])
+])
 .controller('zeusController', function($scope, $location) {
-  $scope.search = function(search){
+  $scope.search = function(search) {
     $location.path('/results/' + search);
   };
 })
@@ -25,5 +25,5 @@ angular.module('zeus', [
       controller: 'DetailsController'
     });
 
-    $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true);
 });
