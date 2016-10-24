@@ -1,12 +1,12 @@
 <div ng-controller="LandingController" id="container">
   <div class="movie-container">
     <h2>Popular</h2>
-      <ul ng-init="fetchPopular()" class="movie-list">
-        <a ng-repeat="popular in populars | limitTo:10" href="/movie/{{ popular.id }}">
+      <ul ng-init="fetchPopularMovies()" class="movie-list">
+        <a ng-repeat="popularmovie in popularmovies | limitTo:10" href="/movie/{{ popularmovie.id }}">
           <li>
             <!-- <h2>{{ popular.original_title }}</h2> -->
             <div class="poster-container">
-              <img src="http://image.tmdb.org/t/p/w185/{{popular.poster_path}}" alt="">
+              <img src="http://image.tmdb.org/t/p/w185/{{popularmovie.poster_path}}" alt="">
             </div>
           </li>
         </a>
@@ -14,12 +14,12 @@
   </div>
   <div class="movie-container">
     <h2>Latest</h2>
-      <ul ng-init="fetchLatest()" class="movie-list">
-        <a ng-repeat="latest in latests | limitTo:10" href="/movie/{{ latest.id }}">
+      <ul ng-init="fetchLatestMovies()" class="movie-list">
+        <a ng-repeat="latestmovie in latestmovies | limitTo:10" href="/movie/{{ latestmovie.id }}">
           <li>
             <!-- <h2>{{ latest.original_title }}</h2> -->
             <div class="poster-container">
-              <img src="http://image.tmdb.org/t/p/w185/{{latest.poster_path}}" alt="">
+              <img src="http://image.tmdb.org/t/p/w185/{{latestmovie.poster_path}}" alt="">
             </div>
           </li>
         </a>
@@ -27,12 +27,12 @@
   </div>
   <div class="movie-container">
     <h2>Upcoming</h2>
-      <ul ng-init="fetchUpcoming()" class="movie-list">
-        <a ng-repeat="upcoming in upcomings | limitTo:10" href="/movie/{{ upcoming.id }}">
+      <ul ng-init="fetchUpcomingMovies()" class="movie-list">
+        <a ng-repeat="upcomingmovie in upcomingmovies | limitTo:10" href="/movie/{{ upcomingmovie.id }}">
           <li>
             <!-- <h2>{{ upcoming.original_title }}</h2> -->
             <div class="poster-container">
-              <img src="http://image.tmdb.org/t/p/w185/{{upcoming.poster_path}}" alt="">
+              <img src="http://image.tmdb.org/t/p/w185/{{upcomingmovie.poster_path}}" alt="">
             </div>
           </li>
         </a>

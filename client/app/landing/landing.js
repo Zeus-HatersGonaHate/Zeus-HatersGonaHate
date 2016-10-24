@@ -1,25 +1,25 @@
 angular.module('zeus.landing', [])
   .controller('LandingController', function($scope, Landing) {
-    $scope.populars = {};
-    $scope.latests = {};
-    $scope.upcomings = {};
+    $scope.popularmovies = {};
+    $scope.latestmovies = {};
+    $scope.upcomingmovies = {};
 
-    $scope.fetchPopular = function() {
-      Landing.getPopular()
+    $scope.fetchPopularMovies = function() {
+      Landing.getPopularMovies()
         .then(function(data) {
-          $scope.populars = data.results;
+          $scope.popularmovies = data.results;
         });
     };
-    $scope.fetchLatest = function() {
-      Landing.getLatest()
+    $scope.fetchLatestMovies = function() {
+      Landing.getLatestMovies()
         .then(function(data) {
-          $scope.latests = data.results;
+          $scope.latestmovies = data.results;
         });
     };
-    $scope.fetchUpcoming = function() {
-      Landing.getUpcoming()
+    $scope.fetchUpcomingMovies = function() {
+      Landing.getUpcomingMovies()
         .then(function(data) {
-          $scope.upcomings = data.results;
+          $scope.upcomingmovies = data.results;
         });
     };
 
