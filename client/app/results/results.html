@@ -1,11 +1,13 @@
 <div ng-controller="ResultsController" id="container">
   <p ng-if="results.length === 0 && loaded">No results were found!</p>
   <ul>
-    <li ng-repeat="result in results">
-      <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
-      <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
-      <a href="/{{ result.media_type }}/{{ result.id }}"><img src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}" alt=""></a>
-      <p>{{ result.overview }}</p>
-    </li>
+    <a ng-repeat="result in results" href="/{{ result.media_type }}/{{ result.id }}">
+      <li>
+        <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
+        <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
+        <img src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}" alt="">
+        <p>{{ result.overview }}</p>
+      </li>
+    </a>
   </ul>
 </div>

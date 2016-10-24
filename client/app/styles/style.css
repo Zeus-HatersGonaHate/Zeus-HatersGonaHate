@@ -10,3 +10,11 @@
 .nav-buttons {
   float: right;
 }
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
