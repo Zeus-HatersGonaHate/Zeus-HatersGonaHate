@@ -11,6 +11,10 @@
   float: right;
 }
 
+.nav-logo {
+  color: #fff;
+}
+
 a {
   text-decoration: none;
 }
