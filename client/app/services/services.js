@@ -56,10 +56,31 @@ angular.module('zeus.services', [])
     });
   };
 
+  var getPopularShows = function() {
+    return $http ({
+      method: 'GET',
+      url: 'https://api.themoviedb.org/3/tv/popular?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
+    })
+    .then(function(res) {
+      return res.data;
+    });
+  };
+  var getLatestShows = function() {
+    return $http ({
+      method: 'GET',
+      url: 'https://api.themoviedb.org/3/tv/airing_today?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
+    })
+    .then(function(res) {
+      return res.data;
+    });
+  };
+
   return {
     getPopularMovies: getPopularMovies,
     getLatestMovies: getLatestMovies,
-    getUpcomingMovies: getUpcomingMovies
+    getUpcomingMovies: getUpcomingMovies,
+    getPopularShows: getPopularShows,
+    getLatestShows: getLatestShows
   };
 
 })
