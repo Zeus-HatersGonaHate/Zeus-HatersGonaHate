@@ -19,12 +19,12 @@ li {
   list-style-type: none;
 }
 
-.movie-container {
+.media-container {
   width: 100%;
   float: left;
 }
 
-.movie-list li {
+.media-list li {
   float: left;
 }
 
