@@ -1,10 +1,9 @@
 <div ng-controller="LandingController" id="container">
-  <div class="movie-container">
-    <h2>Popular</h2>
-      <ul ng-init="fetchPopularMovies()" class="movie-list">
+  <div class="media-container">
+    <h2>Popular Movies</h2>
+      <ul ng-init="fetchPopularMovies()" class="media-list">
         <a ng-repeat="popularmovie in popularmovies | limitTo:10" href="/movie/{{ popularmovie.id }}">
           <li>
-            <!-- <h2>{{ popular.original_title }}</h2> -->
             <div class="poster-container">
               <img src="http://image.tmdb.org/t/p/w185/{{popularmovie.poster_path}}" alt="">
             </div>
@@ -12,12 +11,11 @@
         </a>
       </ul>
   </div>
-  <div class="movie-container">
-    <h2>Latest</h2>
-      <ul ng-init="fetchLatestMovies()" class="movie-list">
+  <div class="media-container">
+    <h2>Latest Movies</h2>
+      <ul ng-init="fetchLatestMovies()" class="media-list">
         <a ng-repeat="latestmovie in latestmovies | limitTo:10" href="/movie/{{ latestmovie.id }}">
           <li>
-            <!-- <h2>{{ latest.original_title }}</h2> -->
             <div class="poster-container">
               <img src="http://image.tmdb.org/t/p/w185/{{latestmovie.poster_path}}" alt="">
             </div>
@@ -25,17 +23,40 @@
         </a>
       </ul>
   </div>
-  <div class="movie-container">
-    <h2>Upcoming</h2>
-      <ul ng-init="fetchUpcomingMovies()" class="movie-list">
+  <div class="media-container">
+    <h2>Upcoming Movies</h2>
+      <ul ng-init="fetchUpcomingMovies()" class="media-list">
         <a ng-repeat="upcomingmovie in upcomingmovies | limitTo:10" href="/movie/{{ upcomingmovie.id }}">
           <li>
-            <!-- <h2>{{ upcoming.original_title }}</h2> -->
             <div class="poster-container">
               <img src="http://image.tmdb.org/t/p/w185/{{upcomingmovie.poster_path}}" alt="">
             </div>
           </li>
         </a>
       </ul>
+  </div>
+  <div class="media-container">
+    <h2>Popular TV Shows</h2>
+      <ul ng-init="fetchPopularShows()" class="media-list">
+        <a ng-repeat="popularshow in popularshows | limitTo:10" href="/tv/{{ popularshow.id }}">
+          <li>
+            <div class="poster-container">
+              <img src="http://image.tmdb.org/t/p/w185/{{popularshow.poster_path}}" alt="">
+            </div>
+          </li>
+        </a>
+      </ul>
+  </div>
+  <div class="media-container">
+    <h2>TV Shows Airing Today</h2>
+    <ul ng-init="fetchLatestShows()" class="media-list">
+      <a ng-repeat="latestshow in latestshows | limitTo:10" href="/tv/{{ latestshow.id }}">
+        <li>
+          <div class="poster-container">
+            <img src="http://image.tmdb.org/t/p/w185/{{latestshow.poster_path}}" alt="">
+          </div>
+        </li>
+      </a>
+    </ul>
   </div>
 </div>
