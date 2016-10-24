@@ -18,3 +18,24 @@ a {
 li {
   list-style-type: none;
 }
+
+.movie-container {
+  width: 100%;
+  float: left;
+}
+
+.movie-list li {
+  float: left;
+}
+
+.poster-container {
+  width: 193px;
+  height: 280px;
+  padding: 4px;
+}
+
+.poster-container img {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
