@@ -2,34 +2,40 @@
   <div class="movie-container">
     <h2>Popular</h2>
       <ul ng-init="fetchPopular()" class="movie-list">
-        <li ng-repeat="popular in populars | limitTo:10">
-          <!-- <h2>{{ popular.original_title }}</h2> -->
-          <div class="poster-container">
-            <img src="http://image.tmdb.org/t/p/w185/{{popular.poster_path}}" alt="">
-          </div>
-        </li>
+        <a ng-repeat="popular in populars | limitTo:10" href="/movie/{{ popular.id }}">
+          <li>
+            <!-- <h2>{{ popular.original_title }}</h2> -->
+            <div class="poster-container">
+              <img src="http://image.tmdb.org/t/p/w185/{{popular.poster_path}}" alt="">
+            </div>
+          </li>
+        </a>
       </ul>
   </div>
   <div class="movie-container">
     <h2>Latest</h2>
       <ul ng-init="fetchLatest()" class="movie-list">
-        <li ng-repeat="latest in latests | limitTo:10">
-          <!-- <h2>{{ latest.original_title }}</h2> -->
-          <div class="poster-container">
-            <img src="http://image.tmdb.org/t/p/w185/{{latest.poster_path}}" alt="">
-          </div>
-        </li>
+        <a ng-repeat="latest in latests | limitTo:10" href="/movie/{{ latest.id }}">
+          <li>
+            <!-- <h2>{{ latest.original_title }}</h2> -->
+            <div class="poster-container">
+              <img src="http://image.tmdb.org/t/p/w185/{{latest.poster_path}}" alt="">
+            </div>
+          </li>
+        </a>
       </ul>
   </div>
   <div class="movie-container">
     <h2>Upcoming</h2>
       <ul ng-init="fetchUpcoming()" class="movie-list">
-        <li ng-repeat="upcoming in upcomings | limitTo:10">
-          <!-- <h2>{{ upcoming.original_title }}</h2> -->
-          <div class="poster-container">
-            <img src="http://image.tmdb.org/t/p/w185/{{upcoming.poster_path}}" alt="">
-          </div>
-        </li>
+        <a ng-repeat="upcoming in upcomings | limitTo:10" href="/movie/{{ upcoming.id }}">
+          <li>
+            <!-- <h2>{{ upcoming.original_title }}</h2> -->
+            <div class="poster-container">
+              <img src="http://image.tmdb.org/t/p/w185/{{upcoming.poster_path}}" alt="">
+            </div>
+          </li>
+        </a>
       </ul>
   </div>
 </div>
