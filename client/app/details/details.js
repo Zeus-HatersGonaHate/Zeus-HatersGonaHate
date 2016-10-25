@@ -21,7 +21,7 @@ angular.module('zeus.details', [])
         return reviews.data;
       });
 
-    }
+    };
     getReviews();
 
     $scope.post = function(){
@@ -34,7 +34,11 @@ angular.module('zeus.details', [])
       Details.postReview($scope.type, $scope.id, info).then(function(review){
         $scope.reviews.unshift(review.data);
         $scope.hasReview = true;
-      })
+        //Clear input fields
+        $scope.reviewTitle = '';
+        $scope.reviewBody = '';
+        $scope.reviewRating = '';
+      });
     };
   });
 
