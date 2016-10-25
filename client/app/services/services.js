@@ -17,16 +17,16 @@ angular.module('zeus.services', [])
       return res.data;
     });
   };
-  var postReview = function (type, id, info){
+  var postReview = function (type, id, info) {
     return $http({
       method: 'POST',
       url: '/review/' + type + '/' + id,
       data: info
     })
-    .then(function(res){
+    .then(function(res) {
       return res;
-    })
-  }
+    });
+  };
 
   return {
     getDetails: getDetails,
