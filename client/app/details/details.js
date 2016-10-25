@@ -18,7 +18,15 @@ angular.module('zeus.details', [])
         $scope.hasReview = true;
       }
     });
+    $scope.post = function(){
+      var info = {
 
+      }
+
+      //Details.postReview($scope.type, $scope.id, info)
+
+      //prepend new review
+    }
 
   });
 

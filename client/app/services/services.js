@@ -17,10 +17,20 @@ angular.module('zeus.services', [])
       return res.data;
     });
   };
+  var postReview = function (type, id, info){
+    return $http({
+      method: 'POST',
+      url: '/review/' + type + '/' + id
+    })
+    .then(function(res){
+      return res;
+    })
+  }
 
   return {
     getDetails: getDetails,
-    getReviews: getReviews
+    getReviews: getReviews,
+    postReview: postReview
   };
 
 })
