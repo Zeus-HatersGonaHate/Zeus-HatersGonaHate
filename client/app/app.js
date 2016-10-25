@@ -3,6 +3,7 @@ angular.module('zeus', [
   'zeus.results',
   'zeus.details',
   'zeus.services',
+  'zeus.user',
   'ngRoute'
 ])
 .controller('zeusController', function($scope, $location) {
