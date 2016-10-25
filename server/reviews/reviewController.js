@@ -2,6 +2,7 @@ var Review = require('../reviews/reviewModel.js');
 
 module.exports = {
 
+  //when user posts a review, this method saves it to the database
   postReview: function (req, res, next) {
     var data = req.body;
     var type = req.params.type;
@@ -27,6 +28,7 @@ module.exports = {
     });
   },
 
+  //gets all reviews from the DB for a particular movie/show by looking at the type ('movie' or 'tv') and id number within the URL parameters
   getReviews: function (req, res, next) {
     var id = req.params.typeId;
     var type = req.params.type;
@@ -41,6 +43,7 @@ module.exports = {
       });
   },
 
+  //deletes a review from the DB based on the reviewId parameter within the URL
   deleteReview: function (req, res, next) {
     var id = req.params.reviewId;
     Review.findByIdAndRemove(id, function (err, data) {
@@ -52,6 +55,7 @@ module.exports = {
       });
   },
 
+  //Allows a user to edit an existing review that they have posted.
   editReview: function (req, res, next) {
     var id = req.params.reviewId;
     var content = req.body.content;
@@ -62,6 +66,7 @@ module.exports = {
     });
   },
 
+  // Not sure about this one. Mike/Nancy?
   editCount: function (req, res, next) {
     var id = req.params.reviewId;
     var voteCount = req.body.voteCount; //voteCount has to be 1 or -1
