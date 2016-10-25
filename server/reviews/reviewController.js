@@ -22,7 +22,7 @@ module.exports = {
         res.send(404);
       } else {
         console.log(review);
-        res.send(201);
+        res.json(review);
       }
     });
   },
@@ -65,7 +65,7 @@ module.exports = {
   editCount: function (req, res, next) {
     var id = req.params.reviewId;
     var voteCount = req.body.voteCount; //voteCount has to be 1 or -1
-    Review.findOneAndUpdate({ _id: id }, 
+    Review.findOneAndUpdate({ _id: id },
     { $inc: { voteCount:  voteCount } },
     {new: true},
     function (err, review) {
