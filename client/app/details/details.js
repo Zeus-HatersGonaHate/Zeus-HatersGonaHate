@@ -33,6 +33,7 @@ angular.module('zeus.details', [])
       };
       Details.postReview($scope.type, $scope.id, info).then(function(review){
         $scope.reviews.unshift(review.data);
+        $scope.hasReview = true;
       })
     };
   });
