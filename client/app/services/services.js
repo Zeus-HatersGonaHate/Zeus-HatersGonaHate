@@ -108,11 +108,11 @@ angular.module('zeus.services', [])
   return {
     multiSearch: multiSearch
   };
-});
+})
 
 .factory('User', function() {
 
-  return {
+  // return {
 
-  }
-})
+  // }
+});
