@@ -27,11 +27,12 @@
     <textarea placeholder="Tell us what you thought..." ng-model="reviewBody" required></textarea>
     <h6>Rating</h6>
     <select ng-model="reviewRating" required>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+      <option selected disabled value="">--Select Rating--</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
     </select>
     <input type="submit">
   </form>
