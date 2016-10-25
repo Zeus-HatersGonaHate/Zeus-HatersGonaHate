@@ -30,5 +30,5 @@ angular.module('zeus', [
       controller: 'DetailsController'
     });
   // Sets HTML5 Mode to true, removes # from url
-  $locationProvider.html5Mode(true);
+  //$locationProvider.html5Mode(true);
 });
