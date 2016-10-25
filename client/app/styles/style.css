@@ -10,3 +10,36 @@
 .nav-buttons {
   float: right;
 }
+
+.nav-logo {
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.media-container {
+  width: 100%;
+  float: left;
+}
+
+.media-list li {
+  float: left;
+}
+
+.poster-container {
+  width: 193px;
+  height: 280px;
+  padding: 4px;
+}
+
+.poster-container img {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
