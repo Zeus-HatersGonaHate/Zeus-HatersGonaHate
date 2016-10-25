@@ -66,7 +66,7 @@ module.exports = {
     });
   },
 
-  // Not sure about this one. Mike/Nancy?
+  // Upvote/downvote reviews total votes is the voteCount
   editCount: function (req, res, next) {
     var id = req.params.reviewId;
     var voteCount = req.body.voteCount; //voteCount has to be 1 or -1
