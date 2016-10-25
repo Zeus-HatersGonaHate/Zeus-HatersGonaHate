@@ -20,7 +20,8 @@ angular.module('zeus.services', [])
   var postReview = function (type, id, info){
     return $http({
       method: 'POST',
-      url: '/review/' + type + '/' + id
+      url: '/review/' + type + '/' + id,
+      data: info
     })
     .then(function(res){
       return res;

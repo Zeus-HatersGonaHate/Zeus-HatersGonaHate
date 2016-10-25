@@ -20,10 +20,12 @@ angular.module('zeus.details', [])
     });
     $scope.post = function(){
       var info = {
-
+        username: 'Nancy', //Fix: need to add in real username
+        title: $scope.reviewTitle,
+        content: $scope.reviewBody,
+        rating: $scope.reviewRating
       }
-
-      //Details.postReview($scope.type, $scope.id, info)
+      Details.postReview($scope.type, $scope.id, info)
 
       //prepend new review
     }

@@ -22,11 +22,11 @@
   <h5>Reviews</h5>
   <form ng-submit="post()">
     <h6>Title</h6>
-    <input type="text" placeholder="Title" ng-model="reviewTitle">
+    <input type="text" placeholder="Title" ng-model="reviewTitle" required>
     <h6>Comment</6>
-    <textarea placeholder="Tell us what you thought..." ng-model="reviewBody"></textarea>
+    <textarea placeholder="Tell us what you thought..." ng-model="reviewBody" required></textarea>
     <h6>Rating</h6>
-    <select ng-model="reviewRating">
+    <select ng-model="reviewRating" required>
       <option>1</option>
       <option>2</option>
       <option>3</option>
