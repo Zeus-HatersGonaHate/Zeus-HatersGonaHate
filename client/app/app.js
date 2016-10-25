@@ -29,5 +29,9 @@ angular.module('zeus', [
     .when('/:type/:id', {
       templateUrl: 'app/details/details.html',
       controller: 'DetailsController'
+    })
+    .when('/user', {
+      templateUrl: 'app/user/user.html',
+      controller: 'UserController'
     });
 });
