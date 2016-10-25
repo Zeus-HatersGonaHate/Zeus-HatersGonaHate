@@ -3,7 +3,6 @@
     <!-- If no poster_path, show dummy image -->
     <img ng-hide="!poster_path" src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="">
     <img ng-show="!poster_path" src="http://dummyimage.com/185x275/000/fff&text={{original_name}}" alt="">
-    <!-- <img src="http://image.tmdb.org/t/p/w185/{{poster_path}}"/> -->
  </div>
  <div class='movieDetails'>
     <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
