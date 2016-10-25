@@ -33,7 +33,6 @@ angular.module('zeus.services', [])
     getReviews: getReviews,
     postReview: postReview
   };
-
 })
 
 .factory('Landing', function($http) {
@@ -93,8 +92,8 @@ angular.module('zeus.services', [])
     getPopularShows: getPopularShows,
     getLatestShows: getLatestShows
   };
-
 })
+
 .factory('Results', function($http) {
   var multiSearch = function(query, page) {
     return $http({
@@ -109,6 +108,11 @@ angular.module('zeus.services', [])
   return {
     multiSearch: multiSearch
   };
+})
 
+.factory('User', function() {
 
+  // return {
+
+  // }
 });

@@ -3,6 +3,7 @@ angular.module('zeus', [
   'zeus.results',
   'zeus.details',
   'zeus.services',
+  'zeus.user',
   'ngRoute'
 ])
 .controller('zeusController', function($scope, $location) {
@@ -28,5 +29,9 @@ angular.module('zeus', [
     .when('/:type/:id', {
       templateUrl: 'app/details/details.html',
       controller: 'DetailsController'
+    })
+    .when('/user', {
+      templateUrl: 'app/user/user.html',
+      controller: 'UserController'
     });
 });
