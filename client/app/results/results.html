@@ -5,7 +5,9 @@
       <li>
         <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
         <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
-        <img src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}" alt="">
+        <!-- If no poster_path, show dummy image -->
+        <img ng-hide="!result.poster_path" src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}" alt="">
+        <img ng-show="!result.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{result.name}}" alt="">
         <p>{{ result.overview }}</p>
       </li>
     </a>
