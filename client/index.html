@@ -2,7 +2,7 @@
 <html lang="en" ng-app="zeus" ng-cloak>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Zeus Reviews</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.deep_orange-deep_purple.min.css" />
@@ -19,7 +19,8 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="">Log In</a>
+        <a class="mdl-navigation__link" href="" ng-click="login()" ng-if="loggedIn === false">Log In</a>
+        <a class="mdl-navigation__link" href="" ng-click="logout()" ng-if="loggedIn">Log Out</a>
         <a class="mdl-navigation__link" href="">Browse</a>
       </nav>
       <!-- Search input here -->
@@ -40,7 +41,7 @@
     <!-- Small screen navigation menu -->
     <span class="mdl-layout-title"><a class="nav-logo" href="#/">Zeus Reviews</a></span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Log In</a>
+      <a class="mdl-navigation__link" href="" ng-click="login()">Log In</a>
       <a class="mdl-navigation__link" href="">Browse</a>
     </nav>
   </div>
@@ -56,6 +57,10 @@
   <!--Material Style Script -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  <!-- Auth0 Scripts -->
+  <script src="app/scripts/auth0-lock/build/lock.js"></script>
+  <script src="app/scripts/angular-lock/dist/angular-lock.js"></script>
+  <script src="app/scripts/angular-jwt/dist/angular-jwt.js"></script>
   <!-- Module Scripts -->
   <script src="app/landing/landing.js"></script>
   <script src="app/results/results.js"></script>
