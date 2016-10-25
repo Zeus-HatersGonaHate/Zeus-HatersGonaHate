@@ -8,7 +8,7 @@ angular.module('zeus', [
   'angular-jwt',
   'ngRoute'
 ])
-.controller('zeusController', function($scope, $location, authService) {
+.controller('zeusController', function($scope, $location, authService, $http) {
   $scope.searchQuery = '';
   $scope.loggedIn = false;
   $scope.search = function(search) {
@@ -25,11 +25,16 @@ angular.module('zeus', [
     $scope.loggedIn = false;
   };
 
+  $scope.checkUser = function (data) {
+    $http({})
+  }
+
     //Gets user profile when logged in.
   authService.getProfileDeferred().then(function (profile) {
     console.log(profile);
     $scope.profile = profile;
     if(profile){
+      $scope.checkUser(profile)
       $scope.loggedIn = true;
     }
   });
