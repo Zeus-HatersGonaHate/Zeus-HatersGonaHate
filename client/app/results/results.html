@@ -13,5 +13,10 @@
       </li>
     </a>
   </ul>
-  <p>Your search returned {{ totalPages }} pages.</p>
+  <ul class="media-list pages">
+    <h6>Pages</h6>
+    <a ng-repeat="page in totalPages" href="/#/results/{{ search }}/{{ page }}">
+      <li class="page">{{ page }}</li>
+    </a>
+  </ul>
 </div>
