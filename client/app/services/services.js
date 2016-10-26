@@ -153,6 +153,46 @@ angular.module('zeus.services', [])
   };
 })
 
+.factory('Account', function($http) {
+  var getAccountReviews = function(username) {
+    return $http({
+      method: 'GET',
+      url: '/account/reviews',
+      data: username
+    })
+      .then(function(res) {
+        return res;
+      });
+  };
+
+  var getAccountViewed = function(username) {
+    return $http({
+      method: 'GET',
+      url: '/account/viewed',
+      data: username
+    })
+      .then(function(res) {
+        return res;
+      });
+  };
+
+  var getAccountFavorites = function(username) {
+    return $http({
+      method: 'GET',
+      url: '/account/favorites',
+      data: username
+    })
+      .then(function(res) {
+        return res;
+      });
+  };
+
+  return {
+    getAccountReviews : getAccountReviews,
+    getAccountViewed : getAccountViewed,
+    getAccountFavorites : getAccountFavorites
+  };
+})
 
 .service('authService', authService);
 

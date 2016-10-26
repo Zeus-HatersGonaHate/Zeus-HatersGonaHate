@@ -4,6 +4,7 @@ angular.module('zeus', [
   'zeus.details',
   'zeus.services',
   'zeus.user',
+  'zeus.account',
   'auth0.lock',
   'angular-jwt',
   'ngRoute'
@@ -29,7 +30,7 @@ angular.module('zeus', [
   authService.getProfileDeferred().then(function (profile) {
     console.log(profile);
     $scope.profile = profile;
-    if(profile){
+    if (profile) {
       User.checkUser(profile);
     }
   });
@@ -52,6 +53,10 @@ angular.module('zeus', [
     .when('/user', {
       templateUrl: 'app/user/user.html',
       controller: 'UserController'
+    })
+    .when('/account', {
+      templateUrl: 'app/account/account.html',
+      controller: 'AccountController'
     })
     .otherwise('/');
 
