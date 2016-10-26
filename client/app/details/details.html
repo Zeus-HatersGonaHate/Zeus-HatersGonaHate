@@ -80,6 +80,9 @@
       <br>
       <span ng-click="vote(review, 1)">Upvote: {{review.voteCount}}</span>
       <span ng-click="vote(review, -1)">Downvote</span>
+      <br>
+      <span ng-if="currentUser !== null && currentUser.user_id === review.user_id" ng-click="">Edit</span>
+      <span ng-if="currentUser !== null && currentUser.user_id === review.user_id" ng-click="delete(review)">DELETE</span>
     </p>
  </div>
 </div>

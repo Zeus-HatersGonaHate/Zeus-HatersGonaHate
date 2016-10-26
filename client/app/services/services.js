@@ -39,6 +39,16 @@ angular.module('zeus.services', [])
     });
   }
 
+  var deleteReview = function(id){
+    return $http({
+      method: 'DELETE',
+      url: '/review/' + id,
+    })
+    .then(function(res) {
+      return res;
+    });
+  }
+
   var getShowtimes = function(date, zip) {
     return $http ({
       method: 'GET',
@@ -64,6 +74,7 @@ angular.module('zeus.services', [])
     getReviews: getReviews,
     postReview: postReview,
     upvote: upvote,
+    deleteReview: deleteReview,
     getShowtimes: getShowtimes,
     getActors: getActors
   };
@@ -156,7 +167,6 @@ angular.module('zeus.services', [])
     .success(function (data) {
       //Assign profile to variable
       userData.profile = data[0];
-      console.log(userData.profile);
     })
 };
 

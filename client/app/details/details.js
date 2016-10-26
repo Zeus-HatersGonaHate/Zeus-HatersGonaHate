@@ -3,6 +3,7 @@ angular.module('zeus.details', [])
     $scope.data = {};
     $scope.reviews = {};
     $scope.users = {}
+    $scope.currentUser = JSON.parse(localStorage.getItem('profile'))
     $scope.hasReview = false;
     $scope.type = $routeParams.type;
     $scope.id = $routeParams.id;
@@ -66,6 +67,12 @@ angular.module('zeus.details', [])
     $scope.vote = function(review, vote){
       Details.upvote(review._id, vote);
       review.voteCount+=vote;
+    };
+
+    $scope.delete = function(review){
+      Details.deleteReview(review._id);
+      var index = $scope.reviews.indexOf(review)
+      $scope.reviews.splice(index, 1)
     };
   });
 
