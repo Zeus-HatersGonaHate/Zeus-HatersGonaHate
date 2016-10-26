@@ -2,6 +2,7 @@ angular.module('zeus.details', [])
   .controller('DetailsController', function($scope, Details, $routeParams) {
     $scope.data = {};
     $scope.reviews = {};
+    $scope.users = {}
     $scope.hasReview = false;
     $scope.type = $routeParams.type;
     $scope.id = $routeParams.id;
@@ -14,7 +15,8 @@ angular.module('zeus.details', [])
     });
     var getReviews = function() {
       Details.getReviews($scope.type, $scope.id).then(function (reviews) {
-        $scope.reviews = reviews.data;
+        $scope.reviews = reviews.data.reviews;
+        $scope.users = reviews.data.users;
         if ($scope.reviews.length > 0) {
           $scope.hasReview = true;
         }
@@ -48,23 +50,11 @@ angular.module('zeus.details', [])
     $scope.fullDate = year + '-' + month + '-' + day;
 
     $scope.zip = '';
-    $scope.hasNoShowtime = false;
 
     $scope.getShowtimes = function() {
       Details.getShowtimes($scope.fullDate, $scope.zip).then(function(showtimes) {
         $scope.showtimes = showtimes;
-        var nowPlaying = [];
-        if (showtimes) {
-          showtimes.forEach(function(showtime) {
-            nowPlaying.push(showtime.title);
-          });
-          if (!nowPlaying.includes($scope.original_title)) {
-            $scope.hasNoShowtime = true;
-          }
-          console.log('showtimes ' + showtimes);
-        } else {
-          $scope.hasNoShowtime = true;
-        }
+        console.log(showtimes);
       });
       $scope.zip = '';
     };

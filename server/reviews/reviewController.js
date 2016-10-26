@@ -1,4 +1,23 @@
 var Review = require('../reviews/reviewModel.js');
+var User = require('../users/UserModel.js');
+
+var findUserInfoById = function(reviews, callback){
+  var userObj = {};
+  var ids = reviews.map(function(review){
+    return review.user_id;
+  });
+  User.find({user_id: {$in: ids}})
+  .exec(function(err, users){
+    users.forEach(function(userInfo){
+      userObj[userInfo.user_id] = userInfo;
+    });
+    callback(userObj)
+  });
+};
+
+// var ids = ['512d5793abb900bf3e20d012', '512d5793abb900bf3e20d011'];
+// ids = ids.map(function(id) { return ObjectId(id); });
+// db.test.find({_id: {$in: ids}});
 
 module.exports = {
 
@@ -8,7 +27,7 @@ module.exports = {
     var type = req.params.type;
     var typeId = req.params.typeId;
     var review = new Review({
-      username: data.username,
+      user_id: req.user.sub,
       typeId: typeId,
       type: type,
       title: data.title,
@@ -34,11 +53,16 @@ module.exports = {
     var type = req.params.type;
     Review.find({typeId: id})
       .sort({date: -1})
-      .exec(function(err, review) {
+      .exec(function(err, reviews) {
         if (err) {
           console.log(err);
         } else {
-          res.send(review);
+          findUserInfoById(reviews, function(userObj){
+            var data = {}
+            data.reviews = reviews;
+            data.users = userObj;
+            res.send(data);
+          });
         }
       });
   },

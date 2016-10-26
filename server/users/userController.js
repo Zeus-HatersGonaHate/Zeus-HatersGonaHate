@@ -13,7 +13,7 @@ var usernameMaker = function(data, callback) {
       }
     }
   });
-}
+};
 
 module.exports = {
 
@@ -31,7 +31,8 @@ module.exports = {
             var user = new User({
               email: info.email,
               user_id: info.user_id,
-              username: username
+              username: username,
+              favourites: []
             });
             user.save(function (err, userInfo) {
               if (err) {
@@ -42,16 +43,16 @@ module.exports = {
                 res.json(userInfo);
               }
             });
-          })
+          });
         } else {
           res.json(data);
         }
     });
   },
 
-  getUser: function (req, res, next) {
-    var id = req.params.userId;
-    User.find({_id: id})
+  getUserByUsername: function (req, res, next) {
+    var username = req.params.username;
+    User.find({username: username})
       .exec(function(err, userInfo) {
         if (err) {
           console.log(err);

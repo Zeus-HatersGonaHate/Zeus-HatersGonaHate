@@ -13,7 +13,7 @@ module.exports = function (app, express) {
   //Review Routes
   app.get('/review/:type/:typeId', reviewController.getReviews);
 
-  app.post('/review/:type/:typeId', reviewController.postReview);
+  app.post('/review/:type/:typeId', authCheck, reviewController.postReview);
 
   app.put('/review/:reviewId', reviewController.editReview);
 
@@ -22,7 +22,7 @@ module.exports = function (app, express) {
   app.delete('/review/:reviewId', reviewController.deleteReview);
 
   //User Routes
-  app.get('/user/:userId', userController.getUser);
+  app.get('/user/:username', userController.getUserByUsername);
 
   app.post('/user', userController.postUser);
 
