@@ -28,6 +28,17 @@ angular.module('zeus.services', [])
     });
   };
 
+  var upvote = function(id, vote) {
+    return $http({
+      method: 'PUT',
+      url: '/review/count/' + id,
+      data: {voteCount: vote}
+    })
+    .then(function(res) {
+      return res;
+    });
+  }
+
   var getShowtimes = function(date, zip) {
     return $http ({
       method: 'GET',
@@ -52,6 +63,7 @@ angular.module('zeus.services', [])
     getDetails: getDetails,
     getReviews: getReviews,
     postReview: postReview,
+    upvote: upvote,
     getShowtimes: getShowtimes,
     getActors: getActors
   };

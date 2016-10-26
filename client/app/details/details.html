@@ -76,9 +76,10 @@
    <strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small>
     <p>Review: {{review.content}}
       <br>
-      Count: {{review.voteCount}}
-      <br>
       Date: {{review.date}}
+      <br>
+      <span ng-click="vote(review, 1)">Upvote: {{review.voteCount}}</span>
+      <span ng-click="vote(review, -1)">Downvote</span>
     </p>
  </div>
 </div>

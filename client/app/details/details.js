@@ -62,6 +62,10 @@ angular.module('zeus.details', [])
       });
       $scope.zip = '';
     };
+
+    $scope.vote = function(review, vote){
+      Details.upvote(review._id, vote)
+    }
   });
 
 
