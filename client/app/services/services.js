@@ -147,7 +147,7 @@ angular.module('zeus.services', [])
       });
   };
 
-  var getViewed = function(username) {
+  var getAccountViewed = function(username) {
     return $http({
       method: 'GET',
       url: '/account/viewed',
@@ -171,7 +171,7 @@ angular.module('zeus.services', [])
 
   return {
     getAccountReviews : getAccountReviews,
-    getViewed : getViewed,
+    getAccountViewed : getAccountViewed,
     getAccountFavorites : getAccountFavorites
   };
 })
