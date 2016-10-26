@@ -57,10 +57,12 @@ li {
   width: 50%;
   margin-right: 0;
   display: inline;
+  padding-left: 2%;
 }
 
 .details-col1 {
   float: left;
+  padding-left: 2%;
 }
 
 .details-col2 {
