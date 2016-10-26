@@ -39,6 +39,10 @@
       <p ng-if="data.episode_run_time[0] !== undefined">{{data.episode_run_time[0]}} minutes</p>
       <h5>Overview</h5>
       <p> {{overview}} </p>
+      <h5>Lead Cast</h5>
+      <ul>
+        <li ng-repeat="actor in actors">{{ actor }}</li>
+      </ul>
    </div>
  </div>
  <div class="postReview">
