@@ -12,6 +12,10 @@ angular.module('zeus.details', [])
       $scope.original_name = $scope.data.original_name;
       $scope.poster_path = $scope.data.poster_path;
       $scope.overview = $scope.data.overview;
+      Details.getActors($scope.original_title).then(function(data) {
+        $scope.actors = data.Actors.split(',');
+        console.log($scope.original_title);
+      });
     });
     var getReviews = function() {
       Details.getReviews($scope.type, $scope.id).then(function (reviews) {
