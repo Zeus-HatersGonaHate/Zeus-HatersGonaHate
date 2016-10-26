@@ -28,10 +28,21 @@ angular.module('zeus.services', [])
     });
   };
 
+  var getShowtimes = function(date, zip) {
+    return $http ({
+      method: 'GET',
+      url: 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=qu8cj47gn97yj4s4cjw6fpr8'
+    })
+    .then(function(res) {
+      return res.data;
+    });
+  };
+
   return {
     getDetails: getDetails,
     getReviews: getReviews,
-    postReview: postReview
+    postReview: postReview,
+    getShowtimes: getShowtimes
   };
 })
 
@@ -127,58 +138,58 @@ angular.module('zeus.services', [])
 
 .service('authService', authService);
 
-  authService.$inject = ['lock', 'authManager', '$q'];
+authService.$inject = ['lock', 'authManager', '$q'];
 
-  function authService(lock, authManager, $q) {
+function authService(lock, authManager, $q) {
 
-    var userProfile = JSON.parse(localStorage.getItem('profile')) || null;
-    var deferredProfile = $q.defer();
+  var userProfile = JSON.parse(localStorage.getItem('profile')) || null;
+  var deferredProfile = $q.defer();
 
-    if (userProfile) {
-      deferredProfile.resolve(userProfile);
-    }
-
-    function login() {
-      lock.show();
-    }
-
-    // Logging out just requires removing the user's
-    // id_token and profile
-    function logout() {
-      deferredProfile = $q.defer();
-      localStorage.removeItem('id_token');
-      localStorage.removeItem('profile');
-      authManager.unauthenticate();
-      userProfile = null;
-    }
-
-    // Set up the logic for when a user authenticates
-    // This method is called from app.run.js
-    function registerAuthenticationListener() {
-      lock.on('authenticated', function (authResult) {
-        localStorage.setItem('id_token', authResult.idToken);
-        authManager.authenticate();
-
-        lock.getProfile(authResult.idToken, function (error, profile) {
-          if (error) {
-            return console.log(error);
-          }
-
-          localStorage.setItem('profile', JSON.stringify(profile));
-          deferredProfile.resolve(profile);
-        });
-
-      });
-    }
-
-    function getProfileDeferred() {
-      return deferredProfile.promise;
-    }
-
-    return {
-      login: login,
-      logout: logout,
-      registerAuthenticationListener: registerAuthenticationListener,
-      getProfileDeferred: getProfileDeferred
-    };
+  if (userProfile) {
+    deferredProfile.resolve(userProfile);
   }
+
+  function login() {
+    lock.show();
+  }
+
+  // Logging out just requires removing the user's
+  // id_token and profile
+  function logout() {
+    deferredProfile = $q.defer();
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
+    authManager.unauthenticate();
+    userProfile = null;
+  }
+
+  // Set up the logic for when a user authenticates
+  // This method is called from app.run.js
+  function registerAuthenticationListener() {
+    lock.on('authenticated', function (authResult) {
+      localStorage.setItem('id_token', authResult.idToken);
+      authManager.authenticate();
+
+      lock.getProfile(authResult.idToken, function (error, profile) {
+        if (error) {
+          return console.log(error);
+        }
+
+        localStorage.setItem('profile', JSON.stringify(profile));
+        deferredProfile.resolve(profile);
+      });
+
+    });
+  }
+
+  function getProfileDeferred() {
+    return deferredProfile.promise;
+  }
+
+  return {
+    login: login,
+    logout: logout,
+    registerAuthenticationListener: registerAuthenticationListener,
+    getProfileDeferred: getProfileDeferred
+  };
+}
