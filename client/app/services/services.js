@@ -38,11 +38,22 @@ angular.module('zeus.services', [])
     });
   };
 
+  var getActors = function(movie) {
+    return $http ({
+      method: 'GET',
+      url: 'http://www.omdbapi.com/?t=' + movie + '&y=&plot=short&r=json'
+    })
+    .then(function(res) {
+      return res.data;
+    });
+  };
+
   return {
     getDetails: getDetails,
     getReviews: getReviews,
     postReview: postReview,
-    getShowtimes: getShowtimes
+    getShowtimes: getShowtimes,
+    getActors: getActors
   };
 })
 
