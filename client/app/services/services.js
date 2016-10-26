@@ -135,6 +135,11 @@ angular.module('zeus.services', [])
   };
 })
 
+.factory('Account', function() {
+  // return {
+
+  // };
+})
 
 .service('authService', authService);
 
