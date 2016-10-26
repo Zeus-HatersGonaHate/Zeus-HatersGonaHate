@@ -64,8 +64,9 @@ angular.module('zeus.details', [])
     };
 
     $scope.vote = function(review, vote){
-      Details.upvote(review._id, vote)
-    }
+      Details.upvote(review._id, vote);
+      review.voteCount+=vote;
+    };
   });
 
 
