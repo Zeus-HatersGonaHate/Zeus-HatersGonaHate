@@ -5,14 +5,14 @@ angular.module('zeus.details', [])
     $scope.hasReview = false;
     $scope.type = $routeParams.type;
     $scope.id = $routeParams.id;
-    Details.getDetails($scope.type, $scope.id).then(function(data){
+    Details.getDetails($scope.type, $scope.id).then(function(data) {
       $scope.data = data;
       $scope.original_title = $scope.data.original_title;
       $scope.original_name = $scope.data.original_name;
       $scope.poster_path = $scope.data.poster_path;
       $scope.overview = $scope.data.overview;
     });
-    var getReviews = function(){
+    var getReviews = function() {
       Details.getReviews($scope.type, $scope.id).then(function (reviews) {
         $scope.reviews = reviews.data;
         if ($scope.reviews.length > 0) {
@@ -24,14 +24,14 @@ angular.module('zeus.details', [])
     };
     getReviews();
 
-    $scope.post = function(){
+    $scope.post = function() {
       var info = {
         username: 'Nancy', //Fix: need to add in real username
         title: $scope.reviewTitle,
         content: $scope.reviewBody,
         rating: $scope.reviewRating
       };
-      Details.postReview($scope.type, $scope.id, info).then(function(review){
+      Details.postReview($scope.type, $scope.id, info).then(function(review) {
         $scope.reviews.unshift(review.data);
         $scope.hasReview = true;
         //Clear input fields
@@ -39,6 +39,22 @@ angular.module('zeus.details', [])
         $scope.reviewBody = '';
         $scope.reviewRating = '';
       });
+    };
+
+    var today = new Date();
+    var year = today.getFullYear().toString();
+    var month = (today.getMonth() + 1).toString();
+    var day = today.getDate().toString();
+    $scope.fullDate = year + '-' + month + '-' + day;
+
+    $scope.zip = '';
+
+    $scope.getShowtimes = function() {
+      Details.getShowtimes($scope.fullDate, $scope.zip).then(function(showtimes) {
+        $scope.showtimes = showtimes;
+        console.log(showtimes);
+      });
+      $scope.zip = '';
     };
   });
 
