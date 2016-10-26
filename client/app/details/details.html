@@ -41,7 +41,9 @@
       <p> {{overview}} </p>
       <h5>Lead Cast</h5>
       <ul>
-        <li ng-repeat="actor in actors">{{ actor }}</li>
+        <a ng-repeat="actor in actors" href="https://en.wikipedia.org/wiki/{{actor}}">
+          <li>{{ actor }}</li>
+        </a>
       </ul>
    </div>
  </div>
