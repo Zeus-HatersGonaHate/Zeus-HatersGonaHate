@@ -38,7 +38,7 @@ angular.module('zeus', [
   });
 })
 
-.config(function($routeProvider, $locationProvider, lockProvider, jwtOptionsProvider) {
+.config(function($routeProvider, $locationProvider, lockProvider, jwtOptionsProvider, $httpProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'app/landing/landing.html',
@@ -76,6 +76,8 @@ angular.module('zeus', [
     whiteListedDomains: ['localhost'],
     unauthenticatedRedirectPath: '/login'
   });
+  //Attatches token to each HTTP call
+  $httpProvider.interceptors.push('jwtInterceptor');
 })
 
 .run(function ($rootScope, authService, lock, authManager) {

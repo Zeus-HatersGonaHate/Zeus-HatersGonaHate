@@ -2,7 +2,6 @@ var User = require('../users/UserModel.js');
 
 module.exports = {
 
-  //when user posts a review, this method saves it to the database
   postUser: function (req, res, next) {
     var data = req.body;
     var user = new User({
@@ -32,7 +31,6 @@ module.exports = {
     });
   },
 
-  //gets all reviews from the DB for a particular movie/show by looking at the type ('movie' or 'tv') and id number within the URL parameters
   getUser: function (req, res, next) {
     var id = req.params.userId;
     User.find({_id: id})
@@ -43,5 +41,16 @@ module.exports = {
           res.send(userInfo);
         }
       });
+  },
+
+  editUser: function (req, res, next) {
+    var data = req.body;
+    console.log(data);
+    User.findOneAndUpdate({ _id: data.id }, {username: data.username}, {new:true}, function (err, user) {
+      if (err) console.log(err);
+      console.log(user);
+      res.json(user);
+    });
   }
-}
+
+};

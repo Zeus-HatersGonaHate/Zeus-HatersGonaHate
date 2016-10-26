@@ -122,16 +122,35 @@ angular.module('zeus.services', [])
 })
 
 .factory('User', function($http) {
+  var userData = {};
+
   var checkUser = function (data) {
     $http({
       method: 'POST',
       url: '/user',
       data: data
+    })
+    .success(function (data) {
+      //Assign profile to variable
+      userData.profile = data;
+      console.log(userData.profile);
+    })
+};
+
+  var editUser = function (data) {
+    //attatch the id of the currently logged in profile
+    data.id = userData.profile[0]._id;
+    console.log(data);
+    $http({
+      method:'PUT',
+      url: '/user/edit',
+      data: data
     });
   };
 
   return {
-    checkUser: checkUser
+    checkUser: checkUser,
+    editUser: editUser
   };
 })
 
