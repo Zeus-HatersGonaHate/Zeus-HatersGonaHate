@@ -52,3 +52,8 @@ li {
 .page {
   padding: 5px;
 }
+
+.showtime-title {
+  font-weight: 600;
+  font-size: 18px;
+}
