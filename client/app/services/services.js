@@ -139,8 +139,7 @@ angular.module('zeus.services', [])
 
   var editUser = function (data) {
     //attatch the id of the currently logged in profile
-    data.id = userData.profile._id;
-    console.log(data);
+    //console.log(data);
     $http({
       method:'PUT',
       url: '/user/edit',
