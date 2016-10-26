@@ -53,6 +53,16 @@ li {
   padding: 5px;
 }
 
+.showtimes: {
+  position:absolute;
+  right: 0;
+  top: 221px;
+  width: 150px;
+  padding: 0 30px 50px 15px;
+  font-size: small;
+  color: #FFFFFF;
+}
+
 .showtime-title {
   font-weight: 600;
   font-size: 18px;

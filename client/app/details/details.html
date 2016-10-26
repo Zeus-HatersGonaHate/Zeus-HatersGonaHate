@@ -21,22 +21,22 @@
  </div>
 
  <div class="showtimes">
- <h5>Showtimes</h5>
-   <form ng-submit="getShowtimes()">
-     <p>Enter your zip code below to get showtimes for this movie near you today.</p>
-     <p>Zip Code: </p><input type="text" ng-model="zip">
-   </form>
-   <ul>
-     <li ng-repeat="movie in showtimes | limitTo: 1">
-       <p ng-if="movie.title === original_title"  class="showtime-title">{{ movie.title }}</p>
-       <p ng-if="movie.title !== original_title">This movie is not in theatres!</p>
-       <ul ng-if="movie.title === original_title" >
-         <li ng-repeat="showtime in movie.showtimes">
-           {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
-         </li>
-       </ul>
-     </li>
-   </ul>
+   <h5>Showtimes</h5>
+     <form ng-submit="getShowtimes()">
+       <p>Enter your zip code below to get showtimes for this movie near you today.</p>
+       <p>Zip Code: </p><input type="text" ng-model="zip">
+     </form>
+     <ul>
+       <li ng-repeat="movie in showtimes | limitTo: 1">
+         <p ng-if="movie.title === original_title"  class="showtime-title">{{ movie.title }}</p>
+         <p ng-if="movie.title !== original_title">This movie is not in theatres!</p>
+         <ul ng-if="movie.title === original_title" >
+           <li ng-repeat="showtime in movie.showtimes">
+             {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
+           </li>
+         </ul>
+       </li>
+     </ul>
  </div>
 
  <div class="postReview">
