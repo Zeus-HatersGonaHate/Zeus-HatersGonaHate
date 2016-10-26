@@ -48,11 +48,23 @@ angular.module('zeus.details', [])
     $scope.fullDate = year + '-' + month + '-' + day;
 
     $scope.zip = '';
+    $scope.hasNoShowtime = false;
 
     $scope.getShowtimes = function() {
       Details.getShowtimes($scope.fullDate, $scope.zip).then(function(showtimes) {
         $scope.showtimes = showtimes;
-        console.log(showtimes);
+        var nowPlaying = [];
+        if (showtimes) {
+          showtimes.forEach(function(showtime) {
+            nowPlaying.push(showtime.title);
+          });
+          if (!nowPlaying.includes($scope.original_title)) {
+            $scope.hasNoShowtime = true;
+          }
+          console.log('showtimes ' + showtimes);
+        } else {
+          $scope.hasNoShowtime = true;
+        }
       });
       $scope.zip = '';
     };

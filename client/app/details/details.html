@@ -30,12 +30,13 @@
        <li ng-repeat="movie in showtimes">
          <p ng-if="movie.title === original_title"  class="showtime-title">{{ movie.title }}</p>
          <ul ng-if="movie.title === original_title" >
-           <li ng-repeat="showtime in movie.showtimes">
+           <li ng-repeat="showtime in movie.showtimes" class="showtime">
              {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
            </li>
          </ul>
        </li>
      </ul>
+     <p ng-if="hasNoShowtime">This movie is not currently in theatres near you!</p>
  </div>
 
  <div class="postReview">
