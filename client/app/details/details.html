@@ -22,11 +22,15 @@
 
  <div class="showtimes">
    <form ng-submit="getShowtimes()">
-     <input type="text" ng-model="zip">
+     <p>Enter your zip code below to get showtimes for this movie near you today.</p>
+     <p>Zip Code: </p><input type="text" ng-model="zip">
    </form>
    <ul>
-     <li ng-repeat="showtime in showtimes">
-       <p class="showtime-title">{{ showtime.title }}</p>
+     <li ng-repeat="movie in showtimes">
+       <p class="showtime-title">{{ movie.title }}</p>
+       <ul>
+         <li ng-repeat="showtime in movie.showtimes">{{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}</li>
+       </ul>
      </li>
    </ul>
  </div>
