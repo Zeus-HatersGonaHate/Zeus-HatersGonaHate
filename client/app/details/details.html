@@ -3,42 +3,44 @@
     <!-- If no poster_path, show dummy image -->
     <img ng-hide="!poster_path" src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="">
     <img ng-show="!poster_path" src="http://dummyimage.com/185x275/000/fff&text={{original_name}}" alt="">
- </div>
- <div class='movieDetails'>
-    <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
-    <h3 ng-if="original_title === undefined"> {{original_name}} </h3>
-    <h5 ng-if="data.release_date !== undefined">Release Date</h5>
-    <p ng-if="data.release_date !== undefined">{{data.release_date}}</p>
-    <h5 ng-if="data.runtime !== undefined">Movie Length</h5>
-    <p ng-if="data.runtime !== undefined">{{data.runtime}} minutes</p>
-
-    <h5 ng-if="data.first_air_date !== undefined">First Air Date</h5>
-    <p ng-if="data.first_air_date !== undefined">{{data.first_air_date}}</p>
-    <h5 ng-if="data.episode_run_time[0] !== undefined">Episode Length</h5>
-    <p ng-if="data.episode_run_time[0] !== undefined">{{data.episode_run_time[0]}} minutes</p>
-    <h5>Overview</h5>
-    <p> {{overview}} </p>
- </div>
-
- <div class="showtimes">
-   <h5>Showtimes</h5>
-     <form ng-submit="getShowtimes()">
-       <p>Enter your zip code below to get showtimes for this movie near you today.</p>
-       <p>Zip Code: </p><input type="text" ng-model="zip">
-     </form>
-     <ul>
-       <li ng-repeat="movie in showtimes">
-         <p ng-if="movie.title === original_title"  class="showtime-title">{{ movie.title }}</p>
-         <ul ng-if="movie.title === original_title" >
-           <li ng-repeat="showtime in movie.showtimes" class="showtime">
-             {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
+  <div class="details-col2">
+     <div class="showtimes">
+       <h5>Showtimes</h5>
+         <form ng-submit="getShowtimes()">
+           <p>Enter your zip code below to get showtimes for this movie near you today.</p>
+           <p>Zip Code: </p><input type="text" ng-model="zip">
+         </form>
+         <ul>
+           <li ng-repeat="movie in showtimes">
+             <p ng-if="movie.title === original_title"  class="showtime-title">{{ movie.title }}</p>
+             <ul ng-if="movie.title === original_title" >
+               <li ng-repeat="showtime in movie.showtimes" class="showtime">
+                 {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
+               </li>
+             </ul>
            </li>
          </ul>
-       </li>
-     </ul>
-     <p ng-if="hasNoShowtime">This movie is not currently in theatres near you!</p>
+         <p ng-if="hasNoShowtime">This movie is not currently in theatres near you!</p>
+     </div>
+   </div>
  </div>
+ <div class="details-col1">
+   <div class='movieDetails'>
+      <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
+      <h3 ng-if="original_title === undefined"> {{original_name}} </h3>
+      <h5 ng-if="data.release_date !== undefined">Release Date</h5>
+      <p ng-if="data.release_date !== undefined">{{data.release_date}}</p>
+      <h5 ng-if="data.runtime !== undefined">Movie Length</h5>
+      <p ng-if="data.runtime !== undefined">{{data.runtime}} minutes</p>
 
+      <h5 ng-if="data.first_air_date !== undefined">First Air Date</h5>
+      <p ng-if="data.first_air_date !== undefined">{{data.first_air_date}}</p>
+      <h5 ng-if="data.episode_run_time[0] !== undefined">Episode Length</h5>
+      <p ng-if="data.episode_run_time[0] !== undefined">{{data.episode_run_time[0]}} minutes</p>
+      <h5>Overview</h5>
+      <p> {{overview}} </p>
+   </div>
+ </div>
  <div class="postReview">
   <h5>Reviews</h5>
   <form ng-submit="post()">

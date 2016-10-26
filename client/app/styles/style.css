@@ -53,14 +53,19 @@ li {
   padding: 5px;
 }
 
-.showtimes: {
-  position:absolute;
-  left: 90%;
-  top: 221px;
-  width: 150px;
-  padding: 0 30px 50px 15px;
-  font-size: small;
-  color: #FFFFFF;
+.moviePoster {
+  width: 50%;
+  margin-right: 0;
+  display: inline;
+}
+
+.details-col1 {
+  float: left;
+}
+
+.details-col2 {
+  float: right;
+  padding-right: 5%;
 }
 
 .showtime-title {
