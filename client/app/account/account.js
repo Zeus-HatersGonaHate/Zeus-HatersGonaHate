@@ -1,6 +1,6 @@
 angular.module('zeus.account', [])
   .controller('AccountController', function($scope, Account) {
-    $scope.test = "--- text from AccountController";
+    $scope.profilePic = "https://lh3.googleusercontent.com/-kKTmPYr4dZI/AAAAAAAAAAI/AAAAAAAAAMw/D7Ak_C3TSWY/photo.jpg";
     $scope.username = "hardcoded_username";
     $scope.email = "hardcoded@email.com";
     $scope.reviews = {}; //or [];
@@ -16,7 +16,7 @@ angular.module('zeus.account', [])
     getAccountReviews();
 
     var getAccountRecentlyViewed = function() {
-      Account.getAccountRecentlyViewed($scope.username)
+      Account.getAccountViewed($scope.username)
         .then(function(recentlyViewed) {
           $scope.recentlyViewed = recentlyViewed.data;
         });
