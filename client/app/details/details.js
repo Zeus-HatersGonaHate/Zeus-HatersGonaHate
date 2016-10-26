@@ -2,20 +2,26 @@ angular.module('zeus.details', [])
   .controller('DetailsController', function($scope, Details, $routeParams) {
     $scope.data = {};
     $scope.reviews = {};
+<<<<<<< 8ebc5bccb981a496612dcd4e2b79852542e922bb
     $scope.users = {}
     $scope.currentUser = JSON.parse(localStorage.getItem('profile'))
+=======
+    $scope.users = {};
+>>>>>>> Add front end comments
     $scope.hasReview = false;
-    $scope.type = $routeParams.type;
-    $scope.id = $routeParams.id;
+    $scope.type = $routeParams.type; //media type, movie or tv
+    $scope.id = $routeParams.id; //id on themoviedb api for retrieving the movie/tv info
     Details.getDetails($scope.type, $scope.id).then(function(data) {
-      $scope.data = data;
+      $scope.data = data; // save all movie details for the requested movie
+
+      //convenience properties for shorthand in html views
       $scope.original_title = $scope.data.original_title;
       $scope.original_name = $scope.data.original_name;
       $scope.poster_path = $scope.data.poster_path;
       $scope.overview = $scope.data.overview;
+      //loads actor info on details page load
       Details.getActors($scope.original_title).then(function(data) {
         $scope.actors = data.Actors.split(',');
-        console.log($scope.original_title);
       });
     });
     var getReviews = function() {
@@ -31,6 +37,7 @@ angular.module('zeus.details', [])
     };
     getReviews();
 
+    // adds a review to the database
     $scope.post = function() {
       var info = {
         title: $scope.reviewTitle,
@@ -48,6 +55,7 @@ angular.module('zeus.details', [])
       });
     };
 
+    //Get current time info when user visits page to request today's showtimes
     var today = new Date();
     var year = today.getFullYear().toString();
     var month = (today.getMonth() + 1).toString();
@@ -56,6 +64,7 @@ angular.module('zeus.details', [])
 
     $scope.zip = '';
 
+    //function is called when the user submits a zip code to get local showtimes
     $scope.getShowtimes = function() {
       Details.getShowtimes($scope.fullDate, $scope.zip).then(function(showtimes) {
         $scope.showtimes = showtimes;
