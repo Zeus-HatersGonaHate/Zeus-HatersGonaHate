@@ -27,8 +27,9 @@
      <p>Zip Code: </p><input type="text" ng-model="zip">
    </form>
    <ul>
-     <li ng-repeat="movie in showtimes">
+     <li ng-repeat="movie in showtimes | limitTo: 1">
        <p ng-if="movie.title === original_title"  class="showtime-title">{{ movie.title }}</p>
+       <p ng-if="movie.title !== original_title">This movie is not in theatres!</p>
        <ul ng-if="movie.title === original_title" >
          <li ng-repeat="showtime in movie.showtimes">
            {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
