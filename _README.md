@@ -1,6 +1,6 @@
-# Project Name
+# Zeus Reviews
 
-> Pithy project description
+> A movie and TV review website focused around a social atmosphere. We encourage users to be positive within their reviews, and provide constructive feedback, rather than purely negative feedback. We would like to be able to contribute to the movie community, by providing helpful consumer insights on what is in demand. Our website allows users to write reviews, which can then be rated based on usefulness.
 
 ## Team
 
@@ -20,17 +20,25 @@
 
 ## Usage
 
-> Some usage instructions
+> Create an account to get started. From there, you can link social media accounts for ease of access. Search for movies and find one you like, then go to the details page to leave a review. You may rate others' reviews from the details page as well. Want to check out some movie showtimes near you? Provide a zip code to get movie showtimes within 5 miles of the provided location.
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node 6.8.0
+- Express
+- Body-Parser
+- MongoDB
+- Mongoose
+- MLab
+- Angular
+- Angular-Route
+- Material CSS
+- Underscore
+- jQuery
 
 ## Development
+
+Developed using the MEAN stack, Zeus Reviews uses Node and Express on the backend to handle server requests. MongoDB and Mongoose power our database, where we store user profiles and information about movie reviews. The front-end is fueled by Angular, and displays data dynamically based on the data returned from the API calls. APIs and additional services currently in use include: TheMovieDB API, OMDB API, OnConnect Data Delivery API, and Auth0.
 
 ### Installing Dependencies
 
@@ -44,7 +52,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/Zeus-HatersGonaHate/Zeus-HatersGonaHate/issues)
 
 
 ## Contributing
