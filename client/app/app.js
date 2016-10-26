@@ -57,6 +57,10 @@ angular.module('zeus', [
       templateUrl: 'app/user/user.html',
       controller: 'UserController'
     })
+    .when('/account', {
+      templateUrl: 'app/account/account.html',
+      controller: 'AccountController'
+    })
     .otherwise('/');
 
   //Auth 0 account info
