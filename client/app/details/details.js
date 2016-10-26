@@ -2,12 +2,8 @@ angular.module('zeus.details', [])
   .controller('DetailsController', function($scope, Details, $routeParams) {
     $scope.data = {};
     $scope.reviews = {};
-<<<<<<< 8ebc5bccb981a496612dcd4e2b79852542e922bb
     $scope.users = {}
     $scope.currentUser = JSON.parse(localStorage.getItem('profile'))
-=======
-    $scope.users = {};
->>>>>>> Add front end comments
     $scope.hasReview = false;
     $scope.type = $routeParams.type; //media type, movie or tv
     $scope.id = $routeParams.id; //id on themoviedb api for retrieving the movie/tv info
