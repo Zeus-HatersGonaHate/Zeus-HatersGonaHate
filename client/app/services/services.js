@@ -132,14 +132,14 @@ angular.module('zeus.services', [])
     })
     .success(function (data) {
       //Assign profile to variable
-      userData.profile = data;
+      userData.profile = data[0];
       console.log(userData.profile);
     })
 };
 
   var editUser = function (data) {
     //attatch the id of the currently logged in profile
-    data.id = userData.profile[0]._id;
+    data.id = userData.profile._id;
     console.log(data);
     $http({
       method:'PUT',
