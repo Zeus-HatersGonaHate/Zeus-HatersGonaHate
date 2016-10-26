@@ -1,13 +1,20 @@
 <div ng-controller="AccountController">
   <div class="account-details">
-    <p>testing the account page {{test}}</p>
+    <h5>Account details</h5>
     <p>Username: {{username}}</p>
     <p>Email: {{email}}</p>
-    <ul class="account-reviews">{{username}}'s reviews:
-      <li></li>
+  </div>
+
+  <div class="account-activity">
+    <h5>Account activity</h5>
+    <h6>{{username}}'s latest reviews:</h6>
+    <ul class="account-reviews">
+      <li ng-repeat="review in reviews | limitTo:10"></li>
     </ul>
-    <ul class="recently-viewed">Recently viewed:
-      <li></li>
+    <h6>Recently viewed movies and TV shows:</h6>
+    <ul class="recently-viewed">
+      <li ng-repeat="viewed in recentlyViewed | limitTo:10">Placeholder: A recently viewed show</li>
     </ul>
   </div>
+
 </div>
