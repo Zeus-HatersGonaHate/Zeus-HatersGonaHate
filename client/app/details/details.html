@@ -4,6 +4,7 @@
     <img ng-hide="!poster_path" src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="">
     <img ng-show="!poster_path" src="http://dummyimage.com/185x275/000/fff&text={{original_name}}" alt="">
   <div class="details-col2">
+  <!-- Movie showtimes -->
      <div class="showtimes">
        <h5>Showtimes</h5>
          <form ng-submit="getShowtimes()">
@@ -24,6 +25,9 @@
      </div>
    </div>
  </div>
+
+
+ <!-- Movie details and info -->
  <div class="details-col1">
    <div class='movieDetails'>
       <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
@@ -47,6 +51,8 @@
       </ul>
    </div>
  </div>
+
+ <!-- Movie reviews -->
  <div class="postReview">
   <h5>Reviews</h5>
   <form ng-submit="post()">
