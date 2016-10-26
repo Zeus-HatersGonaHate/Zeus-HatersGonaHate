@@ -32,6 +32,7 @@ module.exports = {
               email: info.email,
               user_id: info.user_id,
               username: username,
+              profilePicLink: info.picture || 'https://www.drupal.org/files/issues/default-avatar.png',
               favourites: []
             });
             user.save(function (err, userInfo) {
@@ -39,7 +40,7 @@ module.exports = {
                 console.log(err);
                 res.send(404);
               } else {
-                console.log(userInfo);
+                //console.log(userInfo);
                 res.json(userInfo);
               }
             });

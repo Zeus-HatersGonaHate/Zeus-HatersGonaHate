@@ -28,13 +28,13 @@ angular.module('zeus.details', [])
 
     $scope.post = function() {
       var info = {
-        username: 'Nancy', //Fix: need to add in real username
         title: $scope.reviewTitle,
         content: $scope.reviewBody,
         rating: $scope.reviewRating
       };
       Details.postReview($scope.type, $scope.id, info).then(function(review) {
-        $scope.reviews.unshift(review.data);
+        $scope.reviews.unshift(review.data.reviews);
+        $scope.users[review.data.users.user_id] = review.data.users;
         $scope.hasReview = true;
         //Clear input fields
         $scope.reviewTitle = '';

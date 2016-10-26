@@ -5,6 +5,7 @@ var UserSchema = new mongoose.Schema({
   email: String,
   username: String,
   fullName: String,
+  profilePicLink: String,
   favorites: Array
 });
 

@@ -36,13 +36,20 @@ module.exports = {
       rating: data.rating,
       voteCount: 0
     });
-    review.save(function (err, review) {
+    review.save(function (err, reviews) {
       if (err) {
         console.log(err);
         res.send(404);
       } else {
-        console.log(review);
-        res.json(review);
+        User.find({user_id: req.user.sub})
+        .exec(function(err, userObj){
+          var data = {};
+          data.reviews = reviews;
+          data.users = userObj[0];
+          console.log(data)
+          res.json(data);
+        })
+
       }
     });
   },
