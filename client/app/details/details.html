@@ -65,7 +65,8 @@
    Currently no reviews...want to add one?
  </div>
  <div class="reviewDetails" ng-repeat="review in reviews">
-   <h5>Username: {{review.username}}</h5>
+   <h5>Username: {{users[review.user_id].username}}</h5>
+   <img src="{{users[review.user_id].profilePicLink}}"/>
    <strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small>
     <p>Review: {{review.content}}
       <br>

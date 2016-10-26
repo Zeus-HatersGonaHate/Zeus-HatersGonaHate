@@ -10,7 +10,6 @@ angular.module('zeus', [
 ])
 .controller('zeusController', function($scope, $location, authService, $http, User) {
   $scope.searchQuery = '';
-  $scope.loggedIn = false;
   $scope.search = function(search) {
     if (search.length < 1) {
       return;
@@ -22,7 +21,6 @@ angular.module('zeus', [
   $scope.login = authService.login;
   $scope.logout = function(){
     authService.logout();
-    $scope.loggedIn = false;
   };
 
 
@@ -33,12 +31,11 @@ angular.module('zeus', [
     $scope.profile = profile;
     if(profile){
       User.checkUser(profile);
-      $scope.loggedIn = true;
     }
   });
 })
 
-.config(function($routeProvider, $locationProvider, lockProvider, jwtOptionsProvider) {
+.config(function($routeProvider, $locationProvider, lockProvider, jwtOptionsProvider, $httpProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'app/landing/landing.html',
@@ -73,9 +70,11 @@ angular.module('zeus', [
       }
       return localStorage.getItem('id_token');
     }],
-    whiteListedDomains: ['localhost'],
+    whiteListedDomains: ['localhost:3000'],
     unauthenticatedRedirectPath: '/login'
   });
+  //Attatches token to each HTTP call
+  $httpProvider.interceptors.push('jwtInterceptor');
 })
 
 .run(function ($rootScope, authService, lock, authManager) {

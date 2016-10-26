@@ -1,15 +1,25 @@
 var User = require('../users/UserModel.js');
 
+//Function to randomly generate username based on email or full name
+var usernameMaker = function(data, callback) {
+  User.count({}, function (err, count) {
+    if(err) {
+      console.log(err);
+    } else {
+      if (data.email) {
+        callback(data.email.split('@')[0] + count);
+      } else {
+        callback(data.given_name[0] + data.family_name[0]+ count);
+      }
+    }
+  });
+};
+
 module.exports = {
 
-  //when user posts a review, this method saves it to the database
   postUser: function (req, res, next) {
-    var data = req.body;
-    var user = new User({
-      email: data.email,
-      username: data.username,
-    });
-    User.find({ email: data.email})
+    var info = req.body;
+    User.find({ user_id: info.user_id })
       .exec(function (error, data) {
         console.log(data);
         if (error) {
@@ -17,14 +27,23 @@ module.exports = {
           res.send(500);
         }
         else if (data.length === 0) {
-          user.save(function (err, userInfo) {
-            if (err) {
-              console.log(err);
-              res.send(404);
-            } else {
-              console.log(userInfo);
-              res.json(userInfo);
-            }
+          usernameMaker(info, function (username) {
+            var user = new User({
+              email: info.email,
+              user_id: info.user_id,
+              username: username,
+              profilePicLink: info.picture || 'https://www.drupal.org/files/issues/default-avatar.png',
+              favourites: []
+            });
+            user.save(function (err, userInfo) {
+              if (err) {
+                console.log(err);
+                res.send(404);
+              } else {
+                //console.log(userInfo);
+                res.json(userInfo);
+              }
+            });
           });
         } else {
           res.json(data);
@@ -32,10 +51,9 @@ module.exports = {
     });
   },
 
-  //gets all reviews from the DB for a particular movie/show by looking at the type ('movie' or 'tv') and id number within the URL parameters
-  getUser: function (req, res, next) {
-    var id = req.params.userId;
-    User.find({_id: id})
+  getUserByUsername: function (req, res, next) {
+    var username = req.params.username;
+    User.find({username: username})
       .exec(function(err, userInfo) {
         if (err) {
           console.log(err);
@@ -43,5 +61,16 @@ module.exports = {
           res.send(userInfo);
         }
       });
+  },
+
+  editUser: function (req, res, next) {
+    var id =  req.user.sub;
+    var data = req.body;
+    User.findOneAndUpdate({ user_id: id }, {username: data.username}, {new:true}, function (err, user) {
+      if (err) console.log(err);
+      console.log(user);
+      res.json(user);
+    });
   }
-}
+
+};

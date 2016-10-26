@@ -2,6 +2,7 @@ angular.module('zeus.details', [])
   .controller('DetailsController', function($scope, Details, $routeParams) {
     $scope.data = {};
     $scope.reviews = {};
+    $scope.users = {}
     $scope.hasReview = false;
     $scope.type = $routeParams.type;
     $scope.id = $routeParams.id;
@@ -14,7 +15,8 @@ angular.module('zeus.details', [])
     });
     var getReviews = function() {
       Details.getReviews($scope.type, $scope.id).then(function (reviews) {
-        $scope.reviews = reviews.data;
+        $scope.reviews = reviews.data.reviews;
+        $scope.users = reviews.data.users;
         if ($scope.reviews.length > 0) {
           $scope.hasReview = true;
         }
@@ -26,13 +28,13 @@ angular.module('zeus.details', [])
 
     $scope.post = function() {
       var info = {
-        username: 'Nancy', //Fix: need to add in real username
         title: $scope.reviewTitle,
         content: $scope.reviewBody,
         rating: $scope.reviewRating
       };
       Details.postReview($scope.type, $scope.id, info).then(function(review) {
-        $scope.reviews.unshift(review.data);
+        $scope.reviews.unshift(review.data.reviews);
+        $scope.users[review.data.users.user_id] = review.data.users;
         $scope.hasReview = true;
         //Clear input fields
         $scope.reviewTitle = '';
@@ -48,23 +50,11 @@ angular.module('zeus.details', [])
     $scope.fullDate = year + '-' + month + '-' + day;
 
     $scope.zip = '';
-    $scope.hasNoShowtime = false;
 
     $scope.getShowtimes = function() {
       Details.getShowtimes($scope.fullDate, $scope.zip).then(function(showtimes) {
         $scope.showtimes = showtimes;
-        var nowPlaying = [];
-        if (showtimes) {
-          showtimes.forEach(function(showtime) {
-            nowPlaying.push(showtime.title);
-          });
-          if (!nowPlaying.includes($scope.original_title)) {
-            $scope.hasNoShowtime = true;
-          }
-          console.log('showtimes ' + showtimes);
-        } else {
-          $scope.hasNoShowtime = true;
-        }
+        console.log(showtimes);
       });
       $scope.zip = '';
     };
