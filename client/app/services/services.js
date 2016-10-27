@@ -200,14 +200,13 @@ angular.module('zeus.services', [])
       });
   };
 
-  var getUserReviews = function(username) {
+  var getUserReviews = function(userIdAuth) {
     return $http({
       method: 'GET',
-      url: '/user/' + username,
-      data: username
+      url: '/user/reviews/' + userIdAuth
     })
       .then(function(res) {
-        return res;
+        return res.data;
       });
   };
 
