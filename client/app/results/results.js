@@ -1,13 +1,13 @@
 angular.module('zeus.results', [])
-.controller('ResultsController', function(Results, $routeParams) {
+.controller('ResultsController', function(Results, $stateParams) {
   // capture the value of `this` in a variable vm
   // vm stands for view model and is a replacement for $scope
   var ResultsVm = this;
   ResultsVm.results = [];
   ResultsVm.loaded = false;
-  ResultsVm.search = $routeParams.search;
+  ResultsVm.search = $stateParams.search;
   //direct user to first page if none is specified in url
-  var page = $routeParams.page || 1;
+  var page = $stateParams.page || 1;
   Results.multiSearch(ResultsVm.search, page)
     .then(function(results) {
       ResultsVm.loaded = true;
