@@ -10,4 +10,6 @@
     Rating: {{ReviewsVm.review.rating}}
   </p>
   <p>{{ ReviewsVm.review.content}}</p>
+  <span ng-if="ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()">Edit</span>
+  <span ng-if="ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete(review)">DELETE</span>
 </div>
