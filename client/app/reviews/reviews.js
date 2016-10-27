@@ -1,6 +1,6 @@
 angular.module('zeus.reviews', [])
-.controller('ReviewsController', function($scope, $routeParams, Details) {
-  $scope.id = $routeParams.id;
+.controller('ReviewsController', function($scope, $stateParams, Details) {
+  $scope.id = $stateParams.id;
   $scope.review = {};
   $scope.user = {};
   Details.getReviewById($scope.id)
