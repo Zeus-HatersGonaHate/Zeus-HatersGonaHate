@@ -7,7 +7,8 @@ var UserSchema = new mongoose.Schema({
   fullName: String,
   profilePicLink: String,
   favorites: Array,
-  watched: Array
+  watched: Array,
+  joinDate: String
 });
 
 
