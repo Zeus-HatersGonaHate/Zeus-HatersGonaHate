@@ -51,7 +51,8 @@ angular.module('zeus', [
     })
     .when('/details/:type/:id', {
       templateUrl: 'app/details/details.html',
-      controller: 'DetailsController'
+      controller: 'DetailsController',
+      controllerAs: 'DetailsVm'
     })
     .when('/user', {
       templateUrl: 'app/user/user.html',

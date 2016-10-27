@@ -1,27 +1,27 @@
-<div ng-controller="DetailsController">
+<div>
  <div class='moviePoster'>
     <!-- If no poster_path, show dummy image -->
-    <img ng-hide="!poster_path" src="http://image.tmdb.org/t/p/w500/{{poster_path}}" alt="">
-    <img ng-show="!poster_path" src="http://dummyimage.com/185x275/000/fff&text={{original_name}}" alt="">
+    <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w500/{{DetailsVm.poster_path}}" alt="">
+    <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
   <div class="details-col2">
   <!-- Movie showtimes -->
      <div class="showtimes">
        <h5>Showtimes</h5>
-         <form ng-submit="getShowtimes()">
+         <form ng-submit="DetailsVm.getShowtimes()">
            <p>Enter your zip code below to get showtimes for this movie near you today.</p>
-           <p>Zip Code: </p><input type="text" ng-model="zip">
+           <p>Zip Code: </p><input type="text" ng-model="DetailsVm.zip">
          </form>
          <ul>
-           <li ng-repeat="movie in showtimes">
-             <p ng-if="movie.title === original_title"  class="showtime-title">{{ movie.title }}</p>
-             <ul ng-if="movie.title === original_title" >
+           <li ng-repeat="movie in DetailsVm.showtimes">
+             <p ng-if="movie.title === DetailsVm.original_title"  class="showtime-title">{{ movie.title }}</p>
+             <ul ng-if="movie.title === DetailsVm.original_title" >
                <li ng-repeat="showtime in movie.showtimes" class="showtime">
                  {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
                </li>
              </ul>
            </li>
          </ul>
-         <p ng-if="hasNoShowtime">This movie is not currently in theatres near you!</p>
+         <p ng-if="DetailsVm.hasNoShowtime">This movie is not currently in theatres near you!</p>
      </div>
    </div>
  </div>
@@ -30,22 +30,22 @@
  <!-- Movie details and info -->
  <div class="details-col1">
    <div class='movieDetails'>
-      <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
-      <h3 ng-if="original_title === undefined"> {{original_name}} </h3>
-      <h5 ng-if="data.release_date !== undefined">Release Date</h5>
-      <p ng-if="data.release_date !== undefined">{{data.release_date}}</p>
-      <h5 ng-if="data.runtime !== undefined">Movie Length</h5>
-      <p ng-if="data.runtime !== undefined">{{data.runtime}} minutes</p>
+      <h3 ng-if="DetailsVm.original_name === undefined"> {{DetailsVm.original_title}} </h3>
+      <h3 ng-if="DetailsVm.original_title === undefined"> {{DetailsVm.original_name}} </h3>
+      <h5 ng-if="DetailsVm.data.release_date !== undefined">Release Date</h5>
+      <p ng-if="DetailsVm.data.release_date !== undefined">{{DetailsVm.data.release_date}}</p>
+      <h5 ng-if="DetailsVm.data.runtime !== undefined">Movie Length</h5>
+      <p ng-if="DetailsVm.data.runtime !== undefined">{{DetailsVm.data.runtime}} minutes</p>
 
-      <h5 ng-if="data.first_air_date !== undefined">First Air Date</h5>
-      <p ng-if="data.first_air_date !== undefined">{{data.first_air_date}}</p>
-      <h5 ng-if="data.episode_run_time[0] !== undefined">Episode Length</h5>
-      <p ng-if="data.episode_run_time[0] !== undefined">{{data.episode_run_time[0]}} minutes</p>
+      <h5 ng-if="DetailsVm.data.first_air_date !== undefined">First Air Date</h5>
+      <p ng-if="DetailsVm.data.first_air_date !== undefined">{{DetailsVm.data.first_air_date}}</p>
+      <h5 ng-if="DetailsVm.data.episode_run_time[0] !== undefined">Episode Length</h5>
+      <p ng-if="DetailsVm.data.episode_run_time[0] !== undefined">{{DetailsVm.data.episode_run_time[0]}} minutes</p>
       <h5>Overview</h5>
-      <p> {{overview}} </p>
+      <p> {{DetailsVm.overview}} </p>
       <h5>Lead Cast</h5>
       <ul>
-        <a ng-repeat="actor in actors" href="https://en.wikipedia.org/wiki/{{actor}}">
+        <a ng-repeat="actor in DetailsVm.actors" href="https://en.wikipedia.org/wiki/{{actor}}">
           <li>{{ actor }}</li>
         </a>
       </ul>
@@ -53,13 +53,13 @@
    <!-- Movie reviews -->
    <div class="postReview">
     <h5>Reviews</h5>
-    <form ng-submit="post()">
+    <form ng-submit="DetailsVm.post()">
       <h6>Title</h6>
-      <input type="text" placeholder="Title" ng-model="reviewTitle" required>
+      <input type="text" placeholder="Title" ng-model="DetailsVm.reviewTitle" required>
       <h6>Comment</6>
-      <textarea placeholder="Tell us what you thought..." ng-model="reviewBody" required></textarea>
+      <textarea placeholder="Tell us what you thought..." ng-model="DetailsVm.reviewBody" required></textarea>
       <h6>Rating</h6>
-      <select ng-model="reviewRating" required>
+      <select ng-model="DetailsVm.reviewRating" required>
         <option selected disabled value="">--Select Rating--</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -71,12 +71,12 @@
     </form>
    </div>
 
-   <div class="noReviews" ng-if="!hasReview">
+   <div class="noReviews" ng-if="!DetailsVm.hasReview">
      Currently no reviews...want to add one?
    </div>
-   <div class="reviewDetails" ng-repeat="review in reviews">
-     <h5>Username: {{users[review.user_id].username}}</h5>
-     <img src="{{users[review.user_id].profilePicLink}}"/>
+   <div class="reviewDetails" ng-repeat="review in DetailsVm.reviews">
+     <h5>Username: {{DetailsVm.users[review.user_id].username}}</h5>
+     <img src="{{DetailsVm.users[review.user_id].profilePicLink}}"/>
      <strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small>
       <p>Review: {{review.content}}
         <br>
@@ -85,8 +85,8 @@
         <span ng-style="review.votes[0][currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="vote(review, 1)">Upvote: {{review.voteCount}}</span>
         <span ng-style="review.votes[0][currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="vote(review, -1)">Downvote</span>
         <br>
-        <span ng-if="currentUser !== null && currentUser.user_id === review.user_id" ng-click="">Edit</span>
-        <span ng-if="currentUser !== null && currentUser.user_id === review.user_id" ng-click="delete(review)">DELETE</span>
+        <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="">Edit</span>
+        <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.delete(review)">DELETE</span>
       </p>
    </div>
  </div>
