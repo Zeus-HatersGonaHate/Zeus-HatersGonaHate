@@ -41,7 +41,8 @@ angular.module('zeus', [
   $routeProvider
     .when('/', {
       templateUrl: 'app/landing/landing.html',
-      controller: 'LandingController'
+      controller: 'LandingController',
+      controllerAs: 'LandingVm'
     })
     .when('/results/:search/:page', {
       templateUrl: 'app/results/results.html',
