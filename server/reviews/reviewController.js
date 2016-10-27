@@ -75,6 +75,19 @@ module.exports = {
       });
   },
 
+  getUserReviews: function(req, res, next) {
+    var userIdAuth = req.params.userId;
+    Review.find({ user_id : userIdAuth })
+      .sort({date: -1})
+      .exec(function(err, reviews) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send(reviews);
+        }
+      });
+  },
+
   //deletes a review from the DB based on the reviewId parameter within the URL
   deleteReview: function (req, res, next) {
     var id = req.params.reviewId;
