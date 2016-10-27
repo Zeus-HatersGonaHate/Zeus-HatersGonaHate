@@ -1,5 +1,5 @@
 angular.module('zeus.details', [])
-  .controller('DetailsController', function(Details, $stateParams) {
+  .controller('DetailsController', function($location, Details, $stateParams) {
     // capture the value of `this` in a variable vm
     // vm stands for view model and is a replacement for $scope
     var DetailsVm = this;
@@ -93,6 +93,10 @@ angular.module('zeus.details', [])
           review.votes = reviewInfo.votes;
         });
     };
+
+    DetailsVm.edit = function(reviewId) {
+      $location.path(/review/ + reviewId + '/edit');
+    }
 
     DetailsVm.delete = function(review) {
       Details.deleteReview(review._id);

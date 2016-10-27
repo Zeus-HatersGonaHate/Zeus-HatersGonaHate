@@ -1,0 +1,20 @@
+<div>
+  <form>
+    <h6>Title</h6>
+      <input type="text" value="{{EditReviewVm.title}}" ng-model="EditReviewVm.title" required>
+      <h6>Comment</6>
+      <br/>
+      <textarea value="{{EditReviewVm.content}}" ng-model="EditReviewVm.content" required></textarea>
+      <h6>Rating</h6>
+      <select ng-model="EditReviewVm.rating" required>
+        <option value="1" ng-selected="EditReviewVm.rating === 1">1</option>
+        <option value="2" ng-selected="EditReviewVm.rating === 2">2</option>
+        <option value="3" ng-selected="EditReviewVm.rating === 3">3</option>
+        <option value="4" ng-selected="EditReviewVm.rating === 4">4</option>
+        <option value="5" ng-selected="EditReviewVm.rating === 5">5</option>
+      </select>
+      <br/>
+      <input ng-click="EditReviewVm.edit()" type="Submit" value="Save">
+      <input ng-click="EditReviewVm.cancel()" type="Submit" value="Cancel">
+  </form>
+</div>

@@ -89,7 +89,7 @@
    <div class="reviewDetails" ng-repeat="review in DetailsVm.reviews">
      <h5>Username: {{DetailsVm.users[review.user_id].username}}</h5>
      <img src="{{DetailsVm.users[review.user_id].profilePicLink}}"/>
-     <strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small>
+     <a href="#/review/{{review._id}}"><strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small></a>
       <p>Review: {{review.content}}
         <br>
         Date: {{review.date}}
@@ -97,7 +97,7 @@
         <span ng-style="review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, 1)">Upvote: {{review.voteCount}}</span>
         <span ng-style="review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, -1)">Downvote</span>
         <br>
-        <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="">Edit</span>
+        <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.edit(review._id)">Edit</span>
         <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.delete(review)">DELETE</span>
       </p>
    </div>

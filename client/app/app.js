@@ -6,6 +6,7 @@ angular.module('zeus', [
   'zeus.user',
   'zeus.account',
   'zeus.reviews',
+  'zeus.editReview',
   'auth0.lock',
   'angular-jwt',
   'ui.router'
@@ -88,8 +89,17 @@ angular.module('zeus', [
     url: '/review/:id',
     templateUrl: 'app/reviews/reviews.html',
     controller: 'ReviewsController',
-    //controllerAs: 'ReviewsVm',  //need to set this up
+    controllerAs: 'ReviewsVm',
     authenticate: false
+  };
+
+  var editReviewState = {
+    name: 'editReview',
+    url: '/review/:id/edit',
+    templateUrl: 'app/reviews/editReview.html',
+    controller: 'editReviewController',
+    controllerAs: 'EditReviewVm',
+    authenticate: true
   };
 
   $stateProvider.state(landingState);
@@ -98,6 +108,7 @@ angular.module('zeus', [
   $stateProvider.state(userState);
   $stateProvider.state(accountState);
   $stateProvider.state(reviewsState);
+  $stateProvider.state(editReviewState);
 
   $urlRouterProvider.otherwise('/');
 
