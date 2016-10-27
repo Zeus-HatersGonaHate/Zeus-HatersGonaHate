@@ -1,20 +1,24 @@
 angular.module('zeus.user', [])
   .controller('UserController', function($scope, User, $routeParams) {
-    $scope.username = "wilson.palooza4";
-    // $scope.userId = User.getUserId($scope.username)
+    console.log('user page loaded');
+    $scope.username = $routeParams.username;
 
-    $scope.profilePic = "https://lh3.googleusercontent.com/-kKTmPYr4dZI/AAAAAAAAAAI/AAAAAAAAAMw/D7Ak_C3TSWY/photo.jpg";
-    $scope.email = "hardcoded@email.com";
-    $scope.reviews = {}; //or [];
-    $scope.favorites = {}; // or [];
+    //set up user information based on username given in route
+    User.getUserId($routeParams.username)
+      .then(function(user){
+        var userObj = user;
+        console.log('--------- userObj -------');
+        console.log(userObj);
+        $scope.userId = userObj._id;
+        $scope.profilePic = userObj.profilePicLink;
+        $scope.email = userObj.email;
+        $scope.favorites = userObj.favorites;
+      });
 
     var getUserReviews = function () {
       User.getUserReviews($scope.username) //username will change, so probably better to pass user id here
         .then(function(reviews) {
-          console.log('------------------');
-          console.log(reviews);
           $scope.reviews = reviews.data;
-
         });
     };
     getUserReviews();
