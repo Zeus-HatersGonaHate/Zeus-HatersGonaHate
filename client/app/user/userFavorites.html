@@ -1,18 +1,18 @@
 <div class="user-favorites-view">
   <div class="favorite-type-selector">
     <ul class="favorite-type-selector">
-      <li>Movies</li>
-      <li>TV shows</li>
+      <a href="" ng-click="UserVm.currentFavoriteView = movies"><li>Movies</li></a>
+      <a href="" ng-click="UserVm.currentFavoriteView = tv"><li>TV shows</li></a>
     </ul>
   </div>
 
   <h5>Favorite movies:</h5>
   <ul class="user-favorites-movies">
-    <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'movie'}}">{{favorite.poster_path}}</li>
+    <li ng-repeat="favorite in UserVm.favorites" ng-if="{{favorite.type === 'movie'}}">{{favorite.poster_path}}</li>
   </ul>
 
   <h5>Favorite TV shows:</h5>
   <ul class="user-favorites-tv">
-    <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'tv'}}">{{favorite.poster_path}}</li>
+    <li ng-repeat="favorite in UserVm.favorites" ng-if="{{favorite.type === 'tv'}}">{{favorite.poster_path}}</li>
   </ul>
 </div>
