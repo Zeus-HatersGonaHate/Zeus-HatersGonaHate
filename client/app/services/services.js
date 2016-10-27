@@ -28,14 +28,14 @@ angular.module('zeus.services', [])
     });
   };
 
-  var upvote = function(id, vote) {
+  var upvote = function(id, vote, callback) {
     return $http({
       method: 'PUT',
       url: '/review/count/' + id,
       data: {voteCount: vote}
     })
     .then(function(res) {
-      return res;
+      callback(res);
     });
   }
 

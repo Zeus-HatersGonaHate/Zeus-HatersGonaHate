@@ -109,19 +109,19 @@ module.exports = {
           var newVotes = info.votes;
           newVotes[0][currentUser] = voteCount;
           Review.findByIdAndUpdate(id, {$inc: { voteCount:  voteCount }, votes: newVotes}, {new:true}, function(err, info){
-            res.send(200)
+            res.json(info)
           })
         } else if(info.votes[0][currentUser] === voteCount && voteCount === voteCount){
           var newVotes = info.votes;
           newVotes[0][currentUser] = undefined;
           Review.findByIdAndUpdate(id, {$inc: { voteCount:  voteCount*-1 }, votes: newVotes}, {new:true}, function(err, info){
-            res.send(200)
+            res.json(info)
           })
         } else if(info.votes[0][currentUser] !== voteCount && voteCount === voteCount){
           var newVotes = info.votes;
           newVotes[0][currentUser] = voteCount;
           Review.findByIdAndUpdate(id, {$inc: { voteCount:  voteCount*2 }, votes: newVotes}, {new:true}, function(err, info){
-            res.send(200)
+            res.json(info)
           })
         }
       });
