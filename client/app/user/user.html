@@ -2,9 +2,9 @@
   <!-- User profile menu  -->
   <div class="user-menu">
     <ul class="user-menu">
-      <li>Overview</li>
-      <li>Reviews</li>
-      <li>Favorites</li>
+      <a href="/#/user/{{username}}" ng-click="currentView = 'overview'"><li>Overview</li></a>
+      <a href="/#/user/{{username}}/reviews" ng-click="currentView = 'reviews'"><li>Reviews</li></a>
+      <a href="/#/user/{{username}}/favorites" ng-click="currentView = 'favorites'"><li>Favorites</li></a>
     </ul>
   </div>
 
@@ -18,38 +18,15 @@
     <p>Location: {{location}}</p>
   </div>
 
-  <!-- Overview view -->
-  <div class="user-overview-view">
-    <h5>About {{username}}</h5>
-    <p>{{about}}</p>
-    <h5>{{username}}'s latest reviews:</h5>
-    <ul class="user-reviews">
-      <li ng-repeat="review in reviews | limitTo:3">
-        <p class='review-title'><a href="../#/{{review.type}}/{{review.typeId}}">{{review.title}}</a></p>
-        <p class='review-date'>{{review.date}}</p>
-        <p class='review-content'>{{review.content | limitTo: 140}}<span ng-if="review.content.length > 140"><a href="../#/{{review.type}}/{{review.typeId}}">...read more</a></span></p> <!-- Limits content to first 140 characters, only add ellipses when needed -->
-      </li>
-    </ul>
-  </div>
+  <ui-view></ui-view>
+   <!-- Overview view -->
+  <user-overview ng-show="currentView==='overview'"></user-overview>
+
+  <!-- Reviews view -->
+  <user-reviews ng-show="currentView==='reviews'"></user-reviews>
 
   <!-- Favorites view -->
-  <div class="user-favorites-view">
-    <div class="favorite-type-selector">
-      <ul class="favorite-type-selector">
-        <li>Movies</li>
-        <li>TV shows</li>
-      </ul>
-    </div>
+  <user-favorites ng-show="currentView==='favorites'"></user-favorites>
 
-    <h5>Favorite movies:</h5>
-    <ul class="user-favorites-movies">
-      <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'movie'}}">{{favorite.poster_path}}</li>
-    </ul>
-
-    <h5>Favorite TV shows:</h5>
-    <ul class="user-favorites-tv">
-      <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'tv'}}">{{favorite.poster_path}}</li>
-    </ul>
-  </div>
 
 </div>
