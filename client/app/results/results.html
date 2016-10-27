@@ -2,17 +2,10 @@
   <p ng-if="ResultsVm.results.length === 0 && ResultsVm.loaded">No results were found!</p>
   <ul>
     <h4>Your search returned {{ ResultsVm.totalResults }} results.</h4>
-    <a ng-repeat="result in ResultsVm.results" href="/#/details/{{ result.media_type }}/{{ result.id }}">
-      <li>
-        <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
-        <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
-        <!-- If no poster_path, show dummy image -->
-        <img ng-hide="!result.poster_path" src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}" alt="">
-        <img ng-show="!result.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{result.name}}" alt="">
-        <p>{{ result.overview }}</p>
-      </li>
-    </a>
+    <!--Angular directive, displays each search result - see searchResult.html -->
+    <search-result ng-repeat="result in ResultsVm.results"></search-result>
   </ul>
+  <!--Creates pages of search results at the bottom of the page -->
   <ul class="media-list pages">
     <h6>Pages</h6>
     <a ng-repeat="page in ResultsVm.totalPages" href="/#/results/{{ ResultsVm.search }}/{{ page }}">

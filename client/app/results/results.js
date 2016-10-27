@@ -16,4 +16,12 @@ angular.module('zeus.results', [])
       ResultsVm.totalPages = _.range(1, results.data.total_pages + 1);
       ResultsVm.totalResults = results.data.total_results;
     });
+})
+.directive('searchResult', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/results/searchResult.html'
+  };
 });
