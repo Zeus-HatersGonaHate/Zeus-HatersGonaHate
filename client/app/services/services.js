@@ -190,6 +190,16 @@ angular.module('zeus.services', [])
     });
   };
 
+  var getUserId = function(username) {
+    return $http({
+      method: 'GET',
+      url: '/user/' + username
+    })
+      .then(function(res) {
+        return res.data[0];
+      });
+  };
+
   var getUserReviews = function(username) {
     return $http({
       method: 'GET',
@@ -214,6 +224,7 @@ angular.module('zeus.services', [])
 
   return {
     checkUser: checkUser,
+    getUserId : getUserId,
     editUser: editUser,
     getUserReviews : getUserReviews,
     getUserFavorites : getUserFavorites
