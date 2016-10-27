@@ -8,8 +8,7 @@ angular.module('zeus', [
   'zeus.reviews',
   'auth0.lock',
   'angular-jwt',
-  'ui.router',
-  'ngRoute'
+  'ui.router'
 ])
 .controller('zeusController', function($scope, $location, authService, $http, User) {
   $scope.searchQuery = '';
@@ -38,44 +37,69 @@ angular.module('zeus', [
   });
 })
 
-.config(function($routeProvider, $locationProvider, lockProvider, jwtOptionsProvider, $httpProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'app/landing/landing.html',
-      controller: 'LandingController',
-      controllerAs: 'LandingVm'
-    })
-    .when('/results/:search/:page', {
-      templateUrl: 'app/results/results.html',
-      controller: 'ResultsController',
-      controllerAs: 'ResultsVm'
-    })
-    .when('/details/:type/:id', {
-      templateUrl: 'app/details/details.html',
-      controller: 'DetailsController',
-      controllerAs: 'DetailsVm'
-    })
-    .when('/user', {
-      templateUrl: 'app/user/user.html',
-      controller: 'UserController'
-    })
-    .when('/user/:username', {
-      templateUrl: 'app/user/user.html',
-      controller: 'UserController'
-    })
-    .when('/:type/:id', {
-      templateUrl: 'app/details/details.html',
-      controller: 'DetailsController'
-    })
-    .when('/account', {
-      templateUrl: 'app/account/account.html',
-      controller: 'AccountController'
-    })
-    .when('/review/:id', {
-      templateUrl: 'app/reviews/reviews.html',
-      controller: 'ReviewsController'
-    })
-    .otherwise('/');
+.config(function($stateProvider, $urlRouterProvider, $locationProvider, lockProvider, jwtOptionsProvider, $httpProvider) {
+  var landingState = {
+    name: 'landing',
+    url: '/',
+    templateUrl: 'app/landing/landing.html',
+    controller: 'LandingController',
+    controllerAs: 'LandingVm',
+    authenticate: false
+  };
+
+  var resultsState = {
+    name: 'results',
+    url: '/results/:search/:page',
+    templateUrl: 'app/results/results.html',
+    controller: 'ResultsController',
+    controllerAs: 'ResultsVm',
+    authenticate: false
+  };
+
+  var detailsState = {
+    name: 'details',
+    url: '/details/:type/:id',
+    templateUrl: 'app/details/details.html',
+    controller: 'DetailsController',
+    controllerAs: 'DetailsVm',
+    authenticate: false
+  };
+
+  var userState = {
+    name: 'user',
+    url: '/user/:username',
+    templateUrl: 'app/user/user.html',
+    controller: 'UserController',
+    //controllerAs: 'UserVm',  //need to set this up
+    authenticate: false
+  };
+
+  var accountState = {
+    name: 'account',
+    url: '/account',
+    templateUrl: 'app/account/account.html',
+    controller: 'AccountController',
+    //controllerAs: 'AccountVm',  //need to set this up
+    authenticate: true
+  };
+
+  var reviewsState = {
+    name: 'reviews',
+    url: '/review/:id',
+    templateUrl: 'app/reviews/reviews.html',
+    controller: 'ReviewsController',
+    //controllerAs: 'ReviewsVm',  //need to set this up
+    authenticate: false
+  };
+
+  $stateProvider.state(landingState);
+  $stateProvider.state(resultsState);
+  $stateProvider.state(detailsState);
+  $stateProvider.state(userState);
+  $stateProvider.state(accountState);
+  $stateProvider.state(reviewsState);
+
+  // $urlRouterProvider.otherwise('/');
 
   //Auth 0 account info
   lockProvider.init({
