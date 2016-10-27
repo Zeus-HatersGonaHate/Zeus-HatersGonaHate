@@ -1,11 +1,18 @@
 angular.module('zeus.reviews', [])
-.controller('ReviewsController', function($scope, $stateParams, Details) {
-  $scope.id = $stateParams.id;
-  $scope.review = {};
-  $scope.user = {};
-  Details.getReviewById($scope.id)
+.controller('ReviewsController', function($stateParams, Details) {
+  var ReviewsVm = this;
+  ReviewsVm.id = $stateParams.id;
+  ReviewsVm.review = {};
+  ReviewsVm.user = {};
+  ReviewsVm.movie = {};
+  Details.getReviewById(ReviewsVm.id)
     .then(function(reviewInfo){
-      $scope.review = reviewInfo.review;
-      $scope.user = reviewInfo.user;
+      ReviewsVm.review = reviewInfo.review;
+      ReviewsVm.user = reviewInfo.user;
+      Details.getDetails(reviewInfo.review.type, reviewInfo.review.typeId)
+      .then(function(movieInfo){
+        ReviewsVm.movie = movieInfo;
+        console.log(movieInfo)
+      })
     });
 });

@@ -1,4 +1,13 @@
-<div>
-  <img src="{{user.profilePicLink}}"/>
-  <p>{{user.username}}</p>
+<div class="movie">
+  <img src="http://image.tmdb.org/t/p/w150/{{ReviewsVm.movie.poster_path}}"/>
+  <h4>{{ReviewsVm.movie.title}}</h4>
+</div>
+<div class="review">
+  <h4>{{ReviewsVm.review.title}}</h4>
+  <p>
+    by: {{ReviewsVm.user.username}} | {{ReviewsVm.review.date}}
+    <br/>
+    Rating: {{ReviewsVm.review.rating}}
+  </p>
+  <p>{{ ReviewsVm.review.content}}</p>
 </div>

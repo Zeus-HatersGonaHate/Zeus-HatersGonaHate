@@ -88,7 +88,7 @@ angular.module('zeus', [
     url: '/review/:id',
     templateUrl: 'app/reviews/reviews.html',
     controller: 'ReviewsController',
-    //controllerAs: 'ReviewsVm',  //need to set this up
+    controllerAs: 'ReviewsVm',  //need to set this up
     authenticate: false
   };
 
