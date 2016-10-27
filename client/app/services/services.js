@@ -59,6 +59,17 @@ angular.module('zeus.services', [])
     });
   };
 
+  var editReview = function(id, newReview){
+    return $http({
+      method: 'PUT',
+      url: '/review/' + id,
+      data: newReview
+    })
+    .then(function(res){
+      return res;
+    });
+  }
+
   var getShowtimes = function(date, zip) {
     return $http ({
       method: 'GET',
@@ -102,6 +113,7 @@ angular.module('zeus.services', [])
     getReviewById: getReviewById,
     upvote: upvote,
     deleteReview: deleteReview,
+    editReview: editReview,
     getShowtimes: getShowtimes,
     getActors: getActors,
     addToFavorites: addToFavorites,
