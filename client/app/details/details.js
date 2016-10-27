@@ -12,7 +12,6 @@ angular.module('zeus.details', [])
     DetailsVm.id = $stateParams.id; //id on themoviedb api for retrieving the movie/tv info
     Details.getDetails(DetailsVm.type, DetailsVm.id).then(function(data) {
       DetailsVm.data = data; // save all movie details for the requested movie
-
       //convenience properties for shorthand in html views
       DetailsVm.original_title = DetailsVm.data.original_title;
       DetailsVm.original_name = DetailsVm.data.original_name;
@@ -26,6 +25,9 @@ angular.module('zeus.details', [])
     var getReviews = function() {
       Details.getReviews(DetailsVm.type, DetailsVm.id).then(function (reviews) {
         DetailsVm.reviews = reviews.data.reviews;
+        DetailsVM.reviews.forEach((review) => {
+          review.date = moment(review.date).fromNow();
+        })
         DetailsVm.users = reviews.data.users;
         if (DetailsVm.reviews.length > 0) {
           DetailsVm.hasReview = true;
@@ -44,6 +46,7 @@ angular.module('zeus.details', [])
         rating: DetailsVm.reviewRating
       };
       Details.postReview(DetailsVm.type, DetailsVm.id, info).then(function(review) {
+        review.data.reviews.date = moment(review.data.date).fromNow();
         DetailsVm.reviews.unshift(review.data.reviews);
         DetailsVm.users[review.data.users.user_id] = review.data.users;
         DetailsVm.hasReview = true;
@@ -55,11 +58,7 @@ angular.module('zeus.details', [])
     };
 
     //Get current time info when user visits page to request today's showtimes
-    var today = new Date();
-    var year = today.getFullYear().toString();
-    var month = (today.getMonth() + 1).toString();
-    var day = today.getDate().toString();
-    DetailsVm.fullDate = year + '-' + month + '-' + day;
+    DetailsVM.fullDate = moment().format('YYYY-MM-DD');
 
     DetailsVm.zip = '';
 
@@ -95,6 +94,26 @@ angular.module('zeus.details', [])
       var index = DetailsVm.reviews.indexOf(review);
       DetailsVm.reviews.splice(index, 1);
     };
+
+
+    DetailsVM.addToFavorites = function () {
+      var favDetails = {};
+      favDetails.type = DetailsVM.type;
+      favDetails.id =  DetailsVM.id;
+      favDetails.picture = DetailsVM.poster_path;
+      favDetails.title = DetailsVM.original_title;
+      Details.addToFavorites(favDetails);
+    };
+
+      DetailsVM.addToWatchedList = function () {
+      var watchDetails = {};
+      watchDetails.type = DetailsVM.type;
+      watchDetails.id =  DetailsVM.id;
+      watchDetails.picture = DetailsVM.poster_path;
+      watchDetails.title = DetailsVM.original_title;
+      Details.addToWatchedList(watchDetails);
+    };
+
   });
 
 

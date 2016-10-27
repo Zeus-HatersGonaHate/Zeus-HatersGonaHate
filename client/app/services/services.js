@@ -27,6 +27,7 @@ angular.module('zeus.services', [])
       return res;
     });
   };
+
   var getReviewById = function(id) {
     return $http({
       method: 'GET',
@@ -78,6 +79,22 @@ angular.module('zeus.services', [])
     });
   };
 
+  var addToFavorites = function (data) {
+    return $http ({
+      method: 'POST',
+      url: '/user/favorites',
+      data: data
+    });
+  };
+
+  var addToWatchedList = function (data) {
+    return $http ({
+      method: 'POST',
+      url: '/user/watched',
+      data: data
+    });
+  };
+
   return {
     getDetails: getDetails,
     getReviews: getReviews,
@@ -86,7 +103,9 @@ angular.module('zeus.services', [])
     upvote: upvote,
     deleteReview: deleteReview,
     getShowtimes: getShowtimes,
-    getActors: getActors
+    getActors: getActors,
+    addToFavorites: addToFavorites,
+    addToWatchedList: addToWatchedList
   };
 })
 

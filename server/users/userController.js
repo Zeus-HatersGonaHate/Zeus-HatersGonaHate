@@ -71,6 +71,26 @@ module.exports = {
       console.log(user);
       res.json(user);
     });
-  }
+  },
+
+  addToFavorites: function (req, res, next) {
+    var id = req.user.sub;
+    var data = req.body;
+    User.findOneAndUpdate({ user_id: id }, { $addToSet: { favorites: data } }, {new:true}, function (err, user) {
+      if (err) console.log(err);
+      console.log(user);
+      res.sendStatus(200);
+    });
+  },
+
+  addToWatchedList: function (req, res, next) {
+    var id = req.user.sub;
+    var data = req.body;
+    User.findOneAndUpdate({ user_id: id }, { $addToSet: { watched: data } }, {new:true}, function (err, user) {
+      if (err) console.log(err);
+      console.log(user);
+      res.sendStatus(200);
+    });
+  },
 
 };

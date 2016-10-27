@@ -23,6 +23,7 @@ module.exports = {
 
   //when user posts a review, this method saves it to the database
   postReview: function (req, res, next) {
+    var date = new Date();
     var data = req.body;
     var type = req.params.type;
     var typeId = req.params.typeId;
@@ -31,7 +32,7 @@ module.exports = {
       typeId: typeId,
       type: type,
       title: data.title,
-      date: new Date(),
+      date: date.toISOString(),
       content: data.content,
       rating: data.rating,
       voteCount: 0,

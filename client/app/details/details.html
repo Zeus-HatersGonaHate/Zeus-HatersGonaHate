@@ -36,6 +36,18 @@
       <p ng-if="DetailsVm.data.release_date !== undefined">{{DetailsVm.data.release_date}}</p>
       <h5 ng-if="DetailsVm.data.runtime !== undefined">Movie Length</h5>
       <p ng-if="DetailsVm.data.runtime !== undefined">{{DetailsVm.data.runtime}} minutes</p>
+      <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
+      <h3 ng-if="original_title === undefined"> {{original_name}} </h3>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-click="addToFavorites()">
+      Add to favorites
+      </button>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-click="addToWatchedList()">
+      Add to watched list
+      </button>
+      <h5 ng-if="data.release_date !== undefined">Release Date</h5>
+      <p ng-if="data.release_date !== undefined">{{data.release_date}}</p>
+      <h5 ng-if="data.runtime !== undefined">Movie Length</h5>
+      <p ng-if="data.runtime !== undefined">{{data.runtime}} minutes</p>
 
       <h5 ng-if="DetailsVm.data.first_air_date !== undefined">First Air Date</h5>
       <p ng-if="DetailsVm.data.first_air_date !== undefined">{{DetailsVm.data.first_air_date}}</p>
@@ -82,8 +94,8 @@
         <br>
         Date: {{review.date}}
         <br>
-        <span ng-style="review.votes[0][currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, 1)">Upvote: {{review.voteCount}}</span>
-        <span ng-style="review.votes[0][currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, -1)">Downvote</span>
+        <span ng-style="review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, 1)">Upvote: {{review.voteCount}}</span>
+        <span ng-style="review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, -1)">Downvote</span>
         <br>
         <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="">Edit</span>
         <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.delete(review)">DELETE</span>
