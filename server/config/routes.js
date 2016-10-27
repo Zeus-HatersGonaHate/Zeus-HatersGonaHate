@@ -32,4 +32,8 @@ module.exports = function (app, express) {
   app.post('/user', userController.postUser);
 
   app.put('/user/edit', authCheck, userController.editUser);
+
+  app.post('/user/favorites', authCheck, userController.addToFavorites);
+
+  app.post('/user/watched', authCheck, userController.addToWatchedList);
 };

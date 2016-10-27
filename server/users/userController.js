@@ -1,34 +1,21 @@
 var User = require('../users/userModel.js');
-
-//Function to randomly generate username based on email or full name
-var usernameMaker = function(data, callback) {
-  User.count({}, function (err, count) {
-    if(err) {
-      console.log(err);
-    } else {
-      if (data.email) {
-        callback(data.email.split('@')[0] + count);
-      } else {
-        callback(data.given_name[0] + data.family_name[0]+ count);
-      }
-    }
-  });
-};
+var helpers = require('../config/helpers.js');
 
 module.exports = {
 
   postUser: function (req, res, next) {
     var info = req.body;
+    var date = new Date();
     User.find({ user_id: info.user_id })
       .exec(function (error, data) {
         console.log(data);
         if (error) {
           console.log(error);
           res.send(500);
-        }
-        else if (data.length === 0) {
-          usernameMaker(info, function (username) {
+        } else if (data.length === 0) {
+          helpers.usernameMaker(info, function (username) {
             var user = new User({
+              joinDate: date.toISOString(),
               email: info.email,
               user_id: info.user_id,
               username: username,
@@ -48,8 +35,8 @@ module.exports = {
         } else {
           res.json(data);
         }
-    });
-  },
+      });
+    },
 
   getUserByUsername: function (req, res, next) {
     var username = req.params.username;
@@ -64,13 +51,33 @@ module.exports = {
   },
 
   editUser: function (req, res, next) {
-    var id =  req.user.sub;
+    var id = req.user.sub;
     var data = req.body;
-    User.findOneAndUpdate({ user_id: id }, {username: data.username}, {new:true}, function (err, user) {
+    User.findOneAndUpdate({ user_id: id }, {username: data.username}, {new: true}, function (err, user) {
       if (err) console.log(err);
       console.log(user);
       res.json(user);
     });
-  }
+  },
+
+  addToFavorites: function (req, res, next) {
+    var id = req.user.sub;
+    var data = req.body;
+    User.findOneAndUpdate({ user_id: id }, { $addToSet: { favorites: data } }, {new: true}, function (err, user) {
+      if (err) console.log(err);
+      console.log(user);
+      res.sendStatus(200);
+    });
+  },
+
+  addToWatchedList: function (req, res, next) {
+    var id = req.user.sub;
+    var data = req.body;
+    User.findOneAndUpdate({ user_id: id }, { $addToSet: { watched: data } }, {new:true}, function (err, user) {
+      if (err) console.log(err);
+      console.log(user);
+      res.sendStatus(200);
+    });
+  },
 
 };

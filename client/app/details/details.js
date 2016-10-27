@@ -25,6 +25,9 @@ angular.module('zeus.details', [])
     });
     var getReviews = function() {
       Details.getReviews(DetailsVm.type, DetailsVm.id).then(function (reviews) {
+        reviews.data.reviews.forEach(function (review) {
+          review.date = moment(review.date).fromNow();
+        })
         DetailsVm.reviews = reviews.data.reviews;
         DetailsVm.users = reviews.data.users;
         if (DetailsVm.reviews.length > 0) {
@@ -44,6 +47,7 @@ angular.module('zeus.details', [])
         rating: DetailsVm.reviewRating
       };
       Details.postReview(DetailsVm.type, DetailsVm.id, info).then(function(review) {
+        review.data.reviews.date = moment(review.data.reviews.date).fromNow();
         DetailsVm.reviews.unshift(review.data.reviews);
         DetailsVm.users[review.data.users.user_id] = review.data.users;
         DetailsVm.hasReview = true;
@@ -95,7 +99,22 @@ angular.module('zeus.details', [])
       var index = DetailsVm.reviews.indexOf(review);
       DetailsVm.reviews.splice(index, 1);
     };
+
+    DetailsVm.addToFavorites = function () {
+      var favDetails = {};
+      favDetails.type = DetailsVm.type;
+      favDetails.id =  DetailsVm.id;
+      favDetails.picture = DetailsVm.poster_path;
+      favDetails.title = DetailsVm.original_title;
+      Details.addToFavorites(favDetails);
+    };
+
+    DetailsVm.addToWatchedList = function () {
+      var watchDetails = {};
+      watchDetails.type = DetailsVm.type;
+      watchDetails.id =  DetailsVm.id;
+      watchDetails.picture = DetailsVm.poster_path;
+      watchDetails.title = DetailsVm.original_title;
+      Details.addToWatchedList(watchDetails);
+    };
   });
-
-
-
