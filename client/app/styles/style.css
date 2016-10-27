@@ -79,7 +79,12 @@ li {
   font-size: 18px;
 }
 
-.profile-pic {
+.profile-pic-sm {
   height: 100px;
+  width: auto;
+}
+
+.profile-pic-lg {
+  height: 180px;
   width: auto;
 }

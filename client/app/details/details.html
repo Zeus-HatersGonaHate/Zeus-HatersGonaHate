@@ -87,8 +87,8 @@
      Currently no reviews...want to add one?
    </div>
    <div class="reviewDetails" ng-repeat="review in DetailsVm.reviews">
-     <h5>Username: {{DetailsVm.users[review.user_id].username}}</h5>
-     <img src="{{DetailsVm.users[review.user_id].profilePicLink}}"/>
+     <h5>Username: <a href="#/user/{{DetailsVm.users[review.user_id].username}}">{{DetailsVm.users[review.user_id].username}}</a></h5>
+     <a href="#/user/{{DetailsVm.users[review.user_id].username}}"><img class="profile-pic-sm" src="{{DetailsVm.users[review.user_id].profilePicLink}}"/></a>
      <a href="#/review/{{review._id}}"><strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small></a>
       <p>Review: {{review.content}}
         <br>
