@@ -1,4 +1,4 @@
-<div>
+<div ng-if="DetailsVm.type === 'movie' || DetailsVm.type === 'tv'">
  <div class='moviePoster'>
     <!-- If no poster_path, show dummy image -->
     <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w500/{{DetailsVm.poster_path}}" alt="">
@@ -103,3 +103,20 @@
    </div>
  </div>
 </div>
+<div ng-if="DetailsVm.type === 'person'">
+  <div class="portrait">
+    <img src="http://image.tmdb.org/t/p/w396/{{DetailsVm.data.profile_path}}" alt="">
+  </div>
+  <div class="actor-info">
+    <h3>{{DetailsVm.data.name}}</h3>
+    <h5>Birth Date: {{DetailsVm.data.birthday}} in {{DetailsVm.data.place_of_birth}}</h5>
+    <h5>Biography</h5>
+    <p>{{DetailsVm.data.biography}}</p>
+  </div>
+</div>
+
+
+
+
+
+
