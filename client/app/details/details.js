@@ -1,5 +1,5 @@
 angular.module('zeus.details', [])
-  .controller('DetailsController', function(Details, $routeParams) {
+  .controller('DetailsController', function(Details, $stateParams) {
     // capture the value of `this` in a variable vm
     // vm stands for view model and is a replacement for $scope
     var DetailsVm = this;
@@ -8,8 +8,8 @@ angular.module('zeus.details', [])
     DetailsVm.users = {};
     DetailsVm.currentUser = JSON.parse(localStorage.getItem('profile'));
     DetailsVm.hasReview = false;
-    DetailsVm.type = $routeParams.type; //media type, movie or tv
-    DetailsVm.id = $routeParams.id; //id on themoviedb api for retrieving the movie/tv info
+    DetailsVm.type = $stateParams.type; //media type, movie or tv
+    DetailsVm.id = $stateParams.id; //id on themoviedb api for retrieving the movie/tv info
     Details.getDetails(DetailsVm.type, DetailsVm.id).then(function(data) {
       DetailsVm.data = data; // save all movie details for the requested movie
 
