@@ -1,0 +1,9 @@
+<a href="#/details/tv/{{ latestshow.id }}">
+  <li>
+    <div class="poster-container">
+      <!-- If no poster_path, show dummy image -->
+      <img ng-hide="!latestshow.poster_path" src="http://image.tmdb.org/t/p/w185/{{latestshow.poster_path}}" alt="">
+      <img ng-show="!latestshow.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{latestshow.name}}" alt="">
+    </div>
+  </li>
+</a>

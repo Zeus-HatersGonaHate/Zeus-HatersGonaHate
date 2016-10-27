@@ -2,71 +2,31 @@
   <div class="media-container">
     <h2>Popular Movies</h2>
       <ul ng-init="LandingVm.fetchPopularMovies()" class="media-list">
-        <a ng-repeat="popularmovie in LandingVm.popularmovies | limitTo:10" href="#/details/movie/{{ popularmovie.id }}">
-          <li>
-            <div class="poster-container">
-              <!-- If no poster_path, show dummy image -->
-              <img ng-hide="!popularmovie.poster_path" src="http://image.tmdb.org/t/p/w185/{{popularmovie.poster_path}}" alt="">
-              <img ng-show="!popularmovie.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{popularmovie.name}}" alt="">
-            </div>
-          </li>
-        </a>
+        <popular-movie ng-repeat="popularmovie in LandingVm.popularmovies | limitTo:10"></popular-movie>
       </ul>
   </div>
   <div class="media-container">
     <h2>Latest Movies</h2>
       <ul ng-init="LandingVm.fetchLatestMovies()" class="media-list">
-        <a ng-repeat="latestmovie in LandingVm.latestmovies | limitTo:10" href="#/details/movie/{{ latestmovie.id }}">
-          <li>
-            <div class="poster-container">
-              <!-- If no poster_path, show dummy image -->
-              <img ng-hide="!latestmovie.poster_path" src="http://image.tmdb.org/t/p/w185/{{latestmovie.poster_path}}" alt="">
-              <img ng-show="!latestmovie.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{latestmovie.name}}" alt="">
-            </div>
-          </li>
-        </a>
+        <latest-movie ng-repeat="latestmovie in LandingVm.latestmovies | limitTo:10"></latest-movie>
       </ul>
   </div>
   <div class="media-container">
     <h2>Upcoming Movies</h2>
       <ul ng-init="LandingVm.fetchUpcomingMovies()" class="media-list">
-        <a ng-repeat="upcomingmovie in LandingVm.upcomingmovies | limitTo:10" href="#/details/movie/{{ upcomingmovie.id }}">
-          <li>
-            <div class="poster-container">
-              <!-- If no poster_path, show dummy image -->
-              <img ng-hide="!upcomingmovie.poster_path" src="http://image.tmdb.org/t/p/w185/{{upcomingmovie.poster_path}}" alt="">
-              <img ng-show="!upcomingmovie.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{upcomingmovie.name}}" alt="">
-            </div>
-          </li>
-        </a>
+        <upcoming-movie ng-repeat="upcomingmovie in LandingVm.upcomingmovies | limitTo:10"></upcoming-movie>
       </ul>
   </div>
   <div class="media-container">
     <h2>Popular TV Shows</h2>
       <ul ng-init="LandingVm.fetchPopularShows()" class="media-list">
-        <a ng-repeat="popularshow in LandingVm.popularshows | limitTo:10" href="#/details/tv/{{ popularshow.id }}">
-          <li>
-            <div class="poster-container">
-              <!-- If no poster_path, show dummy image -->
-              <img ng-hide="!popularshow.poster_path" src="http://image.tmdb.org/t/p/w185/{{popularshow.poster_path}}" alt="">
-              <img ng-show="!popularshow.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{popularshow.name}}" alt="">
-            </div>
-          </li>
-        </a>
+        <popular-show ng-repeat="popularshow in LandingVm.popularshows | limitTo:10"></popular-show>
       </ul>
   </div>
   <div class="media-container">
     <h2>TV Shows Airing Today</h2>
     <ul ng-init="LandingVm.fetchLatestShows()" class="media-list">
-      <a ng-repeat="latestshow in LandingVm.latestshows | limitTo:10" href="#/details/tv/{{ latestshow.id }}">
-        <li>
-          <div class="poster-container">
-            <!-- If no poster_path, show dummy image -->
-            <img ng-hide="!latestshow.poster_path" src="http://image.tmdb.org/t/p/w185/{{latestshow.poster_path}}" alt="">
-            <img ng-show="!latestshow.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{latestshow.name}}" alt="">
-          </div>
-        </li>
-      </a>
+      <latest-show ng-repeat="latestshow in LandingVm.latestshows | limitTo:10"></latest-show>
     </ul>
   </div>
 </div>
