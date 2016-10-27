@@ -221,7 +221,6 @@ angular.module('zeus.services', [])
 
   return {
     getAccountReviews : getAccountReviews,
-    getAccountViewed : getAccountViewed,
     getAccountFavorites : getAccountFavorites
   };
 })
