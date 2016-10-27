@@ -1,4 +1,4 @@
-var User = require('../users/UserModel.js');
+var User = require('../users/userModel.js');
 
 //Function to randomly generate username based on email or full name
 var usernameMaker = function(data, callback) {

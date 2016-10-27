@@ -1,5 +1,5 @@
 var Review = require('../reviews/reviewModel.js');
-var User = require('../users/UserModel.js');
+var User = require('../users/userModel.js');
 
 var findUserInfoById = function(reviews, callback){
   var userObj = {};
