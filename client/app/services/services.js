@@ -46,7 +46,7 @@ angular.module('zeus.services', [])
     .then(function(res) {
       return res.data;
     });
-  }
+  };
 
   var deleteReview = function(id){
     return $http({
@@ -56,7 +56,7 @@ angular.module('zeus.services', [])
     .then(function(res) {
       return res;
     });
-  }
+  };
 
   var getShowtimes = function(date, zip) {
     return $http ({
@@ -177,8 +177,8 @@ angular.module('zeus.services', [])
     .success(function (data) {
       //Assign profile to variable
       userData.profile = data[0];
-    })
-};
+    });
+  };
 
   var editUser = function (data) {
     //attatch the id of the currently logged in profile
@@ -200,18 +200,7 @@ angular.module('zeus.services', [])
   var getAccountReviews = function(username) {
     return $http({
       method: 'GET',
-      url: '/account/reviews',
-      data: username
-    })
-      .then(function(res) {
-        return res;
-      });
-  };
-
-  var getAccountViewed = function(username) {
-    return $http({
-      method: 'GET',
-      url: '/account/viewed',
+      url: '/user/' + username,
       data: username
     })
       .then(function(res) {
@@ -222,7 +211,7 @@ angular.module('zeus.services', [])
   var getAccountFavorites = function(username) {
     return $http({
       method: 'GET',
-      url: '/account/favorites',
+      url: '/user/' + username,
       data: username
     })
       .then(function(res) {
