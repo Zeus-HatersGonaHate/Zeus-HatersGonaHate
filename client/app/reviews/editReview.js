@@ -2,12 +2,17 @@ angular.module('zeus.editReview', [])
 .controller('editReviewController', function($location, $stateParams, Details) {
   var EditReviewVm = this;
   var id = $stateParams.id;
+  var currentUser = JSON.parse(localStorage.getItem('profile')).user_id;
   EditReviewVm.title = '';
   EditReviewVm.content = '';
   EditReviewVm.rating = '';
 
   Details.getReviewById(id)
     .then(function(reviewInfo){
+      if(currentUser !== reviewInfo.review.user_id){
+        return EditReviewVm.cancel();
+      }
+
       EditReviewVm.title = reviewInfo.review.title;
       EditReviewVm.content = reviewInfo.review.content;
       EditReviewVm.rating = reviewInfo.review.rating;
