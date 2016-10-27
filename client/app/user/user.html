@@ -1,4 +1,13 @@
 <div ng-controller="UserController">
+  <!-- User profile menu  -->
+  <div class="user-menu">
+    <ul class="user-menu">
+      <li>Overview</li>
+      <li>Reviews</li>
+      <li>Favorites</li>
+    </ul>
+  </div>
+
   <!-- Left column (static user info) -->
   <div class="user-details">
     <img class="profile-pic" src={{profilePic}} alt="profile pic goes here">
@@ -9,9 +18,10 @@
     <p>Location: {{location}}</p>
   </div>
 
-
   <!-- Overview view -->
   <div class="user-overview-view">
+    <h5>About {{username}}</h5>
+    <p>{{about}}</p>
     <h5>{{username}}'s latest reviews:</h5>
     <ul class="user-reviews">
       <li ng-repeat="review in reviews | limitTo:3">
@@ -24,13 +34,21 @@
 
   <!-- Favorites view -->
   <div class="user-favorites-view">
+    <div class="favorite-type-selector">
+      <ul class="favorite-type-selector">
+        <li>Movies</li>
+        <li>TV shows</li>
+      </ul>
+    </div>
+
     <h5>Favorite movies:</h5>
     <ul class="user-favorites-movies">
-      <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'movie'}}">Placeholder: A favorited movie show</li>
+      <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'movie'}}">{{favorite.poster_path}}</li>
     </ul>
+
     <h5>Favorite TV shows:</h5>
     <ul class="user-favorites-tv">
-      <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'tv'}}">Placeholder: A favorited tv show</li>
+      <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'tv'}}">{{favorite.poster_path}}</li>
     </ul>
   </div>
 
