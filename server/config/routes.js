@@ -27,6 +27,8 @@ module.exports = function (app, express) {
   //User Routes
   app.get('/user/:username', userController.getUserByUsername);
 
+  app.get('/user/reviews/:userId', reviewController.getUserReviews);
+
   app.post('/user', userController.postUser);
 
   app.put('/user/edit', authCheck, userController.editUser);
