@@ -2,7 +2,7 @@
   <div class="media-container">
     <h2>Popular Movies</h2>
       <ul ng-init="fetchPopularMovies()" class="media-list">
-        <a ng-repeat="popularmovie in popularmovies | limitTo:10" href="#/movie/{{ popularmovie.id }}">
+        <a ng-repeat="popularmovie in popularmovies | limitTo:10" href="#/details/movie/{{ popularmovie.id }}">
           <li>
             <div class="poster-container">
               <!-- If no poster_path, show dummy image -->
@@ -16,7 +16,7 @@
   <div class="media-container">
     <h2>Latest Movies</h2>
       <ul ng-init="fetchLatestMovies()" class="media-list">
-        <a ng-repeat="latestmovie in latestmovies | limitTo:10" href="#/movie/{{ latestmovie.id }}">
+        <a ng-repeat="latestmovie in latestmovies | limitTo:10" href="#/details/movie/{{ latestmovie.id }}">
           <li>
             <div class="poster-container">
               <!-- If no poster_path, show dummy image -->
@@ -30,7 +30,7 @@
   <div class="media-container">
     <h2>Upcoming Movies</h2>
       <ul ng-init="fetchUpcomingMovies()" class="media-list">
-        <a ng-repeat="upcomingmovie in upcomingmovies | limitTo:10" href="#/movie/{{ upcomingmovie.id }}">
+        <a ng-repeat="upcomingmovie in upcomingmovies | limitTo:10" href="#/details/movie/{{ upcomingmovie.id }}">
           <li>
             <div class="poster-container">
               <!-- If no poster_path, show dummy image -->
@@ -44,7 +44,7 @@
   <div class="media-container">
     <h2>Popular TV Shows</h2>
       <ul ng-init="fetchPopularShows()" class="media-list">
-        <a ng-repeat="popularshow in popularshows | limitTo:10" href="#/tv/{{ popularshow.id }}">
+        <a ng-repeat="popularshow in popularshows | limitTo:10" href="#/details/tv/{{ popularshow.id }}">
           <li>
             <div class="poster-container">
               <!-- If no poster_path, show dummy image -->
@@ -58,7 +58,7 @@
   <div class="media-container">
     <h2>TV Shows Airing Today</h2>
     <ul ng-init="fetchLatestShows()" class="media-list">
-      <a ng-repeat="latestshow in latestshows | limitTo:10" href="#/tv/{{ latestshow.id }}">
+      <a ng-repeat="latestshow in latestshows | limitTo:10" href="#/details/tv/{{ latestshow.id }}">
         <li>
           <div class="poster-container">
             <!-- If no poster_path, show dummy image -->

@@ -70,9 +70,10 @@ angular.module('zeus.details', [])
     };
 
     $scope.vote = function(review, vote){
-      Details.upvote(review._id, vote, function(reviewInfo){
-        review.voteCount = reviewInfo.data.voteCount;
-        review.votes = reviewInfo.data.votes
+      Details.upvote(review._id, vote)
+        .then(function(reviewInfo){
+        review.voteCount = reviewInfo.voteCount;
+        review.votes = reviewInfo.votes
       });
     };
 

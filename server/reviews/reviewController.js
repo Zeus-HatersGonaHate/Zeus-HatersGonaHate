@@ -125,6 +125,24 @@ module.exports = {
           })
         }
       });
+  },
+
+  getReviewById: function (req, res, next) {
+    var id = req.params.reviewId;
+    Review.findById(id)
+      .exec(function(err, review){
+        if(err){
+          console.log(err);
+        } else {
+          User.findOne({user_id: review.user_id})
+            .exec(function(err, userInfo){
+              var data = {}
+              data.review = review;
+              data.user = userInfo;
+              res.json(data);
+            });
+        }
+      });
   }
 
 };

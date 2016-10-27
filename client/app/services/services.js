@@ -27,15 +27,24 @@ angular.module('zeus.services', [])
       return res;
     });
   };
+  var getReviewById = function(id) {
+    return $http({
+      method: 'GET',
+      url: '/review/' + id
+    })
+    .then(function(res){
+      return res.data;
+    });
+  }
 
-  var upvote = function(id, vote, callback) {
+  var upvote = function(id, vote) {
     return $http({
       method: 'PUT',
       url: '/review/count/' + id,
       data: {voteCount: vote}
     })
     .then(function(res) {
-      callback(res);
+      return res.data;
     });
   }
 
@@ -73,6 +82,7 @@ angular.module('zeus.services', [])
     getDetails: getDetails,
     getReviews: getReviews,
     postReview: postReview,
+    getReviewById: getReviewById,
     upvote: upvote,
     deleteReview: deleteReview,
     getShowtimes: getShowtimes,
