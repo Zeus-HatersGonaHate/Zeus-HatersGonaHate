@@ -15,6 +15,10 @@
   color: #fff;
 }
 
+.user-menu li {
+  display: inline;
+}
+
 a {
   text-decoration: none;
 }

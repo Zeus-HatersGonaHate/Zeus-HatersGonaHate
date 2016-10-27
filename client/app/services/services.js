@@ -46,7 +46,7 @@ angular.module('zeus.services', [])
     .then(function(res) {
       return res.data;
     });
-  }
+  };
 
   var deleteReview = function(id){
     return $http({
@@ -56,7 +56,7 @@ angular.module('zeus.services', [])
     .then(function(res) {
       return res;
     });
-  }
+  };
 
   var getShowtimes = function(date, zip) {
     return $http ({
@@ -177,8 +177,8 @@ angular.module('zeus.services', [])
     .success(function (data) {
       //Assign profile to variable
       userData.profile = data[0];
-    })
-};
+    });
+  };
 
   var editUser = function (data) {
     //attatch the id of the currently logged in profile
@@ -190,50 +190,37 @@ angular.module('zeus.services', [])
     });
   };
 
+  var getUserId = function(username) {
+    return $http({
+      method: 'GET',
+      url: '/user/' + username
+    })
+      .then(function(res) {
+        return res.data[0];
+      });
+  };
+
+  var getUserReviews = function(userIdAuth) {
+    return $http({
+      method: 'GET',
+      url: '/user/reviews/' + userIdAuth
+    })
+      .then(function(res) {
+        return res.data;
+      });
+  };
+
   return {
     checkUser: checkUser,
-    editUser: editUser
+    getUserId : getUserId,
+    editUser: editUser,
+    getUserReviews : getUserReviews
   };
 })
 
 .factory('Account', function($http) {
-  var getAccountReviews = function(username) {
-    return $http({
-      method: 'GET',
-      url: '/account/reviews',
-      data: username
-    })
-      .then(function(res) {
-        return res;
-      });
-  };
-
-  var getAccountViewed = function(username) {
-    return $http({
-      method: 'GET',
-      url: '/account/viewed',
-      data: username
-    })
-      .then(function(res) {
-        return res;
-      });
-  };
-
-  var getAccountFavorites = function(username) {
-    return $http({
-      method: 'GET',
-      url: '/account/favorites',
-      data: username
-    })
-      .then(function(res) {
-        return res;
-      });
-  };
 
   return {
-    getAccountReviews : getAccountReviews,
-    getAccountViewed : getAccountViewed,
-    getAccountFavorites : getAccountFavorites
   };
 })
 
