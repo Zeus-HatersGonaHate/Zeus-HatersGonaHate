@@ -1,32 +1,32 @@
-<div ng-controller="UserController">
+<div>
   <!-- User profile menu  -->
   <div class="user-menu">
     <ul class="user-menu">
-      <a href="/#/user/{{username}}" ng-click="currentView = 'overview'"><li>Overview</li></a>
-      <a href="/#/user/{{username}}/reviews" ng-click="currentView = 'reviews'"><li>Reviews</li></a>
-      <a href="/#/user/{{username}}/favorites" ng-click="currentView = 'favorites'"><li>Favorites</li></a>
+      <a href="/#/user/{{UserVm.username}}" ng-click="UserVm.currentView = 'overview'"><li>Overview</li></a>
+      <a href="/#/user/{{UserVm.username}}" ng-click="UserVm.currentView = 'reviews'"><li>Reviews</li></a>
+      <a href="/#/user/{{UserVm.username}}" ng-click="UserVm.currentView = 'favorites'"><li>Favorites</li></a>
     </ul>
   </div>
 
   <!-- Left column (static user info) -->
   <div class="user-details">
-    <img class="profile-pic" src={{profilePic}} alt="profile pic goes here">
+    <img class="profile-pic" src={{UserVm.profilePic}} alt="profile pic goes here">
     <h5>User details</h5>
-    <p>Username: {{username}}</p>
-    <p>Email: {{email}}</p>
-    <p>Joined on: {{joined_on}}</p>
-    <p>Location: {{location}}</p>
+    <p>Username: {{UserVm.username}}</p>
+    <p>Email: {{UserVm.email}}</p>
+    <p>Joined on: {{UserVm.joined_on}}</p>
+    <p>Location: {{UserVm.location}}</p>
   </div>
 
   <ui-view></ui-view>
    <!-- Overview view -->
-  <user-overview ng-show="currentView==='overview'"></user-overview>
+  <user-overview ng-show="UserVm.currentView==='overview'"></user-overview>
 
   <!-- Reviews view -->
-  <user-reviews ng-show="currentView==='reviews'"></user-reviews>
+  <user-reviews ng-show="UserVm.currentView==='reviews'"></user-reviews>
 
   <!-- Favorites view -->
-  <user-favorites ng-show="currentView==='favorites'"></user-favorites>
+  <user-favorites ng-show="UserVm.currentView==='favorites'"></user-favorites>
 
 
 </div>
