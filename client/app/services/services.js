@@ -211,23 +211,11 @@ angular.module('zeus.services', [])
       });
   };
 
-  var getUserFavorites = function(username) {
-    return $http({
-      method: 'GET',
-      url: '/user/' + username,
-      data: username
-    })
-      .then(function(res) {
-        return res;
-      });
-  };
-
   return {
     checkUser: checkUser,
     getUserId : getUserId,
     editUser: editUser,
-    getUserReviews : getUserReviews,
-    getUserFavorites : getUserFavorites
+    getUserReviews : getUserReviews
   };
 })
 
