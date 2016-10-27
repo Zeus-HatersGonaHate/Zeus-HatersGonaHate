@@ -11,7 +11,7 @@
 
 
   <!-- Overview view -->
-  <div class="user-overview">
+  <div class="user-overview-view">
     <h5>{{username}}'s latest reviews:</h5>
     <ul class="user-reviews">
       <li ng-repeat="review in reviews | limitTo:3">
@@ -20,9 +20,17 @@
         <p class='review-content'>{{review.content | limitTo: 140}}<span ng-if="review.content.length > 140"><a href="../#/{{review.type}}/{{review.typeId}}">...read more</a></span></p> <!-- Limits content to first 140 characters, only add ellipses when needed -->
       </li>
     </ul>
-    <h5>Favorites:</h5>
-    <ul class="user-favorites">
-      <li ng-repeat="favorite in favorites | limitTo:10">Placeholder: A favorited show</li>
+  </div>
+
+  <!-- Favorites view -->
+  <div class="user-favorites-view">
+    <h5>Favorite movies:</h5>
+    <ul class="user-favorites-movies">
+      <li ng-repeat="favorite in favorites">Placeholder: A favorited movie show</li>
+    </ul>
+    <h5>Favorite TV shows:</h5>
+    <ul class="user-favorites-tv">
+      <li ng-repeat="favorite in favorites">Placeholder: A favorited tv show</li>
     </ul>
   </div>
 
