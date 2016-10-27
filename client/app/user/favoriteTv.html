@@ -1,0 +1,12 @@
+<div class="media-container">
+  <h5>Favorite TV shows:</h5>
+  <ul class="user-favorites-tv media-list">
+    <li class="media-list" ng-show="favorite.type === 'tv'" ng-repeat="favorite in UserVm.favorites">
+      <div class="poster-container">
+        <!-- If no poster_path, show dummy image -->
+        <img ng-hide="!favorite.picture" src="http://image.tmdb.org/t/p/w185{{favorite.picture}}" alt="">
+        <img ng-show="!favorite.picture" src="http://dummyimage.com/185x275/000/fff&text={{favorite.title}}" alt="">
+      </div>
+    </li>
+  </ul>
+</div>
