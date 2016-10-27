@@ -5,7 +5,7 @@
 <div class="review">
   <h4>{{ReviewsVm.review.title}}</h4>
   <p>
-    by: {{ReviewsVm.user.username}} | {{ReviewsVm.review.date}}
+    by: <a href="#/user/{{ReviewsVm.user.username}}">{{ReviewsVm.user.username}}</a> | {{ReviewsVm.review.date}}
     <br/>
     Rating: {{ReviewsVm.review.rating}}
   </p>
