@@ -1,21 +1,23 @@
 angular.module('zeus.user', [])
-.controller('UserController', function($scope, User, $stateParams) {
-  $scope.currentView = 'overview';
-  $scope.username = $stateParams.username;
+.controller('UserController', function(User, $stateParams) {
+  var UserVm = this;
+  UserVm.currentView = 'overview';
+  UserVm.currentFavoriteView = 'movies';
+  UserVm.username = $stateParams.username;
 
   //set up user information based on username given in route
   User.getUserId($stateParams.username)
     .then(function(user) {
       var userObj = user;
-      $scope.userId = userObj._id;
-      $scope.userIdAuth = userObj.user_id;
-      $scope.about = userObj.about;
-      $scope.profilePic = userObj.profilePicLink;
-      $scope.email = userObj.email;
-      $scope.favorites = userObj.favorites;
-      User.getUserReviews($scope.userIdAuth)
+      UserVm.userId = userObj._id;
+      UserVm.userIdAuth = userObj.user_id;
+      UserVm.about = userObj.about;
+      UserVm.profilePic = userObj.profilePicLink;
+      UserVm.email = userObj.email;
+      UserVm.favorites = userObj.favorites;
+      User.getUserReviews(UserVm.userIdAuth)
         .then(function(reviews) {
-          $scope.reviews = reviews;
+          UserVm.reviews = reviews;
         });
     });
 })
