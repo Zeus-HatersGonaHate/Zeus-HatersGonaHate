@@ -26,11 +26,11 @@
   <div class="user-favorites-view">
     <h5>Favorite movies:</h5>
     <ul class="user-favorites-movies">
-      <li ng-repeat="favorite in favorites">Placeholder: A favorited movie show</li>
+      <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'movie'}}">Placeholder: A favorited movie show</li>
     </ul>
     <h5>Favorite TV shows:</h5>
     <ul class="user-favorites-tv">
-      <li ng-repeat="favorite in favorites">Placeholder: A favorited tv show</li>
+      <li ng-repeat="favorite in favorites" ng-if="{{favorite.type === 'tv'}}">Placeholder: A favorited tv show</li>
     </ul>
   </div>
 
