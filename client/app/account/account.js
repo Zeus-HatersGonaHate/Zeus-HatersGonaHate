@@ -1,4 +1,4 @@
 angular.module('zeus.account', [])
-  .controller('AccountController', function($scope, Account, $routeParams) {
+  .controller('AccountController', function($scope, Account, $stateParams) {
 
   });
