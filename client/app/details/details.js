@@ -1,31 +1,34 @@
 angular.module('zeus.details', [])
-  .controller('DetailsController', function($scope, Details, $routeParams) {
-    $scope.data = {};
-    $scope.reviews = {};
-    $scope.users = {}
-    $scope.currentUser = JSON.parse(localStorage.getItem('profile'))
-    $scope.hasReview = false;
-    $scope.type = $routeParams.type; //media type, movie or tv
-    $scope.id = $routeParams.id; //id on themoviedb api for retrieving the movie/tv info
-    Details.getDetails($scope.type, $scope.id).then(function(data) {
-      $scope.data = data; // save all movie details for the requested movie
+  .controller('DetailsController', function(Details, $routeParams) {
+    // capture the value of `this` in a variable vm
+    // vm stands for view model and is a replacement for $scope
+    var DetailsVm = this;
+    DetailsVm.data = {};
+    DetailsVm.reviews = {};
+    DetailsVm.users = {};
+    DetailsVm.currentUser = JSON.parse(localStorage.getItem('profile'));
+    DetailsVm.hasReview = false;
+    DetailsVm.type = $routeParams.type; //media type, movie or tv
+    DetailsVm.id = $routeParams.id; //id on themoviedb api for retrieving the movie/tv info
+    Details.getDetails(DetailsVm.type, DetailsVm.id).then(function(data) {
+      DetailsVm.data = data; // save all movie details for the requested movie
 
       //convenience properties for shorthand in html views
-      $scope.original_title = $scope.data.original_title;
-      $scope.original_name = $scope.data.original_name;
-      $scope.poster_path = $scope.data.poster_path;
-      $scope.overview = $scope.data.overview;
+      DetailsVm.original_title = DetailsVm.data.original_title;
+      DetailsVm.original_name = DetailsVm.data.original_name;
+      DetailsVm.poster_path = DetailsVm.data.poster_path;
+      DetailsVm.overview = DetailsVm.data.overview;
       //loads actor info on details page load
-      Details.getActors($scope.original_title).then(function(data) {
-        $scope.actors = data.Actors.split(',');
+      Details.getActors(DetailsVm.original_title).then(function(data) {
+        DetailsVm.actors = data.Actors.split(',');
       });
     });
     var getReviews = function() {
-      Details.getReviews($scope.type, $scope.id).then(function (reviews) {
-        $scope.reviews = reviews.data.reviews;
-        $scope.users = reviews.data.users;
-        if ($scope.reviews.length > 0) {
-          $scope.hasReview = true;
+      Details.getReviews(DetailsVm.type, DetailsVm.id).then(function (reviews) {
+        DetailsVm.reviews = reviews.data.reviews;
+        DetailsVm.users = reviews.data.users;
+        if (DetailsVm.reviews.length > 0) {
+          DetailsVm.hasReview = true;
         }
         return reviews.data;
       });
@@ -34,20 +37,20 @@ angular.module('zeus.details', [])
     getReviews();
 
     // adds a review to the database
-    $scope.post = function() {
+    DetailsVm.post = function() {
       var info = {
-        title: $scope.reviewTitle,
-        content: $scope.reviewBody,
-        rating: $scope.reviewRating
+        title: DetailsVm.reviewTitle,
+        content: DetailsVm.reviewBody,
+        rating: DetailsVm.reviewRating
       };
-      Details.postReview($scope.type, $scope.id, info).then(function(review) {
-        $scope.reviews.unshift(review.data.reviews);
-        $scope.users[review.data.users.user_id] = review.data.users;
-        $scope.hasReview = true;
+      Details.postReview(DetailsVm.type, DetailsVm.id, info).then(function(review) {
+        DetailsVm.reviews.unshift(review.data.reviews);
+        DetailsVm.users[review.data.users.user_id] = review.data.users;
+        DetailsVm.hasReview = true;
         //Clear input fields
-        $scope.reviewTitle = '';
-        $scope.reviewBody = '';
-        $scope.reviewRating = '';
+        DetailsVm.reviewTitle = '';
+        DetailsVm.reviewBody = '';
+        DetailsVm.reviewRating = '';
       });
     };
 
@@ -56,31 +59,41 @@ angular.module('zeus.details', [])
     var year = today.getFullYear().toString();
     var month = (today.getMonth() + 1).toString();
     var day = today.getDate().toString();
-    $scope.fullDate = year + '-' + month + '-' + day;
+    DetailsVm.fullDate = year + '-' + month + '-' + day;
 
-    $scope.zip = '';
+    DetailsVm.zip = '';
 
     //function is called when the user submits a zip code to get local showtimes
-    $scope.getShowtimes = function() {
-      Details.getShowtimes($scope.fullDate, $scope.zip).then(function(showtimes) {
-        $scope.showtimes = showtimes;
-        console.log(showtimes);
+    DetailsVm.getShowtimes = function() {
+      Details.getShowtimes(DetailsVm.fullDate, DetailsVm.zip).then(function(showtimes) {
+        DetailsVm.showtimes = showtimes;
+        var nowPlaying = [];
+        if (showtimes) {
+          showtimes.forEach(function(showtime) {
+            nowPlaying.push(showtime.title);
+          });
+          if (!nowPlaying.includes(DetailsVm.original_title)) {
+            DetailsVm.hasNoShowtime = true;
+          }
+        } else {
+          DetailsVm.hasNoShowtime = true;
+        }
       });
-      $scope.zip = '';
+      DetailsVm.zip = '';
     };
 
-    $scope.vote = function(review, vote){
+    DetailsVm.vote = function(review, vote) {
       Details.upvote(review._id, vote)
-        .then(function(reviewInfo){
-        review.voteCount = reviewInfo.voteCount;
-        review.votes = reviewInfo.votes
-      });
+        .then(function(reviewInfo) {
+          review.voteCount = reviewInfo.voteCount;
+          review.votes = reviewInfo.votes;
+        });
     };
 
-    $scope.delete = function(review){
+    DetailsVm.delete = function(review) {
       Details.deleteReview(review._id);
-      var index = $scope.reviews.indexOf(review)
-      $scope.reviews.splice(index, 1)
+      var index = DetailsVm.reviews.indexOf(review);
+      DetailsVm.reviews.splice(index, 1);
     };
   });
 

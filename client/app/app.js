@@ -21,7 +21,7 @@ angular.module('zeus', [
   };
 
   $scope.login = authService.login;
-  $scope.logout = function(){
+  $scope.logout = function() {
     authService.logout();
   };
 
@@ -41,15 +41,18 @@ angular.module('zeus', [
   $routeProvider
     .when('/', {
       templateUrl: 'app/landing/landing.html',
-      controller: 'LandingController'
+      controller: 'LandingController',
+      controllerAs: 'LandingVm'
     })
     .when('/results/:search/:page', {
       templateUrl: 'app/results/results.html',
-      controller: 'ResultsController'
+      controller: 'ResultsController',
+      controllerAs: 'ResultsVm'
     })
     .when('/details/:type/:id', {
       templateUrl: 'app/details/details.html',
-      controller: 'DetailsController'
+      controller: 'DetailsController',
+      controllerAs: 'DetailsVm'
     })
     .when('/user', {
       templateUrl: 'app/user/user.html',
@@ -83,7 +86,7 @@ angular.module('zeus', [
 
   jwtOptionsProvider.config({
     tokenGetter: ['options', function (options) {
-      if (options && options.url.substr(options.url.length - 5) == '.html') {
+      if (options && options.url.substr(options.url.length - 5) === '.html') {
         return null;
       }
       return localStorage.getItem('id_token');
@@ -96,19 +99,19 @@ angular.module('zeus', [
 })
 
 .run(function ($rootScope, authService, lock, authManager) {
-    // Put the authService on $rootScope so its methods
-    // can be accessed from the nav bar
-    $rootScope.authService = authService;
+  // Put the authService on $rootScope so its methods
+  // can be accessed from the nav bar
+  $rootScope.authService = authService;
 
-    // Register the authentication listener that is
-    // set up in auth.service.js
-    authService.registerAuthenticationListener();
+  // Register the authentication listener that is
+  // set up in auth.service.js
+  authService.registerAuthenticationListener();
 
-    // Use the authManager from angular-jwt to check for
-    // the user's authentication state when the page is
-    // refreshed and maintain authentication
-    authManager.checkAuthOnRefresh();
+  // Use the authManager from angular-jwt to check for
+  // the user's authentication state when the page is
+  // refreshed and maintain authentication
+  authManager.checkAuthOnRefresh();
 
-    // Register synchronous hash parser
-    lock.interceptHash();
+  // Register synchronous hash parser
+  lock.interceptHash();
 });
