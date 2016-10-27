@@ -2,11 +2,13 @@
   <h5>Favorite movies:</h5>
   <ul class="user-favorites-movies media-list">
     <li class="media-list" ng-show="favorite.type === 'movie'" ng-repeat="favorite in UserVm.favorites">
-      <div class="poster-container">
+      <a href="../#/details/{{favorite.type}}/{{favorite.id}}">
+        <div class="poster-container">
         <!-- If no poster_path, show dummy image -->
-        <img ng-hide="!favorite.picture" src="http://image.tmdb.org/t/p/w185{{favorite.picture}}" alt="">
-        <img ng-show="!favorite.picture" src="http://dummyimage.com/185x275/000/fff&text={{favorite.title}}" alt="">
-      </div>
+          <img ng-hide="!favorite.picture" src="http://image.tmdb.org/t/p/w185{{favorite.picture}}" alt="">
+          <img ng-show="!favorite.picture" src="http://dummyimage.com/185x275/000/fff&text={{favorite.title}}" alt="">
+        </div>
+      </a>
     </li>
   </ul>
 </div>
