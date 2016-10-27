@@ -7,8 +7,7 @@
   </div>
 
   <div class="user-activity">
-    <h5>User activity</h5>
-    <h6>{{username}}'s latest reviews:</h6>
+    <h5>{{username}}'s latest reviews:</h5>
     <ul class="user-reviews">
       <li ng-repeat="review in reviews | limitTo:10">
         <p class='review-title'>{{review.title}}</p>
@@ -16,13 +15,9 @@
         <p class='review-content'>{{review.content | limitTo: 140}}<span ng-if="content.length > 140">...</span></p> <!-- Limits content to first 140 characters, only add ellipses when needed -->
       </li>
     </ul>
-    <h6>Favorites:</h6>
+    <h5>Favorites:</h5>
     <ul class="user-favorites">
       <li ng-repeat="favorite in favorites | limitTo:10">Placeholder: A favorited show</li>
-    </ul>
-    <h6>Recently viewed movies and TV shows:</h6>
-    <ul class="recently-viewed">
-      <li ng-repeat="viewed in recentlyViewed | limitTo:10"></li>
     </ul>
   </div>
 
