@@ -74,6 +74,37 @@ angular.module('zeus', [
     authenticate: false
   };
 
+  var userOverviewState = {
+    name: 'user.userOverview',
+    // parent: userState,
+    url: '/user/:username/',
+    templateUrl: 'app/user/userOverview.html',
+    controller: 'UserController',
+    //controllerAs: 'UserVm',  //need to set this up
+    authenticate: false
+  };
+
+  var userReviewsState = {
+    name: 'user.userReviews',
+    // parent: userState,
+    url: '/user/:username/reviews',
+    templateUrl: 'app/user/userReviews.html',
+    controller: 'UserController',
+    //controllerAs: 'UserVm',  //need to set this up
+    authenticate: false
+  };
+
+  var userFavoritesState = {
+    name: 'user.userFavorites',
+    // parent: userState,
+    url: '/user/:username/favorites',
+    templateUrl: 'app/user/userFavorites.html',
+    controller: 'UserController',
+    //controllerAs: 'UserVm',  //need to set this up
+    authenticate: false
+  };
+
+
   var accountState = {
     name: 'account',
     url: '/account',
@@ -98,6 +129,9 @@ angular.module('zeus', [
   $stateProvider.state(userState);
   $stateProvider.state(accountState);
   $stateProvider.state(reviewsState);
+  $stateProvider.state(userOverviewState);
+  $stateProvider.state(userReviewsState);
+  $stateProvider.state(userFavoritesState);
 
   // $urlRouterProvider.otherwise('/');
 
