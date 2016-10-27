@@ -1,7 +1,7 @@
 <div ng-controller="DetailsController">
  <div class='moviePoster'>
     <!-- If no poster_path, show dummy image -->
-    <img ng-hide="!poster_path" src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="">
+    <img ng-hide="!poster_path" src="http://image.tmdb.org/t/p/w500/{{poster_path}}" alt="">
     <img ng-show="!poster_path" src="http://dummyimage.com/185x275/000/fff&text={{original_name}}" alt="">
   <div class="details-col2">
   <!-- Movie showtimes -->
