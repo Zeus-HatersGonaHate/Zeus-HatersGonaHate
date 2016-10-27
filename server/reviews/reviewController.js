@@ -73,14 +73,18 @@ module.exports = {
 
   //deletes a review from the DB based on the reviewId parameter within the URL
   deleteReview: function (req, res, next) {
-    var id = req.params.reviewId;
-    Review.findByIdAndRemove(id, function (err, data) {
-        if (err) {
-          res.send(404);
+    var reviewId = req.params.reviewId;
+    var userId = req.user.sub;
+    Review.findById(reviewId)
+      .exec(function(err, reviewInfo){
+        if(reviewInfo.user_id === userId){
+          Review.findByIdAndRemove(reviewId, function (err, review) {
+           res.json(200);
+          });
         } else {
-          res.send(200);
+          res.send(401);
         }
-      });
+      })
   },
 
   //Allows a user to edit an existing review that they have posted.
@@ -100,10 +104,6 @@ module.exports = {
           res.send(401);
         }
       })
-
-    // Update({ _id: id }, {content: content, rating: rating, title: title}, {new: true}, function (err, review) {
-    //   res.json(review);
-    //});
   },
 
   // Upvote/downvote reviews total votes is the voteCount
