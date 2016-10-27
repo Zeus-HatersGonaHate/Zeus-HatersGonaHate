@@ -1,9 +1,10 @@
 <div ng-controller="DetailsController">
  <div class='moviePoster'>
     <!-- If no poster_path, show dummy image -->
-    <img ng-hide="!poster_path" src="http://image.tmdb.org/t/p/w185/{{poster_path}}" alt="">
+    <img ng-hide="!poster_path" src="http://image.tmdb.org/t/p/w500/{{poster_path}}" alt="">
     <img ng-show="!poster_path" src="http://dummyimage.com/185x275/000/fff&text={{original_name}}" alt="">
   <div class="details-col2">
+  <!-- Movie showtimes -->
      <div class="showtimes">
        <h5>Showtimes</h5>
          <form ng-submit="getShowtimes()">
@@ -24,6 +25,9 @@
      </div>
    </div>
  </div>
+
+
+ <!-- Movie details and info -->
  <div class="details-col1">
    <div class='movieDetails'>
       <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
@@ -46,43 +50,44 @@
         </a>
       </ul>
    </div>
- </div>
- <div class="postReview">
-  <h5>Reviews</h5>
-  <form ng-submit="post()">
-    <h6>Title</h6>
-    <input type="text" placeholder="Title" ng-model="reviewTitle" required>
-    <h6>Comment</6>
-    <textarea placeholder="Tell us what you thought..." ng-model="reviewBody" required></textarea>
-    <h6>Rating</h6>
-    <select ng-model="reviewRating" required>
-      <option selected disabled value="">--Select Rating--</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-    <input type="submit">
-  </form>
- </div>
+   <!-- Movie reviews -->
+   <div class="postReview">
+    <h5>Reviews</h5>
+    <form ng-submit="post()">
+      <h6>Title</h6>
+      <input type="text" placeholder="Title" ng-model="reviewTitle" required>
+      <h6>Comment</6>
+      <textarea placeholder="Tell us what you thought..." ng-model="reviewBody" required></textarea>
+      <h6>Rating</h6>
+      <select ng-model="reviewRating" required>
+        <option selected disabled value="">--Select Rating--</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input type="submit">
+    </form>
+   </div>
 
- <div class="noReviews" ng-if="!hasReview">
-   Currently no reviews...want to add one?
- </div>
- <div class="reviewDetails" ng-repeat="review in reviews">
-   <h5>Username: {{users[review.user_id].username}}</h5>
-   <img src="{{users[review.user_id].profilePicLink}}"/>
-   <strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small>
-    <p>Review: {{review.content}}
-      <br>
-      Date: {{review.date}}
-      <br>
-      <span ng-click="vote(review, 1)">Upvote: {{review.voteCount}}</span>
-      <span ng-click="vote(review, -1)">Downvote</span>
-      <br>
-      <span ng-if="currentUser !== null && currentUser.user_id === review.user_id" ng-click="">Edit</span>
-      <span ng-if="currentUser !== null && currentUser.user_id === review.user_id" ng-click="delete(review)">DELETE</span>
-    </p>
+   <div class="noReviews" ng-if="!hasReview">
+     Currently no reviews...want to add one?
+   </div>
+   <div class="reviewDetails" ng-repeat="review in reviews">
+     <h5>Username: {{users[review.user_id].username}}</h5>
+     <img src="{{users[review.user_id].profilePicLink}}"/>
+     <strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small>
+      <p>Review: {{review.content}}
+        <br>
+        Date: {{review.date}}
+        <br>
+        <span ng-click="vote(review, 1)">Upvote: {{review.voteCount}}</span>
+        <span ng-click="vote(review, -1)">Downvote</span>
+        <br>
+        <span ng-if="currentUser !== null && currentUser.user_id === review.user_id" ng-click="">Edit</span>
+        <span ng-if="currentUser !== null && currentUser.user_id === review.user_id" ng-click="delete(review)">DELETE</span>
+      </p>
+   </div>
  </div>
 </div>
