@@ -23,11 +23,4 @@ angular.module('zeus.user', [])
     };
     getUserReviews();
 
-    var getUserFavorites = function() {
-      User.getUserFavorites($scope.username)
-        .then(function(favorites) {
-          $scope.favorites = favorites.data;
-        });
-    };
-    getUserFavorites();
   });
