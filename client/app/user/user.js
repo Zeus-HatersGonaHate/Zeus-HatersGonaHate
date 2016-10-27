@@ -8,6 +8,7 @@ angular.module('zeus.user', [])
         var userObj = user;
         $scope.userId = userObj._id;
         $scope.userIdAuth = userObj.user_id;
+        $scope.about = userObj.about;
         $scope.profilePic = userObj.profilePicLink;
         $scope.email = userObj.email;
         $scope.favorites = userObj.favorites;
