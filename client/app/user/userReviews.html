@@ -1,1 +1,11 @@
-<div>Reviews</div>
+<div class="user-reviews">
+  <h5>All of {{UserVm.username}}'s reviews:</h5>
+  <ul class="user-reviews">
+    <li ng-repeat="review in UserVm.reviews">
+      <p class='review-title'><a href="../#/{{review.type}}/{{review.typeId}}">{{review.title}}</a></p>
+      <p class='review-date'>{{review.date}}</p>
+      <p class='review-content'>{{review.content | limitTo: 140}}<span ng-if="review.content.length > 140"><a href="../#/{{review.type}}/{{review.typeId}}">...read more</a></span></p> <!-- Limits content to first 140 characters, only add ellipses when needed -->
+    </li>
+  </ul>
+</div>
+
