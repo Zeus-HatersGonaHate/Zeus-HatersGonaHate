@@ -59,6 +59,10 @@ angular.module('zeus', [
       templateUrl: 'app/user/user.html',
       controller: 'UserController'
     })
+    .when('/:type/:id', {
+      templateUrl: 'app/details/details.html',
+      controller: 'DetailsController'
+    })
     .when('/account', {
       templateUrl: 'app/account/account.html',
       controller: 'AccountController'
