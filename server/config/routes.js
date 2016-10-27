@@ -17,9 +17,9 @@ module.exports = function (app, express) {
 
   app.put('/review/:reviewId', reviewController.editReview);
 
-  app.put('/review/count/:reviewId', reviewController.editCount);
+  app.put('/review/count/:reviewId', authCheck, reviewController.editCount);
 
-  app.delete('/review/:reviewId', reviewController.deleteReview);
+  app.delete('/review/:reviewId', authCheck, reviewController.deleteReview);
 
   //User Routes
   app.get('/user/:username', userController.getUserByUsername);
