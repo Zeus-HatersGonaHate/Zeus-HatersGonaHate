@@ -1,19 +1,5 @@
 var User = require('../users/userModel.js');
-
-//Function to randomly generate username based on email or full name
-var usernameMaker = function(data, callback) {
-  User.count({}, function (err, count) {
-    if (err) {
-      console.log(err);
-    } else {
-      if (data.email) {
-        callback(data.email.split('@')[0] + count);
-      } else {
-        callback(data.given_name[0] + data.family_name[0] + count);
-      }
-    }
-  });
-};
+var helpers = require('../config/helpers.js');
 
 module.exports = {
 
@@ -27,7 +13,7 @@ module.exports = {
           console.log(error);
           res.send(500);
         } else if (data.length === 0) {
-          usernameMaker(info, function (username) {
+          helpers.usernameMaker(info, function (username) {
             var user = new User({
               joinDate: date.toISOString(),
               email: info.email,

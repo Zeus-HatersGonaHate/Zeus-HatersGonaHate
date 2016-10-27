@@ -1,23 +1,6 @@
 var Review = require('../reviews/reviewModel.js');
 var User = require('../users/userModel.js');
-
-var findUserInfoById = function(reviews, callback){
-  var userObj = {};
-  var ids = reviews.map(function(review){
-    return review.user_id;
-  });
-  User.find({user_id: {$in: ids}})
-  .exec(function(err, users){
-    users.forEach(function(userInfo){
-      userObj[userInfo.user_id] = userInfo;
-    });
-    callback(userObj)
-  });
-};
-
-// var ids = ['512d5793abb900bf3e20d012', '512d5793abb900bf3e20d011'];
-// ids = ids.map(function(id) { return ObjectId(id); });
-// db.test.find({_id: {$in: ids}});
+var helpers = require('../config/helpers.js');
 
 module.exports = {
 
@@ -44,14 +27,13 @@ module.exports = {
         res.send(404);
       } else {
         User.find({user_id: req.user.sub})
-        .exec(function(err, userObj){
+        .exec(function(err, userObj) {
           var data = {};
           data.reviews = reviews;
           data.users = userObj[0];
-          console.log(data)
+          console.log(data);
           res.json(data);
-        })
-
+        });
       }
     });
   },
@@ -66,8 +48,8 @@ module.exports = {
         if (err) {
           console.log(err);
         } else {
-          findUserInfoById(reviews, function(userObj){
-            var data = {}
+          helpers.findUserInfoById(reviews, function(userObj) {
+            var data = {};
             data.reviews = reviews;
             data.users = userObj;
             res.send(data);
@@ -107,7 +89,7 @@ module.exports = {
     var content = req.body.content;
     var rating = req.body.rating;
     var title = req.body.title;
-    Review.findOneAndUpdate({ _id: id }, {content: content, rating: rating, title: title}, {new:true}, function (err, review) {
+    Review.findOneAndUpdate({ _id: id }, {content: content, rating: rating, title: title}, {new: true}, function (err, review) {
       res.json(review);
     });
   },
@@ -118,24 +100,24 @@ module.exports = {
     var id = req.params.reviewId;
     var voteCount = req.body.voteCount; //voteCount has to be 1 or -1
     Review.findOne({_id: id})
-      .exec(function(err, info){
-        if(info.votes[0][currentUser] == undefined && voteCount === voteCount){
+      .exec(function(err, info) {
+        if (info.votes[0][currentUser] == undefined && voteCount === voteCount){
           var newVotes = info.votes;
           newVotes[0][currentUser] = voteCount;
-          Review.findByIdAndUpdate(id, {$inc: { voteCount:  voteCount }, votes: newVotes}, {new:true}, function(err, info){
-            res.json(info)
+          Review.findByIdAndUpdate(id, {$inc: { voteCount:  voteCount }, votes: newVotes}, {new: true}, function(err, info) {
+            res.json(info);
           })
-        } else if(info.votes[0][currentUser] === voteCount && voteCount === voteCount){
+        } else if (info.votes[0][currentUser] === voteCount && voteCount === voteCount) {
           var newVotes = info.votes;
           newVotes[0][currentUser] = undefined;
-          Review.findByIdAndUpdate(id, {$inc: { voteCount:  voteCount*-1 }, votes: newVotes}, {new:true}, function(err, info){
-            res.json(info)
+          Review.findByIdAndUpdate(id, {$inc: { voteCount:  voteCount*-1 }, votes: newVotes}, {new: true}, function(err, info) {
+            res.json(info);
           })
-        } else if(info.votes[0][currentUser] !== voteCount && voteCount === voteCount){
+        } else if (info.votes[0][currentUser] !== voteCount && voteCount === voteCount) {
           var newVotes = info.votes;
           newVotes[0][currentUser] = voteCount;
-          Review.findByIdAndUpdate(id, {$inc: { voteCount:  voteCount*2 }, votes: newVotes}, {new:true}, function(err, info){
-            res.json(info)
+          Review.findByIdAndUpdate(id, {$inc: { voteCount:  voteCount*2 }, votes: newVotes}, {new: true}, function(err, info) {
+            res.json(info);
           })
         }
       });
@@ -144,13 +126,13 @@ module.exports = {
   getReviewById: function (req, res, next) {
     var id = req.params.reviewId;
     Review.findById(id)
-      .exec(function(err, review){
+      .exec(function(err, review) {
         if(err){
           console.log(err);
         } else {
           User.findOne({user_id: review.user_id})
-            .exec(function(err, userInfo){
-              var data = {}
+            .exec(function(err, userInfo) {
+              var data = {};
               data.review = review;
               data.user = userInfo;
               res.json(data);

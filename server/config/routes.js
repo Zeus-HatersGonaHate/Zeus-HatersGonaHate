@@ -35,5 +35,5 @@ module.exports = function (app, express) {
 
   app.post('/user/favorites', authCheck, userController.addToFavorites);
 
-  app.post('/user/watched', authCheck, userController.addToWatchedList)
+  app.post('/user/watched', authCheck, userController.addToWatchedList);
 };
