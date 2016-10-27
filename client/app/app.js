@@ -5,6 +5,7 @@ angular.module('zeus', [
   'zeus.services',
   'zeus.user',
   'zeus.account',
+  'zeus.reviews',
   'auth0.lock',
   'angular-jwt',
   'ngRoute'
@@ -46,7 +47,7 @@ angular.module('zeus', [
       templateUrl: 'app/results/results.html',
       controller: 'ResultsController'
     })
-    .when('/:type/:id', {
+    .when('/details/:type/:id', {
       templateUrl: 'app/details/details.html',
       controller: 'DetailsController'
     })
@@ -57,6 +58,10 @@ angular.module('zeus', [
     .when('/account', {
       templateUrl: 'app/account/account.html',
       controller: 'AccountController'
+    })
+    .when('/review/:id', {
+      templateUrl: 'app/reviews/reviews.html',
+      controller: 'ReviewsController'
     })
     .otherwise('/');
 

@@ -15,11 +15,14 @@ module.exports = function (app, express) {
 
   app.post('/review/:type/:typeId', authCheck, reviewController.postReview);
 
+  app.get('/review/:reviewId', reviewController.getReviewById);
+
   app.put('/review/:reviewId', reviewController.editReview);
 
   app.put('/review/count/:reviewId', authCheck, reviewController.editCount);
 
   app.delete('/review/:reviewId', authCheck, reviewController.deleteReview);
+
 
   //User Routes
   app.get('/user/:username', userController.getUserByUsername);

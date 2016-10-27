@@ -8,7 +8,8 @@ var ReviewSchema = new mongoose.Schema({
   date: String,
   content: String,
   rating: Number,
-  voteCount: Number
+  voteCount: Number,
+  votes: Array
 });
 
 
