@@ -44,4 +44,20 @@ angular.module('zeus.user', [])
     scope: true,
     templateUrl: 'app/user/userFavorites.html'
   };
+})
+.directive('favoriteTv', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/user/favoriteTv.html'
+  };
+})
+.directive('favoriteMovies', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/user/favoriteMovies.html'
+  };
 });
