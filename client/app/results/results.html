@@ -1,8 +1,8 @@
-<div ng-controller="ResultsController" id="container">
-  <p ng-if="results.length === 0 && loaded">No results were found!</p>
+<div id="container">
+  <p ng-if="ResultsVm.results.length === 0 && ResultsVm.loaded">No results were found!</p>
   <ul>
-    <h4>Your search returned {{ totalResults }} results.</h4>
-    <a ng-repeat="result in results" href="/#/details/{{ result.media_type }}/{{ result.id }}">
+    <h4>Your search returned {{ ResultsVm.totalResults }} results.</h4>
+    <a ng-repeat="result in ResultsVm.results" href="/#/details/{{ result.media_type }}/{{ result.id }}">
       <li>
         <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
         <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
@@ -15,7 +15,7 @@
   </ul>
   <ul class="media-list pages">
     <h6>Pages</h6>
-    <a ng-repeat="page in totalPages" href="/#/results/{{ search }}/{{ page }}">
+    <a ng-repeat="page in ResultsVm.totalPages" href="/#/results/{{ ResultsVm.search }}/{{ page }}">
       <li class="page">{{ page }}</li>
     </a>
   </ul>
