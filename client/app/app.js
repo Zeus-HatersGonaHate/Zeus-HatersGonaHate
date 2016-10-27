@@ -8,6 +8,7 @@ angular.module('zeus', [
   'zeus.reviews',
   'auth0.lock',
   'angular-jwt',
+  'ui.router',
   'ngRoute'
 ])
 .controller('zeusController', function($scope, $location, authService, $http, User) {
