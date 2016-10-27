@@ -17,7 +17,7 @@ module.exports = function (app, express) {
 
   app.get('/review/:reviewId', reviewController.getReviewById);
 
-  app.put('/review/:reviewId', reviewController.editReview);
+  app.put('/review/:reviewId', authCheck, reviewController.editReview);
 
   app.put('/review/count/:reviewId', authCheck, reviewController.editCount);
 

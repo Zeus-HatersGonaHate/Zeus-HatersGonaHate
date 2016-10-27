@@ -85,13 +85,25 @@ module.exports = {
 
   //Allows a user to edit an existing review that they have posted.
   editReview: function (req, res, next) {
-    var id = req.params.reviewId;
+    var reviewId = req.params.reviewId;
+    var userId = req.user.sub;
     var content = req.body.content;
     var rating = req.body.rating;
     var title = req.body.title;
-    Review.findOneAndUpdate({ _id: id }, {content: content, rating: rating, title: title}, {new: true}, function (err, review) {
-      res.json(review);
-    });
+    Review.findOne({ _id: reviewId })
+      .exec(function(err, reviewInfo){
+        if(reviewInfo.user_id === userId){
+          Review.update({ _id: reviewId }, {content: content, rating: rating, title: title}, {new: true}, function (err, review) {
+           res.json(review);
+          });
+        } else {
+          res.send(401);
+        }
+      })
+
+    // Update({ _id: id }, {content: content, rating: rating, title: title}, {new: true}, function (err, review) {
+    //   res.json(review);
+    //});
   },
 
   // Upvote/downvote reviews total votes is the voteCount
