@@ -67,7 +67,17 @@ angular.module('zeus.details', [])
     DetailsVm.getShowtimes = function() {
       Details.getShowtimes(DetailsVm.fullDate, DetailsVm.zip).then(function(showtimes) {
         DetailsVm.showtimes = showtimes;
-        console.log(showtimes);
+        var nowPlaying = [];
+        if (showtimes) {
+          showtimes.forEach(function(showtime) {
+            nowPlaying.push(showtime.title);
+          });
+          if (!nowPlaying.includes(DetailsVm.original_title)) {
+            DetailsVm.hasNoShowtime = true;
+          }
+        } else {
+          DetailsVm.hasNoShowtime = true;
+        }
       });
       DetailsVm.zip = '';
     };
