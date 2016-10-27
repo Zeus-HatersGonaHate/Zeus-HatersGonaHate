@@ -190,38 +190,39 @@ angular.module('zeus.services', [])
     });
   };
 
+  var getUserReviews = function(username) {
+    return $http({
+      method: 'GET',
+      url: '/user/' + username,
+      data: username
+    })
+      .then(function(res) {
+        return res;
+      });
+  };
+
+  var getUserFavorites = function(username) {
+    return $http({
+      method: 'GET',
+      url: '/user/' + username,
+      data: username
+    })
+      .then(function(res) {
+        return res;
+      });
+  };
+
   return {
     checkUser: checkUser,
-    editUser: editUser
+    editUser: editUser,
+    getUserReviews : getUserReviews,
+    getUserFavorites : getUserFavorites
   };
 })
 
 .factory('Account', function($http) {
-  var getAccountReviews = function(username) {
-    return $http({
-      method: 'GET',
-      url: '/user/' + username,
-      data: username
-    })
-      .then(function(res) {
-        return res;
-      });
-  };
-
-  var getAccountFavorites = function(username) {
-    return $http({
-      method: 'GET',
-      url: '/user/' + username,
-      data: username
-    })
-      .then(function(res) {
-        return res;
-      });
-  };
 
   return {
-    getAccountReviews : getAccountReviews,
-    getAccountFavorites : getAccountFavorites
   };
 })
 
