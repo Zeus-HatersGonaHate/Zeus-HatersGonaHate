@@ -1,9 +1,9 @@
 angular.module('zeus.user', [])
-  .controller('UserController', function($scope, User, $routeParams) {
-    $scope.username = $routeParams.username;
+  .controller('UserController', function($scope, User, $stateParams) {
+    $scope.username = $stateParams.username;
 
     //set up user information based on username given in route
-    User.getUserId($routeParams.username)
+    User.getUserId($stateParams.username)
       .then(function(user){
         var userObj = user;
         $scope.userId = userObj._id;
