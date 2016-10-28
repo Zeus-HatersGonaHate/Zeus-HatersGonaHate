@@ -65,7 +65,7 @@
    <!-- Movie reviews -->
    <div class="postReview">
     <h5>Reviews</h5>
-    <form ng-submit="DetailsVm.post()">
+    <form ng-if="isAuthenticated" ng-submit="DetailsVm.post()">
       <h6>Title</h6>
       <input type="text" placeholder="Title" ng-model="DetailsVm.reviewTitle" required>
       <h6>Comment</6>
@@ -81,6 +81,7 @@
       </select>
       <input type="submit">
     </form>
+    <div ng-if="!isAuthenticated">You must <a href="" ng-click="DetailsVm.login()">login</a> to write a review.</div>
    </div>
 
    <div class="noReviews" ng-if="!DetailsVm.hasReview">

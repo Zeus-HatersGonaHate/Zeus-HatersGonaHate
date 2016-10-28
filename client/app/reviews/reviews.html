@@ -16,6 +16,6 @@
   <span ng-style="ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="ReviewsVm.vote(-1)">Downvote</span>
   <br/>
   <span ng-if="ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()">Edit</span>
-  <span ng-if="ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete(review)">DELETE</span>
+  <span ng-if="ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()">DELETE</span>
 
 </div>
