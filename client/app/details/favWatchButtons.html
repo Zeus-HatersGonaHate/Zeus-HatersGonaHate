@@ -1,14 +1,22 @@
   <div>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="isAuthenticated && !DetailsVm.hasFavorite" ng-click="DetailsVm.addToFavorites()">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="!DetailsVm.hasFavorite" ng-click="DetailsVm.addToUserLists('favorites')">
       Add to favorites
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="isAuthenticated && DetailsVm.hasFavorite" ng-click="DetailsVm.deleteFavOrWatch('favorites')">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="DetailsVm.hasFavorite" ng-click="DetailsVm.deleteFavOrWatch('favorites')">
       Remove from favorites
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="isAuthenticated && !DetailsVm.hasWatched" ng-click="DetailsVm.addToWatchedList()">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="!DetailsVm.hasWatched" ng-click="DetailsVm.addToUserLists('watched')">
       Add to watched list
     </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="isAuthenticated && DetailsVm.hasWatched" ng-click="DetailsVm.deleteFavOrWatch('watched')">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="DetailsVm.hasWatched" ng-click="DetailsVm.deleteFavOrWatch('watched')">
       Remove from watched list
     </button>
+    <span ng-if="DetailsVm.type === 'tv'">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="!DetailsVm.hasCurrent" ng-click="DetailsVm.addToUserLists('current')">
+      Not currently watching
+    </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="DetailsVm.hasCurrent" ng-click="DetailsVm.deleteFavOrWatch('current')">
+      Currently watching
+    </button>
+    </span>
   </div>

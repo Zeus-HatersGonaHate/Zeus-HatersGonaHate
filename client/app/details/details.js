@@ -9,15 +9,18 @@
   DetailsVm.users = {};
   DetailsVm.hasFavorite = false;
   DetailsVm.hasWatched = false;
+  DetailsVm.hasCurrent = false;
   DetailsVm.currentUser = JSON.parse(localStorage.getItem('profile'));
   DetailsVm.hasReview = false;
   DetailsVm.type = $stateParams.type; //media type, movie or tv
   DetailsVm.id = $stateParams.id; //id on themoviedb api for retrieving the movie/tv info
+  //Grabs the users favorites, watched, currentlyWatching. Runs them through the check function.
   Details.getUserFavorites()
     .then(function (res) {
       DetailsVm.favorites = res.favorites;
       DetailsVm.watched = res.watched;
-      DetailsVm.checkFavorites(res.favorites, res.watched);
+      console.log(res.currentlyWatching)
+      DetailsVm.checkFavorites(res.favorites, res.watched, res.currentlyWatching);
     });
 
   Details.getDetails(DetailsVm.type, DetailsVm.id).then(function(data) {
@@ -134,10 +137,11 @@
     DetailsVm.reviews.splice(index, 1);
   };
 
-  DetailsVm.checkFavorites = function (fav, watch) {
+  //Function checking the users lists to see if this item exists flipping the buttons to match accordingly.
+  DetailsVm.checkFavorites = function (fav, watch, currentWatch) {
     if (fav !== null) {
       if (fav.length === 0) {
-        return;
+        DetailsVm.hasFavorite = false;
       }
     fav.forEach((ele) => {
         if (ele.type === DetailsVm.type && ele.id === DetailsVm.id) {
@@ -147,7 +151,7 @@
     }
     if (watch !== null) {
       if (watch.length === 0) {
-        return;
+        DetailsVm.hasWatched = false;
       }
       watch.forEach((ele) => {
         if (ele.type === DetailsVm.type && ele.id === DetailsVm.id) {
@@ -155,42 +159,43 @@
         }
       });
     }
+    if (currentWatch !== null) {
+      if (currentWatch.length === 0) {
+        DetailsVm.hasCurrent = false;
+      }
+      currentWatch.forEach((ele) => {
+        if (ele.type === DetailsVm.type && ele.id === DetailsVm.id) {
+          DetailsVm.hasCurrent = true;
+        }
+      });
+    }
   };
 
-  DetailsVm.addToFavorites = function () {
-    var favDetails = {};
-    favDetails.type = DetailsVm.type;
-    favDetails.id = DetailsVm.id;
-    favDetails.picture = DetailsVm.poster_path;
+  //Function to add to favorites, watched, currentlyWatching.
+  DetailsVm.addToUserLists = function (type) {
+    var addToList = {};
+    addToList.type = DetailsVm.type;
+    addToList.id = DetailsVm.id;
+    addToList.picture = DetailsVm.poster_path;
     if (DetailsVm.original_title) {
-      favDetails.title = DetailsVm.original_title
+      addToList.title = DetailsVm.original_title;
     } else if (DetailsVm.original_name) {
-      favDetails.title = DetailsVm.original_name;
+      addToList.title = DetailsVm.original_name;
     }
-    Details.addToFavorites(favDetails)
+    Details.addToUserLists(type, addToList)
       .then(function (data) {
-        DetailsVm.hasFavorite = true;
+        if (type === 'favorites') {
+          DetailsVm.hasFavorite = true;
+        } if (type === 'watched') {
+          DetailsVm.hasWatched = true;
+        } if (type === 'current') {
+          DetailsVm.hasCurrent = true;
+        }
       });
   };
 
-  DetailsVm.addToWatchedList = function () {
-    var watchDetails = {};
-    watchDetails.type = DetailsVm.type;
-    watchDetails.id = DetailsVm.id;
-    watchDetails.picture = DetailsVm.poster_path;
-    if (DetailsVm.original_title) {
-      watchDetails.title = DetailsVm.original_title
-    } else if (DetailsVm.original_name) {
-      watchDetails.title = DetailsVm.original_name;
-    }
-    Details.addToWatchedList(watchDetails)
-      .then(function (data) {
-        DetailsVm.hasWatched = true;
-      });
-  };
-
+  //Function to remove item from favorites, watched, currentlyWatching.
   DetailsVm.deleteFavOrWatch = function (type) {
-    console.log(type)
     var deleteDetails = {};
     deleteDetails.type = DetailsVm.type;
     deleteDetails.id = DetailsVm.id;
@@ -200,13 +205,14 @@
     } else if (DetailsVm.original_name) {
       deleteDetails.title = DetailsVm.original_name;
     }
-    console.log(type, deleteDetails)
     Details.deleteFavOrWatch(type, deleteDetails)
       .then(function (data) {
         if (type === 'favorites') {
           DetailsVm.hasFavorite = false;
-        } else if (type === 'watched') {
+        } if (type === 'watched') {
           DetailsVm.hasWatched = false;
+        } if (type === 'current') {
+          DetailsVm.hasCurrent = false;
         }
       });
   };

@@ -1,7 +1,7 @@
 <div class='movieDetails'>
   <h3 ng-if="DetailsVm.original_name === undefined"> {{DetailsVm.original_title}} </h3>
   <h3 ng-if="DetailsVm.original_title === undefined"> {{DetailsVm.original_name}} </h3>
-  <details-buttons></details-buttons>
+  <details-buttons ng-if="isAuthenticated"></details-buttons>
   <h5 ng-if="DetailsVm.data.release_date !== undefined">Release Date</h5>
   <p ng-if="DetailsVm.data.release_date !== undefined">{{DetailsVm.data.release_date}}</p>
   <h5 ng-if="DetailsVm.data.runtime !== undefined">Movie Length</h5>
@@ -12,7 +12,6 @@
   <p ng-if="data.release_date !== undefined">{{data.release_date}}</p>
   <h5 ng-if="data.runtime !== undefined">Movie Length</h5>
   <p ng-if="data.runtime !== undefined">{{data.runtime}} minutes</p>
-
   <h5 ng-if="DetailsVm.data.first_air_date !== undefined">First Air Date</h5>
   <p ng-if="DetailsVm.data.first_air_date !== undefined">{{DetailsVm.data.first_air_date}}</p>
   <h5 ng-if="DetailsVm.data.episode_run_time[0] !== undefined">Episode Length</h5>

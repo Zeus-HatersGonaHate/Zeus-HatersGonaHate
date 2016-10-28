@@ -33,11 +33,10 @@ module.exports = function (app, express) {
 
   app.put('/user/edit', authCheck, userController.editUser);
 
-  app.post('/user/favorites', authCheck, userController.addToFavorites);
+  app.get('/favorites', authCheck, userController.getUserLists);
 
-  app.get('/favorites', authCheck, userController.getUserFavorites);
+  app.delete('/delete/:type', authCheck, userController.removeFromUserLists);
 
-  app.delete('/delete/:type', authCheck, userController.deleteFavOrWatch);
+  app.post('/add/:type', authCheck, userController.addToUserLists);
 
-  app.post('/user/watched', authCheck, userController.addToWatchedList);
 };
