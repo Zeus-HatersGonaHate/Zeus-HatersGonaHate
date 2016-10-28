@@ -23,6 +23,12 @@ module.exports = function (app, express) {
 
   app.delete('/review/:reviewId', authCheck, reviewController.deleteReview);
 
+  //Comment Routes
+  app.get('/comment/:reviewId');
+
+  app.post('/comment');
+
+  app.delete('/comment/:commentId');
 
   //User Routes
   app.get('/user/:username', userController.getUserByUsername);
