@@ -1,6 +1,8 @@
 <div class="movie">
-  <img src="http://image.tmdb.org/t/p/w150/{{ReviewsVm.movie.poster_path}}"/>
-  <h4>{{ReviewsVm.movie.title}}</h4>
+  <a href="#/details/{{ReviewsVm.review.type}}/{{ReviewsVm.review.typeId}}">
+    <img src="http://image.tmdb.org/t/p/w150/{{ReviewsVm.movie.poster_path}}"/>
+    <h4>{{ReviewsVm.movie.title}}</h4>
+  </a>
 </div>
 <div class="review">
   <h4>{{ReviewsVm.review.title}}</h4>
@@ -10,6 +12,10 @@
     Rating: {{ReviewsVm.review.rating}}
   </p>
   <p>{{ ReviewsVm.review.content}}</p>
+  <span ng-style="ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="ReviewsVm.vote(1)">Upvote: {{ReviewsVm.review.voteCount}}</span>
+  <span ng-style="ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="ReviewsVm.vote(-1)">Downvote</span>
+  <br/>
   <span ng-if="ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()">Edit</span>
-  <span ng-if="ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete(review)">DELETE</span>
+  <span ng-if="ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()">DELETE</span>
+
 </div>

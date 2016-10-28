@@ -1,5 +1,5 @@
 angular.module('zeus.details', [])
-  .controller('DetailsController', function($location, Details, $stateParams) {
+  .controller('DetailsController', function($location, Details, $stateParams, authService) {
     // capture the value of `this` in a variable vm
     // vm stands for view model and is a replacement for $scope
     var DetailsVm = this;
@@ -97,11 +97,16 @@ angular.module('zeus.details', [])
     };
 
     DetailsVm.vote = function(review, vote) {
-      Details.upvote(review._id, vote)
-        .then(function(reviewInfo) {
-          review.voteCount = reviewInfo.voteCount;
-          review.votes = reviewInfo.votes;
-        });
+      if(DetailsVm.currentUser !== null){
+        Details.upvote(review._id, vote)
+          .then(function(reviewInfo) {
+            review.voteCount = reviewInfo.voteCount;
+            review.votes = reviewInfo.votes;
+          });
+      } else {
+        DetailsVm.login();
+      }
+
     };
 
     DetailsVm.edit = function(reviewId) {
@@ -131,4 +136,6 @@ angular.module('zeus.details', [])
       watchDetails.title = DetailsVm.original_title;
       Details.addToWatchedList(watchDetails);
     };
+
+    DetailsVm.login = authService.login;
   });
