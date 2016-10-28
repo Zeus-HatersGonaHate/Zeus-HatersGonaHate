@@ -262,6 +262,24 @@ angular.module('zeus.services', [])
   };
 })
 
+.factory('Comment', function($http) {
+
+  var postComment = function(data){
+    return $http({
+      method: 'POST',
+      url: '/comment'
+      data: data
+    })
+    .then(function(res){
+      return res.data;
+    });
+  };
+
+  return {
+    postComment: postComment
+  }
+})
+
 .service('authService', authService);
 
 authService.$inject = ['lock', 'authManager', '$q'];

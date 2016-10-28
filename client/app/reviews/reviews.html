@@ -27,4 +27,8 @@
     <input type="submit">
   </form>
   <div ng-if="!isAuthenticated">You must <a href="" ng-click="ReviewsVm.login()">login</a> to leave a comment.</div>
+
+  <div class="noComments" ng-if="!ReviewsVm.hasComments">
+     Currently no comments...want to add one?
+  </div>
 </div>

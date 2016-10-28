@@ -1,22 +1,30 @@
 angular.module('zeus.reviews', [])
-.controller('ReviewsController', function($location, $stateParams, Details, authService, Reviews) {
+.controller('ReviewsController', function($location, $stateParams, Details, authService, Reviews, Comment) {
 
   var ReviewsVm = this;
   ReviewsVm.id = $stateParams.id;
   ReviewsVm.review = {};
   ReviewsVm.user = {};
+  ReviewsVm.hasComments = null;
   ReviewsVm.movie = {};
   ReviewsVm.currentUser = JSON.parse(localStorage.getItem('profile'));
   Reviews.getReviewById(ReviewsVm.id)
     .then(function(reviewInfo){
       ReviewsVm.review = reviewInfo.review;
       ReviewsVm.user = reviewInfo.user;
+      //Find movie info for review
       Details.getDetails(reviewInfo.review.type, reviewInfo.review.typeId)
       .then(function(movieInfo){
         ReviewsVm.movie = movieInfo;
         console.log(movieInfo);
       });
+      //Find comments for review
     });
+
+  ReviewsVm.postComment = function(){
+    Comment.postComment();
+    //clear comment box;
+  }
 
   ReviewsVm.vote = function(vote, auth) {
     if(auth){
