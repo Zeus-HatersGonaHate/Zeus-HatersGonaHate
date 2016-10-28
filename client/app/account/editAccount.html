@@ -1,7 +1,7 @@
 <div>
   <form name="editAccountForm">
     <h5>Edit Account Details</h5>
-    <p>{{test}}</p>
+
     <img src="{{AccountVm.profilePic}}" alt="profile pic goes here" class="profile-pic-lg"/>
 
     <p>Username: <input name="username" ng-change="AccountVm.usernameTaken(AccountVm.username)" type="text" value="{{AccountVm.username}}" ng-pattern="/(?=^.{3,20}$)^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$/" ng-model="AccountVm.username" required>
@@ -11,7 +11,10 @@
       <span class="warning" ng-show="AccountVm.username !== AccountVm.originalUsername && editAccountForm.username.$dirty && AccountVm.taken">Sorry, that username is taken. Choose another.</span>
     </p>
 
+    <p>Fullname: <input name="fullName" type="text" ng-model="AccountVm.fullName" required></p>
+
     <p>Email: {{AccountVm.email}}</p>
+    <p>Member since: {{AccountVm.joinDate}}</p>
 
     <p>Location: <input name="location" type="text" value="{{AccountVm.location}}" ng-model="AccountVm.location"></p>
 
