@@ -38,7 +38,7 @@
       <p ng-if="isAuthenticated && comment.user_id === ReviewsVm.currentUser.user_id" ng-click="ReviewsVm.deleteComment(comment)">DELETE</p>
     </div>
   </div>
-  <div class="noComments" ng-if="!ReviewsVm.hasComments">
+  <div class="noComments" ng-if="ReviewsVm.comments.length === 0">
      Currently no comments...want to add one?
   </div>
 </div>

@@ -5,7 +5,6 @@ angular.module('zeus.reviews', [])
   ReviewsVm.id = $stateParams.id;
   ReviewsVm.review = {};
   ReviewsVm.user = {};
-  ReviewsVm.hasComments = null;
   ReviewsVm.comments = [];
   ReviewsVm.commentsUser = {};
   ReviewsVm.movie = {};
