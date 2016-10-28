@@ -34,7 +34,11 @@ angular.module('zeus.reviews', [])
       review_id: ReviewsVm.id,
       content: ReviewsVm.content
     }
-    Comment.postComment(comment);
+    Comment.postComment(comment)
+    .then(function(newComment){
+      ReviewsVm.comments.unshift(newComment.comment);
+      ReviewsVm.commentsUser[newComment.user.user_id] = newComment.user
+    });
     ReviewsVm.content = '';
   }
 

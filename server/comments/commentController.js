@@ -38,7 +38,7 @@ module.exports = {
         .exec(function(err, userObj) {
           var data = {};
           data.comment = comment;
-          data.users = userObj[0];
+          data.user = userObj[0];
           console.log(data);
           res.json(data);
         });
