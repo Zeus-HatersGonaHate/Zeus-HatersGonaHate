@@ -32,7 +32,7 @@ body {
 }
 
 .poster-container img {
-  margin: 0 auto;
+  margin: auto;
   height: 100%;
   width: 100%;
   border: 1px solid white;
@@ -62,6 +62,11 @@ li {
 
 .profile-pic-lg {
   height: 180px;
+  width: auto;
+}
+
+.profile-pic-sm {
+  height: 100px;
   width: auto;
 }
 
@@ -132,9 +137,4 @@ li {
 .showtime-title {
   font-weight: 600;
   font-size: 18px;
-}
-
-.profile-pic-sm {
-  height: 100px;
-  width: auto;
 }
