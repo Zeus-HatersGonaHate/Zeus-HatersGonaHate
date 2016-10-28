@@ -1,14 +1,5 @@
 angular.module('zeus.services', [])
 .factory('Details', function($http) {
-  var getReviews = function (type, id) {
-    return $http({
-      method: 'GET',
-      url: '/review/' + type + '/' + id
-    })
-    .then(function (res) {
-      return res;
-    });
-  };
   var getDetails = function (type, id, callback) {
     return $http({
       method: 'GET',
@@ -17,58 +8,6 @@ angular.module('zeus.services', [])
       return res.data;
     });
   };
-  var postReview = function (type, id, info) {
-    return $http({
-      method: 'POST',
-      url: '/review/' + type + '/' + id,
-      data: info
-    })
-    .then(function(res) {
-      return res;
-    });
-  };
-
-  var getReviewById = function(id) {
-    return $http({
-      method: 'GET',
-      url: '/review/' + id
-    })
-    .then(function(res){
-      return res.data;
-    });
-  }
-
-  var upvote = function(id, vote) {
-    return $http({
-      method: 'PUT',
-      url: '/review/count/' + id,
-      data: {voteCount: vote}
-    })
-    .then(function(res) {
-      return res.data;
-    });
-  };
-
-  var deleteReview = function(id){
-    return $http({
-      method: 'DELETE',
-      url: '/review/' + id,
-    })
-    .then(function(res) {
-      return res;
-    });
-  };
-
-  var editReview = function(id, newReview){
-    return $http({
-      method: 'PUT',
-      url: '/review/' + id,
-      data: newReview
-    })
-    .then(function(res){
-      return res;
-    });
-  }
 
   var getShowtimes = function(date, zip) {
     return $http ({
@@ -108,19 +47,84 @@ angular.module('zeus.services', [])
 
   return {
     getDetails: getDetails,
-    getReviews: getReviews,
-    postReview: postReview,
-    getReviewById: getReviewById,
-    upvote: upvote,
-    deleteReview: deleteReview,
-    editReview: editReview,
     getShowtimes: getShowtimes,
     getActors: getActors,
     addToFavorites: addToFavorites,
     addToWatchedList: addToWatchedList
   };
 })
+.factory('Reviews', function($http) {
+  var getReviews = function (type, id) {
+    return $http({
+      method: 'GET',
+      url: '/review/' + type + '/' + id
+    })
+    .then(function (res) {
+      return res;
+    });
+  };
 
+  var postReview = function (type, id, info) {
+    return $http({
+      method: 'POST',
+      url: '/review/' + type + '/' + id,
+      data: info
+    })
+    .then(function(res) {
+      return res;
+    });
+  };
+
+  var getReviewById = function(id) {
+    return $http({
+      method: 'GET',
+      url: '/review/' + id
+    })
+    .then(function(res) {
+      return res.data;
+    });
+  };
+
+  var upvote = function(id, vote) {
+    return $http({
+      method: 'PUT',
+      url: '/review/count/' + id,
+      data: {voteCount: vote}
+    })
+    .then(function(res) {
+      return res.data;
+    });
+  };
+
+  var deleteReview = function(id) {
+    return $http({
+      method: 'DELETE',
+      url: '/review/' + id,
+    })
+    .then(function(res) {
+      return res;
+    });
+  };
+
+  var editReview = function(id, newReview) {
+    return $http({
+      method: 'PUT',
+      url: '/review/' + id,
+      data: newReview
+    })
+    .then(function(res) {
+      return res;
+    });
+  };
+  return {
+    getReviews: getReviews,
+    postReview: postReview,
+    getReviewById: getReviewById,
+    upvote: upvote,
+    deleteReview: deleteReview,
+    editReview: editReview
+  };
+})
 .factory('Landing', function($http) {
   var getPopularMovies = function() {
     return $http({
@@ -215,7 +219,7 @@ angular.module('zeus.services', [])
     //attatch the id of the currently logged in profile
     //console.log(data);
     $http({
-      method:'PUT',
+      method: 'PUT',
       url: '/user/edit',
       data: data
     });
@@ -243,9 +247,9 @@ angular.module('zeus.services', [])
 
   return {
     checkUser: checkUser,
-    getUserId : getUserId,
+    getUserId: getUserId,
     editUser: editUser,
-    getUserReviews : getUserReviews
+    getUserReviews: getUserReviews
   };
 })
 
