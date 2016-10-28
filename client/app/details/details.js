@@ -98,8 +98,8 @@ angular.module('zeus.details', [])
     DetailsVm.zip = '';
   };
 
-    DetailsVm.vote = function(review, vote) {
-      if (DetailsVm.currentUser !== null) {
+    DetailsVm.vote = function(review, vote, auth) {
+      if (auth) {
         Reviews.upvote(review._id, vote)
           .then(function(reviewInfo) {
             review.voteCount = reviewInfo.voteCount;

@@ -6,9 +6,9 @@
     <br>
     Date: {{review.date}}
     <br>
-    <span ng-style="review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, 1)">Upvote: {{review.voteCount}}</span>
-    <span ng-style="review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, -1)">Downvote</span>
+    <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, 1, isAuthenticated)">Upvote: {{review.voteCount}}</span>
+    <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, -1, isAuthenticated)">Downvote</span>
     <br>
-    <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.edit(review._id)">Edit</span>
-    <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.delete(review)">DELETE</span>
+    <span ng-if="isAuthenticated && DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.edit(review._id)">Edit</span>
+    <span ng-if="isAuthenticated && DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.delete(review)">DELETE</span>
 </div>

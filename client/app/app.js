@@ -114,7 +114,13 @@ angular.module('zeus', [
   //Auth 0 account info
   lockProvider.init({
     clientID: 'GaWAS7TybB6Fqwa9uBw2SDVMPRGSAVDK',
-    domain: 'hughes89.auth0.com'
+    domain: 'hughes89.auth0.com',
+    options: {
+      auth: {
+        redirect: false
+      },
+      autoclose: true
+    }
   });
   // Sets HTML5 Mode to true, removes # from url
   //$locationProvider.html5Mode(true);
@@ -127,7 +133,7 @@ angular.module('zeus', [
       return localStorage.getItem('id_token');
     }],
     whiteListedDomains: ['localhost:3000'],
-    unauthenticatedRedirectPath: '/login'
+    unauthenticatedRedirectPath: '/'
   });
   //Attatches token to each HTTP call
   $httpProvider.interceptors.push('jwtInterceptor');
