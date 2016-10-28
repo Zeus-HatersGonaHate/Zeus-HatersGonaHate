@@ -53,10 +53,12 @@ module.exports = {
   editUser: function (req, res, next) {
     var id = req.user.sub;
     var data = req.body;
-    User.findOneAndUpdate({ user_id: id }, {username: data.username}, {new: true}, function (err, user) {
-      if (err) console.log(err);
-      console.log(user);
-      res.json(user);
+    User.findOneUpdate({ user_id: id }, data, {new: true}, function (err, user) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(user);
+      }
     });
   },
 
