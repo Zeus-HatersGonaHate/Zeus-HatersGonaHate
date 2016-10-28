@@ -57,7 +57,7 @@
       <p> {{DetailsVm.overview}} </p>
       <h5>Lead Cast</h5>
       <ul>
-        <a ng-repeat="actor in DetailsVm.actors" href="https://en.wikipedia.org/wiki/{{actor}}">
+        <a ng-repeat="actor in DetailsVm.actors" href="#/results/{{actor}}/1">
           <li>{{ actor }}</li>
         </a>
       </ul>
