@@ -17,6 +17,14 @@ angular.module('zeus.reviews', [])
       })
     });
 
+  ReviewsVm.vote = function(vote) {
+    Details.upvote(ReviewsVm.review._id, vote)
+      .then(function(reviewInfo) {
+        ReviewsVm.review.voteCount = reviewInfo.voteCount;
+        ReviewsVm.review.votes = reviewInfo.votes;
+      });
+  };
+
   ReviewsVm.edit = function(){
     $location.path($location.url()+"/edit");
   }
