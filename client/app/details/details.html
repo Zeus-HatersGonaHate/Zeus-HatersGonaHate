@@ -15,7 +15,7 @@
    <movie-details></movie-details>
    <!-- Movie reviews -->
    <post-review></post-review>
-   <div class="noReviews" ng-if="!DetailsVm.hasReview">
+   <div class="noReviews" ng-if="!DetailsVm.hasReview && DetailsVm.loaded">
      Currently no reviews...want to add one?
    </div>
    <review-details></review-details>
@@ -26,7 +26,7 @@
   <actor-details></actor-details>
 </div>
 
-<h4 ng-if="DetailsVm.original_title === undefined && DetailsVm.original_name === undefined">Opps, what you're looking doesn't exist!</h4>
+<h4 ng-if="DetailsVm.loaded && DetailsVm.original_title === undefined && DetailsVm.original_name === undefined">Opps, what you're looking doesn't exist!</h4>
 
 
 

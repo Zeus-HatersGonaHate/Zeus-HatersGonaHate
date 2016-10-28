@@ -3,6 +3,7 @@ angular.module('zeus.details', [])
   // capture the value of `this` in a variable vm
   // vm stands for view model and is a replacement for $scope
   var DetailsVm = this;
+  DetailsVm.loaded = false;
   DetailsVm.data = {};
   DetailsVm.reviews = {};
   DetailsVm.users = {};
@@ -12,6 +13,7 @@ angular.module('zeus.details', [])
   DetailsVm.id = $stateParams.id; //id on themoviedb api for retrieving the movie/tv info
   Details.getDetails(DetailsVm.type, DetailsVm.id).then(function(data) {
     DetailsVm.data = data; // save all movie details for the requested movie
+    DetailsVm.loaded = true;
 
     //convenience properties for shorthand in html views
     DetailsVm.original_title = DetailsVm.data.original_title;
@@ -33,7 +35,10 @@ angular.module('zeus.details', [])
       }
     };
     DetailsVm.getActors();
-  });
+  })
+  .catch(function(){
+    DetailsVm.loaded = true;
+  })
 
   var getReviews = function() {
     Reviews.getReviews(DetailsVm.type, DetailsVm.id).then(function (reviews) {
@@ -98,18 +103,17 @@ angular.module('zeus.details', [])
     DetailsVm.zip = '';
   };
 
-    DetailsVm.vote = function(review, vote, auth) {
-      if (auth) {
-        Reviews.upvote(review._id, vote)
-          .then(function(reviewInfo) {
-            review.voteCount = reviewInfo.voteCount;
-            review.votes = reviewInfo.votes;
-          });
-      } else {
-        DetailsVm.login();
-      }
-
-    };
+  DetailsVm.vote = function(review, vote, auth) {
+    if (auth) {
+      Reviews.upvote(review._id, vote)
+        .then(function(reviewInfo) {
+          review.voteCount = reviewInfo.voteCount;
+          review.votes = reviewInfo.votes;
+        });
+    } else {
+      DetailsVm.login();
+    }
+  };
 
   DetailsVm.edit = function(reviewId) {
     $location.path(/review/ + reviewId + '/edit');
