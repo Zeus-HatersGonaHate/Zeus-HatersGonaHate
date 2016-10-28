@@ -1,0 +1,18 @@
+<div class="showtimes">
+  <h5>Showtimes</h5>
+  <form ng-submit="DetailsVm.getShowtimes()">
+    <p>Enter your zip code below to get showtimes for this movie near you today.</p>
+    <p>Zip Code: </p><input type="text" ng-model="DetailsVm.zip">
+  </form>
+  <ul>
+    <li ng-repeat="movie in DetailsVm.showtimes">
+      <p ng-if="movie.title === DetailsVm.original_title"  class="showtime-title">{{ movie.title }}</p>
+      <ul ng-if="movie.title === DetailsVm.original_title" >
+        <li ng-repeat="showtime in movie.showtimes" class="showtime">
+          {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <p ng-if="DetailsVm.hasNoShowtime">This movie is not currently in theatres near you!</p>
+</div>
