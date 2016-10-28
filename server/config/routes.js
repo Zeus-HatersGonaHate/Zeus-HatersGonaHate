@@ -35,5 +35,9 @@ module.exports = function (app, express) {
 
   app.post('/user/favorites', authCheck, userController.addToFavorites);
 
+  app.get('/favorites', authCheck, userController.getUserFavorites);
+
+  app.delete('/delete/:type', authCheck, userController.deleteFavOrWatch);
+
   app.post('/user/watched', authCheck, userController.addToWatchedList);
 };

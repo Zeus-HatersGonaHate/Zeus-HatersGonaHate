@@ -7,10 +7,19 @@ angular.module('zeus.details', [])
   DetailsVm.data = {};
   DetailsVm.reviews = {};
   DetailsVm.users = {};
+  DetailsVm.hasFavorite = false;
+  DetailsVm.hasWatched = false;
   DetailsVm.currentUser = JSON.parse(localStorage.getItem('profile'));
   DetailsVm.hasReview = false;
   DetailsVm.type = $stateParams.type; //media type, movie or tv
   DetailsVm.id = $stateParams.id; //id on themoviedb api for retrieving the movie/tv info
+  Details.getUserFavorites()
+    .then(function (res) {
+      DetailsVm.favorites = res.favorites;
+      DetailsVm.watched = res.watched;
+      DetailsVm.checkFavorites(res.favorites, res.watched);
+    });
+
   Details.getDetails(DetailsVm.type, DetailsVm.id).then(function(data) {
     DetailsVm.data = data; // save all movie details for the requested movie
     DetailsVm.loaded = true;
@@ -125,13 +134,47 @@ angular.module('zeus.details', [])
     DetailsVm.reviews.splice(index, 1);
   };
 
+  DetailsVm.checkFavorites = function (fav, watch) {
+    if (fav !== null) {
+      if (fav.length === 0) {
+        DetailsVm.hasFavorite = false;
+      }
+    fav.forEach((ele) => {
+        if (ele.type === DetailsVm.type && ele.id === DetailsVm.id) {
+          DetailsVm.hasFavorite = true;
+        } else {
+          DetailsVm.hasFavorite = false;
+        }
+      });
+    }
+    if (watch !== null) {
+      if (watch.length === 0) {
+        DetailsVm.hasWatched = false;
+      }
+      watch.forEach((ele) => {
+        if (ele.type === DetailsVm.type && ele.id === DetailsVm.id) {
+          DetailsVm.hasWatched = true;
+        } else {
+          DetailsVm.hasWatched = false;
+        }
+      });
+    }
+  };
+
   DetailsVm.addToFavorites = function () {
     var favDetails = {};
     favDetails.type = DetailsVm.type;
     favDetails.id = DetailsVm.id;
     favDetails.picture = DetailsVm.poster_path;
-    favDetails.title = DetailsVm.original_title;
-    Details.addToFavorites(favDetails);
+    if (DetailsVm.original_title) {
+      favDetails.title = DetailsVm.original_title
+    } else if (DetailsVm.original_name) {
+      favDetails.title = DetailsVm.original_name;
+    }
+    Details.addToFavorites(favDetails)
+      .then(function (data) {
+        DetailsVm.checkFavorites(data.data, null);
+      });
   };
 
   DetailsVm.addToWatchedList = function () {
@@ -139,8 +182,33 @@ angular.module('zeus.details', [])
     watchDetails.type = DetailsVm.type;
     watchDetails.id = DetailsVm.id;
     watchDetails.picture = DetailsVm.poster_path;
-    watchDetails.title = DetailsVm.original_title;
-    Details.addToWatchedList(watchDetails);
+    if (DetailsVm.original_title) {
+      watchDetails.title = DetailsVm.original_title
+    } else if (DetailsVm.original_name) {
+      watchDetails.title = DetailsVm.original_name;
+    }
+    Details.addToWatchedList(watchDetails)
+      .then(function (data) {
+        DetailsVm.checkFavorites(null, data.data);
+      });
+  };
+
+  DetailsVm.deleteFavOrWatch = function (type) {
+    console.log(type)
+    var deleteDetails = {};
+    deleteDetails.type = DetailsVm.type;
+    deleteDetails.id = DetailsVm.id;
+    deleteDetails.picture = DetailsVm.poster_path;
+    if (DetailsVm.original_title) {
+      deleteDetails.title = DetailsVm.original_title;
+    } else if (DetailsVm.original_name) {
+      deleteDetails.title = DetailsVm.original_name;
+    }
+    console.log(type, deleteDetails)
+    Details.deleteFavOrWatch(type, deleteDetails)
+      .then(function (data) {
+        DetailsVm.checkFavorites(data.data.favorites, data.data.watched);
+      });
   };
 
   DetailsVm.login = authService.login;
@@ -183,5 +251,13 @@ angular.module('zeus.details', [])
     replace: true,
     scope: true,
     templateUrl: 'app/details/actorDetails.html'
+  };
+})
+.directive('detailsButtons', function () {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/details/favWatchButtons.html'
   };
 });
