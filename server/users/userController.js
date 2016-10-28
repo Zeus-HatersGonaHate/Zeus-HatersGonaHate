@@ -88,7 +88,6 @@ module.exports = {
     var data = req.body;
     User.findOneAndUpdate({ user_id: id }, { $addToSet: { watched: data } }, {new:true}, function (err, user) {
       if (err) console.log(err);
-      //console.log(user);
       res.json(user.watched);
     });
   },
