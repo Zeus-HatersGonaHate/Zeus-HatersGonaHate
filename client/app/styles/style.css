@@ -1,6 +1,14 @@
+/* Keeps brackets form rendering on page before informaiton has been retrieved */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none;
 }
+
+body {
+  background-image: url('https://static.pexels.com/photos/65128/pexels-photo-65128.jpeg');
+  background-size: cover;
+}
+
+/* Header/Navbar styles */
 
 .logo {
   height: 40px;
@@ -15,9 +23,28 @@
   color: #fff;
 }
 
-.user-menu li {
-  display: inline;
+/* Landing Page */
+
+.poster-container {
+  width: 193px;
+  height: 280px;
+  padding: 4px;
 }
+
+.poster-container img {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.landing h2 {
+  color: #00008B;
+  text-align: center;
+}
+
+/* Remove some default styling from a and li tags */
 
 a {
   text-decoration: none;
@@ -27,26 +54,23 @@ li {
   list-style-type: none;
 }
 
-.media-container {
-  width: 100%;
-  float: left;
+/* User page */
+
+.user-menu li {
+  display: inline;
 }
 
-.media-list li {
-  float: left;
+.profile-pic-lg {
+  height: 180px;
+  width: auto;
 }
 
-.poster-container {
-  width: 193px;
-  height: 280px;
-  padding: 4px;
+.profile-pic-sm {
+  height: 100px;
+  width: auto;
 }
 
-.poster-container img {
-  margin: 0 auto;
-  height: 100%;
-  width: 100%;
-}
+/*Search Results */
 
 .pages {
   float: right;
@@ -55,6 +79,42 @@ li {
 
 .page {
   padding: 5px;
+}
+
+.results {
+  margin-left: 25%;
+}
+
+.result {
+  background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
+  margin-bottom: 2%;
+  border: 3px solid black;
+  border-radius: 5px;
+  position: relative;
+}
+
+.result-title {
+  display: inline-block;
+  color: white;
+  width: 50%;
+}
+
+.result-overview {
+  display: inline-block;
+  width: 40%;
+  color: white;
+  margin: 8px;
+}
+
+/* Details page */
+
+.media-container {
+  width: 100%;
+  float: left;
+}
+
+.media-list li {
+  float: left;
 }
 
 .moviePoster {
@@ -77,14 +137,4 @@ li {
 .showtime-title {
   font-weight: 600;
   font-size: 18px;
-}
-
-.profile-pic-sm {
-  height: 100px;
-  width: auto;
-}
-
-.profile-pic-lg {
-  height: 180px;
-  width: auto;
 }

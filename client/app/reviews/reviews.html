@@ -31,7 +31,7 @@
   <div>
     <div class="comment" ng-repeat="comment in ReviewsVm.comments">
       <a href="#/user/{{ReviewsVm.commentsUser[comment.user_id].username}}">
-        <img src="{{ ReviewsVm.commentsUser[comment.user_id].profilePicLink }}"/>
+        <img class="profile-pic-sm" src="{{ ReviewsVm.commentsUser[comment.user_id].profilePicLink }}"/>
         <p>{{ ReviewsVm.commentsUser[comment.user_id].username }}</p>
       </a>
       <p>comment: {{ comment.content }}</p>
