@@ -20,8 +20,9 @@
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a class="mdl-navigation__link" href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
+        <a class="mdl-navigation__link" href="#/account" ng-if="isAuthenticated">My Profile</a>
         <a class="mdl-navigation__link" href="" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
-        <a class="mdl-navigation__link" href="">Browse</a>
+
       </nav>
       <!-- Search input here -->
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">

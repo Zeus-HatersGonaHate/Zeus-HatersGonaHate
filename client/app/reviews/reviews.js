@@ -18,8 +18,8 @@ angular.module('zeus.reviews', [])
       });
     });
 
-  ReviewsVm.vote = function(vote) {
-    if(ReviewsVm.currentUser !== null){
+  ReviewsVm.vote = function(vote, auth) {
+    if(auth){
       Reviews.upvote(ReviewsVm.review._id, vote)
         .then(function(reviewInfo) {
           ReviewsVm.review.voteCount = reviewInfo.voteCount;
