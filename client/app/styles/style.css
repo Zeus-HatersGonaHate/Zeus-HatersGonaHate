@@ -64,6 +64,29 @@ li {
   padding: 5px;
 }
 
+.results {
+  margin-left: 25%;
+}
+
+.result {
+  background-color: purple;
+  margin-bottom: 2%;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.result-title {
+  display: inline-block;
+  width: auto;
+}
+
+.result-overview {
+  display: inline-block;
+}
+
+.result-overview p {
+
+}
 
 /* Details page */
 
