@@ -1,4 +1,4 @@
-angular.module('zeus.details', [])
+ angular.module('zeus.details', [])
 .controller('DetailsController', function($location, Details, Reviews, $stateParams, authService) {
   // capture the value of `this` in a variable vm
   // vm stands for view model and is a replacement for $scope
@@ -137,25 +137,21 @@ angular.module('zeus.details', [])
   DetailsVm.checkFavorites = function (fav, watch) {
     if (fav !== null) {
       if (fav.length === 0) {
-        DetailsVm.hasFavorite = false;
+        return;
       }
     fav.forEach((ele) => {
         if (ele.type === DetailsVm.type && ele.id === DetailsVm.id) {
           DetailsVm.hasFavorite = true;
-        } else {
-          DetailsVm.hasFavorite = false;
         }
       });
     }
     if (watch !== null) {
       if (watch.length === 0) {
-        DetailsVm.hasWatched = false;
+        return;
       }
       watch.forEach((ele) => {
         if (ele.type === DetailsVm.type && ele.id === DetailsVm.id) {
           DetailsVm.hasWatched = true;
-        } else {
-          DetailsVm.hasWatched = false;
         }
       });
     }
@@ -173,7 +169,7 @@ angular.module('zeus.details', [])
     }
     Details.addToFavorites(favDetails)
       .then(function (data) {
-        DetailsVm.checkFavorites(data.data, null);
+        DetailsVm.hasFavorite = true;
       });
   };
 
@@ -189,7 +185,7 @@ angular.module('zeus.details', [])
     }
     Details.addToWatchedList(watchDetails)
       .then(function (data) {
-        DetailsVm.checkFavorites(null, data.data);
+        DetailsVm.hasWatched = true;
       });
   };
 
@@ -207,7 +203,11 @@ angular.module('zeus.details', [])
     console.log(type, deleteDetails)
     Details.deleteFavOrWatch(type, deleteDetails)
       .then(function (data) {
-        DetailsVm.checkFavorites(data.data.favorites, data.data.watched);
+        if (type === 'favorites') {
+          DetailsVm.hasFavorite = false;
+        } else if (type === 'watched') {
+          DetailsVm.hasWatched = false;
+        }
       });
   };
 
