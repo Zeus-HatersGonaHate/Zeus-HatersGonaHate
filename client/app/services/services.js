@@ -37,21 +37,10 @@ angular.module('zeus.services', [])
       return res.data[0];
     });
   };
-
-  var addToFavorites = function (data) {
-    return $http ({
+  var addToUserLists = function (type, data) {
+    return $http({
       method: 'POST',
-      url: '/user/favorites',
-      data: data
-    }).then(function (data) {
-      return data;
-    });
-  };
-
-  var addToWatchedList = function (data) {
-    return $http ({
-      method: 'POST',
-      url: '/user/watched',
+      url: '/add/' + type,
       data: data
     });
   };
@@ -70,8 +59,7 @@ angular.module('zeus.services', [])
     getShowtimes: getShowtimes,
     getActors: getActors,
     getUserFavorites: getUserFavorites,
-    addToFavorites: addToFavorites,
-    addToWatchedList: addToWatchedList,
+    addToUserLists: addToUserLists,
     deleteFavOrWatch: deleteFavOrWatch
   };
 })

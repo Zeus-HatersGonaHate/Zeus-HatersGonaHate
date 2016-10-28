@@ -10,6 +10,8 @@ var UserSchema = new mongoose.Schema({
   watched: Array,
   joinDate: String,
   about: String,
+  currentlyWatching: Array,
+  following: Array,
   location: String
 });
 

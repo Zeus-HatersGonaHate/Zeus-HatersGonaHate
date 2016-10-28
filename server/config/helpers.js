@@ -31,6 +31,48 @@ module.exports = {
       });
       callback(userObj);
     });
+  },
+
+  addToListByType: function (id, data, type, res) {
+    if (type === 'favorites') {
+      User.findOneAndUpdate({ user_id: id }, { $addToSet: { favorites: data } }, {new:true}, function (err, user) {
+        if (err) console.log(err);
+        res.json(user.watched);
+    });
+    } else if (type === 'watched') {
+      User.findOneAndUpdate({ user_id: id }, { $addToSet: { watched: data } }, {new:true}, function (err, user) {
+        if (err) console.log(err);
+        res.json(user.watched);
+    });
+    } else if (type === 'current') {
+        User.findOneAndUpdate({ user_id: id }, { $addToSet: { currentlyWatching: data } }, {new:true}, function (err, user) {
+          if (err) console.log(err);
+          res.json(user.currentlyWatching);
+        });
+    }
+  },
+
+  removeFromListByType: function (id, data, type, res) {
+    console.log(type);
+    if (type === 'favorites') {
+      User.findOneAndUpdate({ user_id: id }, { $pull: { favorites: data }}, {new: true}, function (err, user) {
+        if (err) console.log(err);
+        console.log(user);
+        res.json(user);
+      });
+    } else if (type === 'watched') {
+      User.findOneAndUpdate({ user_id: id }, { $pull: { watched: data }}, {new: true}, function (err, user) {
+        if (err) console.log(err);
+        console.log(user);
+        res.json(user);
+      });
+    } else if (type === 'current') {
+      User.findOneAndUpdate({ user_id: id }, { $pull: { currentlyWatching: data }}, {new: true}, function (err, user) {
+        if (err) console.log(err);
+        console.log(user);
+        res.json(user);
+      });  
+    }
   }
 
 };
