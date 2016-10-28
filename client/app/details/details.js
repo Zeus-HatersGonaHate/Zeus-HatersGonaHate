@@ -20,10 +20,12 @@ angular.module('zeus.details', [])
     DetailsVm.overview = DetailsVm.data.overview;
     //loads actor info on details page load
     DetailsVm.getActors = function() {
+      //if the selection is a movie
       if (DetailsVm.original_title !== undefined) {
         Details.getActors(DetailsVm.original_title).then(function(data) {
           DetailsVm.actors = data.Actors.split(',');
         });
+        //if the selection is a tv show
       } else if (DetailsVm.original_name !== undefined) {
         Details.getActors(DetailsVm.original_name).then(function(data) {
           DetailsVm.actors = data.Actors.split(',');
@@ -31,8 +33,8 @@ angular.module('zeus.details', [])
       }
     };
     DetailsVm.getActors();
-
   });
+
   var getReviews = function() {
     Reviews.getReviews(DetailsVm.type, DetailsVm.id).then(function (reviews) {
       reviews.data.reviews.forEach(function (review) {
@@ -138,4 +140,44 @@ angular.module('zeus.details', [])
   };
 
   DetailsVm.login = authService.login;
+})
+.directive('showtimes', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: ''
+  };
+})
+.directive('movieDetails', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: ''
+  };
+})
+.directive('postReview', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: ''
+  };
+})
+.directive('reviewDetails', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: ''
+  };
+})
+.directive('actorDetails', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: ''
+  };
 });
