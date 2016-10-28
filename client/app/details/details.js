@@ -99,7 +99,7 @@ angular.module('zeus.details', [])
   };
 
     DetailsVm.vote = function(review, vote) {
-      if(DetailsVm.currentUser !== null){
+      if (DetailsVm.currentUser !== null) {
         Reviews.upvote(review._id, vote)
           .then(function(reviewInfo) {
             review.voteCount = reviewInfo.voteCount;
@@ -146,7 +146,7 @@ angular.module('zeus.details', [])
     restrict: 'AE',
     replace: true,
     scope: true,
-    templateUrl: ''
+    templateUrl: 'app/details/showtimes.html'
   };
 })
 .directive('movieDetails', function() {
@@ -154,7 +154,7 @@ angular.module('zeus.details', [])
     restrict: 'AE',
     replace: true,
     scope: true,
-    templateUrl: ''
+    templateUrl: 'app/details/movieDetails.html'
   };
 })
 .directive('postReview', function() {
@@ -162,7 +162,7 @@ angular.module('zeus.details', [])
     restrict: 'AE',
     replace: true,
     scope: true,
-    templateUrl: ''
+    templateUrl: 'app/details/postReview.html'
   };
 })
 .directive('reviewDetails', function() {
@@ -170,7 +170,7 @@ angular.module('zeus.details', [])
     restrict: 'AE',
     replace: true,
     scope: true,
-    templateUrl: ''
+    templateUrl: 'app/details/reviewDetails.html'
   };
 })
 .directive('actorDetails', function() {
@@ -178,6 +178,6 @@ angular.module('zeus.details', [])
     restrict: 'AE',
     replace: true,
     scope: true,
-    templateUrl: ''
+    templateUrl: 'app/details/actorDetails.html'
   };
 });
