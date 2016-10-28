@@ -5,7 +5,7 @@
     <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
   <div class="details-col2">
   <!-- Movie showtimes -->
-     <div class="showtimes">
+     <div class="showtimes" ng-if="DetailsVm.type === 'movie'">
        <h5>Showtimes</h5>
          <form ng-submit="DetailsVm.getShowtimes()">
            <p>Enter your zip code below to get showtimes for this movie near you today.</p>
