@@ -55,7 +55,7 @@ module.exports = {
   editUser: function (req, res, next) {
     var id = req.user.sub;
     var data = req.body;
-    User.findOneUpdate({ user_id: id }, data, {new: true}, function (err, user) {
+    User.findOneAndUpdate({ user_id: id }, data, {new: true}, function (err, user) {
       if (err) {
         console.log(err);
       } else {
