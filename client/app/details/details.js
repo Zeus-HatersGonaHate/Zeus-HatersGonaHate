@@ -1,8 +1,9 @@
-angular.module('zeus.details', [])
+ angular.module('zeus.details', [])
 .controller('DetailsController', function($location, Details, Reviews, $stateParams, authService) {
   // capture the value of `this` in a variable vm
   // vm stands for view model and is a replacement for $scope
   var DetailsVm = this;
+  DetailsVm.loaded = false;
   DetailsVm.data = {};
   DetailsVm.reviews = {};
   DetailsVm.users = {};
@@ -21,6 +22,7 @@ angular.module('zeus.details', [])
 
   Details.getDetails(DetailsVm.type, DetailsVm.id).then(function(data) {
     DetailsVm.data = data; // save all movie details for the requested movie
+    DetailsVm.loaded = true;
 
     //convenience properties for shorthand in html views
     DetailsVm.original_title = DetailsVm.data.original_title;
@@ -42,7 +44,10 @@ angular.module('zeus.details', [])
       }
     };
     DetailsVm.getActors();
-  });
+  })
+  .catch(function(){
+    DetailsVm.loaded = true;
+  })
 
   var getReviews = function() {
     Reviews.getReviews(DetailsVm.type, DetailsVm.id).then(function (reviews) {
@@ -107,18 +112,17 @@ angular.module('zeus.details', [])
     DetailsVm.zip = '';
   };
 
-    DetailsVm.vote = function(review, vote) {
-      if (DetailsVm.currentUser !== null) {
-        Reviews.upvote(review._id, vote)
-          .then(function(reviewInfo) {
-            review.voteCount = reviewInfo.voteCount;
-            review.votes = reviewInfo.votes;
-          });
-      } else {
-        DetailsVm.login();
-      }
-
-    };
+  DetailsVm.vote = function(review, vote, auth) {
+    if (auth) {
+      Reviews.upvote(review._id, vote)
+        .then(function(reviewInfo) {
+          review.voteCount = reviewInfo.voteCount;
+          review.votes = reviewInfo.votes;
+        });
+    } else {
+      DetailsVm.login();
+    }
+  };
 
   DetailsVm.edit = function(reviewId) {
     $location.path(/review/ + reviewId + '/edit');
@@ -133,25 +137,21 @@ angular.module('zeus.details', [])
   DetailsVm.checkFavorites = function (fav, watch) {
     if (fav !== null) {
       if (fav.length === 0) {
-        DetailsVm.hasFavorite = false;
+        return;
       }
     fav.forEach((ele) => {
         if (ele.type === DetailsVm.type && ele.id === DetailsVm.id) {
           DetailsVm.hasFavorite = true;
-        } else {
-          DetailsVm.hasFavorite = false;
         }
       });
     }
     if (watch !== null) {
       if (watch.length === 0) {
-        DetailsVm.hasWatched = false;
+        return;
       }
       watch.forEach((ele) => {
         if (ele.type === DetailsVm.type && ele.id === DetailsVm.id) {
           DetailsVm.hasWatched = true;
-        } else {
-          DetailsVm.hasWatched = false;
         }
       });
     }
@@ -169,7 +169,7 @@ angular.module('zeus.details', [])
     }
     Details.addToFavorites(favDetails)
       .then(function (data) {
-        DetailsVm.checkFavorites(data.data, null);
+        DetailsVm.hasFavorite = true;
       });
   };
 
@@ -185,7 +185,7 @@ angular.module('zeus.details', [])
     }
     Details.addToWatchedList(watchDetails)
       .then(function (data) {
-        DetailsVm.checkFavorites(null, data.data);
+        DetailsVm.hasWatched = true;
       });
   };
 
@@ -203,7 +203,11 @@ angular.module('zeus.details', [])
     console.log(type, deleteDetails)
     Details.deleteFavOrWatch(type, deleteDetails)
       .then(function (data) {
-        DetailsVm.checkFavorites(data.data.favorites, data.data.watched);
+        if (type === 'favorites') {
+          DetailsVm.hasFavorite = false;
+        } else if (type === 'watched') {
+          DetailsVm.hasWatched = false;
+        }
       });
   };
 

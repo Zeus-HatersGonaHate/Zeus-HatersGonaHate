@@ -34,7 +34,6 @@ angular.module('zeus.services', [])
       method: 'GET',
       url: '/favorites'
     }).then(function (res) {
-      console.log(res);
       return res.data[0];
     });
   };
@@ -63,7 +62,7 @@ angular.module('zeus.services', [])
       url: '/delete/' + type,
       data: data,
       headers: {'Content-Type': 'application/json'}
-    })
+    });
   };
 
   return {
