@@ -1,0 +1,33 @@
+<div class='movieDetails'>
+  <h3 ng-if="DetailsVm.original_name === undefined"> {{DetailsVm.original_title}} </h3>
+  <h3 ng-if="DetailsVm.original_title === undefined"> {{DetailsVm.original_name}} </h3>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-click="DetailsVm.addToFavorites()">
+    Add to favorites
+  </button>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-click="DetailsVm.addToWatchedList()">
+    Add to watched list
+  </button>
+  <h5 ng-if="DetailsVm.data.release_date !== undefined">Release Date</h5>
+  <p ng-if="DetailsVm.data.release_date !== undefined">{{DetailsVm.data.release_date}}</p>
+  <h5 ng-if="DetailsVm.data.runtime !== undefined">Movie Length</h5>
+  <p ng-if="DetailsVm.data.runtime !== undefined">{{DetailsVm.data.runtime}} minutes</p>
+  <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
+  <h3 ng-if="original_title === undefined"> {{original_name}} </h3>
+  <h5 ng-if="data.release_date !== undefined">Release Date</h5>
+  <p ng-if="data.release_date !== undefined">{{data.release_date}}</p>
+  <h5 ng-if="data.runtime !== undefined">Movie Length</h5>
+  <p ng-if="data.runtime !== undefined">{{data.runtime}} minutes</p>
+
+  <h5 ng-if="DetailsVm.data.first_air_date !== undefined">First Air Date</h5>
+  <p ng-if="DetailsVm.data.first_air_date !== undefined">{{DetailsVm.data.first_air_date}}</p>
+  <h5 ng-if="DetailsVm.data.episode_run_time[0] !== undefined">Episode Length</h5>
+  <p ng-if="DetailsVm.data.episode_run_time[0] !== undefined">{{DetailsVm.data.episode_run_time[0]}} minutes</p>
+  <h5>Overview</h5>
+  <p> {{DetailsVm.overview}} </p>
+  <h5>Lead Cast</h5>
+  <ul>
+    <a ng-repeat="actor in DetailsVm.actors" href="#/results/{{actor}}/1">
+      <li>{{ actor }}</li>
+    </a>
+  </ul>
+</div>

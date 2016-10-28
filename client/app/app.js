@@ -30,7 +30,6 @@ angular.module('zeus', [
 
     //Gets user profile when logged in.
   authService.getProfileDeferred().then(function (profile) {
-    console.log(profile);
     $scope.profile = profile;
     if (profile) {
       User.checkUser(profile);
