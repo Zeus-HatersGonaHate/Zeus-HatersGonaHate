@@ -238,8 +238,7 @@ angular.module('zeus.services', [])
   };
 
   var editUser = function (data) {
-    //attatch the id of the currently logged in profile
-    //console.log(data);
+    //attach the id of the currently logged in profile
     $http({
       method: 'PUT',
       url: '/user/edit',
@@ -272,12 +271,6 @@ angular.module('zeus.services', [])
     getUserId: getUserId,
     editUser: editUser,
     getUserReviews: getUserReviews
-  };
-})
-
-.factory('Account', function($http) {
-
-  return {
   };
 })
 
