@@ -19,6 +19,8 @@ module.exports = {
               email: info.email,
               user_id: info.user_id,
               username: username,
+              location: '',
+              about: '',
               profilePicLink: info.picture || 'https://www.drupal.org/files/issues/default-avatar.png',
               favourites: []
             });
