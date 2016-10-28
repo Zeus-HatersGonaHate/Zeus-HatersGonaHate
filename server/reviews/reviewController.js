@@ -73,25 +73,37 @@ module.exports = {
 
   //deletes a review from the DB based on the reviewId parameter within the URL
   deleteReview: function (req, res, next) {
-    var id = req.params.reviewId;
-    Review.findByIdAndRemove(id, function (err, data) {
-        if (err) {
-          res.send(404);
+    var reviewId = req.params.reviewId;
+    var userId = req.user.sub;
+    Review.findById(reviewId)
+      .exec(function(err, reviewInfo){
+        if(reviewInfo.user_id === userId){
+          Review.findByIdAndRemove(reviewId, function (err, review) {
+           res.json(200);
+          });
         } else {
-          res.send(200);
+          res.send(401);
         }
-      });
+      })
   },
 
   //Allows a user to edit an existing review that they have posted.
   editReview: function (req, res, next) {
-    var id = req.params.reviewId;
+    var reviewId = req.params.reviewId;
+    var userId = req.user.sub;
     var content = req.body.content;
     var rating = req.body.rating;
     var title = req.body.title;
-    Review.findOneAndUpdate({ _id: id }, {content: content, rating: rating, title: title}, {new: true}, function (err, review) {
-      res.json(review);
-    });
+    Review.findOne({ _id: reviewId })
+      .exec(function(err, reviewInfo){
+        if(reviewInfo.user_id === userId){
+          Review.update({ _id: reviewId }, {content: content, rating: rating, title: title}, {new: true}, function (err, review) {
+           res.json(review);
+          });
+        } else {
+          res.send(401);
+        }
+      })
   },
 
   // Upvote/downvote reviews total votes is the voteCount
