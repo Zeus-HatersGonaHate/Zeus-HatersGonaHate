@@ -19,7 +19,6 @@
     .then(function (res) {
       DetailsVm.favorites = res.favorites;
       DetailsVm.watched = res.watched;
-      console.log(res.currentlyWatching)
       DetailsVm.checkFavorites(res.favorites, res.watched, res.currentlyWatching);
     });
 
