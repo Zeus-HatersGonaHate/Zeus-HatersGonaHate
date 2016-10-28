@@ -1,0 +1,31 @@
+{
+  "name": "Zeus Reviews",
+  "main": "app.js",
+  "homepage": "https://github.com/Zeus-HatersGonaHate/Zeus-HatersGonaHate",
+  "authors": [
+    "Nancy",
+    "Mike",
+    "Luke and Alex"
+  ],
+  "description": "Movie review website",
+  "keywords": [
+    "movies",
+    "social",
+    "review",
+    "tv"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "underscore": "^1.8.3",
+    "moment": "^2.15.2"
+  }
+}
