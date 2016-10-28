@@ -15,7 +15,7 @@
    <movie-details></movie-details>
    <!-- Movie reviews -->
    <post-review></post-review>
-   <div class="noReviews" ng-if="!DetailsVm.hasReview && DetailsVm.loaded">
+   <div class="noReviews" ng-if="DetailsVm.reviews.length === 0 && DetailsVm.loaded">
      Currently no reviews...want to add one?
    </div>
    <review-details></review-details>

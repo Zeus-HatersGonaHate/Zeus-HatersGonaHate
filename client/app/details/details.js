@@ -5,13 +5,12 @@
   var DetailsVm = this;
   DetailsVm.loaded = false;
   DetailsVm.data = {};
-  DetailsVm.reviews = {};
+  DetailsVm.reviews = [];
   DetailsVm.users = {};
   DetailsVm.hasFavorite = false;
   DetailsVm.hasWatched = false;
   DetailsVm.hasCurrent = false;
   DetailsVm.currentUser = JSON.parse(localStorage.getItem('profile'));
-  DetailsVm.hasReview = false;
   DetailsVm.type = $stateParams.type; //media type, movie or tv
   DetailsVm.id = $stateParams.id; //id on themoviedb api for retrieving the movie/tv info
   //Grabs the users favorites, watched, currentlyWatching. Runs them through the check function.
@@ -24,13 +23,14 @@
 
   Details.getDetails(DetailsVm.type, DetailsVm.id).then(function(data) {
     DetailsVm.data = data; // save all movie details for the requested movie
-    DetailsVm.loaded = true;
 
     //convenience properties for shorthand in html views
     DetailsVm.original_title = DetailsVm.data.original_title;
     DetailsVm.original_name = DetailsVm.data.original_name;
     DetailsVm.poster_path = DetailsVm.data.poster_path;
     DetailsVm.overview = DetailsVm.data.overview;
+
+    DetailsVm.loaded = true;
     //loads actor info on details page load
     DetailsVm.getActors = function() {
       //if the selection is a movie
@@ -58,9 +58,6 @@
       });
       DetailsVm.reviews = reviews.data.reviews;
       DetailsVm.users = reviews.data.users;
-      if (DetailsVm.reviews.length > 0) {
-        DetailsVm.hasReview = true;
-      }
       return reviews.data;
     });
 
@@ -78,7 +75,6 @@
       review.data.reviews.date = moment(review.data.reviews.date).fromNow();
       DetailsVm.reviews.unshift(review.data.reviews);
       DetailsVm.users[review.data.users.user_id] = review.data.users;
-      DetailsVm.hasReview = true;
       //Clear input fields
       DetailsVm.reviewTitle = '';
       DetailsVm.reviewBody = '';

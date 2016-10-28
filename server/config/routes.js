@@ -1,5 +1,6 @@
 var reviewController = require('../reviews/reviewController.js');
 var userController = require('../users/userController.js');
+var commentController = require('../comments/commentController.js');
 var jwt = require('express-jwt');
 
 //Checks the token for authentication when attatched to route
@@ -23,6 +24,12 @@ module.exports = function (app, express) {
 
   app.delete('/review/:reviewId', authCheck, reviewController.deleteReview);
 
+  //Comment Routes
+  app.get('/comment/:reviewId', commentController.getCommentByReviewId);
+
+  app.post('/comment', authCheck, commentController.postComment);
+
+  app.delete('/comment/:commentId', authCheck, commentController.deleteComment);
 
   //User Routes
   app.get('/user/:username', userController.getUserByUsername);
