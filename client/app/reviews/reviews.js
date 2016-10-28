@@ -6,6 +6,8 @@ angular.module('zeus.reviews', [])
   ReviewsVm.review = {};
   ReviewsVm.user = {};
   ReviewsVm.hasComments = null;
+  ReviewsVm.comments = [];
+  ReviewsVm.commentsUser = {};
   ReviewsVm.movie = {};
   ReviewsVm.currentUser = JSON.parse(localStorage.getItem('profile'));
   Reviews.getReviewById(ReviewsVm.id)
@@ -16,9 +18,14 @@ angular.module('zeus.reviews', [])
       Details.getDetails(reviewInfo.review.type, reviewInfo.review.typeId)
       .then(function(movieInfo){
         ReviewsVm.movie = movieInfo;
-        console.log(movieInfo);
       });
       //Find comments for review
+      Comment.getComment(ReviewsVm.id)
+      .then(function(comments){
+        ReviewsVm.comments = comments.comments;
+        ReviewsVm.commentsUser = comments.users;
+        console.log(comments);
+      });
     });
 
   ReviewsVm.postComment = function(){
@@ -29,6 +36,12 @@ angular.module('zeus.reviews', [])
     }
     Comment.postComment(comment);
     ReviewsVm.content = '';
+  }
+
+  ReviewsVm.deleteComment = function(comment){
+    Comment.deleteComment(comment._id);
+    var index = ReviewsVm.comments.indexOf(comment);
+    ReviewsVm.comments.splice(index, 1);
   }
 
   ReviewsVm.vote = function(vote, auth) {

@@ -29,7 +29,7 @@ module.exports = function (app, express) {
 
   app.post('/comment', authCheck, commentController.postComment);
 
-  app.delete('/comment/:commentId');
+  app.delete('/comment/:commentId', authCheck, commentController.deleteComment);
 
   //User Routes
   app.get('/user/:username', userController.getUserByUsername);

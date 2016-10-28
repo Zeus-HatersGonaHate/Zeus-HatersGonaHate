@@ -19,7 +19,7 @@
   <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()">DELETE</span>
 </div>
 
-<div class="comments">
+<div class="commentsContainer">
   <h4>Comments</h4>
   <form ng-if="isAuthenticated" ng-submit="ReviewsVm.postComment()">
     <h6>Leave A Comment</h6>
@@ -28,6 +28,16 @@
   </form>
   <div ng-if="!isAuthenticated">You must <a href="" ng-click="ReviewsVm.login()">login</a> to leave a comment.</div>
 
+  <div>
+    <div class="comment" ng-repeat="comment in ReviewsVm.comments">
+      <a href="#/user/{{ReviewsVm.commentsUser[comment.user_id].username}}">
+        <img src="{{ ReviewsVm.commentsUser[comment.user_id].profilePicLink }}"/>
+        <p>{{ ReviewsVm.commentsUser[comment.user_id].username }}</p>
+      </a>
+      <p>comment: {{ comment.content }}</p>
+      <p ng-if="isAuthenticated && comment.user_id === ReviewsVm.currentUser.user_id" ng-click="ReviewsVm.deleteComment(comment)">DELETE</p>
+    </div>
+  </div>
   <div class="noComments" ng-if="!ReviewsVm.hasComments">
      Currently no comments...want to add one?
   </div>

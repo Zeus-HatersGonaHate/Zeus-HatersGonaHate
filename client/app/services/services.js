@@ -275,8 +275,30 @@ angular.module('zeus.services', [])
     });
   };
 
+  var getComment = function(id){
+    return $http({
+      method: 'GET',
+      url: '/comment/' + id
+    })
+    .then(function(res){
+      return res.data
+    });
+  };
+
+  var deleteComment = function(id){
+    return $http({
+      method: 'DELETE',
+      url: '/comment/' + id
+    })
+    .then(function(res){
+      return res
+    });
+  }
+
   return {
-    postComment: postComment
+    postComment: postComment,
+    getComment: getComment,
+    deleteComment: deleteComment
   }
 })
 
