@@ -3,6 +3,11 @@
   display: none;
 }
 
+body {
+  background-image: url('https://static.pexels.com/photos/65128/pexels-photo-65128.jpeg');
+  background-size: cover;
+}
+
 /* Header/Navbar styles */
 
 .logo {
@@ -30,6 +35,13 @@
   margin: 0 auto;
   height: 100%;
   width: 100%;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.landing h2 {
+  color: #00008B;
+  text-align: center;
 }
 
 /* Remove some default styling from a and li tags */
@@ -69,23 +81,24 @@ li {
 }
 
 .result {
-  background-color: purple;
+  background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
   margin-bottom: 2%;
   border: 3px solid black;
   border-radius: 5px;
+  position: relative;
 }
 
 .result-title {
   display: inline-block;
-  width: auto;
+  color: white;
+  width: 50%;
 }
 
 .result-overview {
   display: inline-block;
-}
-
-.result-overview p {
-
+  width: 40%;
+  color: white;
+  margin: 8px;
 }
 
 /* Details page */
