@@ -19,15 +19,25 @@ angular.module('zeus.details', [])
       DetailsVm.poster_path = DetailsVm.data.poster_path;
       DetailsVm.overview = DetailsVm.data.overview;
       //loads actor info on details page load
-      Details.getActors(DetailsVm.original_title).then(function(data) {
-        DetailsVm.actors = data.Actors.split(',');
-      });
+      DetailsVm.getActors = function() {
+        if (DetailsVm.original_title !== undefined) {
+          Details.getActors(DetailsVm.original_title).then(function(data) {
+            DetailsVm.actors = data.Actors.split(',');
+          });
+        } else if (DetailsVm.original_name !== undefined) {
+          Details.getActors(DetailsVm.original_name).then(function(data) {
+            DetailsVm.actors = data.Actors.split(',');
+          });
+        }
+      };
+      DetailsVm.getActors();
+
     });
     var getReviews = function() {
       Details.getReviews(DetailsVm.type, DetailsVm.id).then(function (reviews) {
         reviews.data.reviews.forEach(function (review) {
           review.date = moment(review.date).fromNow();
-        })
+        });
         DetailsVm.reviews = reviews.data.reviews;
         DetailsVm.users = reviews.data.users;
         if (DetailsVm.reviews.length > 0) {
@@ -96,7 +106,7 @@ angular.module('zeus.details', [])
 
     DetailsVm.edit = function(reviewId) {
       $location.path(/review/ + reviewId + '/edit');
-    }
+    };
 
     DetailsVm.delete = function(review) {
       Details.deleteReview(review._id);
@@ -107,7 +117,7 @@ angular.module('zeus.details', [])
     DetailsVm.addToFavorites = function () {
       var favDetails = {};
       favDetails.type = DetailsVm.type;
-      favDetails.id =  DetailsVm.id;
+      favDetails.id = DetailsVm.id;
       favDetails.picture = DetailsVm.poster_path;
       favDetails.title = DetailsVm.original_title;
       Details.addToFavorites(favDetails);
@@ -116,7 +126,7 @@ angular.module('zeus.details', [])
     DetailsVm.addToWatchedList = function () {
       var watchDetails = {};
       watchDetails.type = DetailsVm.type;
-      watchDetails.id =  DetailsVm.id;
+      watchDetails.id = DetailsVm.id;
       watchDetails.picture = DetailsVm.poster_path;
       watchDetails.title = DetailsVm.original_title;
       Details.addToWatchedList(watchDetails);
