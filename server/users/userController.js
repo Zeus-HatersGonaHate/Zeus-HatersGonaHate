@@ -8,7 +8,7 @@ module.exports = {
     var date = new Date();
     User.find({ user_id: info.user_id })
       .exec(function (error, data) {
-        console.log(data);
+        //console.log(data);
         if (error) {
           console.log(error);
           res.send(500);
@@ -65,9 +65,18 @@ module.exports = {
     var data = req.body;
     User.findOneAndUpdate({ user_id: id }, { $addToSet: { favorites: data } }, {new: true}, function (err, user) {
       if (err) console.log(err);
-      console.log(user);
-      res.sendStatus(200);
+      //console.log(user);
+      res.json(user.favorites);
     });
+  },
+
+  getUserFavorites: function (req, res, next) {
+    var id = req.user.sub;
+    User.find({ user_id: id })
+      .exec(function (err, user) {
+        if (err) console.log(err);
+        res.json(user);
+      });
   },
 
   addToWatchedList: function (req, res, next) {
@@ -75,9 +84,28 @@ module.exports = {
     var data = req.body;
     User.findOneAndUpdate({ user_id: id }, { $addToSet: { watched: data } }, {new:true}, function (err, user) {
       if (err) console.log(err);
-      console.log(user);
-      res.sendStatus(200);
+      //console.log(user);
+      res.json(user.watched);
     });
   },
+
+  deleteFavOrWatch: function (req, res, next) {
+    var id = req.user.sub;
+    var type = req.params.type;
+    var data = req.body;
+    if (type === 'favorites') {
+      User.findOneAndUpdate({ user_id: id }, { $pull: { favorites: data }}, {new: true}, function (err, user) {
+        if (err) console.log(err);
+        console.log(user);
+        res.json(user);
+      });
+    } else if (type === 'watched') {
+      User.findOneAndUpdate({ user_id: id }, { $pull: { watched: data }}, {new: true}, function (err, user) {
+        if (err) console.log(err);
+        console.log(user);
+        res.json(user);
+      });
+    }
+  }
 
 };

@@ -1,12 +1,7 @@
 <div class='movieDetails'>
   <h3 ng-if="DetailsVm.original_name === undefined"> {{DetailsVm.original_title}} </h3>
   <h3 ng-if="DetailsVm.original_title === undefined"> {{DetailsVm.original_name}} </h3>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-click="DetailsVm.addToFavorites()">
-    Add to favorites
-  </button>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-click="DetailsVm.addToWatchedList()">
-    Add to watched list
-  </button>
+  <details-buttons></details-buttons>
   <h5 ng-if="DetailsVm.data.release_date !== undefined">Release Date</h5>
   <p ng-if="DetailsVm.data.release_date !== undefined">{{DetailsVm.data.release_date}}</p>
   <h5 ng-if="DetailsVm.data.runtime !== undefined">Movie Length</h5>

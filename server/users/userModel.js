@@ -8,7 +8,8 @@ var UserSchema = new mongoose.Schema({
   profilePicLink: String,
   favorites: Array,
   watched: Array,
-  joinDate: String
+  joinDate: String,
+  about: String,
 });
 
 

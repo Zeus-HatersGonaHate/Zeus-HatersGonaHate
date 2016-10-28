@@ -29,11 +29,23 @@ angular.module('zeus.services', [])
     });
   };
 
+  var getUserFavorites = function () {
+    return $http ({
+      method: 'GET',
+      url: '/favorites'
+    }).then(function (res) {
+      console.log(res);
+      return res.data[0];
+    });
+  };
+
   var addToFavorites = function (data) {
     return $http ({
       method: 'POST',
       url: '/user/favorites',
       data: data
+    }).then(function (data) {
+      return data;
     });
   };
 
@@ -45,12 +57,23 @@ angular.module('zeus.services', [])
     });
   };
 
+  var deleteFavOrWatch = function (type, data) {
+    return $http({
+      method: 'DELETE',
+      url: '/delete/' + type,
+      data: data,
+      headers: {'Content-Type': 'application/json'}
+    })
+  };
+
   return {
     getDetails: getDetails,
     getShowtimes: getShowtimes,
     getActors: getActors,
+    getUserFavorites: getUserFavorites,
     addToFavorites: addToFavorites,
-    addToWatchedList: addToWatchedList
+    addToWatchedList: addToWatchedList,
+    deleteFavOrWatch: deleteFavOrWatch
   };
 })
 .factory('Reviews', function($http) {
