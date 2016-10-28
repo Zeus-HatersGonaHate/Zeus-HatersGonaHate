@@ -17,5 +17,14 @@
   <br/>
   <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()">Edit</span>
   <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()">DELETE</span>
+</div>
 
+<div class="comments">
+  <h4>Comments</h4>
+  <form ng-if="isAuthenticated">
+    <h6>Leave A Comment</h6>
+    <textarea placeholder="Tell us what you thought..." ng-model="DetailsVm.reviewBody" required></textarea>
+    <input type="submit">
+  </form>
+  <div ng-if="!isAuthenticated">You must <a href="" ng-click="ReviewsVm.login()">login</a> to leave a comment.</div>
 </div>
