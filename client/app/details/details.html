@@ -1,4 +1,4 @@
-<div ng-if="DetailsVm.type === 'movie' || DetailsVm.type === 'tv'">
+<div ng-if="DetailsVm.original_title !== undefined || DetailsVm.original_name !== undefined && (DetailsVm.type === 'movie' || DetailsVm.type === 'tv')">
   <div class='moviePoster'>
     <!-- If no poster_path, show dummy image -->
     <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
@@ -25,6 +25,8 @@
 <div ng-if="DetailsVm.type === 'person'">
   <actor-details></actor-details>
 </div>
+
+<h4 ng-if="DetailsVm.original_title === undefined && DetailsVm.original_name === undefined">Opps, what you're looking doesn't exist!</h4>
 
 
 
