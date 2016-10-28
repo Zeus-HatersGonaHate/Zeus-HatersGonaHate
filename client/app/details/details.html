@@ -1,119 +1,29 @@
 <div ng-if="DetailsVm.type === 'movie' || DetailsVm.type === 'tv'">
- <div class='moviePoster'>
+  <div class='moviePoster'>
     <!-- If no poster_path, show dummy image -->
     <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
     <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
-  <div class="details-col2">
-  <!-- Movie showtimes -->
-     <div class="showtimes" ng-if="DetailsVm.type === 'movie'">
-       <h5>Showtimes</h5>
-         <form ng-submit="DetailsVm.getShowtimes()">
-           <p>Enter your zip code below to get showtimes for this movie near you today.</p>
-           <p>Zip Code: </p><input type="text" ng-model="DetailsVm.zip">
-         </form>
-         <ul>
-           <li ng-repeat="movie in DetailsVm.showtimes">
-             <p ng-if="movie.title === DetailsVm.original_title"  class="showtime-title">{{ movie.title }}</p>
-             <ul ng-if="movie.title === DetailsVm.original_title" >
-               <li ng-repeat="showtime in movie.showtimes" class="showtime">
-                 {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
-               </li>
-             </ul>
-           </li>
-         </ul>
-         <p ng-if="DetailsVm.hasNoShowtime">This movie is not currently in theatres near you!</p>
-     </div>
-   </div>
- </div>
+    <div class="details-col2">
+    <!-- Movie showtimes -->
+    <showtimes ng-if="DetailsVm.type === 'movie'"></showtimes>
+    </div>
+  </div>
 
 
- <!-- Movie details and info -->
+ <!-- Movie/TV details and info -->
  <div class="details-col1">
-   <div class='movieDetails'>
-      <h3 ng-if="DetailsVm.original_name === undefined"> {{DetailsVm.original_title}} </h3>
-      <h3 ng-if="DetailsVm.original_title === undefined"> {{DetailsVm.original_name}} </h3>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-click="DetailsVm.addToFavorites()">
-        Add to favorites
-      </button>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-click="DetailsVm.addToWatchedList()">
-        Add to watched list
-      </button>
-      <h5 ng-if="DetailsVm.data.release_date !== undefined">Release Date</h5>
-      <p ng-if="DetailsVm.data.release_date !== undefined">{{DetailsVm.data.release_date}}</p>
-      <h5 ng-if="DetailsVm.data.runtime !== undefined">Movie Length</h5>
-      <p ng-if="DetailsVm.data.runtime !== undefined">{{DetailsVm.data.runtime}} minutes</p>
-      <h3 ng-if="original_name === undefined"> {{original_title}} </h3>
-      <h3 ng-if="original_title === undefined"> {{original_name}} </h3>
-      <h5 ng-if="data.release_date !== undefined">Release Date</h5>
-      <p ng-if="data.release_date !== undefined">{{data.release_date}}</p>
-      <h5 ng-if="data.runtime !== undefined">Movie Length</h5>
-      <p ng-if="data.runtime !== undefined">{{data.runtime}} minutes</p>
-
-      <h5 ng-if="DetailsVm.data.first_air_date !== undefined">First Air Date</h5>
-      <p ng-if="DetailsVm.data.first_air_date !== undefined">{{DetailsVm.data.first_air_date}}</p>
-      <h5 ng-if="DetailsVm.data.episode_run_time[0] !== undefined">Episode Length</h5>
-      <p ng-if="DetailsVm.data.episode_run_time[0] !== undefined">{{DetailsVm.data.episode_run_time[0]}} minutes</p>
-      <h5>Overview</h5>
-      <p> {{DetailsVm.overview}} </p>
-      <h5>Lead Cast</h5>
-      <ul>
-        <a ng-repeat="actor in DetailsVm.actors" href="#/results/{{actor}}/1">
-          <li>{{ actor }}</li>
-        </a>
-      </ul>
-   </div>
+   <movie-details></movie-details>
    <!-- Movie reviews -->
-   <div class="postReview">
-    <h5>Reviews</h5>
-    <form ng-if="isAuthenticated" ng-submit="DetailsVm.post()">
-      <h6>Title</h6>
-      <input type="text" placeholder="Title" ng-model="DetailsVm.reviewTitle" required>
-      <h6>Comment</6>
-      <textarea placeholder="Tell us what you thought..." ng-model="DetailsVm.reviewBody" required></textarea>
-      <h6>Rating</h6>
-      <select ng-model="DetailsVm.reviewRating" required>
-        <option selected disabled value="">--Select Rating--</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <input type="submit">
-    </form>
-    <div ng-if="!isAuthenticated">You must <a href="" ng-click="DetailsVm.login()">login</a> to write a review.</div>
-   </div>
-
+   <post-review></post-review>
    <div class="noReviews" ng-if="!DetailsVm.hasReview">
      Currently no reviews...want to add one?
    </div>
-   <div class="reviewDetails" ng-repeat="review in DetailsVm.reviews">
-     <h5>Username: <a href="#/user/{{DetailsVm.users[review.user_id].username}}">{{DetailsVm.users[review.user_id].username}}</a></h5>
-     <a href="#/user/{{DetailsVm.users[review.user_id].username}}"><img class="profile-pic-sm" src="{{DetailsVm.users[review.user_id].profilePicLink}}"/></a>
-     <a href="#/review/{{review._id}}"><strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small></a>
-      <p>Review: {{review.content}}
-        <br>
-        Date: {{review.date}}
-        <br>
-        <span ng-style="review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, 1)">Upvote: {{review.voteCount}}</span>
-        <span ng-style="review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, -1)">Downvote</span>
-        <br>
-        <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.edit(review._id)">Edit</span>
-        <span ng-if="DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.delete(review)">DELETE</span>
-      </p>
-   </div>
+   <review-details></review-details>
  </div>
 </div>
+
 <div ng-if="DetailsVm.type === 'person'">
-  <div class="portrait">
-    <img src="http://image.tmdb.org/t/p/w396/{{DetailsVm.data.profile_path}}" alt="">
-  </div>
-  <div class="actor-info">
-    <h3>{{DetailsVm.data.name}}</h3>
-    <h5>Birth Date: {{DetailsVm.data.birthday}} in {{DetailsVm.data.place_of_birth}}</h5>
-    <h5>Biography</h5>
-    <p>{{DetailsVm.data.biography}}</p>
-  </div>
+  <actor-details></actor-details>
 </div>
 
 
