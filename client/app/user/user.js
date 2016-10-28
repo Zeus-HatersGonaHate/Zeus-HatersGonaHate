@@ -18,6 +18,7 @@ angular.module('zeus.user', [])
         UserVm.location = userObj.location;
         UserVm.profilePic = userObj.profilePicLink;
         UserVm.favorites = userObj.favorites;
+        console.log(UserVm.favorites);
         User.getUserReviews(UserVm.userIdAuth)
           .then(function(reviews) {
             UserVm.reviews = reviews;
@@ -42,6 +43,17 @@ angular.module('zeus.user', [])
           });
       });
   }
+
+  //check to see if the user has any favorites for a given target (movie/tv)
+  UserVm.hasFavorites = function(target) {
+    var hasFavs = false;
+    UserVm.favorites.forEach(function(item){
+      if (item.type === target) {
+        hasFavs = true;
+      }
+    });
+    return hasFavs;
+  };
 })
 .directive('userOverview', function() {
   return {
