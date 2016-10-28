@@ -10,6 +10,8 @@ angular.module('zeus.account', [])
       AccountVm.username = user.username;
       AccountVm.originalUsername = user.username; //for use with HTML validation checking
       AccountVm.about = user.about;
+      AccountVm.joinDate = user.joinDate;
+      AccountVm.fullName = user.fullName;
       AccountVm.location = user.location;
       AccountVm.profilePic = user.profilePicLink;
     });
@@ -26,6 +28,7 @@ angular.module('zeus.account', [])
     var updatedAccount = {
       email: AccountVm.email,
       username: AccountVm.username,
+      fullName: AccountVm.fullName,
       about: AccountVm.about,
       location: AccountVm.location
     };
