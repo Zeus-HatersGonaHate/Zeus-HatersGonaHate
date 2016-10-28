@@ -79,7 +79,7 @@ angular.module('zeus', [
     url: '/account',
     templateUrl: 'app/account/account.html',
     controller: 'AccountController',
-    //controllerAs: 'AccountVm',  //need to set this up
+    controllerAs: 'AccountVm',  //need to set this up
     authenticate: true
   };
 
