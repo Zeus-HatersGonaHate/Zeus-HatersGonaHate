@@ -267,7 +267,7 @@ angular.module('zeus.services', [])
   var postComment = function(data){
     return $http({
       method: 'POST',
-      url: '/comment'
+      url: '/comment',
       data: data
     })
     .then(function(res){

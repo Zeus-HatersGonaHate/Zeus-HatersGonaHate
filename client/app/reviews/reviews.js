@@ -22,8 +22,13 @@ angular.module('zeus.reviews', [])
     });
 
   ReviewsVm.postComment = function(){
-    Comment.postComment();
-    //clear comment box;
+    var comment = {
+      user_id: ReviewsVm.currentUser,
+      review_id: ReviewsVm.id,
+      content: ReviewsVm.content
+    }
+    Comment.postComment(comment);
+    ReviewsVm.content = '';
   }
 
   ReviewsVm.vote = function(vote, auth) {

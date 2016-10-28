@@ -25,7 +25,7 @@ module.exports = function (app, express) {
   app.delete('/review/:reviewId', authCheck, reviewController.deleteReview);
 
   //Comment Routes
-  app.get('/comment/:reviewId');
+  app.get('/comment/:reviewId', commentController.getCommentByReviewId);
 
   app.post('/comment', authCheck, commentController.postComment);
 

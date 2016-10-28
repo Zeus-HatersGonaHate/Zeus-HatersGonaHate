@@ -1,10 +1,11 @@
 var Comment = require('../comments/commentModel.js');
+var User = require('../users/userModel.js');
 var helpers = require('../config/helpers.js');
 
 module.exports = {
   getCommentByReviewId: function(req, res, next){
     var id = req.params.reviewId;
-    Review.find({typeId: id})
+    Comment.find({review_id: id})
       .sort({date: -1})
       .exec(function(err, comments) {
         if (err) {
@@ -49,10 +50,10 @@ module.exports = {
   deleteComment: function(req, res, next){
     var commentId = req.params.commentId;
     var userId = req.user.sub;
-    Review.findById(commentId)
+    Comment.findById(commentId)
       .exec(function(err, commentInfo){
         if(commentInfo.user_id === userId){
-          Review.findByIdAndRemove(commentId, function (err, comment) {
+          Comment.findByIdAndRemove(commentId, function (err, comment) {
            res.json(200);
           });
         } else {
