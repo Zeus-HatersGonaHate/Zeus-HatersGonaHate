@@ -1,0 +1,28 @@
+<div>
+  <form name="editAccountForm">
+    <h5>Edit Account Details</h5>
+    <p>{{test}}</p>
+    <img src="{{AccountVm.profilePic}}" alt="profile pic goes here" class="profile-pic-lg"/>
+
+    <p>Username: <input name="username" ng-change="AccountVm.usernameTaken(AccountVm.username)" type="text" value="{{AccountVm.username}}" ng-pattern="/(?=^.{3,20}$)^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$/" ng-model="AccountVm.username" required>
+      <!-- Input validation -->
+      <span class="warning" ng-show="editAccountForm.username.$error.required">Please enter a username.</span>
+      <span class="warning" ng-show="editAccountForm.username.$error.pattern">That username is not valid</span>
+      <span class="warning" ng-show="AccountVm.username !== AccountVm.originalUsername && editAccountForm.username.$dirty && AccountVm.taken">Sorry, that username is taken. Choose another.</span>
+    </p>
+
+    <p>Email: {{AccountVm.email}}</p>
+
+    <p>Location: <input name="location" type="text" value="{{AccountVm.location}}" ng-model="AccountVm.location"></p>
+
+    <p>About: <textarea name="about" value="{{AccountVm.about}}" ng-model="AccountVm.about" cols="40" rows="5"></textarea>
+
+    <!-- Disables submit button if form is invalid or if the username is already taken -->
+    <input ng-disabled="editAccountForm.$invalid || (AccountVm.taken && AccountVm.username !== AccountVm.originalUsername)" ng-click="AccountVm.update()" type="submit" value="Update profile">
+    <input ng-click="AccountVm.cancel()" type="Submit" value="Cancel">
+
+  </form>
+</div>
+
+<!-- ng-pattern="/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/"  -->
+<!-- <span class="warning" ng-show="editAccountForm.username.$error.pattern">Wrong pattern</span> -->
