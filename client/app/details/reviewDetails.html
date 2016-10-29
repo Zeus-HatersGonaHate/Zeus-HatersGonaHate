@@ -4,7 +4,7 @@
   <a href="#/review/{{review._id}}"><strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small></a>
     <p>Review: {{review.content}}</p>
     <br>
-    Date: {{review.date}}
+    <span>Date: {{review.date}}</span>
     <br>
     <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, 1, isAuthenticated)">Upvote: {{review.voteCount}}</span>
     <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, -1, isAuthenticated)">Downvote</span>

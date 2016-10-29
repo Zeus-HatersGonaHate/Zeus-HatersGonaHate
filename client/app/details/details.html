@@ -1,11 +1,12 @@
 <div ng-if="DetailsVm.original_title !== undefined || DetailsVm.original_name !== undefined && (DetailsVm.type === 'movie' || DetailsVm.type === 'tv')">
-  <div class='moviePoster'>
+  <showtimes ng-if="DetailsVm.type === 'movie'"></showtimes>
+  <div ng-if="DetailsVm.type === 'tv'" class='moviePoster'>
     <!-- If no poster_path, show dummy image -->
     <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
     <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
     <div class="details-col2">
     <!-- Movie showtimes -->
-    <showtimes ng-if="DetailsVm.type === 'movie'"></showtimes>
+
     </div>
   </div>
 
