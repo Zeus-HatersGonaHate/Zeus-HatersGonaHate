@@ -1,32 +1,52 @@
 <div class="landing">
   <div class="category">
     <h2>Popular Movies</h2>
-      <div ng-init="LandingVm.fetchPopularMovies()" class="media-list">
-        <popular-movie ng-repeat="popularmovie in LandingVm.popularmovies | limitTo:10"></popular-movie>
+    <div class="horizontal">
+      <div class="table">
+        <div ng-init="LandingVm.fetchPopularMovies()" class="media-list">
+          <popular-movie ng-repeat="popularmovie in LandingVm.popularmovies | limitTo:10"></popular-movie>
+        </div>
       </div>
+    </div>
   </div>
   <div class="category">
     <h2>Latest Movies</h2>
-      <div ng-init="LandingVm.fetchLatestMovies()" class="media-list">
-        <latest-movie ng-repeat="latestmovie in LandingVm.latestmovies | limitTo:10"></latest-movie>
+    <div class="horizontal">
+      <div class="table">
+        <div ng-init="LandingVm.fetchLatestMovies()" class="media-list">
+          <latest-movie ng-repeat="latestmovie in LandingVm.latestmovies | limitTo:10"></latest-movie>
+        </div>
       </div>
+    </div>
   </div>
   <div class="category">
     <h2>Upcoming Movies</h2>
-      <div ng-init="LandingVm.fetchUpcomingMovies()" class="media-list">
-        <upcoming-movie ng-repeat="upcomingmovie in LandingVm.upcomingmovies | limitTo:10"></upcoming-movie>
+    <div class="horizontal">
+      <div class="table">
+        <div ng-init="LandingVm.fetchUpcomingMovies()" class="media-list">
+          <upcoming-movie ng-repeat="upcomingmovie in LandingVm.upcomingmovies | limitTo:10"></upcoming-movie>
+        </div>
       </div>
+    </div>
   </div>
   <div class="category">
     <h2>Popular TV Shows</h2>
-      <div ng-init="LandingVm.fetchPopularShows()" class="media-list">
-        <popular-show ng-repeat="popularshow in LandingVm.popularshows | limitTo:10"></popular-show>
+    <div class="horizontal">
+      <div class="table">
+        <div ng-init="LandingVm.fetchPopularShows()" class="media-list">
+          <popular-show ng-repeat="popularshow in LandingVm.popularshows | limitTo:10"></popular-show>
+        </div>
       </div>
+    </div>
   </div>
   <div class="category">
     <h2>TV Shows Airing Today</h2>
-    <div ng-init="LandingVm.fetchLatestShows()" class="media-list">
-      <latest-show ng-repeat="latestshow in LandingVm.latestshows | limitTo:10"></latest-show>
+    <div class="horizontal">
+      <div class="table">
+        <div ng-init="LandingVm.fetchLatestShows()" class="media-list">
+          <latest-show ng-repeat="latestshow in LandingVm.latestshows | limitTo:10"></latest-show>
+        </div>
+      </div>
     </div>
   </div>
 </div>

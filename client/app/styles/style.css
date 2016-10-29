@@ -39,7 +39,10 @@ body {
   border-radius: 5px;
 }*/
 
+
 /*.landing h2 {
+.landing h2 {
+  line-height: 0px;
   color: #00008B;
   text-align: center;
 }*/
@@ -132,8 +135,10 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 /* Details page */
 
+
 /*.media-container {
   width: 100%;
+.media-container {
   float: left;
 }
 
@@ -189,6 +194,28 @@ h1, h2, h3, h4, h5, h6, p, span {
   font-size: 18px;
 }*/
 
+
+.mdl-mini-footer {
+  background-color: rgb(96,125,139);
+  color: #ffffff;
+  padding: 20px 16px;
+}
+
+div.horizontal {
+    overflow: auto;
+}
+
+.table {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+article {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
 
 /* Reviews */
 
