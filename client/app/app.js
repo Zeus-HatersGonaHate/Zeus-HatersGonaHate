@@ -74,6 +74,15 @@ angular.module('zeus', [
     authenticate: false
   };
 
+  var userOwnState = {
+    name: 'userOwn',
+    url: '/user',
+    templateUrl: 'app/user/user.html',
+    controller: 'UserController',
+    controllerAs: 'UserVm',  //need to set this up
+    authenticate: true
+  };
+
   var accountState = {
     name: 'account',
     url: '/account',
@@ -114,6 +123,7 @@ angular.module('zeus', [
   $stateProvider.state(resultsState);
   $stateProvider.state(detailsState);
   $stateProvider.state(userState);
+  $stateProvider.state(userOwnState);
   $stateProvider.state(accountState);
   $stateProvider.state(editAccountState);
   $stateProvider.state(reviewsState);

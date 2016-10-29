@@ -1,25 +1,47 @@
 angular.module('zeus.user', [])
-.controller('UserController', function(User, $stateParams) {
+.controller('UserController', function(Details, User, $stateParams) {
   var UserVm = this;
   UserVm.currentView = 'overview';
   UserVm.currentFavoriteView = 'movies';
   UserVm.username = $stateParams.username;
 
   //set up user information based on username given in route
-  User.getUserId($stateParams.username)
-    .then(function(user) {
-      var userObj = user;
-      UserVm.userId = userObj._id;
-      UserVm.userIdAuth = userObj.user_id;
-      UserVm.about = userObj.about;
-      UserVm.profilePic = userObj.profilePicLink;
-      UserVm.email = userObj.email;
-      UserVm.favorites = userObj.favorites;
-      User.getUserReviews(UserVm.userIdAuth)
-        .then(function(reviews) {
-          UserVm.reviews = reviews;
-        });
-    });
+  if ($stateParams.username) {
+    User.getUserId($stateParams.username)
+      .then(function(userObj) {
+        UserVm.userId = userObj._id;
+        UserVm.email = userObj.email;
+        UserVm.userIdAuth = userObj.user_id;
+        UserVm.about = userObj.about;
+        UserVm.joinDate = userObj.joinDate;
+        UserVm.fullName = userObj.fullName;
+        UserVm.location = userObj.location;
+        UserVm.profilePic = userObj.profilePicLink;
+        UserVm.favorites = userObj.favorites;
+        User.getUserReviews(UserVm.userIdAuth)
+          .then(function(reviews) {
+            UserVm.reviews = reviews;
+          });
+      });
+  } else {
+    Details.getUserFavorites()
+      .then(function(userObj) {
+        UserVm.userId = userObj._id;
+        UserVm.email = userObj.email;
+        UserVm.userIdAuth = userObj.user_id;
+        UserVm.username = userObj.username;
+        UserVm.about = userObj.about;
+        UserVm.joinDate = userObj.joinDate;
+        UserVm.fullName = userObj.fullName;
+        UserVm.location = userObj.location;
+        UserVm.profilePic = userObj.profilePicLink;
+        UserVm.favorites = userObj.favorites;
+        User.getUserReviews(UserVm.userIdAuth)
+          .then(function(reviews) {
+            UserVm.reviews = reviews;
+          });
+      });
+  }
 })
 .directive('userOverview', function() {
   return {
