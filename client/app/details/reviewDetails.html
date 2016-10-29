@@ -1,14 +1,19 @@
 <div class="reviewDetails" ng-repeat="review in DetailsVm.reviews">
-  <h5>Username: <a href="#/user/{{DetailsVm.users[review.user_id].username}}">{{DetailsVm.users[review.user_id].username}}</a></h5>
-  <a href="#/user/{{DetailsVm.users[review.user_id].username}}"><img class="profile-pic-sm" src="{{DetailsVm.users[review.user_id].profilePicLink}}"/></a>
-  <a href="#/review/{{review._id}}"><strong> Title: {{review.title}} </strong> <small> Rating: {{review.rating}} </small></a>
-    <p>Review: {{review.content}}</p>
-    <br>
-    <span>Date: {{review.date}}</span>
-    <br>
-    <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, 1, isAuthenticated)">Upvote: {{review.voteCount}}</span>
+  <div class="reviewUser">
+    <p><a href="#/user/{{DetailsVm.users[review.user_id].username}}"><strong>{{DetailsVm.users[review.user_id].username}}</strong></a></p>
+    <a href="#/user/{{DetailsVm.users[review.user_id].username}}"><img class="reviewDP" src="{{DetailsVm.users[review.user_id].profilePicLink}}"/></a>
+  </div>
+
+  <div class="reviewBody">
+  <a href="#/review/{{review._id}}"><strong> {{review.title}}</strong></a> | {{review.rating}}★
+  <p>{{review.content}}</p>
+  </div>
+
+  <div class="reviewInfo">
+    <span>{{review.date}} | </span>
+    <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, 1, isAuthenticated)">Upvote: {{review.voteCount}} • </span>
     <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="DetailsVm.vote(review, -1, isAuthenticated)">Downvote</span>
-    <br>
-    <span ng-if="isAuthenticated && DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.edit(review._id)">Edit</span>
+    <span ng-if="isAuthenticated && DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.edit(review._id)"> | Edit • </span>
     <span ng-if="isAuthenticated && DetailsVm.currentUser !== null && DetailsVm.currentUser.user_id === review.user_id" ng-click="DetailsVm.delete(review)">DELETE</span>
+  </div>
 </div>

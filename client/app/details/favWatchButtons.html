@@ -1,22 +1,22 @@
   <div>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="!DetailsVm.hasFavorite" ng-click="DetailsVm.addToUserLists('favorites')">
-      Add to favorites
+      <i class="material-icons">favorite_border</i>
     </button>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="DetailsVm.hasFavorite" ng-click="DetailsVm.deleteFavOrWatch('favorites')">
-      Remove from favorites
+      <i class="material-icons">favorite</i>
     </button>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="!DetailsVm.hasWatched" ng-click="DetailsVm.addToUserLists('watched')">
-      Add to watched list
+      <i class="material-icons">visibility_off</i>
     </button>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="DetailsVm.hasWatched" ng-click="DetailsVm.deleteFavOrWatch('watched')">
-      Remove from watched list
+      <i class="material-icons">visibility</i>
     </button>
     <span ng-if="DetailsVm.type === 'tv'">
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="!DetailsVm.hasCurrent" ng-click="DetailsVm.addToUserLists('current')">
-      Not currently watching
+      <i class="material-icons">schedule</i>
     </button>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" ng-if="DetailsVm.hasCurrent" ng-click="DetailsVm.deleteFavOrWatch('current')">
-      Currently watching
+      <i class="material-icons">watch_later</i>
     </button>
     </span>
   </div>

@@ -4,13 +4,13 @@
 }
 
 body {
-  background-image: url('https://static.pexels.com/photos/65128/pexels-photo-65128.jpeg');
+  /*background-image: url('https://static.pexels.com/photos/65128/pexels-photo-65128.jpeg');*/
   background-size: cover;
 }
 
 /* Header/Navbar styles */
 
-.logo {
+/*.logo {
   height: 40px;
   width: 40px;
 }
@@ -20,35 +20,35 @@ body {
 }
 
 .nav-logo {
-  color: #fff;
-}
+  color: black;
+}*/
 
 /* Landing Page */
 
-.poster-container {
+/*.poster-container {
   width: 193px;
   height: 280px;
   padding: 4px;
-}
+}*/
 
-.poster-container img {
+/*.poster-container img {
   margin: auto;
   height: 100%;
   width: 100%;
-  border: 1px solid white;
+  border: 1px solid black;
   border-radius: 5px;
-}
+}*/
 
-.landing h2 {
+/*.landing h2 {
   color: #00008B;
   text-align: center;
-}
+}*/
 
 /* Remove some default styling from tags */
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: black;
 }
 
 li {
@@ -56,7 +56,7 @@ li {
 }
 
 h1, h2, h3, h4, h5, h6, p, span {
-  color: #fff;
+  color: black;
 }
 
 /* User page */
@@ -65,14 +65,14 @@ h1, h2, h3, h4, h5, h6, p, span {
   width: 100%;
 }
 
-.user-menu, .user-details, .user-panel, .user-selection, .user-favorites-view, .user-overview-view, .user-reviews, .media-container, .account {
+/*.user-menu, .user-details, .user-panel, .user-selection, .user-favorites-view, .user-overview-view, .user-reviews, .media-container, .account {
   background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
   border: 3px solid #d2d2d2;
   border-radius: 5px;
   padding: 5%;
-}
+}*/
 
-.user-info {
+/*.user-info {
   width: 50%;
 }
 
@@ -92,16 +92,16 @@ h1, h2, h3, h4, h5, h6, p, span {
 .profile-pic-sm {
   height: 100px;
   width: auto;
-}
+}*/
 
 /*Search Results */
 
-.pages {
+/*.pages {
   float: right;
   margin-right: 20px;
-}
+}*/
 
-.page {
+/*.page {
   padding: 5px;
 }
 
@@ -115,47 +115,47 @@ h1, h2, h3, h4, h5, h6, p, span {
   border: 3px solid #d2d2d2;
   border-radius: 5px;
   position: relative;
-}
+}*/
 
-.result-title {
+/*.result-title {
   display: inline-block;
-  color: white;
+  color: black;
   width: 50%;
-}
+}*/
 
-.result-overview {
+/*.result-overview {
   display: inline-block;
   width: 40%;
-  color: white;
+  color: black;
   margin: 8px;
-}
+}*/
 
 /* Details page */
 
-.media-container {
+/*.media-container {
   width: 100%;
   float: left;
 }
 
 .media-list li {
   float: left;
-}
+}*/
 
-.moviePoster {
+/*.moviePoster {
   width: 50%;
   margin-right: 0;
   display: inline;
   padding-left: 2%;
-}
+}*/
 
-.moviePoster {
+/*.moviePoster {
   position: fixed;
   right: 5%;
   height: 85%;
   width: auto;
-}
+}*/
 
-.showtimes {
+/*.showtimes {
   background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
   border: 3px solid #d2d2d2;
   border-radius: 5px;
@@ -164,46 +164,46 @@ h1, h2, h3, h4, h5, h6, p, span {
   right: 5%;
   height: 85%;
   overflow-y: scroll;
-}
+}*/
 
-.movieDetails, .reviewDetails, .postReview, .noReviews, .edit-account, .actor {
+/*.movieDetails, .reviewDetails, .postReview, .noReviews, .edit-account, .actor {
   background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
   border: 3px solid #d2d2d2;
   border-radius: 5px;
   margin: 5px;
   width: 50%;
-}
+}*/
 
-.details-col1 {
+/*.details-col1 {
   float: left;
   padding-left: 2%;
-}
+}*/
 
-.details-col2 {
+/*.details-col2 {
   float: right;
   padding-right: 5%;
-}
+}*/
 
-.showtime-title {
+/*.showtime-title {
   font-weight: 600;
   font-size: 18px;
-}
+}*/
 
-<<<<<<< 278730c4aad40a2fc16d6f1318983ec4bf40330e
+
 /* Reviews */
 
-.movie, .review, .commentsContainer {
+/*.movie, .review, .commentsContainer {
   background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
   border: 3px solid #d2d2d2;
   border-radius: 5px;
   margin: 5px;
   width: 30%;
   height: auto;
-}
+}*/
 
 /* Edit Reviews */
 
-.edit-review {
+/*.edit-review {
   background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
   border: 3px solid #d2d2d2;
   border-radius: 5px;
@@ -214,11 +214,92 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 .edit-review form {
   padding: 10% 35%;
-}
+}*/
 
 
 /*new*/
 
 .container {
   border: solid black 1px;
+  width: 1100px;
+}
+
+.details {
+  position: relative;
+  width: 50%;
+  vertical-align:top;
+}
+
+.reviewDetails {
+  position: relative;
+  border: black solid 1px;
+}
+
+.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.reviewBody{
+  position: relative;
+  width: 80%;
+  border: black solid 1px;
+
+}
+
+.reviewUser{
+  position: relative;
+  border: black solid 1px;
+  vertical-align:top;
+}
+
+.reviewDP {
+  position: relative;
+  width: 60px;
+  margin-top: -18px;
+}
+
+.reviews {
+  border: black solid 1px;
+  position: relative;
+  width: 90%;
+}
+
+.inputBox{
+  position: relative;
+  width: 80%;
+}
+
+.inputTitle{
+  position: relative;
+  width: 60%;
+}
+
+.posting {
+  border: black solid 1px;
+  position: relative;
+  width: 60%;
+}
+
+.showtimes{
+  border: black solid 1px;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.showtimeResults{
+  position: relative;
+  height: 200px;
+  width: 50%;
+  overflow-y: scroll;
+  border: black solid 1px;
+}
+
+.showtimeForm{
+  position: relative;
+  width: 40%;
+  border: black solid 1px;
+  vertical-align:top;
 }
