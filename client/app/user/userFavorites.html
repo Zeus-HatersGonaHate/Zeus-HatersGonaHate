@@ -1,9 +1,9 @@
 <div class="user-favorites-view">
   <div class="favorite-menu">
-    <ul class="favorite-menu">
-      <a href="" ng-click="UserVm.currentFavoriteView = 'movies'"><li>Movies</li></a>
-      <a href="" ng-click="UserVm.currentFavoriteView = 'tv'"><li>TV shows</li></a>
-    </ul>
+    <div class="favorite-menu">
+      <a href="" ng-click="UserVm.currentFavoriteView = 'movies'"><div class="favoriteNav">Movies •</div></a>
+      <a href="" ng-click="UserVm.currentFavoriteView = 'tv'"><div class="favoriteNav">TV shows</div></a>
+    </div>
   </div>
 
   <favorite-movies ng-show="UserVm.currentFavoriteView === 'movies'"></favorite-movies>

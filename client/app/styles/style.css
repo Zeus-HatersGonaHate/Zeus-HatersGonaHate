@@ -235,7 +235,7 @@ h1, h2, h3, h4, h5, h6, p, span {
   border: black solid 1px;
 }
 
-.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container{
+.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster{
   position: relative;
   display: inline-block;
   margin-right: 10px;
@@ -321,5 +321,40 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 /* landing page */
 .poster-container {
+  margin-right: 0px;
+}
+
+/* User profile page */
+.profileLeft {
+  position: relative;
+  width: 40%;
+  vertical-align:top;
+  border: black solid 1px;
+}
+
+.profileRight {
+  position: relative;
+  width: 55%;
+  border: black solid 1px;
+}
+
+.profilePic {
+  position: relative;
+  width: 250px;
+}
+
+.aboutUser, .overviewReview{
+  position: relative;
+  border: black solid 1px;
+  width: 90%;
+}
+
+.user-review {
+  position: relative;
+  border: black solid 1px;
+  width: 90%;
+}
+
+.favoriteNav {
   margin-right: 0px;
 }
