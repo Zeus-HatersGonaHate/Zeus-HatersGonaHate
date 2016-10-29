@@ -217,7 +217,7 @@ h1, h2, h3, h4, h5, h6, p, span {
 }*/
 
 
-/* move/tv detail page */
+/* movie/tv detail page */
 
 .container {
   border: solid black 1px;
@@ -235,7 +235,7 @@ h1, h2, h3, h4, h5, h6, p, span {
   border: black solid 1px;
 }
 
-.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewInfo, .commentUser, .commentBody{
+.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewInfo, .commentUser, .commentBody, .portraitm, .actor-info{
   position: relative;
   display: inline-block;
   margin-right: 10px;
@@ -397,4 +397,17 @@ h1, h2, h3, h4, h5, h6, p, span {
 .editTitle {
   position: relative;
   width: 50%;
+}
+
+/* actor detail page */
+.actor-info {
+  position: relative;
+  width: 60%;
+  border: black solid 1px;
+  vertical-align:top;
+}
+
+.portrait{
+  position: relative;
+  width: 330px;
 }
