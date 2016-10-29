@@ -4,48 +4,8 @@
 }
 
 body {
-  /*background-image: url('https://static.pexels.com/photos/65128/pexels-photo-65128.jpeg');*/
-  background-size: cover;
+
 }
-
-/* Header/Navbar styles */
-
-/*.logo {
-  height: 40px;
-  width: 40px;
-}
-
-.nav-buttons {
-  float: right;
-}
-
-.nav-logo {
-  color: black;
-}*/
-
-/* Landing Page */
-
-/*.poster-container {
-  width: 193px;
-  height: 280px;
-  padding: 4px;
-}*/
-
-/*.poster-container img {
-  margin: auto;
-  height: 100%;
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 5px;
-}*/
-
-
-/*.landing h2 {
-.landing h2 {
-  line-height: 0px;
-  color: #00008B;
-  text-align: center;
-}*/
 
 /* Remove some default styling from tags */
 
@@ -63,137 +23,6 @@ h1, h2, h3, h4, h5, h6, p, span {
 }
 
 /* User page */
-
-.user {
-  width: 100%;
-}
-
-/*.user-menu, .user-details, .user-panel, .user-selection, .user-favorites-view, .user-overview-view, .user-reviews, .media-container, .account {
-  background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
-  border: 3px solid #d2d2d2;
-  border-radius: 5px;
-  padding: 5%;
-}*/
-
-/*.user-info {
-  width: 50%;
-}
-
-.user-menu a {
-  font-size: 16px;
-}
-
-.user-menu li {
-  display: inline;
-}
-
-.profile-pic-lg {
-  height: 180px;
-  width: auto;
-}
-
-.profile-pic-sm {
-  height: 100px;
-  width: auto;
-}*/
-
-/*Search Results */
-
-/*.pages {
-  float: right;
-  margin-right: 20px;
-}*/
-
-/*.page {
-  padding: 5px;
-}
-
-.results {
-  margin-left: 25%;
-}
-
-.result, .pages {
-  background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
-  margin-bottom: 2%;
-  border: 3px solid #d2d2d2;
-  border-radius: 5px;
-  position: relative;
-}*/
-
-/*.result-title {
-  display: inline-block;
-  color: black;
-  width: 50%;
-}*/
-
-/*.result-overview {
-  display: inline-block;
-  width: 40%;
-  color: black;
-  margin: 8px;
-}*/
-
-/* Details page */
-
-
-/*.media-container {
-  width: 100%;
-.media-container {
-  float: left;
-}
-
-.media-list li {
-  float: left;
-}*/
-
-/*.moviePoster {
-  width: 50%;
-  margin-right: 0;
-  display: inline;
-  padding-left: 2%;
-}*/
-
-/*.moviePoster {
-  position: fixed;
-  right: 5%;
-  height: 85%;
-  width: auto;
-}*/
-
-/*.showtimes {
-  background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
-  border: 3px solid #d2d2d2;
-  border-radius: 5px;
-  margin: 5px;
-  position: fixed;
-  right: 5%;
-  height: 85%;
-  overflow-y: scroll;
-}*/
-
-/*.movieDetails, .reviewDetails, .postReview, .noReviews, .edit-account, .actor {
-  background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
-  border: 3px solid #d2d2d2;
-  border-radius: 5px;
-  margin: 5px;
-  width: 50%;
-}*/
-
-/*.details-col1 {
-  float: left;
-  padding-left: 2%;
-}*/
-
-/*.details-col2 {
-  float: right;
-  padding-right: 5%;
-}*/
-
-/*.showtime-title {
-  font-weight: 600;
-  font-size: 18px;
-}*/
-
 
 .mdl-mini-footer {
   background-color: rgb(96,125,139);
@@ -217,39 +46,46 @@ article {
     text-align: center;
 }
 
-/* Reviews */
 
-/*.movie, .review, .commentsContainer {
-  background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
-  border: 3px solid #d2d2d2;
-  border-radius: 5px;
-  margin: 5px;
-  width: 30%;
-  height: auto;
-}*/
 
-/* Edit Reviews */
-
-/*.edit-review {
-  background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
-  border: 3px solid #d2d2d2;
-  border-radius: 5px;
-  margin: 5px;
-  width: 50%;
-  height: auto;
+/* General */
+.nav{
+  background-color: white;
+  border-bottom: black solid 1px;
+  width:100%;
+  position: fixed;
+  z-index: 1000;
 }
 
-.edit-review form {
-  padding: 10% 35%;
-}*/
+.navLinks{
+  position: relative;
+  float: right;
+  padding-top: 23px;
+  padding-bottom: 23px;
+  border: black solid 1px;
+}
 
+.logoSearch {
+  border: black solid 1px;
+}
 
-/* movie/tv detail page */
-
-.container {
+.container, .landing{
+  position: absolute;
   border: solid black 1px;
   width: 1100px;
+  top: 140px;
+  left: 0;
+  right: 0;
+
+  margin: auto;
 }
+
+.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewInfo, .commentUser, .commentBody, .portraitm, .actor-info, .navLinks, .logoSearch{
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+/* movie/tv detail page */
 
 .details {
   position: relative;
@@ -260,12 +96,6 @@ article {
 .reviewDetails {
   position: relative;
   border: black solid 1px;
-}
-
-.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewInfo, .commentUser, .commentBody, .portraitm, .actor-info{
-  position: relative;
-  display: inline-block;
-  margin-right: 10px;
 }
 
 .reviewBody{
@@ -348,6 +178,16 @@ article {
 }
 
 /* landing page */
+
+.landing{
+  width: 95%;
+}
+
+.category {
+  position: relative;
+  width: 100%;
+}
+
 .poster-container {
   margin-right: 0px;
 }

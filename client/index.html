@@ -10,22 +10,11 @@
 </head>
 
 <body>
-  <a name="top"></a>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" ng-controller="zeusController">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title"><a class="nav-logo" href="#/">Zeus Reviews</a></span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
-        <a class="mdl-navigation__link nav-buttons" href="#/user" ng-if="isAuthenticated">My Profile</a>
-        <a class="mdl-navigation__link nav-buttons" href="#/" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
-
-      </nav>
-      <!-- Search input here -->
+  <div class="nav">
+    <!-- Title -->
+    <div class="logoSearch">
+      <span class="logoTitle"><a class="nav-logo" href="#/">Zeus Reviews</a></span>
+        <!-- Search input here -->
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
         <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
           <i class="material-icons">search</i>
@@ -38,18 +27,17 @@
         </div>
       </div>
     </div>
-  </header>
-  <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-    <!-- Small screen navigation menu -->
-    <span class="mdl-layout-title"><a class="nav-logo" href="#/">Zeus Reviews</a></span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link nav-buttons" href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
+
+    <div class="navLinks">
+      <a class="mdl-navigation__link" href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
+      <a class="mdl-navigation__link nav-buttons" href="#/user" ng-if="isAuthenticated">My Profile</a>
       <a class="mdl-navigation__link nav-buttons" href="" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
-      <a class="mdl-navigation__link nav-buttons" href="#/account">My Profile</a>
-    </nav>
+    </div>
   </div>
+
+  <ui-view class="mdl-grid" id="top"></ui-view>
   <main class="mdl-layout__content">
-    <ui-view class="mdl-grid" id="top"></ui-view>
+
     <footer class="mdl-mini-footer">
   <div class="mdl-mini-footer__left-section">
     <div class="mdl-logo">Zeus Reviews</div>
