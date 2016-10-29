@@ -16,20 +16,14 @@
     <div class="profileNav">
       <a href="" ng-click="UserVm.currentView = 'overview'">Overview</a> |
       <a href="" ng-click="UserVm.currentView = 'reviews'">Reviews</a> |
-      <a href="" ng-click="UserVm.currentView = 'favorites'">Favorites</a>
+      <a href="" ng-click="UserVm.currentView = 'favorites'">Favorites</a> |
+      <a href="" ng-click="UserVm.currentView = 'watchlist'">Watched</a>
     </div>
 
     <ui-view></ui-view>
-     <!-- Overview view -->
     <user-overview ng-show="UserVm.currentView==='overview'"></user-overview>
-
-    <!-- Reviews view -->
     <user-reviews ng-show="UserVm.currentView==='reviews'"></user-reviews>
-
-    <!-- Favorites view -->
     <user-favorites ng-show="UserVm.currentView==='favorites'"></user-favorites>
+    <user-watchlist ng-show="UserVm.currentView==='watchlist'"></user-watchlist>
   </div>
-
-
-
 </div>
