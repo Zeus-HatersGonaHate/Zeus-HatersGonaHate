@@ -49,11 +49,13 @@ angular.module('zeus.user', [])
   //check to see if the user has any favorites for a given target (movie/tv)
   UserVm.hasFavorites = function(target) {
     var hasFavs = false;
-    UserVm.favorites.forEach(function(item){
-      if (item.type === target) {
-        hasFavs = true;
-      }
-    });
+    if (UserVm.favorites !== undefined) {
+      UserVm.favorites.forEach(function(item){
+        if (item.type === target) {
+          hasFavs = true;
+        }
+      });
+    }
     return hasFavs;
   };
 })
