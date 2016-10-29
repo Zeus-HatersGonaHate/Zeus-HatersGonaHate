@@ -20,9 +20,9 @@
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a class="mdl-navigation__link" href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
-        <a class="mdl-navigation__link" href="#/account" ng-if="isAuthenticated">My Account</a>
-        <a class="mdl-navigation__link" href="#/user" ng-if="isAuthenticated">My Profile</a>
-        <a class="mdl-navigation__link" href="" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
+        <a class="mdl-navigation__link nav-buttons" href="#/account" ng-if="isAuthenticated">My Account</a>
+        <a class="mdl-navigation__link nav-buttons" href="#/user" ng-if="isAuthenticated">My Profile</a>
+        <a class="mdl-navigation__link nav-buttons" href="" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
 
       </nav>
       <!-- Search input here -->
@@ -43,9 +43,9 @@
     <!-- Small screen navigation menu -->
     <span class="mdl-layout-title"><a class="nav-logo" href="#/">Zeus Reviews</a></span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
-      <a class="mdl-navigation__link" href="" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
-      <a class="mdl-navigation__link" href="">Browse</a>
+      <a class="mdl-navigation__link nav-buttons" href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
+      <a class="mdl-navigation__link nav-buttons" href="" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
+      <a class="mdl-navigation__link nav-buttons" href="#/account">My Profile</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
