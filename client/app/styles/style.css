@@ -160,6 +160,8 @@ h1, h2, h3, h4, h5, h6, p, span {
   margin: 5px;
   position: fixed;
   right: 5%;
+  height: 85%;
+  overflow-y: scroll;
 }
 
 .movieDetails, .reviewDetails, .postReview, .noReviews {
