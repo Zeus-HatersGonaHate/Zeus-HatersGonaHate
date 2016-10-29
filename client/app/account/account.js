@@ -33,7 +33,7 @@ angular.module('zeus.account', [])
       location: AccountVm.location
     };
     User.editUser(updatedAccount); //starts chain to save info to DB
-    $location.path('/account');
+    $location.path('/user');
   };
 
   AccountVm.cancel = function(){

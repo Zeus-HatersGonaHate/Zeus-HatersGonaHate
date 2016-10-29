@@ -12,6 +12,7 @@
   <div class="user-details">
     <img class="profile-pic-lg" src={{UserVm.profilePic}} alt="profile pic goes here">
     <h5>User details</h5>
+    <a ng-show="UserVm.protected" href="/#/editAccount">Update my account</a>
     <p>Username: {{UserVm.username}}</p>
     <p>Full name: {{UserVm.fullName}}</p>
     <p>Member since: {{UserVm.joinDate}}</p>

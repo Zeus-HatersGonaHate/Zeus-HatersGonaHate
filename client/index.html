@@ -20,7 +20,6 @@
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a class="mdl-navigation__link" href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
-        <a class="mdl-navigation__link nav-buttons" href="#/account" ng-if="isAuthenticated">My Account</a>
         <a class="mdl-navigation__link nav-buttons" href="#/user" ng-if="isAuthenticated">My Profile</a>
         <a class="mdl-navigation__link nav-buttons" href="" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
 

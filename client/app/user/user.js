@@ -9,6 +9,7 @@ angular.module('zeus.user', [])
   if ($stateParams.username) {
     User.getUserId($stateParams.username)
       .then(function(userObj) {
+        UserVm.protected = false; //used to hide link to edit profile
         UserVm.userId = userObj._id;
         UserVm.email = userObj.email;
         UserVm.userIdAuth = userObj.user_id;
@@ -27,6 +28,7 @@ angular.module('zeus.user', [])
   } else {
     Details.getUserFavorites()
       .then(function(userObj) {
+        UserVm.protected = true; //used to show link to edit profile
         UserVm.userId = userObj._id;
         UserVm.email = userObj.email;
         UserVm.userIdAuth = userObj.user_id;
