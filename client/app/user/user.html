@@ -1,7 +1,6 @@
 <div class="container">
   <!-- User profile menu  -->
   <div>
-
   <!-- Left column (static user info) -->
   <div class="profileLeft">
     <img class="profilePic" src={{UserVm.profilePic}} alt="profile pic goes here">
@@ -15,9 +14,9 @@
 
   <div class="profileRight">
     <div class="profileNav">
-      <a href="/#/user/{{UserVm.username}}" ng-click="UserVm.currentView = 'overview'">Overview</a> |
-      <a href="/#/user/{{UserVm.username}}" ng-click="UserVm.currentView = 'reviews'">Reviews</a> |
-      <a href="/#/user/{{UserVm.username}}" ng-click="UserVm.currentView = 'favorites'">Favorites</a>
+      <a href="" ng-click="UserVm.currentView = 'overview'">Overview</a> |
+      <a href="" ng-click="UserVm.currentView = 'reviews'">Reviews</a> |
+      <a href="" ng-click="UserVm.currentView = 'favorites'">Favorites</a>
     </div>
 
     <ui-view></ui-view>
