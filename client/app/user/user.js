@@ -19,14 +19,14 @@ angular.module('zeus.user', [])
         UserVm.location = userObj.location;
         UserVm.profilePic = userObj.profilePicLink;
         UserVm.favorites = userObj.favorites;
-        console.log(UserVm.favorites);
+        UserVm.watched = userObj.watched;
         User.getUserReviews(UserVm.userIdAuth)
           .then(function(reviews) {
             UserVm.reviews = reviews;
           });
       });
   } else {
-    Details.getUserFavorites()
+    Details.getUserFavorites() //this method actually returns the whole user object.
       .then(function(userObj) {
         UserVm.protected = true; //used to show link to edit profile
         UserVm.userId = userObj._id;
@@ -39,6 +39,7 @@ angular.module('zeus.user', [])
         UserVm.location = userObj.location;
         UserVm.profilePic = userObj.profilePicLink;
         UserVm.favorites = userObj.favorites;
+        UserVm.watched = userObj.watched;
         User.getUserReviews(UserVm.userIdAuth)
           .then(function(reviews) {
             UserVm.reviews = reviews;
@@ -97,5 +98,13 @@ angular.module('zeus.user', [])
     replace: true,
     scope: true,
     templateUrl: 'app/user/favoriteMovies.html'
+  };
+})
+.directive('userWatchlist', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/user/userWatchlist.html'
   };
 });
