@@ -1,6 +1,8 @@
 <div class="media-container">
   <h5>Favorite TV shows:</h5>
   <ul class="user-favorites-tv media-list">
+    <!-- No favs message -->
+    <p ng-show="!UserVm.hasFavorites('tv')">This user does not have any favorites for this category</p>
     <li class="media-list" ng-show="favorite.type === 'tv'" ng-repeat="favorite in UserVm.favorites">
       <a href="../#/details/{{favorite.type}}/{{favorite.id}}">
         <div class="poster-container">
