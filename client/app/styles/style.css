@@ -39,7 +39,10 @@ body {
   border-radius: 5px;
 }*/
 
+
 /*.landing h2 {
+.landing h2 {
+  line-height: 0px;
   color: #00008B;
   text-align: center;
 }*/
@@ -132,8 +135,10 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 /* Details page */
 
+
 /*.media-container {
   width: 100%;
+.media-container {
   float: left;
 }
 
@@ -197,7 +202,6 @@ h1, h2, h3, h4, h5, h6, p, span {
 }
 
 div.horizontal {
-    height: 300px;
     overflow: auto;
 }
 
@@ -213,30 +217,6 @@ article {
     text-align: center;
 }
 
-.back-to-top {
-
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	z-index: 1;
-	width: 50px;
-	height: 50px;
-	background: #DDD;
-	opacity: 0.5;
-	display: none;
-
-	&:hover {
-		opacity: 1;
-		cursor: pointer;
-	}
-
-	i {
-		font-size: 25px;
-		padding: 12px;
-		color: #FFF;
-	}
-
-}
 /* Reviews */
 
 /*.movie, .review, .commentsContainer {
