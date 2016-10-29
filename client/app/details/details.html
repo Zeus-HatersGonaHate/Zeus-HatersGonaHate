@@ -1,4 +1,4 @@
-<div ng-if="DetailsVm.original_title !== undefined || DetailsVm.original_name !== undefined && (DetailsVm.type === 'movie' || DetailsVm.type === 'tv')">
+<div class="container" ng-if="DetailsVm.original_title !== undefined || DetailsVm.original_name !== undefined && (DetailsVm.type === 'movie' || DetailsVm.type === 'tv')">
   <showtimes ng-if="DetailsVm.type === 'movie'"></showtimes>
   <div ng-if="DetailsVm.type === 'tv'" class='moviePoster'>
     <!-- If no poster_path, show dummy image -->
@@ -19,7 +19,7 @@
  </div>
 </div>
 
-<div ng-if="DetailsVm.type === 'person'">
+<div class="container" ng-if="DetailsVm.type === 'person'">
   <actor-details></actor-details>
 </div>
 
