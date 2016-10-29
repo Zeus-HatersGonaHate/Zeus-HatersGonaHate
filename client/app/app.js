@@ -11,7 +11,7 @@ angular.module('zeus', [
   'angular-jwt',
   'ui.router'
 ])
-.controller('zeusController', function($scope, $location, authService, $http, User) {
+.controller('zeusController', function($scope, $location, authService, $http, $anchorScroll, User) {
   $scope.searchQuery = '';
   $scope.search = function(search) {
     if (search.length < 1) {
@@ -26,7 +26,14 @@ angular.module('zeus', [
     authService.logout();
   };
 
+  $scope.goToTop = function() {
+    // set the location.hash to the id of
+    // the element you wish to scroll to.
+    $location.hash('top');
 
+    // call $anchorScroll()
+    $anchorScroll();
+  };
 
     //Gets user profile when logged in.
   authService.getProfileDeferred().then(function (profile) {

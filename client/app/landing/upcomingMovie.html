@@ -1,7 +1,9 @@
-<a href="#/details/movie/{{ upcomingmovie.id }}">
-  <div class="poster-container">
-    <!-- If no poster_path, show dummy image -->
-    <img ng-hide="!upcomingmovie.poster_path" src="http://image.tmdb.org/t/p/w185/{{upcomingmovie.poster_path}}" alt="">
-    <img ng-show="!upcomingmovie.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{upcomingmovie.name}}" alt="">
-  </div>
-</a>
+<article>
+  <a href="#/details/movie/{{ upcomingmovie.id }}">
+      <div class="poster-container">
+        <!-- If no poster_path, show dummy image -->
+        <img ng-hide="!upcomingmovie.poster_path" src="http://image.tmdb.org/t/p/w185/{{upcomingmovie.poster_path}}" alt="">
+        <img ng-show="!upcomingmovie.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{upcomingmovie.name}}" alt="">
+      </div>
+  </a>
+</article>

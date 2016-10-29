@@ -1,7 +1,10 @@
-<a href="#/details/tv/{{ popularshow.id }}">
-  <div class="poster-container">
-    <!-- If no poster_path, show dummy image -->
-    <img ng-hide="!popularshow.poster_path" src="http://image.tmdb.org/t/p/w185/{{popularshow.poster_path}}" alt="">
-    <img ng-show="!popularshow.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{popularshow.name}}" alt="">
-  </div>
-</a>
+<article>
+  <a href="#/details/tv/{{ popularshow.id }}">
+      <div class="poster-container">
+        <!-- If no poster_path, show dummy image -->
+        <img ng-hide="!popularshow.poster_path" src="http://image.tmdb.org/t/p/w185/{{popularshow.poster_path}}" alt="">
+        <img ng-show="!popularshow.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{popularshow.name}}" alt="">
+      </div>
+  </a>
+</article>
+
