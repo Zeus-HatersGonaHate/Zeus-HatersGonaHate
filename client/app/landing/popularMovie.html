@@ -1,9 +1,7 @@
 <a href="#/details/movie/{{ popularmovie.id }}">
-  <li>
-    <div class="poster-container">
-      <!-- If no poster_path, show dummy image -->
-      <img ng-hide="!popularmovie.poster_path" src="http://image.tmdb.org/t/p/w185/{{popularmovie.poster_path}}" alt="">
-      <img ng-show="!popularmovie.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{popularmovie.name}}" alt="">
-    </div>
-  </li>
+  <div class="poster-container">
+    <!-- If no poster_path, show dummy image -->
+    <img ng-hide="!popularmovie.poster_path" src="http://image.tmdb.org/t/p/w185/{{popularmovie.poster_path}}" alt="">
+    <img ng-show="!popularmovie.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{popularmovie.name}}" alt="">
+  </div>
 </a>

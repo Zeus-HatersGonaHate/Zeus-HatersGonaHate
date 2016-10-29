@@ -235,7 +235,7 @@ h1, h2, h3, h4, h5, h6, p, span {
   border: black solid 1px;
 }
 
-.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page{
+.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container{
   position: relative;
   display: inline-block;
   margin-right: 10px;
@@ -317,4 +317,9 @@ h1, h2, h3, h4, h5, h6, p, span {
   border: black solid 1px;
   width: 60%;
   vertical-align:top;
+}
+
+/* landing page */
+.poster-container {
+  margin-right: 0px;
 }
