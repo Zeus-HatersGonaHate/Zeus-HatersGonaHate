@@ -48,6 +48,7 @@ body {
 
 a {
   text-decoration: none;
+  color: #fff;
 }
 
 li {
@@ -55,6 +56,25 @@ li {
 }
 
 /* User page */
+
+.user {
+  width: 100%;
+}
+
+.user-menu, .user-details, .user-panel, .user-selection, .user-favorites-view, .user-overview-view, .user-reviews, .media-container {
+  background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
+  border: 3px solid #d2d2d2;
+  border-radius: 5px;
+  padding: 5%;
+}
+
+.user-info {
+  width: 50%;
+}
+
+.user-menu a {
+  font-size: 16px;
+}
 
 .user-menu li {
   display: inline;
