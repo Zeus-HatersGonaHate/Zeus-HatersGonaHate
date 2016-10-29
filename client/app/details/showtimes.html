@@ -15,7 +15,7 @@
     </li>
   </ul>
   <p ng-if="DetailsVm.hasNoShowtime">This movie is not currently in theatres near you!</p>
-  <div class='moviePoster'>
+  <div>
     <!-- If no poster_path, show dummy image -->
     <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
     <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
