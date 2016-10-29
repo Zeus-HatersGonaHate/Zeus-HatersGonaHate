@@ -235,7 +235,7 @@ h1, h2, h3, h4, h5, h6, p, span {
   border: black solid 1px;
 }
 
-.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster{
+.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewInfo, .commentUser, .commentBody{
   position: relative;
   display: inline-block;
   margin-right: 10px;
@@ -357,4 +357,32 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 .favoriteNav {
   margin-right: 0px;
+}
+
+/* review page */
+.reviewReviewInfo{
+  position: relative;
+  width: 65%;
+  vertical-align:top;
+  border: black solid 1px;
+}
+
+.commentsContainer{
+  position: relative;
+  width: 75%;
+  border: black solid 1px;
+  margin-top: 20px;g
+}
+
+.commentInput {
+  position: relative;
+  width: 50%;
+  height: 50px;
+}
+
+.comment {
+  position: relative;
+  width: 75%;
+  border: black solid 1px;
+  margin-top: 15px;
 }
