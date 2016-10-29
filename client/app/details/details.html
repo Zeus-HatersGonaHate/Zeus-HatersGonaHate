@@ -1,25 +1,42 @@
-<div ng-if="DetailsVm.original_title !== undefined || DetailsVm.original_name !== undefined && (DetailsVm.type === 'movie' || DetailsVm.type === 'tv')">
-  <showtimes ng-if="DetailsVm.type === 'movie'"></showtimes>
-  <div ng-if="DetailsVm.type === 'tv'" class='moviePoster'>
-    <!-- If no poster_path, show dummy image -->
-    <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
-    <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
+<div class="container" ng-if="DetailsVm.original_title !== undefined || DetailsVm.original_name !== undefined && (DetailsVm.type === 'movie' || DetailsVm.type === 'tv')">
+  <div class="basicInfo">
+    <div ng-if="DetailsVm.type === 'movie'" class='moviePoster'>
+      <!-- If no poster_path, show dummy image -->
+      <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
+      <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
+
+      <details-buttons ng-if="isAuthenticated"></details-buttons>
+    </div>
+
+    <div ng-if="DetailsVm.type === 'tv'" class='moviePoster'>
+      <!-- If no poster_path, show dummy image -->
+      <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
+      <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
+
+      <details-buttons ng-if="isAuthenticated"></details-buttons>
+    </div>
+
+
+   <!-- Movie/TV details and info -->
+   <movie-details></movie-details>
   </div>
 
+  <h5>Showtimes</h5>
+  <showtimes ng-if="DetailsVm.type === 'movie'"></showtimes>
 
- <!-- Movie/TV details and info -->
- <div class="details-col1">
-   <movie-details></movie-details>
+ <div class="reviews">
    <!-- Movie reviews -->
+   <h5>Reviews</h5>
    <post-review></post-review>
    <div class="noReviews" ng-if="DetailsVm.reviews.length === 0 && DetailsVm.loaded">
      <p>Currently no reviews...want to add one?</p>
    </div>
    <review-details></review-details>
  </div>
+
 </div>
 
-<div ng-if="DetailsVm.type === 'person'">
+<div class="container" ng-if="DetailsVm.type === 'person'">
   <actor-details></actor-details>
 </div>
 

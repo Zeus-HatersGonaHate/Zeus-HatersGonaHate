@@ -1,7 +1,7 @@
-<div class='movieDetails'>
+<div class='details'>
   <h3 ng-if="DetailsVm.original_name === undefined"> {{DetailsVm.original_title}} </h3>
   <h3 ng-if="DetailsVm.original_title === undefined"> {{DetailsVm.original_name}} </h3>
-  <details-buttons ng-if="isAuthenticated"></details-buttons>
+
   <h5 ng-if="DetailsVm.data.release_date !== undefined">Release Date</h5>
   <p ng-if="DetailsVm.data.release_date !== undefined">{{DetailsVm.data.release_date}}</p>
   <h5 ng-if="DetailsVm.data.runtime !== undefined">Movie Length</h5>
@@ -19,9 +19,5 @@
   <h5>Overview</h5>
   <p> {{DetailsVm.overview}} </p>
   <h5>Lead Cast</h5>
-  <ul>
-    <a ng-repeat="actor in DetailsVm.actors" href="#/results/{{actor}}/1">
-      <li>{{ actor }}</li>
-    </a>
-  </ul>
+  <a class="casts" ng-repeat="actor in DetailsVm.actors" href="#/results/{{actor}}/1"><div>{{ actor }}</div></a>
 </div>

@@ -1,12 +1,12 @@
-<div class="mdl-cell mdl-cell--6-col results">
+<div class="container">
   <p ng-if="ResultsVm.results.length === 0 && ResultsVm.loaded">No results were found!</p>
-  <ul>
+  <div>
     <h4>Your search returned {{ ResultsVm.totalResults }} results.</h4>
     <!--Angular directive, displays each search result - see searchResult.html -->
     <search-result ng-repeat="result in ResultsVm.results"></search-result>
-  </ul>
+  </div>
   <!--Creates pages of search results at the bottom of the page -->
-  <ul class="media-list pages">
+  <ul class="pages">
     <h6>Pages</h6>
     <a ng-repeat="page in ResultsVm.totalPages" href="/#/results/{{ ResultsVm.search }}/{{ page }}">
       <li class="page">{{ page }}</li>
