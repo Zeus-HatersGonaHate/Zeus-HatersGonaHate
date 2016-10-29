@@ -1,13 +1,16 @@
-<a ng-show="result.poster_path !== null" href="/#/details/{{ result.media_type }}/{{ result.id }}">
-  <li class="result">
-    <div class="result-title mdl-cell mdl-cell--4-col">
-      <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
-      <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
+<a href="/#/details/{{ result.media_type }}/{{ result.id }}">
+  <div class="result" ng-if="result.poster_path !== null">
+    <div class="resultPoster">
       <!-- If no poster_path, show dummy image -->
       <img ng-hide="!result.poster_path" src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}" alt="">
       <img ng-hide="!result.profile_path" src="http://image.tmdb.org/t/p/w185/{{ result.profile_path }}" alt="">
       <img ng-show="!result.poster_path && !result.profile_path" src="http://dummyimage.com/185x275/000/fff&text={{result.name}}" alt="">
     </div>
-      <p class="result-overview mdl-cell mdl-cell--6-col">{{ result.overview }}</p>
-  </li>
+
+    <div class="resultInfo">
+      <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
+      <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
+      <p class="">{{ result.overview }}</p>
+    </div>
+  </div>
 </a>

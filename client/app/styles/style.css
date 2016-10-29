@@ -217,7 +217,7 @@ h1, h2, h3, h4, h5, h6, p, span {
 }*/
 
 
-/*new*/
+/* move/tv detail page */
 
 .container {
   border: solid black 1px;
@@ -235,7 +235,7 @@ h1, h2, h3, h4, h5, h6, p, span {
   border: black solid 1px;
 }
 
-.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults {
+.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page{
   position: relative;
   display: inline-block;
   margin-right: 10px;
@@ -301,5 +301,20 @@ h1, h2, h3, h4, h5, h6, p, span {
   position: relative;
   width: 40%;
   border: black solid 1px;
+  vertical-align:top;
+}
+
+/* search result page */
+
+.result {
+  position: relative;
+  border: black solid 1px;
+  margin-bottom: 30px;
+}
+
+.resultInfo {
+  position: relative;
+  border: black solid 1px;
+  width: 60%;
   vertical-align:top;
 }
