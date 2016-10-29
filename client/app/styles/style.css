@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6, p, span {
   width: 100%;
 }
 
-.user-menu, .user-details, .user-panel, .user-selection, .user-favorites-view, .user-overview-view, .user-reviews, .media-container {
+.user-menu, .user-details, .user-panel, .user-selection, .user-favorites-view, .user-overview-view, .user-reviews, .media-container, .account {
   background: linear-gradient(135deg, #a7cfdf 0%,#23538a 100%);
   border: 3px solid #d2d2d2;
   border-radius: 5px;
