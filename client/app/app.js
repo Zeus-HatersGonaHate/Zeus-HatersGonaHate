@@ -11,23 +11,24 @@ angular.module('zeus', [
   'angular-jwt',
   'ui.router'
 ])
-.controller('zeusController', function($scope, $location, authService, $http, $anchorScroll, User) {
-  $scope.searchQuery = '';
-  $scope.search = function(search) {
+.controller('zeusController', function($location, authService, $http, $anchorScroll, User) {
+  var ZeusVm = this;
+  ZeusVm.searchQuery = '';
+  ZeusVm.search = function(search) {
     if (search.length < 1) {
       return;
     }
     $location.path('/results/' + search + '/1');
-    $scope.searchQuery = '';
+    ZeusVm.searchQuery = '';
   };
 
-  $scope.login = authService.login;
-  $scope.logout = function() {
+  ZeusVm.login = authService.login;
+  ZeusVm.logout = function() {
     authService.logout();
     alert('You have been logged out.');
   };
 
-  $scope.goToTop = function() {
+  ZeusVm.goToTop = function() {
     // set the location.hash to the id of
     // the element you wish to scroll to.
     $location.hash('top');
@@ -38,7 +39,7 @@ angular.module('zeus', [
 
     //Gets user profile when logged in.
   authService.getProfileDeferred().then(function (profile) {
-    $scope.profile = profile;
+    ZeusVm.profile = profile;
     if (profile) {
       User.checkUser(profile);
     }
