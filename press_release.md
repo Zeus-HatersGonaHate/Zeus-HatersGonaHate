@@ -1,18 +1,19 @@
-# Zeus-HatersGonaHate
-Movies and friends without the hate
+# Zeus-Reviews
 
-  Where positive movie lovers come to hang.
+## The positively charged place for movie lovers.
 
-  Join our community of positve movie lovers.  Rate and review all your favorite titles in a positive environment.  Haters are gonna hate somewhere else.
+All too often, review websites can become flooded with poor quality reviews, that are really just people venting because a movie didn't meet their expectations. While this may make one person feel better, it often pollutes the experience for many others. We are aiming to design a positive, constructive place for people to discuss their favorite movies and TV shows. We would like to be able to contribute to the movie and TV industry we love so much, by providing actionable and clear consumer insights.
 
-  So many review sites are full of hate, not ours. We are the home of the movie snowflakes.
+The problem is that users of these websites are not encouraged to be making more positive, useful posts.
 
-  Until a reputation status is earned, post must be approved by a moderator.
+We would like to solve that problem by adding the aspect of social accountability to our app. Zeus Reviews reviews can be directly linked and shared to your friends, so they can see what an amazing movie critic you are.
 
-  - We are the safe space for movie lovers - Rick Ashtley
+Reviews that are downvoted enough to be deemed not constructive can be removed by a moderator!
 
-  Open our app, and search the title you love.  Upvote your favorite reviews, and leave one yourself.
+- Our product has changed the way I speak about movies to my friends. - Alex Leo
 
-  I used to hate seeing movies I loved bashed, I love the constructive critisicm I find on this site - Pam Halpart - Pennsylvania
+Open our app, and search for the titles you love. Sign up with Facebook or Google to leave your first review. Upvote your favorite reviews,leave one yourself, and share it to Facebook or Twitter to have your friends check out your review and give it a few upvotes!
 
-  So, head on over to zeushatersgonnahate.com, sign up, and chat us up about some movies!
+- Rotten Tomatoes used to be my go to place for movies, but the community here is so friendly and helpful. I also love being able to store the shows I'm currently watching and my favorite movies, so I can keep an eye on their reviews. - P. Sherman, 42 Wallaby Way Sydney
+
+What are you waiting for!? Head to our new domain http://159.203.230.46:3000/#/ and get reviewing!
