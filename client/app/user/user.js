@@ -1,23 +1,28 @@
 angular.module('zeus.user', [])
-.controller('UserController', function(Details, User, $stateParams) {
+.controller('UserController', function($location, Details, User, $stateParams) {
   var UserVm = this;
   //set default views
   UserVm.currentView = 'overview';
   UserVm.currentFavoriteView = 'movies';
   UserVm.currentWatchedView = 'movies';
 
-  //set username (if it exists in stateParams i.e. if it exists in route)
-  UserVm.username = $stateParams.username;
-
-  //set up user information based on username given in route
   UserVm.refreshInfo = function() {
+    //set up user information based on username given in route (if given)
     if ($stateParams.username) {
       User.getUserId($stateParams.username)
         .then(function(userObj) {
           UserVm.protected = false; //used to hide link to edit profile
+
+          //send user to 404 page if they try to access a user/:username route for a username that doesn't exist
+          if (!userObj) {
+            $location.path('404');
+            return;
+          }
+
           UserVm.userId = userObj._id;
           UserVm.email = userObj.email;
           UserVm.userIdAuth = userObj.user_id;
+          UserVm.username = $stateParams.username;
           UserVm.about = userObj.about;
           UserVm.joinDate = userObj.joinDate;
           UserVm.fullName = userObj.fullName;
@@ -30,6 +35,8 @@ angular.module('zeus.user', [])
               UserVm.reviews = reviews;
             });
         });
+
+    //else, no username was given in url (i.e. route was just /user) so get currently logged in user object
     } else {
       Details.getUserFavorites() //this method actually returns the whole user object.
         .then(function(userObj) {
