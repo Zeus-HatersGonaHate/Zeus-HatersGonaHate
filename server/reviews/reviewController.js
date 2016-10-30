@@ -31,7 +31,6 @@ module.exports = {
           var data = {};
           data.reviews = reviews;
           data.users = userObj[0];
-          console.log(data);
           res.json(data);
         });
       }
@@ -58,6 +57,7 @@ module.exports = {
       });
   },
 
+  //Gets all reviews belonging to a certain user
   getUserReviews: function(req, res, next) {
     var userIdAuth = req.params.userId;
     Review.find({ user_id : userIdAuth })
@@ -135,6 +135,7 @@ module.exports = {
       });
   },
 
+  //Gets a review from collection by the reviews ID
   getReviewById: function (req, res, next) {
     var id = req.params.reviewId;
     Review.findById(id)

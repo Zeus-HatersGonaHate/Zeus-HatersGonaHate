@@ -3,6 +3,8 @@ var User = require('../users/userModel.js');
 var helpers = require('../config/helpers.js');
 
 module.exports = {
+  
+  //Gets comments attatched to a certain review by the reviews ID
   getCommentByReviewId: function(req, res, next){
     var id = req.params.reviewId;
     Comment.find({review_id: id})
@@ -21,8 +23,9 @@ module.exports = {
       });
   },
 
+  //Post a comment to a review attatching the logged in users id to it.
   postComment: function(req, res, next){
-    var data = req.body
+    var data = req.body;
     var comment = new Comment({
       user_id: req.user.sub,
       review_id: data.review_id,
@@ -47,6 +50,7 @@ module.exports = {
 
   },
 
+  //Delete a comment. Uses loggin in ID to make sure it belongs to you, and the comments ID.
   deleteComment: function(req, res, next){
     var commentId = req.params.commentId;
     var userId = req.user.sub;

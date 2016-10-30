@@ -16,8 +16,10 @@
   //Grabs the users favorites, watched, currentlyWatching. Runs them through the check function.
   Details.getUserFavorites()
     .then(function (res) {
+      console.log(res);
       DetailsVm.favorites = res.favorites;
       DetailsVm.watched = res.watched;
+      DetailsVm.currentlyWatching = res.currentlyWatching;
       DetailsVm.checkFavorites(res.favorites, res.watched, res.currentlyWatching);
     });
 
