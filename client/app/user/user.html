@@ -6,12 +6,12 @@
     <div class="profileLeftTop">
       <img class="profilePic" src={{UserVm.profilePic}} alt="profile pic goes here">
       <a ng-show="UserVm.protected" href="/#/editAccount">Update my account</a>
-      <span>{{UserVm.fullName}}</span>
+      <span ng-show="UserVm.fullName">{{UserVm.fullName}}</span>
       <br>
       <span>@{{UserVm.username}}</span>
     </div>
     <p><i class="material-icons">stars</i> {{UserVm.joinDate}}</p>
-    <p><i class="material-icons">room</i> {{UserVm.location}}</p>
+    <p ng-show="UserVm.location"><i class="material-icons">room</i> {{UserVm.location}}</p>
   </div>
 
   <div class="profileRight">
