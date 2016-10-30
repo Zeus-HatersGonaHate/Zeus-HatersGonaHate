@@ -254,11 +254,22 @@ angular.module('zeus.services', [])
       });
   };
 
+  var deleteUser = function() {
+    return $http({
+      method: 'DELETE',
+      url: '/user/delete'
+    })
+      .then(function(res) {
+        return res;
+      });
+  };
+
   return {
     checkUser: checkUser,
     getUserId: getUserId,
     editUser: editUser,
-    getUserReviews: getUserReviews
+    getUserReviews: getUserReviews,
+    deleteUser: deleteUser
   };
 })
 
