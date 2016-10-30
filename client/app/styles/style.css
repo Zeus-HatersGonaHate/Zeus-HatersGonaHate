@@ -272,36 +272,53 @@ button:hover {
 /* User profile page */
 .profileLeft {
   position: relative;
-  width: 250px;
+  width: 220px;
   vertical-align:top;
-  border: black solid 1px;
+  /*border: black solid 1px;*/
+}
+
+.profileLeftTop {
+  position: relative;
+  width: 220px;
+  border-bottom: black solid 1px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .profileRight {
   position: relative;
-  width: 68%;
-  border: black solid 1px;
+  width: 65%;
+  border-left: black solid 1px;
+  margin-left: 30px;
+  padding-left: 30px;
+}
+
+.profileNav a{
+  margin-right: 15px;
+  font-size: 20px;
+  padding-bottom: 10px;
+  color: black;
+}
+
+.profileNav a:hover{
+  /*border-bottom: black solid 1px;*/
 }
 
 .profilePic {
   position: relative;
-  width: 250px;
+  width: 220px;
 }
 
 .aboutUser, .overviewReview{
   position: relative;
-  border: black solid 1px;
   width: 100%;
+  border-top: black solid 1px;
 }
 
 .user-review {
   position: relative;
-  border: black solid 1px;
+  border-bottom: black dotted 1px;
   width: 100%;
-}
-
-.favoriteNav {
-  margin-right: 0px;
 }
 
 /* review page */

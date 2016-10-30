@@ -1,11 +1,12 @@
 <div class="user-overview-view">
+  <h5>About {{UserVm.username}}</h5>
   <div class="aboutUser">
-    <h5>About {{UserVm.username}}</h5>
     <p>{{UserVm.about}}</p>
   </div>
 
+  <h5>{{UserVm.username}}'s latest reviews:</h5>
   <div class="overviewReview">
-    <h5>{{UserVm.username}}'s latest reviews:</h5>
+
     <div class="user-reviews">
       <div class="user-review" ng-repeat="review in UserVm.reviews | limitTo:3">
         <p class='review-title'><a href="../#/review/{{review._id}}">{{review.title}}</a></p>
