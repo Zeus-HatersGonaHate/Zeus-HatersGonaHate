@@ -10,7 +10,7 @@
           <img ng-hide="!item.picture" src="http://image.tmdb.org/t/p/w185{{item.picture}}" alt="">
           <img ng-show="!item.picture" src="http://dummyimage.com/185x275/000/fff&text={{item.title}}" alt="">
         </a><br>
-        <button ng-show="UserVm.protected" ng-click="UserVm.deleteFavOrWatch('watched', favorite)">Remove from watched list</button>
+        <button ng-show="UserVm.protected" ng-click="UserVm.deleteFavOrWatch('watched', item)">Remove from watched list</button>
       </div>
     </div>
   </div>
