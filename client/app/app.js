@@ -88,7 +88,7 @@ angular.module('zeus', [
     url: '/user',
     templateUrl: 'app/user/user.html',
     controller: 'UserController',
-    controllerAs: 'UserVm',  //need to set this up
+    controllerAs: 'UserVm',
     authenticate: true
   };
 

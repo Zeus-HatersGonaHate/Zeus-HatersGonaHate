@@ -1,8 +1,12 @@
 angular.module('zeus.user', [])
 .controller('UserController', function(Details, User, $stateParams) {
   var UserVm = this;
+  //set default views
   UserVm.currentView = 'overview';
   UserVm.currentFavoriteView = 'movies';
+  UserVm.currentWatchedView = 'movies';
+
+  //set username (if it exists in stateParams i.e. if it exists in route)
   UserVm.username = $stateParams.username;
 
   //set up user information based on username given in route
@@ -29,7 +33,7 @@ angular.module('zeus.user', [])
     } else {
       Details.getUserFavorites() //this method actually returns the whole user object.
         .then(function(userObj) {
-          UserVm.protected = true; //used to show link to edit profile
+          UserVm.protected = true; //used to show link to edit profile and show remove fav buttons
           UserVm.userId = userObj._id;
           UserVm.email = userObj.email;
           UserVm.userIdAuth = userObj.user_id;
@@ -64,10 +68,10 @@ angular.module('zeus.user', [])
   };
 
   //Function to remove item from list type ('favorites' or 'watched').
-  UserVm.deleteFavOrWatch = function(type, favorite) {
-    var confirmed = confirm("Are you sure you want to remove this from your favorites?");
+  UserVm.deleteFavOrWatch = function(type, item) {
+    var confirmed = confirm("Are you sure you want to remove this from your list?");
     if (confirmed) {
-      Details.deleteFavOrWatch(type, favorite)
+      Details.deleteFavOrWatch(type, item)
       .then(function(res) {
         console.log(res);
         UserVm.refreshInfo();
@@ -121,5 +125,21 @@ angular.module('zeus.user', [])
     replace: true,
     scope: true,
     templateUrl: 'app/user/userWatchlist.html'
+  };
+})
+.directive('watchedMovies', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/user/watchedMovies.html'
+  };
+})
+.directive('watchedTv', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/user/watchedTv.html'
   };
 });

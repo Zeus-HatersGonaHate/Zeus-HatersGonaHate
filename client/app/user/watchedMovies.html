@@ -1,0 +1,17 @@
+<div>
+  <h5>Watched movies:</h5>
+  <div class="">
+    <!-- No watched message -->
+    <!-- <p ng-show="!UserVm.hasFavorites('movie')">This user does not have any favorites for this category</p> -->
+    <div class="poster" ng-repeat="item in UserVm.watched" ng-show="item.type === 'movie'">
+      <div class="poster-container">
+        <a href="../#/details/{{item.type}}/{{item.id}}">
+          <!-- If no poster_path, show dummy image -->
+          <img ng-hide="!item.picture" src="http://image.tmdb.org/t/p/w185{{item.picture}}" alt="">
+          <img ng-show="!item.picture" src="http://dummyimage.com/185x275/000/fff&text={{item.title}}" alt="">
+        </a><br>
+        <button ng-show="UserVm.protected" ng-click="UserVm.deleteFavOrWatch('watched', item)">Remove from watched list</button>
+      </div>
+    </div>
+  </div>
+</div>
