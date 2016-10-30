@@ -68,10 +68,10 @@ angular.module('zeus.user', [])
   };
 
   //Function to remove item from list type ('favorites' or 'watched').
-  UserVm.deleteFavOrWatch = function(type, favorite) {
+  UserVm.deleteFavOrWatch = function(type, item) {
     var confirmed = confirm("Are you sure you want to remove this from your list?");
     if (confirmed) {
-      Details.deleteFavOrWatch(type, favorite)
+      Details.deleteFavOrWatch(type, item)
       .then(function(res) {
         console.log(res);
         UserVm.refreshInfo();
@@ -126,20 +126,20 @@ angular.module('zeus.user', [])
     scope: true,
     templateUrl: 'app/user/userWatchlist.html'
   };
+})
+.directive('watchedMovies', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/user/watchedMovies.html'
+  };
+})
+.directive('watchedTv', function() {
+  return {
+    restrict: 'AE',
+    replace: true,
+    scope: true,
+    templateUrl: 'app/user/watchedTv.html'
+  };
 });
-// .directive('watchedMovies', function() {
-//   return {
-//     restrict: 'AE',
-//     replace: true,
-//     scope: true,
-//     templateUrl: 'app/user/watchedMovies.html'
-//   };
-// })
-// .directive('watchedTv', function() {
-//   return {
-//     restrict: 'AE',
-//     replace: true,
-//     scope: true,
-//     templateUrl: 'app/user/watchedTv.html'
-//   };
-// });
