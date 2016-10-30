@@ -11,7 +11,8 @@
       <div class="user-review" ng-repeat="review in UserVm.reviews | limitTo:3">
         <p class='review-title'><a href="../#/review/{{review._id}}">{{review.title}}</a></p>
         <p class='review-date'>{{review.date}}</p>
-        <p class='review-content'>{{review.content | limitTo: 140}}<span ng-if="review.content.length > 140"><a href="../#/review/{{review._id}}">...read more</a></span></p> <!-- Limits content to first 140 characters, only add ellipses when needed -->
+        <!-- Limits content to first 140 characters, only add ellipses when needed -->
+        <p class='review-content'>{{review.content | limitTo: 140}}<span ng-if="review.content.length > 140"><a href="../#/review/{{review._id}}">...read more</a></span></p>
       </div>
     </div>
   </div>
