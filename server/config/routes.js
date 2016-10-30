@@ -36,10 +36,13 @@ module.exports = function (app, express) {
 
   app.get('/user/reviews/:userId', reviewController.getUserReviews);
 
-  app.post('/user', userController.postUser);
+  app.post('/user', authCheck, userController.postUser);
 
   app.put('/user/edit', authCheck, userController.editUser);
 
+  app.delete('/user/delete/:id', authCheck, userController.deleteUser);
+
+  //User favorites/watched/currently watching routes
   app.get('/favorites', authCheck, userController.getUserLists);
 
   app.delete('/delete/:type', authCheck, userController.removeFromUserLists);
