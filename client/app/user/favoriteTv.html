@@ -4,13 +4,14 @@
     <!-- No favs message -->
     <p ng-show="!UserVm.hasFavorites('tv')">This user does not have any favorites for this category</p>
     <div class="poster" ng-show="favorite.type === 'tv'" ng-repeat="favorite in UserVm.favorites">
-      <a href="../#/details/{{favorite.type}}/{{favorite.id}}">
-        <div class="poster-container">
+      <div class="poster-container">
+        <a href="../#/details/{{favorite.type}}/{{favorite.id}}">
           <!-- If no poster_path, show dummy image -->
           <img ng-hide="!favorite.picture" src="http://image.tmdb.org/t/p/w185{{favorite.picture}}" alt="">
           <img ng-show="!favorite.picture" src="http://dummyimage.com/185x275/000/fff&text={{favorite.title}}" alt="">
-        </div>
-      </a>
+        </a><br>
+        <button ng-click="UserVm.deleteFavOrWatch('favorites', favorite)">Remove from favorites</button>
+      </div>
     </div>
   </div>
 </div>

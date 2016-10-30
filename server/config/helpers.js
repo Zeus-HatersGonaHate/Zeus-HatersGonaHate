@@ -53,7 +53,6 @@ module.exports = {
   },
 
   removeFromListByType: function (id, data, type, res) {
-    console.log(type);
     if (type === 'favorites') {
       User.findOneAndUpdate({ user_id: id }, { $pull: { favorites: data }}, {new: true}, function (err, user) {
         if (err) console.log(err);
@@ -71,7 +70,7 @@ module.exports = {
         if (err) console.log(err);
         console.log(user);
         res.json(user);
-      });  
+      });
     }
   }
 
