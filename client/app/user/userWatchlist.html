@@ -1,4 +1,3 @@
-<p>test</p>
 <div class="user-watched-view">
   <div class="favorite-menu">
     <div class="favorite-menu">
@@ -6,23 +5,9 @@
       <a href="" ng-click="UserVm.currentWatchedView = 'tv'"><div class="favoriteNav">TV shows</div></a>
     </div>
   </div>
-
-  <watched-movies></watched-movies>
-  <!-- <watched-tv ng-show="UserVm.currentWatchedView === 'tv'"></watched-tv> -->
-
+  <watched-movies ng-show="UserVm.currentWatchedView === 'movies'"></watched-movies>
+  <watched-tv ng-show="UserVm.currentWatchedView === 'tv'"></watched-tv>
 </div>
 
 
 
-
-
-<!--     <div class="poster" ng-repeat="item in UserVm.watched">
-      <a href="../#/details/{{item.type}}/{{item.id}}">
-        <div class="poster-container"> -->
-          <!-- If no poster_path, show dummy image -->
-          <!-- <img ng-hide="!item.picture" src="http://image.tmdb.org/t/p/w185{{item.picture}}" alt="">
-          <img ng-show="!item.picture" src="http://dummyimage.com/185x275/000/fff&text={{item.title}}" alt="">
-        </div>
-      </a>
-    </div>
-  </div> -->
