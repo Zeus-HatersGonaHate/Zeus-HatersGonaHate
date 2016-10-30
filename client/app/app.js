@@ -134,6 +134,12 @@ angular.module('zeus', [
     templateUrl: 'app/about/about.html'
   };
 
+  var fourOhFourState = {
+    name: '404',
+    url: '/404',
+    templateUrl: 'app/404/404.html'
+  };
+
   $stateProvider.state(landingState);
   $stateProvider.state(resultsState);
   $stateProvider.state(detailsState);
@@ -144,6 +150,7 @@ angular.module('zeus', [
   $stateProvider.state(reviewsState);
   $stateProvider.state(editReviewState);
   $stateProvider.state(aboutState);
+  $stateProvider.state(fourOhFourState);
 
   $urlRouterProvider.otherwise('/');
 
