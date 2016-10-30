@@ -62,9 +62,8 @@ article {
   border: black solid 1px;
 }
 
-.container, .landing{
-  position: absolute;
-  /*border: solid black 1px;*/
+.container {
+  position: relative;
   left: 0;
   right: 0;
   margin: auto;
@@ -72,7 +71,9 @@ article {
 
 .container {
   width: 900px;
-  top: 125px;
+  min-width: 900px;
+  padding-top: 125px;
+  padding-bottom: 60px;
 }
 
 .casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewContent, .commentUser, .commentBody, .portraitm, .actor-info, .navLinks, .logoSearch{
@@ -83,6 +84,15 @@ article {
 
 .logoTitle {
   font-size: 30px;
+}
+
+.footer {
+  position: relative;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 80px;
+  background-color: black;
 }
 
 /* movie/tv detail page */
@@ -251,9 +261,10 @@ button:hover {
 
 .landing{
   background-color: #060C0C;
-  width: 100%;
+  width: inherit;
   top: 0;
   padding-top: 90px;
+  padding-bottom: 30px
 }
 
 .category {
