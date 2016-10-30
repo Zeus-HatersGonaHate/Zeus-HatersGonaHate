@@ -4,9 +4,10 @@ var helpers = require('../config/helpers.js');
 module.exports = {
 
   postUser: function (req, res, next) {
+    var id = req.user.sub;
     var info = req.body;
     var date = new Date();
-    User.find({ user_id: info.user_id })
+    User.find({ user_id: id })
       .exec(function (error, data) {
         //console.log(data);
         if (error) {
@@ -17,7 +18,7 @@ module.exports = {
             var user = new User({
               joinDate: date.toISOString(),
               email: info.email,
-              user_id: info.user_id,
+              user_id: id,
               username: username,
               location: '',
               about: '',
@@ -86,5 +87,10 @@ module.exports = {
         res.json(user);
       });
   },
+
+  deleteUser: function (req, res, next) {
+    var id = req.user.sub;
+    helpers.removeUserAndReviews(id, res);
+  }
 
 };

@@ -1,5 +1,6 @@
 var User = require('../users/userModel.js');
 var Review = require('../reviews/reviewModel.js');
+var Comment = require('../comments/commentModel.js');
 
 module.exports = {
 
@@ -33,6 +34,7 @@ module.exports = {
     });
   },
 
+  //Checks the type given in the route and adds the item/data that list
   addToListByType: function (id, data, type, res) {
     if (type === 'favorites') {
       User.findOneAndUpdate({ user_id: id }, { $addToSet: { favorites: data } }, {new:true}, function (err, user) {
@@ -52,6 +54,7 @@ module.exports = {
     }
   },
 
+  //Checks the type given in the route and deletes the item/data from that list
   removeFromListByType: function (id, data, type, res) {
     if (type === 'favorites') {
       User.findOneAndUpdate({ user_id: id }, { $pull: { favorites: data }}, {new: true}, function (err, user) {
@@ -72,6 +75,22 @@ module.exports = {
         res.json(user);
       });
     }
+  },
+
+  //Removes the user from DB and all reviews and comments by that user
+  removeUserAndReviews: function (id, res) {
+    User.remove({ user_id: id })
+      .exec(function (err, user) {
+        Review.remove({user_id: id})
+          .exec(function (err, data) {
+            Comment.remove({ user_id: id })
+              .exec(function(err, data) {
+                if (err) console.log(err);
+                res.sendStatus(401);
+              });
+          });
+      });
+
   }
 
 };
