@@ -6,46 +6,49 @@ angular.module('zeus.user', [])
   UserVm.username = $stateParams.username;
 
   //set up user information based on username given in route
-  if ($stateParams.username) {
-    User.getUserId($stateParams.username)
-      .then(function(userObj) {
-        UserVm.protected = false; //used to hide link to edit profile
-        UserVm.userId = userObj._id;
-        UserVm.email = userObj.email;
-        UserVm.userIdAuth = userObj.user_id;
-        UserVm.about = userObj.about;
-        UserVm.joinDate = userObj.joinDate;
-        UserVm.fullName = userObj.fullName;
-        UserVm.location = userObj.location;
-        UserVm.profilePic = userObj.profilePicLink;
-        UserVm.favorites = userObj.favorites;
-        UserVm.watched = userObj.watched;
-        User.getUserReviews(UserVm.userIdAuth)
-          .then(function(reviews) {
-            UserVm.reviews = reviews;
-          });
-      });
-  } else {
-    Details.getUserFavorites() //this method actually returns the whole user object.
-      .then(function(userObj) {
-        UserVm.protected = true; //used to show link to edit profile
-        UserVm.userId = userObj._id;
-        UserVm.email = userObj.email;
-        UserVm.userIdAuth = userObj.user_id;
-        UserVm.username = userObj.username;
-        UserVm.about = userObj.about;
-        UserVm.joinDate = userObj.joinDate;
-        UserVm.fullName = userObj.fullName;
-        UserVm.location = userObj.location;
-        UserVm.profilePic = userObj.profilePicLink;
-        UserVm.favorites = userObj.favorites;
-        UserVm.watched = userObj.watched;
-        User.getUserReviews(UserVm.userIdAuth)
-          .then(function(reviews) {
-            UserVm.reviews = reviews;
-          });
-      });
-  }
+  UserVm.refreshInfo = function() {
+    if ($stateParams.username) {
+      User.getUserId($stateParams.username)
+        .then(function(userObj) {
+          UserVm.protected = false; //used to hide link to edit profile
+          UserVm.userId = userObj._id;
+          UserVm.email = userObj.email;
+          UserVm.userIdAuth = userObj.user_id;
+          UserVm.about = userObj.about;
+          UserVm.joinDate = userObj.joinDate;
+          UserVm.fullName = userObj.fullName;
+          UserVm.location = userObj.location;
+          UserVm.profilePic = userObj.profilePicLink;
+          UserVm.favorites = userObj.favorites;
+          UserVm.watched = userObj.watched;
+          User.getUserReviews(UserVm.userIdAuth)
+            .then(function(reviews) {
+              UserVm.reviews = reviews;
+            });
+        });
+    } else {
+      Details.getUserFavorites() //this method actually returns the whole user object.
+        .then(function(userObj) {
+          UserVm.protected = true; //used to show link to edit profile
+          UserVm.userId = userObj._id;
+          UserVm.email = userObj.email;
+          UserVm.userIdAuth = userObj.user_id;
+          UserVm.username = userObj.username;
+          UserVm.about = userObj.about;
+          UserVm.joinDate = userObj.joinDate;
+          UserVm.fullName = userObj.fullName;
+          UserVm.location = userObj.location;
+          UserVm.profilePic = userObj.profilePicLink;
+          UserVm.favorites = userObj.favorites;
+          UserVm.watched = userObj.watched;
+          User.getUserReviews(UserVm.userIdAuth)
+            .then(function(reviews) {
+              UserVm.reviews = reviews;
+            });
+        });
+    }
+  };
+  UserVm.refreshInfo();
 
   //check to see if the user has any favorites for a given target (movie/tv)
   UserVm.hasFavorites = function(target) {
@@ -58,6 +61,18 @@ angular.module('zeus.user', [])
       });
     }
     return hasFavs;
+  };
+
+  //Function to remove item from list type ('favorites' or 'watched').
+  UserVm.deleteFavOrWatch = function(type, favorite) {
+    var confirmed = confirm("Are you sure you want to remove this from your favorites?");
+    if (confirmed) {
+      Details.deleteFavOrWatch(type, favorite)
+      .then(function(res) {
+        console.log(res);
+        UserVm.refreshInfo();
+      });
+    }
   };
 })
 .directive('userOverview', function() {
