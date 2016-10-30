@@ -387,7 +387,7 @@ button:hover {
 .comment {
   position: relative;
   width: 80%;
-  margin-left: 60px;
+  margin-left: 70px;
 }
 
 .commentBody{
@@ -409,15 +409,23 @@ button:hover {
 }
 
 /* edit review page */
+.editForm{
+  width: 100%;
+  border-top: black solid 1px;
+}
+
 .editContent {
   position: relative;
-  width: 80%;
-  height: 100px;
+  width: 90%;
+  height: 300px;
+  font-size: 15px;
 }
 
 .editTitle {
   position: relative;
   width: 50%;
+  height: 25px;
+  font-size: 20px;
 }
 
 /* actor detail page */
