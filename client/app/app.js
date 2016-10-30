@@ -127,6 +127,12 @@ angular.module('zeus', [
     authenticate: true
   };
 
+  var aboutState = {
+    name: 'about',
+    url: '/about',
+    templateUrl: 'app/about/about.html'
+  };
+
   $stateProvider.state(landingState);
   $stateProvider.state(resultsState);
   $stateProvider.state(detailsState);
@@ -136,6 +142,7 @@ angular.module('zeus', [
   $stateProvider.state(editAccountState);
   $stateProvider.state(reviewsState);
   $stateProvider.state(editReviewState);
+  $stateProvider.state(aboutState);
 
   $urlRouterProvider.otherwise('/');
 
