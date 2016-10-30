@@ -20,8 +20,8 @@
    <!-- Movie/TV details and info -->
    <movie-details></movie-details>
   </div>
-
-  <h5>Showtimes</h5>
+  <br>
+  <h5 ng-if="DetailsVm.type === 'movie'">Showtimes</h5>
   <showtimes ng-if="DetailsVm.type === 'movie'"></showtimes>
 
  <div class="reviews">
@@ -29,7 +29,7 @@
    <h5>Reviews</h5>
    <post-review></post-review>
    <div class="noReviews" ng-if="DetailsVm.reviews.length === 0 && DetailsVm.loaded">
-     <p>Currently no reviews...want to add one?</p>
+     <p class="reviewDetails">Currently no reviews...want to add one?</p>
    </div>
    <review-details></review-details>
  </div>
