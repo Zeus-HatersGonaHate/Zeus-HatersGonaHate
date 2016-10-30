@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="app/styles/style.css">
 </head>
 
-<body>
+<body ng-controller="zeusController">
   <div class="nav">
     <!-- Title -->
     <div class="logoSearch">
@@ -29,16 +29,16 @@
     </div>
 
     <div class="navLinks">
-      <a class="mdl-navigation__link" href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
-      <a class="mdl-navigation__link nav-buttons" href="#/user" ng-if="isAuthenticated">My Profile</a>
-      <a class="mdl-navigation__link nav-buttons" href="" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
+      <a href="" ng-click="login()" ng-if="!isAuthenticated">Log In</a>
+      <a href="#/user" ng-if="isAuthenticated">My Profile</a>
+      <a href="" ng-click="logout()" ng-if="isAuthenticated">Log Out</a>
     </div>
   </div>
 
   <ui-view class="mdl-grid" id="top"></ui-view>
   <main class="mdl-layout__content">
 
-    <footer class="mdl-mini-footer">
+   <!--  <footer class="mdl-mini-footer">
   <div class="mdl-mini-footer__left-section">
     <div class="mdl-logo">Zeus Reviews</div>
     <ul class="mdl-mini-footer__link-list">
@@ -46,7 +46,7 @@
       <li><a href="#">About Us</a></li>
     </ul>
   </div>
-</footer>
+</footer> -->
   </main>
 </div>
 

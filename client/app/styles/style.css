@@ -4,23 +4,16 @@
 }
 
 body {
-
+  background-color: white;
 }
 
 /* Remove some default styling from tags */
 
 a {
   text-decoration: none;
-  color: black;
+  color: #6ABED8;
 }
 
-li {
-  list-style-type: none;
-}
-
-h1, h2, h3, h4, h5, h6, p, span {
-  color: black;
-}
 
 /* User page */
 
@@ -45,16 +38,22 @@ article {
     vertical-align: middle;
     text-align: center;
 }
+/* Text colors */
+h2 {
+  color: white;
+}
+
 
 
 
 /* General */
 .nav{
-  background-color: white;
+  background-color: #060C0C;;
   border-bottom: black solid 1px;
   width:100%;
   position: fixed;
   z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
 }
 
 .navLinks{
@@ -71,13 +70,16 @@ article {
 
 .container, .landing{
   position: absolute;
-  border: solid black 1px;
-  width: 1100px;
-  top: 140px;
+  /*border: solid black 1px;*/
   left: 0;
   right: 0;
-
   margin: auto;
+}
+
+.container {
+  width: 900px;
+  top: 100px;
+  background-color: white;
 }
 
 .casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewInfo, .commentUser, .commentBody, .portraitm, .actor-info, .navLinks, .logoSearch{
@@ -85,81 +87,140 @@ article {
   display: inline-block;
   margin-right: 10px;
 }
+
+.logoTitle {
+  font-size: 30px;
+}
+
 /* movie/tv detail page */
+
+.buttons {
+  position: relative;
+  margin-top: 20px;
+}
+
+button{
+  background-color: #D9B310;
+  border: black solid 0;
+  border-radius: 7px;
+}
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 
 .details {
   position: relative;
-  width: 50%;
+  width: 55%;
+  left: 10px;
   vertical-align:top;
 }
 
 .reviewDetails {
   position: relative;
-  border: black solid 1px;
+  border-bottom: black solid 1px;
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .reviewBody{
   position: relative;
-  width: 80%;
-  border: black solid 1px;
+  width: 85%;
+  /*border: black solid 1px;*/
 
 }
 
 .reviewUser{
   position: relative;
-  border: black solid 1px;
+  height: 100%;
+  /*border: black solid 1px;*/
   vertical-align:top;
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+
+.reviewInfo {
+  position: relative;
+  float: right;
+  margin-right: 30px;
+  margin-bottom: 20px;
 }
 
 .reviewDP {
   position: relative;
   width: 60px;
-  margin-top: -18px;
+  overflow: hidden;
 }
 
 .reviews {
-  border: black solid 1px;
+  /*border: black solid 1px;*/
   position: relative;
-  width: 90%;
+  width: 100%;
 }
 
 .inputBox{
   position: relative;
   width: 80%;
+  height: 70px;
+  font-size: 13px;
+  margin-left: 10px
 }
 
-.inputTitle{
+.inputRating {
+}
+
+.postButton {
+  position: relative;
+  width: 120px;
+  height: 100px;
+  top: -45px;
+  left: 20px;
+}
+
+.inputTitle {
   position: relative;
   width: 60%;
+  height: 20px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  margin-left: 10px;
+  margin-top: 20px;
 }
 
 .posting {
-  border: black solid 1px;
+  border-top: black solid 1px;
+  border-bottom: black solid 1px;
   position: relative;
-  width: 60%;
+  width: 100%;
 }
 
 .showtimes{
-  border: black solid 1px;
-  width: 90%;
+  border-top: black solid 1px;
+  width: 100%;
   position: relative;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding-top: 20px;
 }
 
 .showtimeResults{
   position: relative;
-  height: 200px;
-  width: 50%;
+  height: 150px;
+  width: 40%;
   overflow-y: auto;
-  border: black solid 1px;
+  /*border: black solid 1px;*/
+  margin-left: 130px;
 }
 
 .showtimeForm{
   position: relative;
   width: 40%;
-  border: black solid 1px;
+  /*border: black solid 1px;*/
   vertical-align:top;
+  margin-left: 10px;
 }
 
 /* search result page */
@@ -180,7 +241,10 @@ article {
 /* landing page */
 
 .landing{
-  width: 95%;
+  background-color: #060C0C;
+  width: 100%;
+  top: 0;
+  padding-top: 90px;
 }
 
 .category {
@@ -239,7 +303,7 @@ article {
   position: relative;
   width: 75%;
   border: black solid 1px;
-  margin-top: 20px;g
+  margin-top: 20px;
 }
 
 .commentInput {
