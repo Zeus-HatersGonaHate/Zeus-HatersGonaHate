@@ -10,7 +10,7 @@
           <img ng-hide="!favorite.picture" src="http://image.tmdb.org/t/p/w185{{favorite.picture}}" alt="">
           <img ng-show="!favorite.picture" src="http://dummyimage.com/185x275/000/fff&text={{favorite.title}}" alt="">
         </a><br>
-        <button ng-click="UserVm.deleteFavOrWatch('favorites', favorite)">Remove from favorites</button>
+        <button ng-show="UserVm.protected" ng-click="UserVm.deleteFavOrWatch('favorites', favorite)">Remove from favorites</button>
       </div>
     </div>
   </div>
