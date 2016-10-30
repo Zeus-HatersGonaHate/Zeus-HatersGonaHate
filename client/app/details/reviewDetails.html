@@ -6,7 +6,9 @@
   <div class="reviewBody">
   <a href="#/review/{{review._id}}"><strong> {{review.title}}</strong></a>
   <p>by: <a href="#/user/{{DetailsVm.users[review.user_id].username}}"><strong>{{DetailsVm.users[review.user_id].username}}</strong></a> | {{review.rating}}★</p>
-  <p>{{review.content}}</p>
+  <!-- Limits content to first 200 characters, only add ellipses when needed -->
+  <p>{{review.content | limitTo: 200}}<span ng-if="review.content.length > 200"><a href="../#/review/{{review._id}}">...read more</a></span></p>
+
   </div>
 
   <div class="reviewInfo">
