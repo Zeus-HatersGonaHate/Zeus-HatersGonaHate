@@ -378,3 +378,14 @@ button:hover {
   position: relative;
   width: 330px;
 }
+
+.line {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, white, black, black);
+}
+
+.landingTitle {
+    line-height: 15px;
+    padding-top: 20px;
+}
