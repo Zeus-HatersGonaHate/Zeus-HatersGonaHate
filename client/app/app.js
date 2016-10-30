@@ -24,6 +24,7 @@ angular.module('zeus', [
   $scope.login = authService.login;
   $scope.logout = function() {
     authService.logout();
+    alert('You have been logged out.');
   };
 
   $scope.goToTop = function() {
