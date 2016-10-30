@@ -3,13 +3,13 @@ var helpers = require('../config/helpers.js');
 
 module.exports = {
 
+  //Checks if user exists on login, if not adds the user to the database.
   postUser: function (req, res, next) {
     var id = req.user.sub;
     var info = req.body;
     var date = new Date();
     User.find({ user_id: id })
       .exec(function (error, data) {
-        //console.log(data);
         if (error) {
           console.log(error);
           res.send(500);
@@ -30,7 +30,6 @@ module.exports = {
                 console.log(err);
                 res.send(404);
               } else {
-                //console.log(userInfo);
                 res.json(userInfo);
               }
             });
@@ -41,6 +40,7 @@ module.exports = {
       });
     },
 
+  //Gets user info based on the username
   getUserByUsername: function (req, res, next) {
     var username = req.params.username;
     User.find({username: username})
@@ -53,6 +53,7 @@ module.exports = {
       });
   },
 
+  //Edit user based on the id from the token
   editUser: function (req, res, next) {
     var id = req.user.sub;
     var data = req.body;
@@ -65,6 +66,7 @@ module.exports = {
     });
   },
 
+  //Adds data to the list based on the type param ('favorites', 'watched', 'currentlyWatching')
   addToUserLists: function (req, res, next) {
     var id = req.user.sub;
     var data = req.body;
@@ -72,6 +74,7 @@ module.exports = {
     helpers.addToListByType(id, data, type, res);
   },
 
+  //Removes data from the list based on the type param ('favorites', 'watched', 'currentlyWatching')
   removeFromUserLists: function (req, res, next) {
     var id = req.user.sub;
     var data = req.body;
@@ -79,6 +82,7 @@ module.exports = {
     helpers.removeFromListByType(id, data, type, res);
   },
 
+  //Gets all the users information based on the token
   getUserLists: function (req, res, next) {
     var id = req.user.sub;
     User.find({ user_id: id })
@@ -88,6 +92,7 @@ module.exports = {
       });
   },
 
+  //Deletes the user, reviews, comments based on the users token
   deleteUser: function (req, res, next) {
     var id = req.user.sub;
     helpers.removeUserAndReviews(id, res);
