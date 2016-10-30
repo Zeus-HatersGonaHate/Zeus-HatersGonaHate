@@ -3,21 +3,23 @@
   <div>
   <!-- Left column (static user info) -->
   <div class="profileLeft">
-    <img class="profilePic" src={{UserVm.profilePic}} alt="profile pic goes here">
-    <h5>User details</h5>
-    <a ng-show="UserVm.protected" href="/#/editAccount">Update my account</a>
-    <p>Username: {{UserVm.username}}</p>
-    <p>Full name: {{UserVm.fullName}}</p>
+    <div class="profileLeftTop">
+      <img class="profilePic" src={{UserVm.profilePic}} alt="profile pic goes here">
+      <a ng-show="UserVm.protected" href="/#/editAccount">Update my account</a>
+      <span>{{UserVm.fullName}}</span>
+      <br>
+      <span>@{{UserVm.username}}</span>
+    </div>
     <p><i class="material-icons">stars</i> {{UserVm.joinDate}}</p>
     <p><i class="material-icons">room</i> {{UserVm.location}}</p>
   </div>
 
   <div class="profileRight">
     <div class="profileNav">
-      <a href="" ng-click="UserVm.currentView = 'overview'">Overview</a> |
-      <a href="" ng-click="UserVm.currentView = 'reviews'">Reviews</a> |
-      <a href="" ng-click="UserVm.currentView = 'favorites'">Favorites</a> |
-      <a href="" ng-click="UserVm.currentView = 'watchlist'">Watched</a>
+      <a href="" ng-style="UserVm.currentView==='overview' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="UserVm.currentView = 'overview'">Overview</a>
+      <a href="" ng-style="UserVm.currentView==='reviews' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="UserVm.currentView = 'reviews'">Reviews</a>
+      <a href="" ng-style="UserVm.currentView==='favorites' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="UserVm.currentView = 'favorites'">Favorites</a>
+      <a href="" ng-style="UserVm.currentView==='watchlist' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="UserVm.currentView = 'watchlist'">Watched</a>
     </div>
 
     <ui-view></ui-view>
