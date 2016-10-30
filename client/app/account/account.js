@@ -39,4 +39,12 @@ angular.module('zeus.account', [])
   AccountVm.cancel = function(){
     $location.path('/account');
   };
+
+  AccountVm.deleteUser = function() {
+    var confirmed = confirm("Are you sure you want to delete your account? Rotten Tomatoes user interface is soooo ugly!!! Are you suuuurrrree???");
+    if (confirmed) {
+      User.deleteUser();
+      $location.path('/');
+    }
+  };
 });
