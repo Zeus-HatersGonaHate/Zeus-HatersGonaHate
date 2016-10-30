@@ -4,7 +4,7 @@
     <div class="horizontal">
       <div class="table">
         <div ng-init="LandingVm.fetchPopularMovies()" class="media-list">
-          <popular-movie ng-repeat="popularmovie in LandingVm.popularmovies | limitTo:10"></popular-movie>
+          <popular-movie ng-repeat="popularmovie in LandingVm.popularmovies | limitTo:20"></popular-movie>
         </div>
       </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="horizontal">
       <div class="table">
         <div ng-init="LandingVm.fetchLatestMovies()" class="media-list">
-          <latest-movie ng-repeat="latestmovie in LandingVm.latestmovies | limitTo:10"></latest-movie>
+          <latest-movie ng-repeat="latestmovie in LandingVm.latestmovies | limitTo:20"></latest-movie>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="horizontal">
       <div class="table">
         <div ng-init="LandingVm.fetchUpcomingMovies()" class="media-list">
-          <upcoming-movie ng-repeat="upcomingmovie in LandingVm.upcomingmovies | limitTo:10"></upcoming-movie>
+          <upcoming-movie ng-repeat="upcomingmovie in LandingVm.upcomingmovies | limitTo:20"></upcoming-movie>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
     <div class="horizontal">
       <div class="table">
         <div ng-init="LandingVm.fetchPopularShows()" class="media-list">
-          <popular-show ng-repeat="popularshow in LandingVm.popularshows | limitTo:10"></popular-show>
+          <popular-show ng-repeat="popularshow in LandingVm.popularshows | limitTo:20"></popular-show>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
     <div class="horizontal">
       <div class="table">
         <div ng-init="LandingVm.fetchLatestShows()" class="media-list">
-          <latest-show ng-repeat="latestshow in LandingVm.latestshows | limitTo:10"></latest-show>
+          <latest-show ng-repeat="latestshow in LandingVm.latestshows | limitTo:20"></latest-show>
         </div>
       </div>
     </div>
