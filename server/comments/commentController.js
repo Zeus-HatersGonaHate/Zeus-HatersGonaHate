@@ -3,12 +3,12 @@ var User = require('../users/userModel.js');
 var helpers = require('../config/helpers.js');
 
 module.exports = {
-  
+
   //Gets comments attatched to a certain review by the reviews ID
   getCommentByReviewId: function(req, res, next){
     var id = req.params.reviewId;
     Comment.find({review_id: id})
-      .sort({date: -1})
+      .sort({Date: -1})
       .exec(function(err, comments) {
         if (err) {
           console.log(err);
@@ -25,12 +25,13 @@ module.exports = {
 
   //Post a comment to a review attatching the logged in users id to it.
   postComment: function(req, res, next){
+    var date = new Date;
     var data = req.body;
     var comment = new Comment({
       user_id: req.user.sub,
       review_id: data.review_id,
       content: data.content,
-      Date: new Date()
+      Date: date.toISOString()
     });
     comment.save(function (err, comment) {
       if (err) {

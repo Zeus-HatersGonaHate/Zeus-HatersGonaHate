@@ -1,5 +1,5 @@
 angular.module('zeus.account', [])
-.controller('AccountController', function($location, $stateParams, Details, User) {
+.controller('AccountController', function($location, $stateParams, Details, User, authService) {
   var AccountVm = this;
   AccountVm.usernameTaken = false;
 
@@ -43,8 +43,11 @@ angular.module('zeus.account', [])
   AccountVm.deleteUser = function() {
     var confirmed = confirm("Are you sure you want to delete your account? Rotten Tomatoes user interface is soooo ugly!!! Are you suuuurrrree???");
     if (confirmed) {
-      User.deleteUser();
-      $location.path('/');
+      User.deleteUser()
+        .then(function(res){
+          authService.logout();
+          $location.path('/');
+        });
     }
   };
 });

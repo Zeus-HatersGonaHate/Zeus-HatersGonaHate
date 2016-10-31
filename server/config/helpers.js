@@ -86,7 +86,7 @@ module.exports = {
             Comment.remove({ user_id: id })
               .exec(function(err, data) {
                 if (err) console.log(err);
-                res.sendStatus(401);
+                res.sendStatus(201);
               });
           });
       });
