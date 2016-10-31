@@ -22,9 +22,21 @@ angular.module('zeus', [
     ZeusVm.searchQuery = '';
   };
 
-  ZeusVm.login = authService.login;
+  //Checks DB for user when logging in or create then when logging/sign up/in
+  ZeusVm.login = function (callback) {
+    authService.login();
+    authService.getProfileDeferred().then(function (profile) {
+      ZeusVm.profile = profile;
+      if (profile && !authService.gotProfile) {
+        authService.gotProfile = true;
+        User.checkUser(profile);
+      }
+    });
+  };
+
   ZeusVm.logout = function() {
     authService.logout();
+    authService.gotProfile = false;
     alert('You have been logged out.');
     $location.path('/');
   };
@@ -41,7 +53,8 @@ angular.module('zeus', [
     //Gets user profile when logged in check DB to see if exists if not add it.
   authService.getProfileDeferred().then(function (profile) {
     ZeusVm.profile = profile;
-    if (profile) {
+    if (profile && !authService.gotProfile) {
+      authService.gotProfile = true;
       User.checkUser(profile);
     }
   });

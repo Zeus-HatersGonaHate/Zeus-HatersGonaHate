@@ -325,6 +325,7 @@ function authService(lock, authManager, $q) {
 
   var userProfile = JSON.parse(localStorage.getItem('profile')) || null;
   var deferredProfile = $q.defer();
+  var gotProfile = false;
 
   if (userProfile) {
     deferredProfile.resolve(userProfile);
@@ -368,6 +369,7 @@ function authService(lock, authManager, $q) {
   }
 
   return {
+    gotProfile: gotProfile,
     login: login,
     logout: logout,
     registerAuthenticationListener: registerAuthenticationListener,
