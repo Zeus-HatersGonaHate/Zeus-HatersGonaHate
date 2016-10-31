@@ -1,8 +1,6 @@
 <div class="container">
   <form name="editAccountForm">
-    <h5>Edit Account Details</h5>
-
-    <img src="{{AccountVm.profilePic}}" alt="profile pic goes here" class="profile-pic-lg"/>
+    <h5 class="heading-medium">Edit Account Details</h5>
 
     <p>Username: <input name="username" ng-change="AccountVm.usernameTaken(AccountVm.username)" type="text" value="{{AccountVm.username}}" ng-pattern="/(?=^.{3,20}$)^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$/" ng-model="AccountVm.username" required>
       <!-- Input validation -->
@@ -16,15 +14,16 @@
     <p>Email: {{AccountVm.email}}</p>
     <p>Member since: {{AccountVm.joinDate}}</p>
 
-    <p>Location: <input name="location" type="text" value="{{AccountVm.location}}" ng-model="AccountVm.location"></p>
+    <p>Location<input name="location" type="text" value="{{AccountVm.location}}" ng-model="AccountVm.location"></p>
 
-    <p>About: <textarea name="about" value="{{AccountVm.about}}" ng-model="AccountVm.about" cols="40" rows="5"></textarea>
+    <p>About</p>
+    <textarea name="about" value="{{AccountVm.about}}" ng-model="AccountVm.about" cols="40" rows="5"></textarea>
 
     <br/>
     <!-- Disables submit button if form is invalid or if the username is already taken -->
-    <input ng-disabled="editAccountForm.$invalid || (AccountVm.taken && AccountVm.username !== AccountVm.originalUsername)" ng-click="AccountVm.update()" type="submit" value="Update profile">
-    <input ng-click="AccountVm.cancel()" type="Submit" value="Cancel">
+    <button ng-disabled="editAccountForm.$invalid || (AccountVm.taken && AccountVm.username !== AccountVm.originalUsername)" ng-click="AccountVm.update()" type="submit">Update profile</button>
+    <button ng-click="AccountVm.cancel()" type="Submit">Cancel</button>
 
   </form>
-  <p style="color:red;" ng-click="AccountVm.deleteUser()"><strong>Delete user account</strong></p>
+  <button style="background-color:#ED254E; color: white;" ng-click="AccountVm.deleteUser()">Delete user account</button>
 </div>
