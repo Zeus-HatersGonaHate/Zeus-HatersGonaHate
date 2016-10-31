@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zeus Reviews</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-indigo.min.css" />
+    <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-indigo.min.css" /> -->
     <link rel="stylesheet" href="app/styles/style.css">
 </head>
 
@@ -15,17 +15,10 @@
     <div class="logoSearch">
       <span class="logoTitle"><a class="nav-logo" href="#/">Zeus Reviews</a></span>
         <!-- Search input here -->
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-        <label class="mdl-button mdl-js-button mdl-button--icon" for="search-expandable">
-          <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <form ng-submit="ZeusVm.search(ZeusVm.searchQuery)">
-          <input class="mdl-textfield__input" type="text" ng-model="ZeusVm.searchQuery" id="search-expandable" />
-          <label class="mdl-textfield__label" for="search-expandable">Search text</label>
-          </form>
-        </div>
-      </div>
+        <i class="material-icons">search</i>
+        <form ng-submit="ZeusVm.search(ZeusVm.searchQuery)">
+        <input type="text" ng-model="ZeusVm.searchQuery" id="search-expandable" />
+        </form>
     </div>
 
     <div class="navLinks">
@@ -37,11 +30,11 @@
 
   <ui-view id="top"></ui-view>
 
-  <footer>
+  <div class="footer">
     <div class="mdl-logo">Zeus Reviews</div>
     <div><a href="" ng-click="goToTop()">Back to top</a></div>
     <div><a href="#">About Us</a></div>
-  </footer>
+  </div>
 
   <!-- Moment Library -->
   <script src="app/bower_components/moment/min/moment.min.js"></script>
