@@ -38,6 +38,12 @@ angular.module('zeus.user', [])
 
     //else, no username was given in url (i.e. route was just /user) so get currently logged in user object
     } else {
+      var currentUser = JSON.parse(localStorage.getItem('profile'));
+      if (!currentUser) {
+        $location.path('404');
+        return;
+      }
+
       Details.getUserFavorites() //this method actually returns the whole user object.
         .then(function(userObj) {
           UserVm.protected = true; //used to show link to edit profile and show remove fav buttons
