@@ -3,8 +3,17 @@
   display: none;
 }
 
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
 body {
   background-color: white;
+  font-family: sans-serif;
+  position: relative;
+  margin: 0;
+  min-height: 100%;
 }
 
 /* Remove some default styling from tags */
@@ -42,6 +51,9 @@ article {
 .nav{
   background-color: #060C0C;;
   border-bottom: black solid 1px;
+  padding: 0;
+  left: 0;
+  top: 0;
   width:100%;
   position: fixed;
   z-index: 1000;
@@ -67,8 +79,8 @@ article {
   margin: auto;
   width: 900px;
   min-width: 900px;
-  min-height: 100vh;
   padding-top: 125px;
+  padding-bottom: 100px;
 }
 
 .casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewContent, .commentUser, .commentBody, .portraitm, .actor-info, .navLinks, .logoSearch{
@@ -81,8 +93,14 @@ article {
   font-size: 30px;
 }
 
-footer {
+.footer {
   background-color: black;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
 }
 
 /* movie/tv detail page */
@@ -262,7 +280,7 @@ button:hover {
   width: inherit;
   top: 0;
   padding-top: 90px;
-  padding-bottom: 30px
+  padding-bottom: 150px
 }
 
 .category {
