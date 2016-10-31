@@ -20,18 +20,20 @@
    <movie-details></movie-details>
   </div>
   <br>
+  <a href="" ng-style="DetailsVm.currentView==='reviews' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="DetailsVm.currentView = 'reviews'">Reviews</a>
+  <a href="" ng-style="DetailsVm.currentView==='showtimes' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="DetailsVm.currentView = 'showtimes'">Showtimes</a>
   <!--Only displayed for movies, TV shows don't play in theatres!! -->
-  <h5 ng-if="DetailsVm.type === 'movie'">Showtimes</h5>
-  <showtimes ng-if="DetailsVm.type === 'movie'"></showtimes>
+  <h5 ng-show="DetailsVm.currentView === 'showtimes'" ng-if="DetailsVm.type === 'movie'">Showtimes</h5>
+  <showtimes ng-show="DetailsVm.currentView === 'showtimes'" ng-if="DetailsVm.type === 'movie'"></showtimes>
 
  <div class="reviews">
    <!-- Movie reviews -->
-   <h5>Reviews</h5>
-   <post-review></post-review>
-   <div class="noReviews" ng-if="DetailsVm.reviews.length === 0 && DetailsVm.loaded">
+   <h5 ng-show="DetailsVm.currentView === 'reviews'">Reviews</h5>
+   <post-review ng-show="DetailsVm.currentView === 'reviews'"></post-review>
+   <div ng-show="DetailsVm.currentView === 'reviews'" class="noReviews" ng-if="DetailsVm.reviews.length === 0 && DetailsVm.loaded">
      <p class="reviewDetails">Currently no reviews...want to add one?</p>
    </div>
-   <review-details></review-details>
+   <review-details ng-show="DetailsVm.currentView === 'reviews'"></review-details>
  </div>
 
 </div>

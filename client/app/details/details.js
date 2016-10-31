@@ -3,6 +3,7 @@
   // capture the value of `this` in a variable vm
   // vm stands for view model and is a replacement for $scope
   var DetailsVm = this;
+  DetailsVm.currentView = 'reviews';
   DetailsVm.loaded = false;
   DetailsVm.data = {};
   DetailsVm.reviews = [];
