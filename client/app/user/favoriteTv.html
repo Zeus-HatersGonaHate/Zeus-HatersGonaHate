@@ -2,7 +2,7 @@
   <h5>Favorite TV shows:</h5>
   <div>
     <!-- No favs message -->
-    <p ng-show="!UserVm.hasFavorites('tv')">This user does not have any favorites for this category</p>
+    <p ng-show="!UserVm.hasItems('favorites', 'tv')">This user does not have any favorites for this category</p>
     <div class="poster" ng-show="favorite.type === 'tv'" ng-repeat="favorite in UserVm.favorites">
       <div class="poster-container">
         <a href="../#/details/{{favorite.type}}/{{favorite.id}}">
