@@ -2,7 +2,7 @@
 <!-- User enters a radius to get nearby showtimes, default radius is 5 miles -->
   <form class="showtimeForm" ng-submit="DetailsVm.getShowtimes()">
     <p>Enter your zip code below to get showtimes for this movie near you today.</p>
-    <p>Zip Code: </p><input type="text" ng-model="DetailsVm.zip">
+    <input type="text" placeholder="Zip Code" ng-model="DetailsVm.zip">
   </form>
 
   <div class="showtimeResults">

@@ -7,7 +7,7 @@
     </div>
 
     <div class="reviewReviewContent">
-      <h4>{{ReviewsVm.review.title}}</h4>
+      <h4 class="heading-medium">{{ReviewsVm.review.title}}</h4>
       <p>
         by: <a href="#/user/{{ReviewsVm.user.username}}">{{ReviewsVm.user.username}}</a> | {{ReviewsVm.review.date}}
         <br/>
@@ -17,20 +17,25 @@
     </div>
   </div>
   <div class="reviewReviewInfo">
-    <span>Rating: {{ReviewsVm.review.voteCount}}</span>
-    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(1, isAuthenticated)"><i class="material-icons">thumb_up</i></span>
-    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(-1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
-    <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()"><i class="material-icons">mode_edit</i></span>
-    <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()"><i class="material-icons">delete</i></span>
+    <div class="rating-count">Rating: {{ReviewsVm.review.voteCount}}</div>
+    <div class="thumbs">
+      <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(1, isAuthenticated)"><i class="material-icons">thumb_up</i></span>
+      <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(-1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
+    </div>
+    <div class="edit">
+      <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()"><i class="material-icons">mode_edit</i></span>
+      <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()"><i class="material-icons">delete</i></span>
+    </div>
+
   </div>
 
-  <h4>Comments</h4>
+  <h4 class="comment-Heading heading-small">Comments</h4>
   <div class="commentsContainer">
     <form class="commentPosting" ng-if="isAuthenticated" ng-submit="ReviewsVm.postComment()">
       <textarea class="commentInput" placeholder="Tell us what you thought..." ng-model="ReviewsVm.content" required></textarea>
       <button type="submit">Post</button>
     </form>
-    <div class="commentInput" ng-if="!isAuthenticated">You must <a href="" ng-click="ReviewsVm.login()">login</a> to leave a comment.</div>
+    <div class="commentPosting no-post" ng-if="!isAuthenticated">You must <a href="" ng-click="ReviewsVm.login()">login</a> to leave a comment.</div>
 
     <div class="comments">
       <div class="comment" ng-repeat="comment in ReviewsVm.comments">
@@ -46,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="comments" ng-if="ReviewsVm.comments.length === 0">
+    <div class="comments no-post" ng-if="ReviewsVm.comments.length === 0">
        Currently no comments...want to add one?
     </div>
   </div>

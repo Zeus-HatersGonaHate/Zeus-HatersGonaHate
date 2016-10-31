@@ -12,5 +12,5 @@
     <textarea class="inputBox" placeholder="Tell us what you thought..." ng-model="DetailsVm.reviewBody" required></textarea>
     <button class="postButton" type="submit">POST</button>
   </form>
-  <div ng-if="!isAuthenticated">You must <a href="" ng-click="DetailsVm.login()">login</a> to write a review.</div>
+  <div class="posting no-post" ng-if="!isAuthenticated">You must <a href="" ng-click="DetailsVm.login()">login</a> to write a review.</div>
 </div>

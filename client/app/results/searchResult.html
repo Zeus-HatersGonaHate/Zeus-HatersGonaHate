@@ -10,8 +10,8 @@
 
     <div class="resultInfo">
       <!--Within the API, movies have titles and TV shows have names, causing a need for distinction -->
-      <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
-      <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
+      <h2 class="title heading-large" ng-if="result.name === undefined">{{ result.title }}</h2>
+      <h2 class="title heading-large" ng-if="result.title === undefined">{{ result.name }}</h2>
       <p class="">{{ result.overview }}</p>
     </div>
   </div>

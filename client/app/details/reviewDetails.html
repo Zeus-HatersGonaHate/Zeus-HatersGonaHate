@@ -4,19 +4,21 @@
   </div>
 
   <div class="reviewBody">
-  <a href="#/review/{{review._id}}"><strong> {{review.title}}</strong></a>
-  <p>by: <a href="#/user/{{DetailsVm.users[review.user_id].username}}"><strong>{{DetailsVm.users[review.user_id].username}}</strong></a> | {{review.rating}}★</p>
+  <a class="review-title" href="#/review/{{review._id}}">{{review.title}}</a>
+  <p>by: <a href="#/user/{{DetailsVm.users[review.user_id].username}}">{{DetailsVm.users[review.user_id].username}}</a> | {{review.rating}}★</p>
   <!-- Limits content to first 200 characters, only add ellipses when needed -->
-  <p>{{review.content | limitTo: 200}}<span ng-if="review.content.length > 200"><a href="../#/review/{{review._id}}">...read more</a></span></p>
+  <p>{{review.content | limitTo: 600}}<span ng-if="review.content.length > 600"><a href="../#/review/{{review._id}}">...read more</a></span></p>
 
   </div>
 
   <div class="reviewInfo">
     <span class="postDate">Posted on: {{review.date}}</span>
     <div class="rating">
-      <span>Rating: {{review.voteCount}}<span>
-      <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="DetailsVm.vote(review, 1, isAuthenticated)"><i class="material-icons">thumb_up</i></span>
-      <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="DetailsVm.vote(review, -1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
+      <div class="rating-count">Rating: {{review.voteCount}}</div>
+      <div class="thumbs">
+        <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="DetailsVm.vote(review, 1, isAuthenticated)"><i class="material-icons">thumb_up</i></span>
+        <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="DetailsVm.vote(review, -1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
+      </div>
     </div>
   </div>
 </div>
