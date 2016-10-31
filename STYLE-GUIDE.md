@@ -1,3 +1,5 @@
+Our source code is annotated! Take a look at the nearby comments to clarify any code that may not be immediately familiar.
+
 Angular styling and composition should be written according to [John Papa's angular style guide for Angular 1.](https://github.com/johnpapa/angular-styleguide/tree/master/a1)
 
 ### Indentation
