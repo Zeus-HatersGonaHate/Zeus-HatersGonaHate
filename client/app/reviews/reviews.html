@@ -1,30 +1,33 @@
 <div class="container">
-  <div class="reviewMovieInfo">
-    <a href="#/details/{{ReviewsVm.review.type}}/{{ReviewsVm.review.typeId}}">
-      <img class="profilePic" src="http://image.tmdb.org/t/p/w342/{{ReviewsVm.movie.poster_path}}"/>
-    </a>
-  </div>
+  <div class="reviewContainer">
+    <div class="reviewMovieInfo">
+      <a href="#/details/{{ReviewsVm.review.type}}/{{ReviewsVm.review.typeId}}">
+        <img class="posterPic" src="http://image.tmdb.org/t/p/w342/{{ReviewsVm.movie.poster_path}}"/>
+      </a>
+    </div>
 
+    <div class="reviewReviewContent">
+      <h4>{{ReviewsVm.review.title}}</h4>
+      <p>
+        by: <a href="#/user/{{ReviewsVm.user.username}}">{{ReviewsVm.user.username}}</a> | {{ReviewsVm.review.date}}
+        <br/>
+        Rating: {{ReviewsVm.review.rating}}
+      </p>
+      <p>{{ ReviewsVm.review.content}}</p>
+    </div>
+  </div>
   <div class="reviewReviewInfo">
-    <h4>{{ReviewsVm.review.title}}</h4>
-    <p>
-      by: <a href="#/user/{{ReviewsVm.user.username}}">{{ReviewsVm.user.username}}</a> | {{ReviewsVm.review.date}}
-      <br/>
-      Rating: {{ReviewsVm.review.rating}}
-    </p>
-    <p>{{ ReviewsVm.review.content}}</p>
-    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="ReviewsVm.vote(1, isAuthenticated)">Upvote: {{ReviewsVm.review.voteCount}}</span>
-    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="ReviewsVm.vote(-1, isAuthenticated)">Downvote</span>
-    <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()">| Edit</span>
-    <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()">• DELETE</span>
+    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="ReviewsVm.vote(1, isAuthenticated)"><i class="material-icons">thumb_up</i>: {{ReviewsVm.review.voteCount}}</span>
+    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="ReviewsVm.vote(-1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
+    <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()"><i class="material-icons">mode_edit</i></span>
+    <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()"><i class="material-icons">delete</i></span>
   </div>
 
+  <h4>Comments</h4>
   <div class="commentsContainer">
-    <h4>Comments</h4>
-    <form ng-if="isAuthenticated" ng-submit="ReviewsVm.postComment()">
+    <form class="commentPosting" ng-if="isAuthenticated" ng-submit="ReviewsVm.postComment()">
       <textarea class="commentInput" placeholder="Tell us what you thought..." ng-model="ReviewsVm.content" required></textarea>
-      <br/>
-      <input type="submit">
+      <button type="submit">Post</button>
     </form>
     <div class="commentInput" ng-if="!isAuthenticated">You must <a href="" ng-click="ReviewsVm.login()">login</a> to leave a comment.</div>
 
@@ -34,10 +37,12 @@
           <img class="commentUser" src="{{ ReviewsVm.commentsUser[comment.user_id].profilePicLink }}"/>
         </a>
         <div class="commentBody">
-          <a href="#/user/{{ReviewsVm.commentsUser[comment.user_id].username}}">{{ ReviewsVm.commentsUser[comment.user_id].username }}</a>: {{ comment.content }}
+          <a href="#/user/{{ReviewsVm.commentsUser[comment.user_id].username}}">{{ ReviewsVm.commentsUser[comment.user_id].username }}</a>
+          <p>{{ comment.content }}</p>
         </div>
-
-        <p ng-if="isAuthenticated && comment.user_id === ReviewsVm.currentUser.user_id" ng-click="ReviewsVm.deleteComment(comment)">DELETE</p>
+        <div class="commentInfo">
+          <p class="deletePost" ng-if="isAuthenticated && comment.user_id === ReviewsVm.currentUser.user_id" ng-click="ReviewsVm.deleteComment(comment)"><i class="material-icons">delete</i></p>
+        </div>
       </div>
     </div>
     <div class="comments" ng-if="ReviewsVm.comments.length === 0">

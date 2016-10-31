@@ -17,12 +17,6 @@ a {
 
 /* User page */
 
-.mdl-mini-footer {
-  background-color: rgb(96,125,139);
-  color: #ffffff;
-  padding: 20px 16px;
-}
-
 div.horizontal {
     overflow: auto;
 }
@@ -62,20 +56,18 @@ article {
   border: black solid 1px;
 }
 
-.container, .landing{
-  position: absolute;
-  /*border: solid black 1px;*/
+.container {
+  position: relative;
   left: 0;
   right: 0;
   margin: auto;
-}
-
-.container {
   width: 900px;
-  top: 125px;
+  min-width: 900px;
+  min-height: 100vh;
+  padding-top: 125px;
 }
 
-.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewInfo, .commentUser, .commentBody, .portraitm, .actor-info, .navLinks, .logoSearch{
+.casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewContent, .commentUser, .commentBody, .portraitm, .actor-info, .navLinks, .logoSearch{
   position: relative;
   display: inline-block;
   margin-right: 10px;
@@ -83,6 +75,10 @@ article {
 
 .logoTitle {
   font-size: 30px;
+}
+
+footer {
+  background-color: black;
 }
 
 /* movie/tv detail page */
@@ -251,9 +247,10 @@ button:hover {
 
 .landing{
   background-color: #060C0C;
-  width: 100%;
+  width: inherit;
   top: 0;
   padding-top: 90px;
+  padding-bottom: 30px
 }
 
 .category {
@@ -268,6 +265,11 @@ button:hover {
 .poster-container {
   margin-right: 0px;
 }
+
+.landing img {
+  height: 260px;
+}
+
 
 /* User profile page */
 .profileLeft {
@@ -287,6 +289,7 @@ button:hover {
 
 .profileRight {
   position: relative;
+  min-height: 450px;
   width: 65%;
   border-left: black solid 1px;
   margin-left: 30px;
@@ -322,24 +325,55 @@ button:hover {
 }
 
 /* review page */
-.reviewReviewInfo{
+.reviewReviewContent{
   position: relative;
-  width: 65%;
+  width: 75%;
   vertical-align:top;
-  border: black solid 1px;
+  margin-left: 20px;
+}
+
+.reviewContainer {
+  border-bottom: black dotted 1px;
+}
+
+.reviewReviewInfo {
+  float: right;
+}
+
+.posterPic {
+  width: 150px;
+}
+
+.commentPosting{
+  position: relative;
+  width: 100%;
+  border-bottom: black solid 1px;
+  margin-bottom: 30px;
 }
 
 .commentsContainer{
   position: relative;
-  width: 75%;
-  border: black solid 1px;
-  margin-top: 20px;
+  width: 100%;
+  border-top: black solid 1px;
 }
 
 .commentInput {
   position: relative;
-  width: 50%;
+  width: 70%;
   height: 50px;
+  font-size: 15px;
+  margin-left: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.commentsContainer button {
+  position: relative;
+  float: right;
+  width: 80px;
+  height: 58px;
+  left: -110px;
+  top: 30px;
 }
 
 .commentUser {
@@ -349,21 +383,46 @@ button:hover {
 
 .comment {
   position: relative;
-  width: 75%;
-  border: black solid 1px;
-  margin-top: 15px;
+  width: 80%;
+  margin-left: 70px;
+}
+
+.commentBody{
+  position: relative;
+  width: 85%;
+  vertical-align:top;
+}
+
+.commentInfo {
+  position: relative;
+  border-top: black dotted 1px;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.deletePost {
+  float: right;
 }
 
 /* edit review page */
+.editForm{
+  width: 100%;
+  border-top: black solid 1px;
+}
+
 .editContent {
   position: relative;
-  width: 80%;
-  height: 100px;
+  width: 90%;
+  height: 300px;
+  font-size: 15px;
 }
 
 .editTitle {
   position: relative;
   width: 50%;
+  height: 25px;
+  font-size: 20px;
 }
 
 /* actor detail page */
