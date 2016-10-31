@@ -11,6 +11,7 @@ angular.module('zeus.reviews', [])
   ReviewsVm.currentUser = JSON.parse(localStorage.getItem('profile'));
   Reviews.getReviewById(ReviewsVm.id)
     .then(function(reviewInfo) {
+      reviewInfo.review.date = moment(reviewInfo.date).format('MMMM Do YYYY');
       ReviewsVm.review = reviewInfo.review;
       ReviewsVm.user = reviewInfo.user;
       //Find movie info for review
