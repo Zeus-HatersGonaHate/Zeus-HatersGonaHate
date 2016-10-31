@@ -40,9 +40,7 @@ module.exports = function (app, express) {
 
   app.put('/user/edit', authCheck, userController.editUser);
 
-  //MIKE - I changed this route slightly, as I think auth0 passes the correct id in the request, so we don't need to provide an id parameter. Does that sound right?
-  app.delete('/user/delete', authCheck, userController.deleteUser);         //Luke's version
-  // app.delete('/user/delete/:id', authCheck, userController.deleteUser);   //Mike's version
+  app.delete('/user/delete', authCheck, userController.deleteUser);
 
   //User favorites/watched/currently watching routes
   app.get('/favorites', authCheck, userController.getUserLists);

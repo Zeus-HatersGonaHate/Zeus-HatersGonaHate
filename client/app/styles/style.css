@@ -69,8 +69,30 @@ article {
 }
 
 .logoSearch {
-  border: black solid 1px;
+  padding-left: 10px;
+  padding-top: 5px;
+  border: black solid 0px;
 }
+
+.navLink {
+  padding: 20px;
+}
+
+.navSearch {
+  padding: 3px;
+  font-size: 14px;
+  width: 100%;
+  border-color: #6abecc;
+  border-width: 0px;
+  border-bottom-width: 1px;
+  background-color: inherit;
+  color: white;
+  border-style: solid;
+}
+.navbarForm {
+  display: inline-block;
+}
+
 
 .container {
   position: relative;
