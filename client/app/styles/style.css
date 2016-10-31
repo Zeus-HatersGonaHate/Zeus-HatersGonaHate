@@ -17,12 +17,6 @@ a {
 
 /* User page */
 
-.mdl-mini-footer {
-  background-color: rgb(96,125,139);
-  color: #ffffff;
-  padding: 20px 16px;
-}
-
 div.horizontal {
     overflow: auto;
 }
@@ -69,8 +63,8 @@ article {
   margin: auto;
   width: 900px;
   min-width: 900px;
+  min-height: 100vh;
   padding-top: 125px;
-  /*padding-bottom: 60px;*/
 }
 
 .casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewContent, .commentUser, .commentBody, .portraitm, .actor-info, .navLinks, .logoSearch{
@@ -84,15 +78,6 @@ article {
 }
 
 footer {
-  background-color: black;
-}
-
-.footer {
-  position: relative;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  height: 80px;
   background-color: black;
 }
 
