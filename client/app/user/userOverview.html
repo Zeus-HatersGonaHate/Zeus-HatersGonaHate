@@ -1,12 +1,12 @@
 <div class="user-overview-view">
-  <h5>About {{UserVm.username}}:</h5>
+  <h5 class="heading-small">About {{UserVm.username}}:</h5>
   <div class="aboutUser">
     <p ng-show="UserVm.about">{{UserVm.about}}</p>
     <!-- sets default about message for new users -->
     <p ng-hide="UserVm.about">This user still needs to write something about themselves</p>
   </div>
 
-  <h5>{{UserVm.username}}'s latest reviews:</h5>
+  <h5 class="heading-small">{{UserVm.username}}'s latest reviews:</h5>
   <div class="overviewReview">
     <div class="user-reviews">
       <!-- No reviews message -->

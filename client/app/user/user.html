@@ -5,9 +5,10 @@
   <div class="profileLeft">
     <div class="profileLeftTop">
       <img class="profilePic" src={{UserVm.profilePic}} alt="profile pic goes here">
-      <span ng-show="UserVm.fullName">{{UserVm.fullName}}</span>
+      <span class="heading-medium" ng-show="UserVm.fullName">{{UserVm.fullName}}</span>
       <br>
       <span>@{{UserVm.username}}</span>
+      <br>
       <a ng-show="UserVm.protected" href="/#/editAccount"><br><button>Update my account</button></a>
     </div>
     <p><i class="material-icons">stars</i> {{UserVm.joinDate}}</p>

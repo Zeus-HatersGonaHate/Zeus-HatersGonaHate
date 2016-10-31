@@ -7,7 +7,7 @@
     </div>
 
     <div class="reviewReviewContent">
-      <h4>{{ReviewsVm.review.title}}</h4>
+      <h4 class="heading-medium">{{ReviewsVm.review.title}}</h4>
       <p>
         by: <a href="#/user/{{ReviewsVm.user.username}}">{{ReviewsVm.user.username}}</a> | {{ReviewsVm.review.date}}
         <br/>
@@ -29,7 +29,7 @@
 
   </div>
 
-  <h4 class="comment-Heading">Comments</h4>
+  <h4 class="comment-Heading heading-small">Comments</h4>
   <div class="commentsContainer">
     <form class="commentPosting" ng-if="isAuthenticated" ng-submit="ReviewsVm.postComment()">
       <textarea class="commentInput" placeholder="Tell us what you thought..." ng-model="ReviewsVm.content" required></textarea>

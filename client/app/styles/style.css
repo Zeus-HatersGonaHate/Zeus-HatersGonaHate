@@ -10,18 +10,38 @@ html {
 
 body {
   background-color: white;
-  font-family: sans-serif;
+  font-family: arial;
   position: relative;
   margin: 0;
   min-height: 100%;
+  color: #2E2E2E;
 }
 
-/* Remove some default styling from tags */
+/* Fonts */
 
 a {
   text-decoration: none;
   color: #6ABED8;
 }
+
+.heading-large {
+  font-size: 35px;
+}
+
+.heading-medium {
+  font-size: 28px;
+  color: #171717;
+  font-weight: bold;
+}
+
+.heading-small {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.posts {
+}
+
 
 
 /* User page */
@@ -213,7 +233,7 @@ select {
 
 .detail-nav a {
   color: black;
-  padding-bottom: 6px;
+  padding-bottom: 7px;
   margin-right: 40px;
 }
 
@@ -221,6 +241,7 @@ button{
   background-color: #F9DC5C;
   border: black solid 0;
   border-radius: 7px;
+  font-size: 18px;
 }
 button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
@@ -246,6 +267,11 @@ button:hover {
   padding-top: 20px;
   margin-top: 20px;
   margin-bottom: 30px;
+}
+
+.review-title{
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .reviewBody{
@@ -393,7 +419,7 @@ button:hover {
   background-color: black;
   width: inherit;
   top: 0;
-  padding-top: 130px;
+  padding-top: 80px;
   padding-bottom: 150px
 }
 
@@ -404,6 +430,7 @@ button:hover {
 
 .category h2 {
   color: white;
+  margin-top: 100px;
 }
 
 .poster-container {
@@ -466,7 +493,6 @@ button:hover {
 .aboutUser, .overviewReview{
   position: relative;
   width: 100%;
-  /*border-top: black solid 1px;*/
 }
 
 .aboutUser {
@@ -594,9 +620,9 @@ button:hover {
 /* actor detail page */
 .actor-info {
   position: relative;
-  width: 60%;
-  border: black solid 1px;
+  width: 55%;
   vertical-align:top;
+  margin-left: 20px;
 }
 
 .portrait{
@@ -604,13 +630,20 @@ button:hover {
   width: 330px;
 }
 
-.line {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, white, #060C0C, #060C0C);
-}
-
 .landingTitle {
     line-height: 15px;
     padding-top: 20px;
+}
+
+/* About page */
+.member {
+  position: relative;
+  display: inline-block;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.pic {
+  width: 170px;
+  border-radius: 170px;
 }
