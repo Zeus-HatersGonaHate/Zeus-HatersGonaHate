@@ -88,7 +88,7 @@ angular.module('zeus.user', [])
       });
     }
   };
-})
+}) //Directives for rendering sub-views on the landing page.
 .directive('userOverview', function() {
   return {
     restrict: 'AE',

@@ -13,7 +13,7 @@
     <p><i class="material-icons">stars</i> {{UserVm.joinDate}}</p>
     <p ng-show="UserVm.location"><i class="material-icons">room</i> {{UserVm.location}}</p>
   </div>
-
+  <!--Dynamic Right Column, nav for selecting view -->>
   <div class="profileRight">
     <div class="profileNav">
       <a href="" ng-style="UserVm.currentView==='overview' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="UserVm.currentView = 'overview'">Overview</a>
@@ -21,7 +21,7 @@
       <a href="" ng-style="UserVm.currentView==='favorites' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="UserVm.currentView = 'favorites'">Favorites</a>
       <a href="" ng-style="UserVm.currentView==='watchlist' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="UserVm.currentView = 'watchlist'">Watched</a>
     </div>
-
+    <!--Sub view is rendered here for current selection in profileNav -->
     <ui-view></ui-view>
     <user-overview ng-show="UserVm.currentView==='overview'"></user-overview>
     <user-reviews ng-show="UserVm.currentView==='reviews'"></user-reviews>

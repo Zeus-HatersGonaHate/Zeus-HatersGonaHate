@@ -4,7 +4,7 @@
       <!-- If no poster_path, show dummy image -->
       <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
       <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
-
+      <!--Favorite and watch buttons, only shown if logged in -->>
       <details-buttons ng-if="isAuthenticated"></details-buttons>
     </div>
 
@@ -21,6 +21,7 @@
    <movie-details></movie-details>
   </div>
   <br>
+  <!--Only displayed for movies, TV shows don't play in theatres!! -->
   <h5 ng-if="DetailsVm.type === 'movie'">Showtimes</h5>
   <showtimes ng-if="DetailsVm.type === 'movie'"></showtimes>
 
