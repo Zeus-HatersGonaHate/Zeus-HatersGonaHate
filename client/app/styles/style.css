@@ -31,7 +31,6 @@ div.horizontal {
 }
 
 div.horizontal::-webkit-scrollbar {
-  display: none;
 }
 
 .table {
