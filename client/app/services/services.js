@@ -4,8 +4,12 @@ angular.module('zeus.services', [])
     return $http({
       method: 'GET',
       url: 'https://api.themoviedb.org/3/' + type + '/' + id + '?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
-    }).then(function (res) {
+    }).then(function (res) {   //first callback executes if request is successful
       return res.data;
+    }, function(res) {        //second callback is executed if there was an error
+      console.log('error received from TMDB api call');
+      console.log(res);
+      return 'error';  //details.js will look for this string to see if there was an error
     });
   };
 
