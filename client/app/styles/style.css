@@ -203,6 +203,20 @@ select {
   margin-bottom: 10px;
 }
 
+.detail-nav {
+  width: inherit;
+  border-bottom: 1px black solid;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.detail-nav a {
+  color: black;
+  padding-bottom: 6px;
+  margin-right: 40px;
+}
+
 button{
   background-color: #F9DC5C;
   border: black solid 0;
@@ -259,11 +273,24 @@ button:hover {
 .postDate {
   float: left;
   margin-left: 30px;
+  margin-top: 5px;
 }
 
 .rating {
   float: right;
   margin-right: 30px;
+}
+
+.rating-count {
+  position: relative;
+  display: inline-block;
+  top: -5px;
+  margin-right: 15px;
+}
+
+.thumbs {
+  position: relative;
+  display: inline-block;
 }
 
 .reviewDP {
@@ -309,19 +336,15 @@ button:hover {
 }
 
 .posting {
-  border-top: black solid 1px;
   border-bottom: black solid 1px;
   position: relative;
   width: 100%;
 }
 
 .showtimes{
-  border-top: black solid 1px;
   width: 100%;
   position: relative;
-  margin-top: 10px;
   margin-bottom: 10px;
-  padding-top: 20px;
 }
 
 .showtimeResults{
@@ -461,6 +484,12 @@ button:hover {
 
 .reviewReviewInfo {
   float: right;
+  margin-right: 30px;
+  margin-top: 5px;
+}
+
+.comment-Heading{
+  margin-top: 70px;
 }
 
 .posterPic {
