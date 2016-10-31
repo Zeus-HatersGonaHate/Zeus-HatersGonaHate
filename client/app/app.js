@@ -26,6 +26,7 @@ angular.module('zeus', [
   ZeusVm.logout = function() {
     authService.logout();
     alert('You have been logged out.');
+    $location.path('/');
   };
 
   ZeusVm.goToTop = function() {
