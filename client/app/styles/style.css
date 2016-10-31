@@ -264,6 +264,11 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.no-post {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
 .postDate, .rating {
   position: relative;
   margin-bottom: 20px;
@@ -483,7 +488,7 @@ button:hover {
 }
 
 .reviewReviewInfo {
-  float: right;
+  position: relative;
   margin-right: 30px;
   margin-top: 5px;
 }
@@ -501,6 +506,7 @@ button:hover {
   width: 100%;
   border-bottom: black solid 1px;
   margin-bottom: 30px;
+  padding-top: 30px;
 }
 
 .commentsContainer{
@@ -513,9 +519,7 @@ button:hover {
   position: relative;
   width: 70%;
   height: 50px;
-  /*font-size: 15px;*/
   margin-left: 60px;
-  margin-top: 30px;
   margin-bottom: 30px;
 }
 
@@ -525,7 +529,6 @@ button:hover {
   width: 80px;
   height: 58px;
   left: -110px;
-  top: 30px;
 }
 
 .commentUser {
@@ -551,6 +554,13 @@ button:hover {
   width: 100%;
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.edit {
+  float: right;
+  position: relative;
+  display: inline-block;
+  right: -25px;
 }
 
 .deletePost {

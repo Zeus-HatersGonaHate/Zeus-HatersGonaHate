@@ -31,7 +31,7 @@
    <!-- Movie reviews -->
    <post-review ng-show="DetailsVm.currentView === 'reviews'"></post-review>
    <div ng-show="DetailsVm.currentView === 'reviews'" class="noReviews" ng-if="DetailsVm.reviews.length === 0 && DetailsVm.loaded">
-     <p class="reviewDetails">Currently no reviews...want to add one?</p>
+     <p class="no-post">Currently no reviews...want to add one?</p>
    </div>
    <review-details ng-show="DetailsVm.currentView === 'reviews'"></review-details>
  </div>

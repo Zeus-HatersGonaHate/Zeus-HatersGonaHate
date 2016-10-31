@@ -22,8 +22,11 @@
       <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(1, isAuthenticated)"><i class="material-icons">thumb_up</i></span>
       <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(-1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
     </div>
-    <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()"><i class="material-icons">mode_edit</i></span>
-    <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()"><i class="material-icons">delete</i></span>
+    <div class="edit">
+      <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()"><i class="material-icons">mode_edit</i></span>
+      <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()"><i class="material-icons">delete</i></span>
+    </div>
+
   </div>
 
   <h4 class="comment-Heading">Comments</h4>
@@ -32,7 +35,7 @@
       <textarea class="commentInput" placeholder="Tell us what you thought..." ng-model="ReviewsVm.content" required></textarea>
       <button type="submit">Post</button>
     </form>
-    <div class="commentInput" ng-if="!isAuthenticated">You must <a href="" ng-click="ReviewsVm.login()">login</a> to leave a comment.</div>
+    <div class="commentPosting no-post" ng-if="!isAuthenticated">You must <a href="" ng-click="ReviewsVm.login()">login</a> to leave a comment.</div>
 
     <div class="comments">
       <div class="comment" ng-repeat="comment in ReviewsVm.comments">
@@ -48,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="comments" ng-if="ReviewsVm.comments.length === 0">
+    <div class="comments no-post" ng-if="ReviewsVm.comments.length === 0">
        Currently no comments...want to add one?
     </div>
   </div>
