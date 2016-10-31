@@ -9,6 +9,8 @@
   <h5>{{UserVm.username}}'s latest reviews:</h5>
   <div class="overviewReview">
     <div class="user-reviews">
+      <!-- No reviews message -->
+      <p ng-show="!UserVm.hasItems('reviews')">This user has not written any reviews yet.</p>
       <p ng-hide="UserVm.reviews">This user hasn't written any reviews yet.</p>
       <div class="user-review" ng-repeat="review in UserVm.reviews | limitTo:3">
         <p class='review-title'><a href="../#/review/{{review._id}}">{{review.title}}</a></p>

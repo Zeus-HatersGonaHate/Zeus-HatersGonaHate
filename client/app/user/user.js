@@ -62,11 +62,12 @@ angular.module('zeus.user', [])
   UserVm.refreshInfo();
 
   //check to see if the user has any items for a given target (movie/tv)
-  //listType argument can be 'favorites' or 'watched'
+  //listType argument can be 'reviews', 'favorites' or 'watched'
   //target argument can be 'movies' or 'tv'
   UserVm.hasItems = function(listType, target) {
-    console.log('listType, target: ', listType, target);
     var hasAnything = false;
+
+    //check for favorites or watched
     if (UserVm[listType] !== undefined) {
       UserVm[listType].forEach(function(item){
         if (item.type === target) {
@@ -74,6 +75,14 @@ angular.module('zeus.user', [])
         }
       });
     }
+
+    //check for reviews
+    if (listType === 'reviews') {
+      if (Array.isArray(UserVm.reviews) && UserVm.reviews.length > 0) {
+        hasAnything = true;
+      }
+    }
+
     return hasAnything;
   };
 
