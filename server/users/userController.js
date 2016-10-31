@@ -8,12 +8,12 @@ module.exports = {
     var id = req.user.sub;
     var info = req.body;
     var date = new Date();
-    User.find({ user_id: id })
+    User.findOne({ user_id: id })
       .exec(function (error, data) {
         if (error) {
           console.log(error);
           res.send(500);
-        } else if (data.length === 0) {
+        } else if (!data) {
           helpers.usernameMaker(info, function (username) {
             var user = new User({
               joinDate: date.toISOString(),
@@ -34,7 +34,7 @@ module.exports = {
               }
             });
           });
-        } else {
+        } else if (data) {
           res.json(data);
         }
       });
