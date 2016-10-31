@@ -2,6 +2,7 @@
   <h5>About {{UserVm.username}}</h5>
   <div class="aboutUser">
     <p ng-show="UserVm.about">{{UserVm.about}}</p>
+    <!-- sets default about message for new users -->
     <p ng-hide="UserVm.about">This user still needs to write something about themselves</p>
   </div>
 
