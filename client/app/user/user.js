@@ -61,17 +61,20 @@ angular.module('zeus.user', [])
   };
   UserVm.refreshInfo();
 
-  //check to see if the user has any favorites for a given target (movie/tv)
-  UserVm.hasFavorites = function(target) {
-    var hasFavs = false;
-    if (UserVm.favorites !== undefined) {
-      UserVm.favorites.forEach(function(item){
+  //check to see if the user has any items for a given target (movie/tv)
+  //listType argument can be 'favorites' or 'watched'
+  //target argument can be 'movies' or 'tv'
+  UserVm.hasItems = function(listType, target) {
+    console.log('listType, target: ', listType, target);
+    var hasAnything = false;
+    if (UserVm[listType] !== undefined) {
+      UserVm[listType].forEach(function(item){
         if (item.type === target) {
-          hasFavs = true;
+          hasAnything = true;
         }
       });
     }
-    return hasFavs;
+    return hasAnything;
   };
 
   //Function to remove item from list type ('favorites' or 'watched').
