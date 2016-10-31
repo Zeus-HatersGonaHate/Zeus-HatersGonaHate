@@ -38,7 +38,7 @@ module.exports = {
           res.json(data);
         }
       });
-    },
+  },
 
   //Gets user info based on the username
   getUserByUsername: function (req, res, next) {
