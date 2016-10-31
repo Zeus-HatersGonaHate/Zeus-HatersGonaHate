@@ -37,7 +37,7 @@ angular.module('zeus', [
     $anchorScroll();
   };
 
-    //Gets user profile when logged in.
+    //Gets user profile when logged in check DB to see if exists if not add it.
   authService.getProfileDeferred().then(function (profile) {
     ZeusVm.profile = profile;
     if (profile) {
