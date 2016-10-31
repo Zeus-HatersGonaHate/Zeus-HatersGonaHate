@@ -23,6 +23,10 @@
     });
 
   Details.getDetails(DetailsVm.type, DetailsVm.id).then(function(data) {
+    //redirect to 404 page if API call response is an error
+    if (data === 'error') {
+      $location.path(404);
+    }
     DetailsVm.data = data; // save all movie details for the requested movie
 
     //convenience properties for shorthand in html views
@@ -50,7 +54,7 @@
   })
   .catch(function(){
     DetailsVm.loaded = true;
-  })
+  });
 
   var getReviews = function() {
     Reviews.getReviews(DetailsVm.type, DetailsVm.id).then(function (reviews) {
