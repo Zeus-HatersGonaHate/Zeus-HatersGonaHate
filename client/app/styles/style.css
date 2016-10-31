@@ -431,6 +431,8 @@ button:hover {
 .category h2 {
   color: white;
   margin-top: 100px;
+  margin-left: 15px;
+  margin-bottom: 8px;
 }
 
 .poster-container {
