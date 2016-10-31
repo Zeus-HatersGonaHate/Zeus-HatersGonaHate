@@ -16,8 +16,8 @@
     <div class="rating">
       <div class="rating-count">Rating: {{review.voteCount}}</div>
       <div class="thumbs">
-        <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="DetailsVm.vote(review, 1, isAuthenticated)"><i class="material-icons">thumb_up</i></span>
-        <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="DetailsVm.vote(review, -1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
+        <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="DetailsVm.vote(review, 1, isAuthenticated)"><i class="material-icons" title="Upvote">thumb_up</i></span>
+        <span ng-style="isAuthenticated && review.votes[0][DetailsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="DetailsVm.vote(review, -1, isAuthenticated)"><i class="material-icons" title="Downvote">thumb_down</i></span>
       </div>
     </div>
   </div>
