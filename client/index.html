@@ -14,17 +14,16 @@
     <!-- Title -->
     <div class="logoSearch">
       <span class="logoTitle"><a class="nav-logo" href="#/">Zeus Reviews</a></span>
-        <!-- Search input here -->
-        <i class="material-icons">search</i>
-        <form ng-submit="ZeusVm.search(ZeusVm.searchQuery)">
-        <input type="text" ng-model="ZeusVm.searchQuery" id="search-expandable" />
+              <!-- Search input here -->
+        <form class="navbarForm" ng-submit="ZeusVm.search(ZeusVm.searchQuery)">
+        <input class="navSearch" type="text" ng-model="ZeusVm.searchQuery" id="search-expandable" placeholder="Search movie/tv/actors..."/>
         </form>
     </div>
 
     <div class="navLinks">
-      <a href="" ng-click="ZeusVm.login()" ng-if="!isAuthenticated">Log In</a>
-      <a href="#/user" ng-if="isAuthenticated">My Profile</a>
-      <a href="" ng-click="ZeusVm.logout()" ng-if="isAuthenticated">Log Out</a>
+      <a class="navLink" href="" ng-click="ZeusVm.login()" ng-if="!isAuthenticated">Log In</a>
+      <a class="navLink" href="#/user" ng-if="isAuthenticated">My Profile</a>
+      <a class="navLink" href="" ng-click="ZeusVm.logout()" ng-if="isAuthenticated">Log Out</a>
     </div>
   </div>
 
@@ -32,7 +31,7 @@
 
   <div class="footer" ng-controller="zeusController as ZeusVm">
     <div class="mdl-logo">Zeus Reviews</div>
-    <div><a href="" ng-click="goToTop()">Back to top</a></div>
+    <div><a href="" ng-click="ZeusVm.goToTop()">Back to top</a></div>
     <div><a href="#">About Us</a></div>
   </div>
 
