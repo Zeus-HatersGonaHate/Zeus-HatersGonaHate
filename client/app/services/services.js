@@ -12,7 +12,7 @@ angular.module('zeus.services', [])
       return 'error';  //details.js will look for this string to see if there was an error
     });
   };
-
+  //default radius is 5 miles for nearby theatres add &radius= to url for an optional radius parameter, takes an integer, in miles
   var getShowtimes = function(date, zip) {
     return $http ({
       method: 'GET',
