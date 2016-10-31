@@ -30,10 +30,6 @@ div.horizontal {
     overflow: auto;
 }
 
-div.horizontal::-webkit-scrollbar {
-  display: none;
-}
-
 .table {
     display: table;
     table-layout: fixed;
@@ -492,7 +488,7 @@ button:hover {
 .line {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, white, black, black);
+    background-image: linear-gradient(to right, white, #060C0C, #060C0C);
 }
 
 .landingTitle {
