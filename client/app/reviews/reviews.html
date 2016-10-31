@@ -19,12 +19,12 @@
   <div class="reviewReviewInfo">
     <div class="rating-count">Rating: {{ReviewsVm.review.voteCount}}</div>
     <div class="thumbs">
-      <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(1, isAuthenticated)"><i class="material-icons">thumb_up</i></span>
-      <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(-1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
+      <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(1, isAuthenticated)"><i class="material-icons" title="Upvote">thumb_up</i></span>
+      <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(-1, isAuthenticated)"><i class="material-icons" title="Downvote">thumb_down</i></span>
     </div>
     <div class="edit">
-      <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()"><i class="material-icons">mode_edit</i></span>
-      <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()"><i class="material-icons">delete</i></span>
+      <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()"><i class="material-icons" title="Edit">mode_edit</i></span>
+      <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()"><i class="material-icons" title="Delete">delete</i></span>
     </div>
 
   </div>
@@ -47,7 +47,7 @@
           <p>{{ comment.content }}</p>
         </div>
         <div class="commentInfo">
-          <p class="deletePost" ng-if="isAuthenticated && comment.user_id === ReviewsVm.currentUser.user_id" ng-click="ReviewsVm.deleteComment(comment)"><i class="material-icons">delete</i></p>
+          <p class="deletePost" ng-if="isAuthenticated && comment.user_id === ReviewsVm.currentUser.user_id" ng-click="ReviewsVm.deleteComment(comment)"><i class="material-icons" title="Delete">delete</i></p>
         </div>
       </div>
     </div>

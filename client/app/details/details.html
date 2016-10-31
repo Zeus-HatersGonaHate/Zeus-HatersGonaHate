@@ -22,7 +22,7 @@
   <br>
   <div class="detail-nav">
     <a href="" ng-style="DetailsVm.currentView==='reviews' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="DetailsVm.currentView = 'reviews'">Reviews</a>
-    <a href="" ng-style="DetailsVm.currentView==='showtimes' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="DetailsVm.currentView = 'showtimes'">Showtimes</a>
+    <a href="" ng-style="DetailsVm.currentView==='showtimes' && {'border-bottom': '#6ABED8 solid 3px'}" ng-click="DetailsVm.currentView = 'showtimes'" ng-if="DetailsVm.type === 'movie'">Showtimes</a>
   </div>
   <!--Only displayed for movies, TV shows don't play in theatres!! -->
   <showtimes ng-show="DetailsVm.currentView === 'showtimes'" ng-if="DetailsVm.type === 'movie'"></showtimes>
