@@ -4,8 +4,7 @@
       <!-- If no poster_path, show dummy image -->
       <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
       <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
-      <!--Favorite and watch buttons, only shown if logged in -->>
-      <details-buttons ng-if="isAuthenticated"></details-buttons>
+      <details-buttons ng-style="!isAuthenticated && {'visibility':'hidden'}"></details-buttons>
     </div>
 
     <div ng-if="DetailsVm.type === 'tv'" class='moviePoster'>
