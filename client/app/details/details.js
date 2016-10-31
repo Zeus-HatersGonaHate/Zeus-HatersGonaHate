@@ -53,14 +53,14 @@
     };
     DetailsVm.getActors();
   })
-  .catch(function(){
+  .catch(function() {
     DetailsVm.loaded = true;
   });
 
   var getReviews = function() {
     Reviews.getReviews(DetailsVm.type, DetailsVm.id).then(function (reviews) {
       reviews.data.reviews.forEach(function (review) {
-        review.date = moment(review.date).format('MMMM do YYYY');
+        review.date = moment(review.date).format('MMMM Do YYYY');
       });
       DetailsVm.reviews = reviews.data.reviews;
       DetailsVm.users = reviews.data.users;
@@ -78,7 +78,7 @@
       rating: DetailsVm.reviewRating
     };
     Reviews.postReview(DetailsVm.type, DetailsVm.id, info).then(function(review) {
-      review.data.reviews.date = moment(review.data.reviews.date).format('MMMM do YYYY');
+      review.data.reviews.date = moment(review.data.reviews.date).format('MMMM Do YYYY');
       DetailsVm.reviews.unshift(review.data.reviews);
       DetailsVm.users[review.data.users.user_id] = review.data.users;
       //Clear input fields

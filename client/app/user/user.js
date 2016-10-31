@@ -24,7 +24,7 @@ angular.module('zeus.user', [])
           UserVm.userIdAuth = userObj.user_id;
           UserVm.username = $stateParams.username;
           UserVm.about = userObj.about;
-          UserVm.joinDate = userObj.joinDate;
+          UserVm.joinDate = moment(userObj.joinDate).format('MMMM Do YYYY');
           UserVm.fullName = userObj.fullName;
           UserVm.location = userObj.location;
           UserVm.profilePic = userObj.profilePicLink;
@@ -32,6 +32,9 @@ angular.module('zeus.user', [])
           UserVm.watched = userObj.watched;
           User.getUserReviews(UserVm.userIdAuth)
             .then(function(reviews) {
+              reviews.forEach((review) => {
+                review.date = moment(review.date).format('MMMM Do YYYY');
+              });
               UserVm.reviews = reviews;
             });
         });
@@ -52,7 +55,7 @@ angular.module('zeus.user', [])
           UserVm.userIdAuth = userObj.user_id;
           UserVm.username = userObj.username;
           UserVm.about = userObj.about;
-          UserVm.joinDate = userObj.joinDate;
+          UserVm.joinDate = moment(userObj.joinDate).format('MMMM Do YYYY');
           UserVm.fullName = userObj.fullName;
           UserVm.location = userObj.location;
           UserVm.profilePic = userObj.profilePicLink;
@@ -60,6 +63,9 @@ angular.module('zeus.user', [])
           UserVm.watched = userObj.watched;
           User.getUserReviews(UserVm.userIdAuth)
             .then(function(reviews) {
+              reviews.forEach((review) => {
+                review.date = moment(review.date).format('MMMM Do YYYY');
+              })
               UserVm.reviews = reviews;
             });
         });
@@ -75,7 +81,7 @@ angular.module('zeus.user', [])
 
     //check for favorites or watched
     if (UserVm[listType] !== undefined) {
-      UserVm[listType].forEach(function(item){
+      UserVm[listType].forEach(function(item) {
         if (item.type === target) {
           hasAnything = true;
         }
