@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zeus Reviews</title>
+  <!-- Stylesheets -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-indigo.min.css" />
     <link rel="stylesheet" href="app/styles/style.css">
@@ -35,11 +36,12 @@
     </div>
   </div>
 
+  <!-- Angular View, this is where elements will be rendered -->
   <ui-view id="top"></ui-view>
 
   <footer>
     <div class="mdl-logo">Zeus Reviews</div>
-    <div><a href="" ng-click="goToTop()">Back to top</a></div>
+    <div><a href="" ng-click="ZeusVm.goToTop()">Back to top</a></div>
     <div><a href="#">About Us</a></div>
   </footer>
 
