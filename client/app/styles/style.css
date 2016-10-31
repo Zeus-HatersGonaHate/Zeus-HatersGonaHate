@@ -85,8 +85,21 @@ article {
   color: white;
   border-style: solid;
 }
+
+.searchIcon{
+  position: relative;
+  color: white;
+  display: inline-block;
+  top: 5px;
+  margin-left: 30px;
+}
+
 .navbarForm {
   display: inline-block;
+}
+
+.navSearch{
+  width: 400px;
 }
 
 
@@ -119,6 +132,28 @@ article {
   left: 0;
   padding: 1rem;
   text-align: center;
+}
+
+input {
+  border: black solid 0px;
+  border-bottom: black solid 1px;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  border: black solid 1px;
+}
+
+select {
+    width: 160px;
+    background-color: white;
+    border: solid 1px black;
+    outline: none;
+    display: inline-block;
+    cursor: pointer;
+    height: 20px;
+    padding-right: 20px;
 }
 
 /* movie/tv detail page */
