@@ -629,6 +629,30 @@ button:hover {
   font-size: 20px;
 }
 
+/* edit profile */
+
+.editAccount {
+  margin-left: 20px;
+}
+
+.editAccount input{
+  width: 300px;
+}
+
+.editAccount textarea {
+  width: 700px;
+  height: 200px;
+  margin-bottom: 150px;
+}
+
+.editAccount p {
+  margin-bottom: 30px;
+}
+
+.update {
+  float: right;
+}
+
 /* actor detail page */
 .actor-info {
   position: relative;
