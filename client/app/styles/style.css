@@ -67,13 +67,10 @@ article {
   left: 0;
   right: 0;
   margin: auto;
-}
-
-.container {
   width: 900px;
   min-width: 900px;
   padding-top: 125px;
-  padding-bottom: 60px;
+  /*padding-bottom: 60px;*/
 }
 
 .casts, .reviewUser, .reviewBody, .moviePoster, .details, .showtimeForm, .showtimeResults, .resultPoster, .resultInfo, .page, .poster-container, .profileLeft, .profileRight, .favoriteNav, .poster, .reviewMovieInfo, .reviewReviewContent, .commentUser, .commentBody, .portraitm, .actor-info, .navLinks, .logoSearch{
@@ -84,6 +81,10 @@ article {
 
 .logoTitle {
   font-size: 30px;
+}
+
+footer {
+  background-color: black;
 }
 
 .footer {
