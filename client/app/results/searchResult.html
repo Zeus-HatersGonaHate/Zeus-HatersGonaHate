@@ -1,13 +1,15 @@
 <a href="/#/details/{{ result.media_type }}/{{ result.id }}">
+  <!--Hides results which are generally less useful -->
   <div class="result" ng-if="result.poster_path !== null">
     <div class="resultPoster">
-      <!-- If no poster_path, show dummy image -->
+      <!-- If invalid poster_path, show dummy image -->
       <img ng-hide="!result.poster_path" src="http://image.tmdb.org/t/p/w185/{{ result.poster_path }}" alt="">
       <img ng-hide="!result.profile_path" src="http://image.tmdb.org/t/p/w185/{{ result.profile_path }}" alt="">
       <img ng-show="!result.poster_path && !result.profile_path" src="http://dummyimage.com/185x275/000/fff&text={{result.name}}" alt="">
     </div>
 
     <div class="resultInfo">
+      <!--Within the API, movies have titles and TV shows have names, causing a need for distinction -->>
       <h2 class="title" ng-if="result.name === undefined">{{ result.title }}</h2>
       <h2 class="title" ng-if="result.title === undefined">{{ result.name }}</h2>
       <p class="">{{ result.overview }}</p>
