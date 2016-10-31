@@ -17,8 +17,9 @@
     </div>
   </div>
   <div class="reviewReviewInfo">
-    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'font-weight':'bold'}" ng-click="ReviewsVm.vote(1, isAuthenticated)"><i class="material-icons">thumb_up</i>: {{ReviewsVm.review.voteCount}}</span>
-    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'font-weight':'bold'}" ng-click="ReviewsVm.vote(-1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
+    <span>Rating: {{ReviewsVm.review.voteCount}}</span>
+    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === 1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(1, isAuthenticated)"><i class="material-icons">thumb_up</i></span>
+    <span ng-style="isAuthenticated && ReviewsVm.review.votes[0][ReviewsVm.currentUser.user_id] === -1 && {'color':'#ED254E'}" ng-click="ReviewsVm.vote(-1, isAuthenticated)"><i class="material-icons">thumb_down</i></span>
     <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.edit()"><i class="material-icons">mode_edit</i></span>
     <span ng-if="isAuthenticated && ReviewsVm.currentUser !== null && ReviewsVm.currentUser.user_id === ReviewsVm.review.user_id" ng-click="ReviewsVm.delete()"><i class="material-icons">delete</i></span>
   </div>

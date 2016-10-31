@@ -21,6 +21,10 @@ div.horizontal {
     overflow: auto;
 }
 
+div.horizontal::-webkit-scrollbar {
+  display: none;
+}
+
 .table {
     display: table;
     table-layout: fixed;
@@ -142,12 +146,20 @@ button:hover {
   margin-bottom: 20px;
 }
 
-.reviewInfo {
+.postDate, .rating {
   position: relative;
-  float: right;
-  margin-right: 30px;
   margin-bottom: 20px;
   margin-top: 2px;
+}
+
+.postDate {
+  float: left;
+  margin-left: 30px;
+}
+
+.rating {
+  float: right;
+  margin-right: 30px;
 }
 
 .reviewDP {
@@ -269,7 +281,6 @@ button:hover {
 .landing img {
   height: 260px;
 }
-
 
 /* User profile page */
 .profileLeft {
