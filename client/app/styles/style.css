@@ -516,6 +516,16 @@ button:hover {
   width: 100%;
 }
 
+.poster{
+  margin-right: 5px;
+  margin-bottom: 30px;
+}
+
+.poster button {
+  position: relative;
+  left: 14px;
+}
+
 /* review page */
 .reviewReviewContent{
   position: relative;
@@ -675,8 +685,9 @@ button:hover {
 .member {
   position: relative;
   display: inline-block;
-  margin-right: 15px;
-  margin-left: 15px;
+  margin-right: 13px;
+  margin-left: 13px;
+  margin-top: 50px;
 }
 
 .pic {
