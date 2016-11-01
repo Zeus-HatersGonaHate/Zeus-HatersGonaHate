@@ -1,5 +1,5 @@
 <div class="container">
-  <h4>Edit Review</h4>
+  <h4 class="heading-medium">Edit Review</h4>
   <form class="editForm">
     <h6>Title</h6>
     <input class="editTitle" type="text" value="{{EditReviewVm.title}}" ng-model="EditReviewVm.title" required>
@@ -19,8 +19,10 @@
     <textarea class="editContent" value="{{EditReviewVm.content}}" ng-model="EditReviewVm.content" required></textarea>
     <br/>
 
-    <button ng-click="EditReviewVm.edit()" type="Submit">Save</button>
+    <div class="edit-review-buttons">
+      <button ng-click="EditReviewVm.edit()" type="Submit">Save</button>
 
-    <button ng-click="EditReviewVm.cancel()" type="Submit">Cancel</button>
+      <button ng-click="EditReviewVm.cancel()" type="Submit">Cancel</button>
+    </div>
   </form>
 </div>
