@@ -169,8 +169,8 @@ angular.module('zeus', [
 
   //Auth 0 account info
   lockProvider.init({
-    clientID: 'GaWAS7TybB6Fqwa9uBw2SDVMPRGSAVDK',
-    domain: 'hughes89.auth0.com',
+    clientID: '',
+    domain: '',
     options: {
       auth: {
         redirect: false
