@@ -8,7 +8,8 @@ var port = 3000;
 app.use(express.static('../client'));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://main:test123@ds063406.mlab.com:63406/moviereviewsdata');
+//Your DB connection here
+mongoose.connect('mongodb://');
 
 require('./config/routes.js')(app, express);
 
