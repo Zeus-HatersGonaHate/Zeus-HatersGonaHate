@@ -3,7 +3,7 @@ angular.module('zeus.services', [])
   var getDetails = function (type, id, callback) {
     return $http({
       method: 'GET',
-      url: 'https://api.themoviedb.org/3/' + type + '/' + id + '?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
+      url: 'https://api.themoviedb.org/3/' + type + '/' + id + '?api_key=' + theMovieDbAPIKey +'&language=en-US'
     }).then(function (res) {   //first callback executes if request is successful
       return res.data;
     }, function(res) {        //second callback is executed if there was an error
@@ -16,7 +16,7 @@ angular.module('zeus.services', [])
   var getShowtimes = function(date, zip) {
     return $http ({
       method: 'GET',
-      url: 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=qu8cj47gn97yj4s4cjw6fpr8'
+      url: 'http://data.tmsapi.com/v1.1/movies/showings?startDate=' + date + '&zip=' + zip + '&api_key=' + tmsAPIKey
     })
     .then(function(res) {
       return res.data;
@@ -143,7 +143,7 @@ angular.module('zeus.services', [])
   var getPopularMovies = function() {
     return $http({
       method: 'GET',
-      url: 'https://api.themoviedb.org/3/movie/popular?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
+      url: 'https://api.themoviedb.org/3/movie/popular?api_key=' + theMovieDbAPIKey + '&language=en-US'
     })
     .then(function(res) {
       return res.data;
@@ -153,7 +153,7 @@ angular.module('zeus.services', [])
   var getLatestMovies = function() {
     return $http({
       method: 'GET',
-      url: 'https://api.themoviedb.org/3/movie/now_playing?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
+      url: 'https://api.themoviedb.org/3/movie/now_playing?api_key=' + theMovieDbAPIKey + '&language=en-US'
     })
     .then(function(res) {
       return res.data;
@@ -163,7 +163,7 @@ angular.module('zeus.services', [])
   var getUpcomingMovies = function() {
     return $http({
       method: 'GET',
-      url: 'https://api.themoviedb.org/3/movie/upcoming?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
+      url: 'https://api.themoviedb.org/3/movie/upcoming?api_key=' + theMovieDbAPIKey + '&language=en-US'
     })
     .then(function(res) {
       return res.data;
@@ -173,7 +173,7 @@ angular.module('zeus.services', [])
   var getPopularShows = function() {
     return $http ({
       method: 'GET',
-      url: 'https://api.themoviedb.org/3/tv/popular?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
+      url: 'https://api.themoviedb.org/3/tv/popular?api_key=' + theMovieDbAPIKey + '&language=en-US'
     })
     .then(function(res) {
       return res.data;
@@ -182,7 +182,7 @@ angular.module('zeus.services', [])
   var getLatestShows = function() {
     return $http ({
       method: 'GET',
-      url: 'https://api.themoviedb.org/3/tv/airing_today?api_key=144a52aa180019a468d95822c036cbce&language=en-US'
+      url: 'https://api.themoviedb.org/3/tv/airing_today?api_key=' + theMovieDbAPIKey + '&language=en-US'
     })
     .then(function(res) {
       return res.data;
@@ -202,7 +202,7 @@ angular.module('zeus.services', [])
   var multiSearch = function(query, page) {
     return $http({
       method: 'GET',
-      url: 'https://api.themoviedb.org/3/search/multi?api_key=144a52aa180019a468d95822c036cbce&language=en-US&query=' + query + '&page=' + page
+      url: 'https://api.themoviedb.org/3/search/multi?api_key=' + theMovieDbAPIKey + '&language=en-US&query=' + query + '&page=' + page
     })
     .then(function(res) {
       return res;
