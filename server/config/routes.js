@@ -5,8 +5,8 @@ var jwt = require('express-jwt');
 
 //Checks the token for authentication when attatched to route
 var authCheck = jwt({
-  secret: new Buffer('2e4hy18SeEf1D1TyFZ1H375OovOhyhxFu0GYZb8j9zhXygsiNlhdYWCjDaqIGl1c', 'base64'),
-  audience: 'GaWAS7TybB6Fqwa9uBw2SDVMPRGSAVDK'
+  secret: new Buffer('PUT YOUR AUTH0 SECRET HERE', 'base64'),
+  audience: 'AUTH0 CLIENT ID HERE'
 });
 
 module.exports = function (app, express) {
