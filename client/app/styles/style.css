@@ -24,6 +24,10 @@ a {
   color: #6ABED8;
 }
 
+a:hover {
+  color: #ED254E;
+}
+
 .heading-large {
   font-size: 35px;
 }
@@ -51,17 +55,16 @@ div.horizontal {
 }
 
 div.horizontal::-webkit-scrollbar {
-    width: 1em;
+  height: 6px;
+  width: 6px;
 }
 
 div.horizontal::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
 }
 
 div.horizontal::-webkit-scrollbar-thumb {
-  background-color: black;
-  border: 1px solid white;
-  border-radius: 10px;
+  background-color: #6ABED8;
 }
 
 .table {
@@ -100,6 +103,10 @@ article {
 
 a.navLink {
   color: white;
+}
+
+a.navLink:hover{
+  color: #E7E7E7;
 }
 
 .logoSearch {
@@ -186,10 +193,15 @@ a.navLink {
   color: white;
 }
 
+.footer a:hover {
+  color: #E7E7E7;
+}
+
 input {
   border: black solid 0px;
   border-bottom: black solid 1px;
   outline: none;
+  font-size: 15px;
 }
 
 textarea {
@@ -485,7 +497,6 @@ button:hover {
 }
 
 .profileNav a{
-
   margin-right: 30px;
   font-size: 20px;
   padding-bottom: 11px;
@@ -493,7 +504,7 @@ button:hover {
 }
 
 .profileNav a:hover{
-  /*border-bottom: black solid 1px;*/
+  color: #ED254E;
 }
 
 .profilePic {
@@ -507,7 +518,7 @@ button:hover {
 }
 
 .aboutUser {
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 
 .user-review {
@@ -623,6 +634,7 @@ button:hover {
 .editForm{
   width: 100%;
   border-top: black solid 1px;
+  margin-bottom: 100px;
 }
 
 .editContent {
@@ -637,6 +649,13 @@ button:hover {
   width: 50%;
   height: 25px;
   font-size: 20px;
+}
+
+.edit-review-buttons{
+  position: relative;
+  margin-top: 60px;
+  left: -30px;
+  float: right;
 }
 
 /* edit profile */
