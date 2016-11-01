@@ -65,8 +65,10 @@ angular.module('zeus.reviews', [])
   };
 
   ReviewsVm.delete = function() {
-    Reviews.deleteReview(ReviewsVm.review._id);
-    $location.path('/details/' + ReviewsVm.review.type + '/' + ReviewsVm.movie.id); //Needs to redirect to somewhere useful
+    Reviews.deleteReview(ReviewsVm.review._id)
+    .then(function(){
+      $location.path('/details/' + ReviewsVm.review.type + '/' + ReviewsVm.movie.id);
+    })
   };
 
   ReviewsVm.login = authService.login;
