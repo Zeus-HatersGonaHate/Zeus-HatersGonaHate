@@ -1,5 +1,5 @@
 //TODO: move this eventually
-const theMovieDbAPIKey = 'c25c04d7391be892e51c8248b0a300a7';
+const theMovieDbAPIKey = '55e70ba8d9dfc494912cd1d5ed1422a1';
 
 angular.module('zeus.services', [])
   .factory('Details', function ($http) {
