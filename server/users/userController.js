@@ -40,11 +40,23 @@ module.exports = {
       });
   },
 
+  // Get all users
+  getAllUsers: function (req, res) {
+    User.find()
+      .exec(function (err, users) {
+        if (err) {
+          console.error('Error getting all users', err)
+        } else {
+          res.send(users);
+        }
+      });
+  },
+
   //Gets user info based on the username
   getUserByUsername: function (req, res, next) {
     var username = req.params.username;
-    User.find({username: username})
-      .exec(function(err, userInfo) {
+    User.find({ username: username })
+      .exec(function (err, userInfo) {
         if (err) {
           console.log(err);
         } else {
@@ -57,7 +69,7 @@ module.exports = {
   editUser: function (req, res, next) {
     var id = req.user.sub;
     var data = req.body;
-    User.findOneAndUpdate({ user_id: id }, data, {new: true}, function (err, user) {
+    User.findOneAndUpdate({ user_id: id }, data, { new: true }, function (err, user) {
       if (err) {
         console.log(err);
       } else {

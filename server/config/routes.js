@@ -36,6 +36,8 @@ module.exports = function (app, express) {
 
   app.get('/user/reviews/:userId', reviewController.getUserReviews);
 
+  app.get('/user', userController.getAllUsers);
+
   app.post('/user', authCheck, userController.postUser);
 
   app.put('/user/edit', authCheck, userController.editUser);
