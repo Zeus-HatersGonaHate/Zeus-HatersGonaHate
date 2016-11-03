@@ -9,7 +9,7 @@ app.use(express.static('../client'));
 app.use(bodyParser.json());
 
 //Your DB connection here
-mongoose.connect('mongodb://');
+mongoose.connect('mongodb://localhost/GOD');
 
 require('./config/routes.js')(app, express);
 
