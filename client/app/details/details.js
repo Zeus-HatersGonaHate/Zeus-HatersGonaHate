@@ -3,6 +3,7 @@
   // capture the value of `this` in a variable vm
   // vm stands for view model and is a replacement for $scope
   var DetailsVm = this;
+  DetailsVm.scores = {} //obj to store ratings
   DetailsVm.currentView = 'reviews';
   DetailsVm.loaded = false;
   DetailsVm.data = {};
@@ -29,27 +30,33 @@
       $location.path(404);
     }
     DetailsVm.data = data; // save all movie details for the requested movie
-
     //convenience properties for shorthand in html views
     DetailsVm.original_title = DetailsVm.data.original_title;
     DetailsVm.original_name = DetailsVm.data.original_name;
     DetailsVm.poster_path = DetailsVm.data.poster_path;
     DetailsVm.overview = DetailsVm.data.overview;
-
+    DetailsVm.scores.TMDb = (DetailsVm.data.vote_average)// gets ratings for tv/movies
     DetailsVm.loaded = true;
     //loads actor info on details page load
     DetailsVm.getActors = function() {
       //if the selection is a movie
       if (DetailsVm.original_title !== undefined) {
         Details.getActors(DetailsVm.original_title).then(function(data) {
+          //gets ratings for moviess
+          DetailsVm.scores.IMDb = data.imdbRating
+          DetailsVm.scores.Metacritic = data.Metascore 
           DetailsVm.actors = data.Actors.split(',');
         });
         //if the selection is a tv show
       } else if (DetailsVm.original_name !== undefined) {
         Details.getActors(DetailsVm.original_name).then(function(data) {
+          //gets ratings for tv
+          DetailsVm.scores.IMDb = data.imdbRating
+          DetailsVm.scores.Metacritic = data.Metascore 
           DetailsVm.actors = data.Actors.split(',');
         });
       }
+
     };
     DetailsVm.getActors();
   })
