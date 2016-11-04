@@ -1,3 +1,4 @@
+
 <div class="container" ng-if="DetailsVm.original_title !== undefined || DetailsVm.original_name !== undefined && (DetailsVm.type === 'movie' || DetailsVm.type === 'tv')">
   <div class="basicInfo">
     <div ng-if="DetailsVm.type === 'movie'" class='moviePoster'>
@@ -5,6 +6,27 @@
       <img ng-hide="!DetailsVm.poster_path" src="http://image.tmdb.org/t/p/w342/{{DetailsVm.poster_path}}" alt="">
       <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
       <details-buttons ng-style="!isAuthenticated && {'visibility':'hidden'}"></details-buttons>
+
+      <!--  I need to refactor this with an ng-repeat -->
+      <div class='ratingsContainer'>
+       <div class='logoContainer' ng-style="{display:'inline-block'}">
+         <img class="logo" src="http://www.camelot-films.co.uk/wp-content/uploads/2014/03/IMDb-Logo.23962421_std.jpg">
+         <p class="score" ng-bind=DetailsVm.scores.IMDb> 
+         </p>
+        </div>
+
+        <div class='logoContainer' ng-style="{display:'inline-block'}">
+         <img class="logo" src="https://www.themoviedb.org/assets/41bdcf10bbf6f84c0fc73f27b2180b95/images/v4/logos/91x81.png">
+         <p class="score" ng-bind=DetailsVm.scores.TMDb> 
+         </p>
+        </div>
+
+        <div class='logoContainer' ng-style="{display:'inline-block'}">
+         <img class="logo" src="http://www.alyshabuselt.com/img/metacritic.png">
+         <p class="score" ng-bind=DetailsVm.scores.Metacritic> 
+         </p>
+        </div>
+      </div>
     </div>
 
     <div ng-if="DetailsVm.type === 'tv'" class='moviePoster'>
@@ -13,6 +35,27 @@
       <img ng-show="!DetailsVm.poster_path" src="http://dummyimage.com/185x275/000/fff&text={{DetailsVm.original_name}}" alt="">
 
       <details-buttons ng-if="isAuthenticated"></details-buttons>
+
+    <!--  I need to refactor this with an ng-repeat -->
+      <div class='ratingsContainer'>
+       <div class='logoContainer' ng-style="{display:'inline-block'}">
+         <img class="logo" src="http://www.camelot-films.co.uk/wp-content/uploads/2014/03/IMDb-Logo.23962421_std.jpg">
+         <p class="score" ng-bind=DetailsVm.scores.IMDb> 
+         </p>
+        </div>
+
+        <div class='logoContainer' ng-style="{display:'inline-block'}">
+         <img class="logo" src="https://www.themoviedb.org/assets/41bdcf10bbf6f84c0fc73f27b2180b95/images/v4/logos/91x81.png">
+         <p class="score" ng-bind=DetailsVm.scores.TMDb> 
+         </p>
+        </div>
+
+        <div class='logoContainer' ng-style="{display:'inline-block'}">
+         <img class="logo" src="http://www.alyshabuselt.com/img/metacritic.png">
+         <p class="score" ng-bind=DetailsVm.scores.Metacritic> 
+         </p>
+        </div>
+      </div>
     </div>
 
 

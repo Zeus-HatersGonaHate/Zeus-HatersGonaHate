@@ -1,17 +1,14 @@
 <div class="showtimes">
 <!-- User enters a radius to get nearby showtimes, default radius is 5 miles -->
-  <form class="showtimeForm" ng-submit="DetailsVm.getShowtimes()">
+  <form class="showtimeForm" ng-submit="DetailsVm.getShowtimes(DetailsVm.original_title)">
     <p>Enter your zip code below to get showtimes for this movie near you today.</p>
     <input type="text" placeholder="Zip Code" ng-model="DetailsVm.zip">
   </form>
 
   <div class="showtimeResults">
-    <div ng-repeat="movie in DetailsVm.showtimes">
-      <div ng-if="movie.title === DetailsVm.original_title" >
-        <div ng-repeat="showtime in movie.showtimes" class="showtime">
-          {{ showtime.theatre.name }}: {{ showtime.dateTime.slice(11) }}
-        </div>
-      </div>
+    <div ng-repeat="showtime in DetailsVm.showtimes" class="showtime">
+      <h3>{{ showtime.theatreName }}</h3>
+      <span ng-repeat="time in showtime.showings"><a href="{{showtime.ticketURI}}">{{time}}</a> </span>
     </div>
 
     <p ng-if="DetailsVm.hasNoShowtime">This movie is not currently in theatres near you!</p>

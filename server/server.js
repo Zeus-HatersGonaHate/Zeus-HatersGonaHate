@@ -1,15 +1,19 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var path = require('path');
+var fillUsers = require('./fillUsers');
+
+//fillUsers(); //used to create lots of fake users for testing
+
 var app = express();
 
 var port = 3000;
-
-app.use(express.static('../client'));
+app.use(express.static(path.join(__dirname, '../client')));
 app.use(bodyParser.json());
 
 //Your DB connection here
-mongoose.connect('mongodb://');
+mongoose.connect('mongodb://localhost/zeus');
 
 require('./config/routes.js')(app, express);
 

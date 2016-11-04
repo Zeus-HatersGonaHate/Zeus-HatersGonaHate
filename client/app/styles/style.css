@@ -711,5 +711,25 @@ button:hover {
 
 .pic {
   width: 170px;
-  border-radius: 170px;
+  /*border-radius: 170px;*/
 }
+
+.score{
+  padding-right: 10px;
+  float:right;
+  font-size: 20px
+}
+
+.ratingsContainer{
+  margin-top: 10px;
+  margin-left: 45px;
+}
+
+.logo{
+  padding-right: 10px;
+  width: 60px; 
+  height:60px;
+}
+
+
+

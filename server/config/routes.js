@@ -5,8 +5,8 @@ var jwt = require('express-jwt');
 
 //Checks the token for authentication when attatched to route
 var authCheck = jwt({
-  secret: new Buffer('PUT YOUR AUTH0 SECRET HERE', 'base64'),
-  audience: 'AUTH0 CLIENT ID HERE'
+  secret: new Buffer('xb2O15v26aHQwrEBHj9g0ClMWPUU8qbQic2nWheL1ZILYWesPn3V67nPGF8H95Lv', 'base64'),
+  audience: '0cUlkKsftRF5gApO4Y6ojv3Rk5PZX8eE'
 });
 
 module.exports = function (app, express) {
@@ -35,6 +35,8 @@ module.exports = function (app, express) {
   app.get('/user/:username', userController.getUserByUsername);
 
   app.get('/user/reviews/:userId', reviewController.getUserReviews);
+
+  app.get('/user', userController.getAllUsers);
 
   app.post('/user', authCheck, userController.postUser);
 
