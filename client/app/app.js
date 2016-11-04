@@ -147,6 +147,12 @@ angular.module('zeus', [
       templateUrl: 'app/about/about.html'
     };
 
+    var newsFeedState = {
+      name: 'newsfeed',
+      url: '/newsfeed',
+      templateUrl: 'app/newsfeed/newsfeed.html'
+    };
+
     var fourOhFourState = {
       name: '404',
       url: '/404',
@@ -164,6 +170,7 @@ angular.module('zeus', [
     $stateProvider.state(editReviewState);
     $stateProvider.state(aboutState);
     $stateProvider.state(fourOhFourState);
+    $stateProvider.state(newsFeedState);
 
     $urlRouterProvider.otherwise('/');
 
